@@ -53,7 +53,7 @@
 				<fieldset id="membership">
 					<h3>Tagja már a Magyar Autóklubnak?</h3>
 					<div class="row">
-						<label for="old">Igen<input class="required" type="radio" name="group1" id="old" />
+						<label for="old">Igen<input autofocus="autofocus" class="required" type="radio" name="group1" id="old" />
 						</label>
 						<label for="new">Nem<input type="radio" name="group1" id="new" /></label>
 					</div>
@@ -187,7 +187,7 @@
 			<form action="#" id="memberform" class="step2">
 				<h2>2. lépés - Klubtagsági szint kiválasztása</h2>
 				<fieldset>
-					<h3>Tagsági szint</h3>
+					<h3>Tagsági szint <span class="sum">14 000 Ft/év</span></h3>
 					<div class="row">
 						<label for="diszkontMember">Diszkont tagság</label>
 						<input type="radio" name="membership" id="diszkontMember" />
@@ -264,15 +264,15 @@
 					</div>
 				</fieldset>
 				<fieldset id="chequeDetails" class="detail">
-					<h3>Csekkes fizetés <span class="sum">14 000 Ft</span></h3>
+					<h3>Csekkes fizetés <span class="sum">14 000 Ft/év</span></h3>
 					<div class="row">Majd kap számlát.</div>
 				</fieldset>
 				<fieldset id="transferDetails" class="detail">
-					<h3>Banki átutalással való fizetés <span class="sum">14 000 Ft</span></h3>
+					<h3>Banki átutalással való fizetés <span class="sum">14 000 Ft/év</span></h3>
 					<div class="row">Ide utalja : 1111111-1-1111111-1-1-</div>
 				</fieldset>
 				<fieldset id="cardDetails" class="detail">
-					<h3>Bankkártyás fizetés <span class="sum">14 000 Ft</span></h3>
+					<h3>Bankkártyás fizetés <span class="sum">14 000 Ft/év</span></h3>
 					<div class="row">Átirányítjuk...</div>
 				</fieldset>
 				<input type="submit" value="Véglegesítés" />

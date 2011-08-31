@@ -1,3 +1,7 @@
+#register aside h3.active{
+	color:#0080B0;
+}
+
 #content{
 	width: 660px;
 	float: left;
