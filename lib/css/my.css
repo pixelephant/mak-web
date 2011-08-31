@@ -143,6 +143,65 @@ article p{
 	font-size: 12px;
 }
 
+.timeleft{
+	float:none;
+	width:auto;
+}
+
+/*Hosszabbítás*/
+
+#extend-cta{
+	text-align: center;
+	background: #E9EAEC;
+	padding: 15px;
+}
+
+#extend-cta h2{
+	font-weight: bold;
+	margin-bottom: 25px !important;
+}
+
+#extend-cta .timeleft{
+	font-size: 14px;
+	color:#0080B0;
+}
+
+#extend-cta a{
+	-moz-box-shadow: inset 0px 1px 0px 0px #ffff00;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffff00;
+    box-shadow: inset 0px 1px 0px 0px #ffff00;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FDD300), color-stop(1, #FCB614) );
+    background: -moz-linear-gradient( center top, #FDD300 5%, #FCB614 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd300', endColorstr='#fcb614');
+    background-color: #FDD300;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #DAA41A;
+    display: inline-block;
+    color: #1C1C1C;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 24px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px yellow;
+    margin: 0 15px;
+}
+
+
+#extend-cta a:active {
+   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcb614), color-stop(1, #fdd300) );
+   background:-moz-linear-gradient( center top, #fcb614 5%, #fdd300 100% );
+   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcb614', endColorstr='#fdd300');
+   background-color:#fcb614;
+}
+
+#extend-cta a:hover{
+     position:relative;
+     top:1px;
+}
+
+
 #profilszerkesztes{
 	background: url(../../img/edit.png) no-repeat left center;
 }

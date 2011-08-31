@@ -66,7 +66,7 @@
 			</ul>
 			<div id="countdown">
 				<h3>Tagságomból hátra van még</h3>
-				<p id="timeleft"></p>
+				<p id="timeleft" class="timeleft"></p>
 			</div>
 			<?php include "ad.php" ?>
 		</aside>
