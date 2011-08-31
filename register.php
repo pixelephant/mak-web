@@ -221,6 +221,7 @@
 					<div class="row" id="standardPlateHuInputRow">
 						<label for="standardPlateHuInput">Rendszám</label>
 						<input type="text" name="standardPlateHuInput" id="standardPlateHuInput" />
+						<img src="img/info.png" alt="" class="info" title="Formátum : AAA-111" />
 					</div>
 					<div class="row" id="standardPlateFoInputRow">
 						<label for="standardPlateFoInput">Rendszám</label>
@@ -236,6 +237,7 @@
 					<div class="row">
 						<label for="komfortPlateHuInput">Rendszám</label>
 						<input type="text" class="required" name="komfortPlateHuInput" id="komfortPlateHuInput" />
+						<img src="img/info.png" alt="" class="info" title="Formátum : AAA-111" />
 					</div>
 				</fieldset>
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />

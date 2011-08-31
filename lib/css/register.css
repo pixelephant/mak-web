@@ -74,7 +74,7 @@
 }
 
 .step2,.step3,.step4{
-	display: none;
+/*	display: none;*/
 }
 
 .detail{
@@ -93,9 +93,15 @@ span.sum{
 #tooltip {
 	position: absolute;
 	z-index: 3000;
-	border: 1px solid #111;
-	background-color: #eee;
-	padding: 5px;
+	border: 1px solid #FFD400;
+	background-color: #F2BE00;
+	padding: 6px;
 	opacity: 0.85;
+    -webkit-border-radius: 6px; 
+    -moz-border-radius: 6px; 
+	border-radius: 6px;       
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+	font-size: 13px;
+
 }
 #tooltip h3, #tooltip div { margin: 0; }

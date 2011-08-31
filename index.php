@@ -154,7 +154,7 @@ kulcsszavai
 		</div>
 	</li>
 	<li id="szerviz-menu">
-		<span>Szerviz Pontok</span>
+		<span>Szerviz Pont Hálózat</span>
 		<div class="ldd_submenu">
 			<div class="arrow"></div>
 			<div class="in">
