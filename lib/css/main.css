@@ -657,6 +657,7 @@ aside .newsletter{
 	font-size: 16px;
 	color: #1c1c1c;
 	text-align: center;
+	margin-bottom: 10px;
 }
 
 #loginForm label.error, #loginForm label.success,aside label.error, aside label.success{
@@ -1076,4 +1077,8 @@ li.heading.travel{
 	color: #0080B0;
 	font-size: 12px;
 	text-decoration: none;
+}
+
+a.blue{
+	color: #0080B0;
 }

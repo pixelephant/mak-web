@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="lib/css/register.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="helyszini">
+	<body id="register">
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
@@ -178,7 +178,7 @@
 				<fieldset>
 				<h3>Feltételek</h3>
 				<div class="row">
-					<label for="terms">Elfogadom a <a target="_blank" href="#">feltételeket</a></label>
+					<label for="terms">Elfogadom a <a class="blue" target="_blank" href="#">feltételeket</a></label>
 					<input class="required" type="checkbox" name="terms" id="terms" />
 				</div>
 				</fieldset>
