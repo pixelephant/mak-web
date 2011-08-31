@@ -526,6 +526,26 @@ ul.ldd_menu > li{
 	background: url(../../img/nav/enautoklubom.png) no-repeat left center;
 }
 
+#segely-menu > span{
+	background: url(../../img/nav/segely.png) no-repeat left center;
+}
+
+#travel-menu > span{
+	background: url(../../img/nav/travel.png) no-repeat left center;
+}
+
+#kozlek-menu > span{
+	background: url(../../img/nav/kozlek.png) no-repeat left center;
+}
+
+#szerviz-menu > span{
+	background: url(../../img/nav/szerviz.png) no-repeat left center;
+}
+
+#klub-menu > span{
+	background: url(../../img/nav/klub.png) no-repeat left center;
+}
+
 ul.ldd_menu > li > span{
 	float:left;
 	color: #DAE0D4;
@@ -534,7 +554,7 @@ ul.ldd_menu > li > span{
 	cursor:default;
 	padding:0px 10px;
 	font-size: 12px;
-	padding-left: 30px;
+	padding-left: 25px;
 }
 
 ul.ldd_menu > li > span:hover{
@@ -546,7 +566,7 @@ ul.ldd_menu > li > span a{
 }
 
 ul.ldd_menu .ldd_submenu .arrow{
-	background: url(../../img/menu-arrow.png) 5px 0 no-repeat;
+	background: url(../../img/menu-arrow.png) 3px 0 no-repeat;
 	height: 7px;
 }
 

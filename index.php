@@ -201,8 +201,8 @@ kulcsszavai
 			</div>
 		</div>
 	</li>
-	<li id="en-menu">
-		<span>Én Autóklubom</span>
+	<li id="klub-menu">
+		<span>Klubtagság</span>
 		<div class="ldd_submenu">
 			<div class="arrow"></div>
 			<div class="in">
@@ -211,6 +211,14 @@ kulcsszavai
 					<li><a href="sub.php">Kártyatípusok</a></li>
 					<li><a href="sub.php">Részletes leírás</a></li>
 				</ul>
+			</div>
+		</div>
+	</li>
+	<li id="en-menu">
+		<span>Én Autóklubom</span>
+		<div class="ldd_submenu">
+			<div class="arrow"></div>
+			<div class="in">
 				<ul>
 					<li class="ldd_heading">Érdekképviselet</li>
 					<li><a href="sub.php">Jogi tudástár</a></li>
