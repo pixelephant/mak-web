@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EmbeddedEditorHidden:soda01</key>
+	<false/>
+	<key>ExpandedEditorWidth:soda01:displays([(0, 0), (1280, 800)])</key>
+	<integer>884</integer>
+	<key>ExpandedItems:soda01</key>
+	<array/>
+	<key>FileFilterID:soda01</key>
+	<string>msng</string>
+	<key>OpenDocuments:soda01</key>
+	<array/>
+	<key>OpenDocumentsExpanded</key>
+	<true/>
+	<key>OpenDocumentsVisible</key>
+	<true/>
+	<key>ProjectViewVisible</key>
+	<true/>
+	<key>RecentItems:soda01</key>
+	<array/>
+	<key>RecentItemsExpanded</key>
+	<true/>
+	<key>RecentItemsVisible</key>
+	<true/>
+	<key>ScratchpadItemsExpanded</key>
+	<true/>
+	<key>ScratchpadItemsVisible</key>
+	<true/>
+	<key>ShowInvisibles:soda01</key>
+	<false/>
+	<key>ShowSCMData:soda01</key>
+	<false/>
+	<key>TextFilesOnly:soda01</key>
+	<true/>
+	<key>ToolbarVisible:soda01</key>
+	<true/>
+	<key>ViewSplitterPosition:soda01</key>
+	<real>0.17690874636173248</real>
+	<key>WindowFrame:soda01:displays([(0, 0), (1280, 800)])</key>
+	<string>rect(44,274,745,1348)</string>
+</dict>
+</plist>
