@@ -233,7 +233,7 @@
 			<form id="komfortform" action="#" method="#" class="step3">
 				<h2>3. lépés - Gépjármú adatok megadása</h2>
 				<fieldset>
-					<h3>Géjármű adatok</h3>
+					<h3>Géjármű adatai</h3>
 					<div class="row">
 						<label for="komfortPlateHuInput">Rendszám</label>
 						<input type="text" class="required" name="komfortPlateHuInput" id="komfortPlateHuInput" />
