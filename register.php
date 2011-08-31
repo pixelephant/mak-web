@@ -92,7 +92,7 @@
 					</div>
 					<div class="row">
 						<label for="coZip">Székhely irányítószáma</label>
-						<input size="4" minlength="4" maxlength="4" class="digits" type="text" name="coZip" id="coZip" />
+						<input class="zip" size="4" minlength="4" maxlength="4" class="digits" type="text" name="coZip" id="coZip" />
 					</div>
 					<div class="row">
 						<label for="coCity">Székhely települése</label>
@@ -136,7 +136,7 @@
 					</div>
 					<div class="row">
 						<label for="natZip">Irányítószám</label>
-						<input size="4" minlength="4" maxlength="4" class="digits required" type="text" name="natZip" id="natZip" />
+						<input class="zip" size="4" minlength="4" maxlength="4" class="digits required" type="text" name="natZip" id="natZip" />
 					</div>
 					<div class="row">
 						<label for="natCity">Település</label>
@@ -166,12 +166,12 @@
 					<h3>Jelszó választás</h3>
 					<div class="row">
 						<label for="pass">Jelszó</label>
-						<input class="required" type="password" name="pass" id="pass" />
+						<input class="required" minlength="5" type="password" name="pass" id="pass" />
 						<img src="img/info.png" alt="" class="info" title="Ezzel a jelszóval tud majd a Saját Autóklubomba belépni." />
 					</div>
 					<div class="row">
 						<label for="passRe">Jelszó újra</label>
-						<input class="required" type="password" name="passRe" id="passRe" />
+						<input class="required" minlength="5" type="password" name="passRe" id="passRe" />
 					</div>				
 				</fieldset>
 				

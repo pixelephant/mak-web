@@ -31,7 +31,7 @@
 }
 
 #content form label{
-	min-width: 165px;
+	min-width: 190px;
 	text-align: left;
 	margin-right: 5px;
 	color: #29384C;
@@ -63,6 +63,21 @@
 	background-image:      -o-linear-gradient(top, #E0E0E0, #F5F5F5); 
 	background-image:         linear-gradient(top, #E0E0E0, #F5F5F5);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5'); 
+	font-size: 13px;
+}
+
+/*Input méret igazítások */
+
+#content form .zip{
+	width: 40px !important;
+}
+
+#content form .datepicker{
+	width: 90px !important;
+}
+
+#cardNum{
+	width: 100px !important;
 }
 
 #content form input[type='radio']{
@@ -74,10 +89,6 @@
 	padding: 10px;
 	padding-top: 15px;
 	overflow: hidden;
-}
-
-#content form .datepicker{
-	background: url(http://www.ram13.hu/img/front/calendar_icon.gif) center right no-repeat;
 }
 
 #content form .info{
