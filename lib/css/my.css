@@ -148,6 +148,11 @@ article p{
 	width:auto;
 }
 
+section .full p{
+	width: auto !important;
+	float: none;
+}
+
 /*Hosszabbítás*/
 
 #extend-cta{

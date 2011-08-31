@@ -73,8 +73,8 @@
 		<section id="content">
 		<article>
 			<h1>Tagság hosszabbítás</h1>
-			<section>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet mauris eu turpis euismod rutrum dapibus vitae neque. Suspendisse potenti. Mauris eu erat et sapien posuere bibendum at fermentum purus. Fusce molestie ultrices tortor sed tincidunt. Nam at sapien enim, quis vestibulum tortor. Pellentesque et leo nulla, nec vulputate nulla. Sed blandit quam eu dolor viverra ac suscipit est sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras ac libero eu massa sollicitudin mattis porta sollicitudin turpis. Vivamus elementum nisl non neque gravida ultricies. Cras dapibus tempor neque a scelerisque. Sed vulputate, risus eget.
+			<section class="full">
+				<p>A Magyar Autóklub lehetőséget biztosít meglévő tagjai számára, hogy klubtagsági szintjüket megváltoztassák, valamint arra, hogy a tagságukat online meghosszabbítsák. Kérjük vegye figyelembe, hogy amennyiben tagsági szintet változtat, úgy extra adatok megadására is szükség lehet.</p>
 			</section>
 			<section id="extend-cta">
 				<h2>Tagságomból hátra van még</h2>
