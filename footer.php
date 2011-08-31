@@ -3,7 +3,7 @@
 		<ul class="first">
 			<li class="heading tagsag">Klubtagság</li>
 			<li>Kártya összehasonlítás</li>
-			<li>Részletes leírás salala  asdadas </li>
+			<li>Részletes leírás</li>
 		</ul>
 		<ul>
 			<li class="heading segely">Segélyszolgálat</li>
