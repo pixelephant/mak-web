@@ -5,7 +5,7 @@
 		<span>Segélyszolgálat</span>
 		<div class="ldd_submenu">
 			<div class="arrow"></div>
-			<div class="ia">
+			<div class="in">
 				<ul>
 					<li class="ldd_heading">Helyszíni hibaelhárítás</li>
 					<li><a href="sub.php">Gyorssegély</a></li>
