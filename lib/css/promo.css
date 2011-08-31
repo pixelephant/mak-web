@@ -1,0 +1,137 @@
+/*SLIDER*/
+
+.glow{
+	background: url(../../img/sliderglow.png) no-repeat center;
+}
+
+#promoSliderWrap{
+	height: 235px;
+	position: relative;
+	z-index: 1;
+	margin: 0 auto;
+	width: 975px;
+}
+
+#promo-outer{
+	background-color: #FED205;
+}
+
+#promo-outer.first{
+	background-color: #0080B0;
+}
+
+#leftSlider{
+	width: 190px;
+	float: left;
+	height: 195px;
+	padding: 25px;
+	padding-top: 15px;
+	background: url(../../img/promo-sep.png) no-repeat right center;
+}
+
+#rightSlider{
+	width: 735px;
+	float: left;
+}
+
+#slider{
+	overflow: hidden;
+}
+
+#slider .slide{
+	width: 685px;
+	height: 170px;
+	margin: 0 auto;
+	padding: 25px;
+	padding-top: 15px;
+	overflow: hidden;
+}
+
+#promoSliderWrap h2{
+	color: #1C1C1C;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+#promoSliderWrap p{
+	font-size: 14px;
+	line-height: 1.5;
+	margin-bottom:20px;
+	color: 	#0080B0;
+font-style: italic;
+}
+
+#slider ul{
+	list-style: disc;
+	list-style-position: inside;
+}
+
+#slider .slide a{
+	font-size: 12px;
+	margin: 5px 0;
+	text-decoration: none;
+	color: #1c1c1c;
+}
+
+.slide .text{
+	float: left;
+	width: 470px;
+}
+
+.slide .text h2,.slide .text ul,.slide .text p{
+	position: relative;
+	left: -500px;
+	opacity: 0;
+}
+
+.slide img{
+	float: right;
+	position: relative;
+	right: -500px;
+	opacity: 0;
+	margin-top: 20px;
+}
+
+#sliderNav{
+	width: 200px;
+	padding-left: 15px;
+	float: left;
+	height: 20px;
+	line-height: 10px;
+}
+
+#sliderNav a{
+	margin: 0 5px;
+	background: #998000;
+	width: 7px;
+	height: 7px;
+	text-decoration: none;
+	display: block;
+	float: left;	
+}
+
+#sliderNav a.activeSlide{
+	background: black;
+}
+
+#sliderNav a:hover{
+	opacity: 0.6;
+}
+
+#promo-outer.first #leftSlider h2,#promo-outer.first #leftSlider p{
+	color: white !important;
+}
+
+#promo-outer.first #sliderNav a{
+	background: white !important;
+	opacity: 0.8 !important;
+}
+
+#promo-outer.first #sliderNav a.activeSlide{
+	opacity: 1 !important;
+}
+
+.slide.first p,.slide.first h2,.slide.first a{
+	color: white !important;
+}

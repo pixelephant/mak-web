@@ -1,0 +1,10 @@
+
+	1. copy index.php, images and attachments directory to your server
+	2. create database table for newsletter module
+	3. create required tables - you can use already prepared sql code in install/install.sql
+	4. configure the module:
+	
+		a/ set proper $script_url on line 34
+		b/ set your email account - lines 45 - 47
+		c/ set your database connection - lines 53 - 56
+		d/ set table names you created for a newsletter module - lines 60 - 62

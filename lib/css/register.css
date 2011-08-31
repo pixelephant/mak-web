@@ -1,0 +1,101 @@
+#content{
+	width: 660px;
+	float: left;
+	padding: 55px 45px 55px 30px;
+	overflow: hidden;
+}
+
+#content form{
+	color: #1c1c1c;
+}
+
+#content form h2{
+	font-size: 20px;
+	margin-bottom: 55px;
+}
+
+#content form fieldset{
+	background: #f5f5f5;
+	margin-bottom: 25px;
+}
+
+#content form h3{
+	padding: 10px;
+	font-size: 18px;
+}
+
+#content form label{
+	min-width: 165px;
+	text-align: left;
+	margin-right: 5px;
+	color: #29384C;
+	display: block;
+	float: left;
+	height: 20px;
+	line-height: 20px;
+}
+
+#content form label.error{
+	font-size: 12px;
+	color: red;
+	width: auto;
+	margin: 0 !important;
+	min-width: 0 !important;
+	float: right;
+}
+
+#content form input[type='text'],#content form input[type='password']{
+	width: 200px;
+	height: 20px;
+	float: left;
+}
+
+#content form input[type='radio']{
+	margin-left: 5px;
+}
+
+#content form div.row{
+	background:#fff;
+	padding: 5px 15px 5px 15px;
+	overflow: hidden;
+}
+
+#content form .datepicker{
+	background: url(http://www.ram13.hu/img/front/calendar_icon.gif) center right no-repeat;
+}
+
+#content form .info{
+	margin-top: 3px;
+	margin-left: 5px;
+}
+
+#standardPlateFoInputRow{
+	display: none;
+}
+
+.step2,.step3,.step4{
+	display: none;
+}
+
+.detail{
+	display: none;
+}
+
+span.sum{
+	float:right;
+}
+
+.otp{
+	background : url(../../img/otp.jpg) no-repeat right center white !important;
+}
+
+/*Tooltip*/
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #111;
+	background-color: #eee;
+	padding: 5px;
+	opacity: 0.85;
+}
+#tooltip h3, #tooltip div { margin: 0; }

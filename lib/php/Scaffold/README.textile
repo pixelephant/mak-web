@@ -1,0 +1,78 @@
+h1. About phpScaffold
+
+*phpScaffold* quickly generates simple CRUD scaffold modules for PHP/MySQL. It
+takes a project name and a schema dump from a browser session, and cooks HTML5
+pages for editing it's tables.
+
+It features session based authentication; searching, sorting and paging
+facilities in listing page; and the generated forms responds to column types
+@text@, @date@, @datetime@, @(var)char@ and @bool (int(1))@.
+
+I've started it from the public copy at phpscaffold.com, to be able to use it
+in any new simple model I need, without having to tweak by hand automatable
+tasks (_id est_, for no more reinventing wheels!).
+
+
+h2. Installation and usage
+
+# Go to @index.php@, and seed the form with your schema dump.
+# You can go to @tmp/table_name/@ to grab/test the files
+  (make sure that @tmp/@ has write permissions for the web server).
+# Adjust MySQL info and users (by default it's 'admin', 'pass') from @inc.config.inc@.
+# Start using it!
+
+h3. Some comments
+
+p{font-size:80%}. The table must be up and running; *phpScaffold* doesn't change anything in the database.
+
+p{font-size:80%}. You may add text search criteria adding 'text' as third parameter to @search_options@ (in search page).
+
+
+h2. Screenshots
+
+h3. Schema loading.
+
+!https://github.com/tute/phpscaffold/raw/master/assets/phpsc1.png(Schema loading)!
+
+h3. Generated index page.
+
+!https://github.com/tute/phpscaffold/raw/master/assets/phpsc2.png(Generated index page)!
+
+
+h2. To do list
+* Errors on tables without primary key.
+* date and datetime fields shouldn't be surrounded by @<legend>@.
+* Distinguish between @int@ and @char@ columns, to tie text/number search options automatically.
+* Date/date-range search.
+* Upload files capability?
+* showEmpty option for @build_options()@.
+
+
+h2. For developers
+
+You may run tests running on the console @cucumber features@. You'll have to
+setup cucumber as described on @https://github.com/aslakhellesoy/cucumber/wiki/PHP@,
+and to tweak the URL on @features/step_definitions/authentication_steps.rb@.
+
+
+h2. MIT License
+
+Copyright (c) 2009 [phpscaffold.com creator]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

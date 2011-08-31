@@ -1,0 +1,156 @@
+aside img{
+	width: auto;
+}
+
+#content article h2{
+	margin-bottom: 2px;
+}
+
+#content section h3{
+	font-size: 12px;
+	margin-bottom: 15px;
+}
+
+article{
+	overflow: hidden;
+}
+
+article p{
+	float: left;
+	width: 300px;
+}
+
+#hirek article img{
+	float: right;
+}
+
+#hirek article a{
+	clear: both;
+}
+
+#log{
+	margin: 0 0 20px 0;
+	text-align: center;
+}
+
+#log a{
+	display: inline;
+	text-align: left;
+}
+
+
+/*autósélet*/
+
+.row{
+	overflow: hidden;
+	display: block;
+	margin: 30px 0;
+	height: 215px;
+}
+
+.autoselet{
+	height: 215px;
+	width: 168px;
+	float: left;
+	background: url(../../img/autoselet-shadow.png) no-repeat center bottom;
+	cursor: pointer;
+}
+
+.autoselet .img{
+	position: relative;
+	top: 10px;
+}
+
+.autoselet.left{
+	margin-right: 78px;
+}
+
+.autoselet.left .img{
+	background: url(../../img/autoselet-left.png) no-repeat center top;
+	width: 134px;
+	height: 185px;
+	margin: 0 auto;
+}
+
+.autoselet.left img{
+	top: 5px;
+	position: relative;
+	left: 3px;
+}
+
+.autoselet.center{
+	margin-right: 78px;
+}
+
+.autoselet.center .img{
+	background: url(../../img/autoselet-center.png) no-repeat center top;
+	width: 130px;
+	height: 185px;
+	margin: 0 auto;
+}
+
+.autoselet.center img{
+	top: 5px;
+	left: 2px;
+}
+
+
+.autoselet.right{
+
+}
+
+.autoselet.right .img{
+	background: url(../../img/autoselet-right.png) no-repeat center top;
+	width: 130px;
+	height: 185px;
+	margin: 0 auto;
+}
+
+.autoselet.right img{
+	top: 5px;
+	left: 2px;
+}
+
+.row .img img{
+	width: 127px;
+	height: 178px;
+	display: block;
+	position: relative; 
+}
+
+.embed{
+	display: none;
+}
+
+.embed div div{
+	display: none;
+}
+
+#countdown{
+	margin-bottom: 30px;
+}
+
+#countdown h3{
+	padding: 0;
+	text-align: center;
+	margin: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#timeleft{
+	text-align: center;
+	font-size: 12px;
+}
+
+#profilszerkesztes{
+	background: url(../../img/edit.png) no-repeat left center;
+}
+
+#hirfolyam{
+	background: url(../../img/hirek.png) no-repeat left center;
+}
+
+#autos-elet{
+	background: url(../../img/autoselet.png) no-repeat left center;
+}

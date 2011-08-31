@@ -1,0 +1,55 @@
+body{
+	font-family: "Myriad Pro",Arial,sans-serif;
+}
+
+#headerwrap{
+	height: 130px;
+	background: #FED205;
+}
+
+header{
+	overflow: hidden;
+	width: 980px;
+	margin: 0 auto;
+	padding: 10px;
+	height: 130px;
+}
+
+header h1{
+	height: 120px;
+	line-height: 120px;
+	font-size: 30px;
+	color: #1c1c1c;
+	float: left;
+}
+
+header a{
+	float: right;
+	color: #1c1c1c;
+}
+
+nav{
+	background: #0080B0;
+	height: 30px;
+	line-height: 30px;
+}
+
+nav ul{
+	width: 980px;
+	margin: 0 auto;
+}
+
+nav ul li{
+	float: left;
+	padding: 2px;
+	margin: 0 5px;
+}
+
+nav ul li a{
+	color: white;
+	text-decoration: none;
+}
+
+nav ul li a:hover{
+	color: #aaa;
+}

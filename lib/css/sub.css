@@ -1,0 +1,191 @@
+.header-wrap .hr{
+	background: none;
+}
+
+#content{
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	width: 735px;
+}
+
+#content h1{
+	font-size: 24px;
+font-weight: bold;
+	position: relative;
+	z-index: 3;
+	display: block;
+	margin-bottom: 30px;
+}
+
+article{
+	padding: 20px 45px 20px 30px;
+}
+
+article h2{
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+
+article p{
+	line-height: 1.5;
+	font-size: 13px;
+	color: #58595B;
+}
+
+article section{
+	margin-bottom: 50px;
+	overflow: hidden;
+}
+
+article section img{
+	float: right;
+}
+
+article section p{
+	float: left;
+	width: 440px;
+}
+
+section p a{
+	color: #0080B0;
+}
+
+section p a:hover{
+	color: #059acf;
+}
+
+aside h2{
+font-weight: bold;
+	font-size: 22px;
+	color: #1c1c1c;
+	margin: 5px 0 30px 0px;
+	text-align: center;
+}
+
+aside h2 img{
+	display: block;
+	margin: 12px auto;
+	width: 36px;
+	
+}
+
+aside h3{
+	font-size: 14px;
+	color: #1c1c1c;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 32px;
+}
+
+
+aside .links{
+	margin-left: 28px;
+	margin-bottom: 25px;
+	font-size: 14px;
+	color: #5A4A42;
+}
+
+aside .links li{
+	list-style-image: url(../../img/nyilak.png);
+	list-style-position: inside;
+}
+
+aside .links a{
+	text-decoration: none;
+	line-height: 1.5;
+	color: #3B2314;
+}
+
+aside .links a:hover{
+	color: black;
+}
+
+#subcontact{
+	text-align: center;
+	margin-top: 46px;
+	margin-bottom: 42px;
+}
+
+#subcontact h3{
+	padding: 0;
+	margin: 0;
+font-weight: bold;
+	font-size: 18px;
+}
+
+#subcontact h4{
+font-weight: bold;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.head{
+	height: 285px;
+	width: 735px;
+	position: relative;
+	margin-bottom: 25px;
+	overflow: hidden;
+}
+
+
+.head .layer1,.head .layer2{
+	height: 285px;
+	width: 735px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+
+.head .layer2{
+	z-index: 1;
+}
+
+.gallery{
+	overflow: hidden;
+	padding: 6px;
+}
+
+.gallery a{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	width: 80px;
+}
+
+.gallery img{
+	float: none;
+}
+
+/*Aloldal specifikus*/
+
+#helyszinihibaelharitas{
+	background: url(../../img/helyszini.png) no-repeat left center;
+}
+
+#automentes{
+	background: url(../../img/automentes.png) no-repeat left center;
+}
+
+#assistance{
+	background: url(../../img/assistance.png) no-repeat left center;
+}
+
+#helyszini .head{
+	background: url(../../img/aloldal/segely/helyszini/multilayer_bg.png);
+	background-position-x: 20px;
+}
+
+#helyszini .head .layer1{
+	background: url(../../img/aloldal/segely/helyszini/multilayer_szerelo.png) no-repeat center;
+	left: -20px;
+}
+
+
+#helyszini .head .layer2{
+	background: url(../../img/aloldal/segely/helyszini/multilayer_auto.png) no-repeat center;
+	left: 55px;
+}

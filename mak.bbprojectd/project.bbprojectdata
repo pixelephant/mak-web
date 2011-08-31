@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HierarchyData</key>
+	<array>
+		<string>A0B73467-921B-4A11-8769-8E360527C0F3</string>
+	</array>
+	<key>ProjectItems</key>
+	<dict>
+		<key>A0B73467-921B-4A11-8769-8E360527C0F3</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>AliasData</key>
+				<data>
+				AAAAAAFGAAIAAQxNYWNpbnRvc2ggSEQAAAAAAAAAAAAA
+				AAAAAADJeaQ4SCsAAAAIfJMDbWFrAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAX/GB8pEvGYAAAAAAAAAAP//
+				//8AAAkgAAAAAAAAAAAAAAAAAAAABVNpdGVzAAAQAAgA
+				AMl5ligAAAARAAgAAMpEoEYAAAABAAwACHyTAAh8jAAA
+				l+0AAgAmTWFjaW50b3NoIEhEOlVzZXJzOgBzb2RhMDE6
+				AFNpdGVzOgBtYWsADgAIAAMAbQBhAGsADwAaAAwATQBh
+				AGMAaQBuAHQAbwBzAGgAIABIAEQAEgAWVXNlcnMvc29k
+				YTAxL1NpdGVzL21hawATAAEvAAAVAAIADf//AAA=
+				</data>
+				<key>FileURL</key>
+				<string>file://localhost/Users/soda01/Sites/mak/</string>
+				<key>RelativePath</key>
+				<string>./mak</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>mak</string>
+			<key>ItemType</key>
+			<string>FolderReference</string>
+		</dict>
+	</dict>
+	<key>com.barebones.DocumentFormatVersion</key>
+	<integer>5</integer>
+	<key>com.barebones.DocumentType</key>
+	<string>Project</string>
+</dict>
+</plist>
