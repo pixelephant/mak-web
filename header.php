@@ -7,17 +7,19 @@
 				<a href="#" id="travelButton"><img src="img/pictogram-02.png" alt="Travel" /></a>
 				<a href="#" data-reveal-id="loginModal" id="loginButton"><span>Bejelentkezés</span><em></em></a>
 				<div id="loginModal" class="reveal-modal">
-					<form id="loginForm" action="#">
+					<form id="loginform" action="#">
 							<h2>Bejelentkezés</h2>
 					        <fieldset>
-					            <label for="loginEmail">Email cím</label>
-					            <input type="text" name="loginEmail" id="loginEmail" />
+					        	<div class="row">
+					        		<label for="loginEmail">Email cím</label>
+						            <input type="text" name="loginEmail" class="required email" id="loginEmail" />
+					        	</div>
+					        	<div class="row">
+					        		<label for="loginPassword">Jelszó</label>
+						            <input class="required" type="password" name="loginPassword" id="loginPassword" />
+					        	</div>
 					        </fieldset>
-					        <fieldset>
-					            <label for="loginPassword">Jelszó</label>
-					            <input class="required" type="password" name="loginPassword" id="loginPassword" />
-					        </fieldset>
-					        <input type="button" id="loginSubmit" value="Belépés" />
+					        <input type="submit" id="loginSubmit" value="Belépés" />
 					        <label id="chl" for="checkbox"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 							<div>
 								<a href="#">Regisztrálás</a>
