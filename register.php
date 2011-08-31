@@ -233,11 +233,15 @@
 			<form id="komfortform" action="#" method="#" class="step3">
 				<h2>3. lépés - Gépjármú adatok megadása</h2>
 				<fieldset>
-					<h3>Rendszám megadása</h3>
+					<h3>Géjármű adatok</h3>
 					<div class="row">
 						<label for="komfortPlateHuInput">Rendszám</label>
 						<input type="text" class="required" name="komfortPlateHuInput" id="komfortPlateHuInput" />
 						<img src="img/info.png" alt="" class="info" title="Formátum : AAA-111" />
+					</div>
+					<div class="row">
+						<label for="carAge">Kor</label>
+						<input type="text" name="carAge" id="carAge" class="required" />
 					</div>
 				</fieldset>
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
