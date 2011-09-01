@@ -1065,7 +1065,7 @@ class mak extends db{
 					$html .= '<section>';
 					$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
 					$html .= '<p>'.$tartalom[$i]['szoveg'].'</p>';
-					$html .= '<img src="' . $this->_imageDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
+					$html .= '<img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
 				
 					$galeria = $this->get_galeria_tartalomhoz($tartalom[$i]['id']);
 					
