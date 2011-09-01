@@ -162,6 +162,14 @@ font-weight: bold;
 
 /*Aloldal specifikus*/
 
+#vizsgaztatas{
+	background: url(../../img/vizsgaztatas.png) no-repeat left center;
+}
+
+#autojavitas{
+	background: url(../../img/autojavitas.png) no-repeat left center;
+}
+
 #helyszinihibaelharitas{
 	background: url(../../img/helyszini.png) no-repeat left center;
 }
