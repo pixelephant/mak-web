@@ -23,7 +23,7 @@
 					        <label id="chl" for="checkbox"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 							<div>
 								<a href="#">Regisztrálás</a>
-								<a href="#">Elfelejtett jelszó?</a>
+								<a href="#">Elfelejtette jelszó?</a>
 							</div>
 					</form>
 					<a class="close-reveal-modal">&#215;</a>
