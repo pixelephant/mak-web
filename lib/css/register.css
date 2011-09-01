@@ -120,7 +120,7 @@ span.sum{
 	background : url(../../img/otp.png) no-repeat right center #e8e8e8  !important;
 }
 
-input[type='button'],input[type='submit']{
+#content form input[type='button'], #content form input[type='submit']{
 	-moz-box-shadow: inset 0px 1px 0px 0px #ffff00;
     -webkit-box-shadow: inset 0px 1px 0px 0px #ffff00;
     box-shadow: inset 0px 1px 0px 0px #ffff00;
@@ -142,14 +142,14 @@ input[type='button'],input[type='submit']{
 }
 
 
-input[type='button']:active,input[type='submit']:active {
+#content form input[type='button']:active, #content form input[type='submit']:active {
    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcb614), color-stop(1, #fdd300) );
    background:-moz-linear-gradient( center top, #fcb614 5%, #fdd300 100% );
    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcb614', endColorstr='#fdd300');
    background-color:#fcb614;
 }
 
-input[type='button']:hover,input[type='submit']:hover{
+#content form input[type='button']:hover, #content form input[type='submit']:hover{
      position:relative;
      top:1px;
 }
