@@ -160,6 +160,8 @@ font-weight: bold;
 	float: none;
 }
 
+
+
 /*Aloldal specifikus*/
 
 #vizsgaztatas{
@@ -181,6 +183,11 @@ font-weight: bold;
 #assistance{
 	background: url(../../img/assistance.png) no-repeat left center;
 }
+
+
+
+/*Multilayerek*/
+
 
 #helyszini .head{
 	background: url(../../img/aloldal/segely/helyszini/multilayer_bg.png);
