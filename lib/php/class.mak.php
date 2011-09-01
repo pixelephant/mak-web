@@ -1062,7 +1062,7 @@ class mak extends db{
 				
 				for($i = 0; $i < $tartalom['count']; $i++){
 				
-					$html .= '<section>';
+					$html .= '<section id="' . $tartalom[$i]['cim'] . '">';
 					$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
 					$html .= '<p>'.$tartalom[$i]['szoveg'].'</p>';
 					$html .= '<img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
@@ -1086,10 +1086,9 @@ class mak extends db{
 					if($i + 1 < $tartalom['count']){
 						$html .= '<div class="hr"></div>';
 					}
-					
-					break;
 				
 				}
+			break;
 		}
 
 		return $html;
@@ -1127,7 +1126,7 @@ class mak extends db{
 			}
 			
 			$html .= '<li>';
-			$html .= '<a href="' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['cim'] . '</a>';
+			$html .= '<a href="' . $aloldalak[$i]['url'] . '#' . $tartalom[$i]['cim'] . '">' . $aloldalak[$i]['cim'] . '</a>';
 			$html .= '</li>';
 			
 			if($i + 1 == $aloldalak['count']){
@@ -1166,7 +1165,7 @@ class mak extends db{
 				$html .= '<li class="ldd_heading">' . $tartalom[$i]['almenu'] . '</li>';
 			}
 			
-			$html .= '<li><a href="' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
+			$html .= '<li><a href="' . $tartalom[$i]['url'] . '#' . $tartalom[$i]['cim'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
 			
 			if($almenu != $tartalom[$i+1]['url']){
 				$html .= '</ul>';
@@ -1213,7 +1212,7 @@ class mak extends db{
 				
 				$almenu = $tartalom[$i]['url'];
 				
-				$html .= '<li><a href="' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				$html .= '<li><a href="' . $tartalom[$i]['url'] . '#' . $tartalom[$i]['cim'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
 			
 			}
 			
