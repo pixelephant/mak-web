@@ -49,7 +49,7 @@ require_once 'ti.php';
 		</aside>
 		<section id="content">
 			<?php startblock('content') ?><?php endblock() ?>
-			<?php startblock('breadcrumb') ?><?php endblock() ?>
+			<!--<?php startblock('breadcrumb') ?><?php endblock() ?>-->
 		</section>
 	</section>
 	<?php startblock('cta') ?><?php endblock() ?>
