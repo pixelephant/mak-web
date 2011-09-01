@@ -10,6 +10,7 @@ session_start();
 <html class="no-js" lang="en">
 	<!--<![endif]-->
 	<head>
+		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -20,11 +21,12 @@ session_start();
 		<title><?php startblock('title') ?><?php endblock() ?> - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
+		<link rel="stylesheet" href="lib/css/sub.css" />
 		<link rel="stylesheet" href="lib/css/colorbox.css" />
 		<?php startblock('additional-css') ?><?php endblock() ?>
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="helyszini">
+	<body id="<?php startblock('body-id') ?><?php endblock() ?>-body">
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">

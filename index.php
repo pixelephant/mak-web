@@ -1,17 +1,24 @@
 <?php 
 include 'lib/php/skeleton_index.php';
+
+include 'lib/php/Wixel/gump.class.php';
+
+include 'lib/php/class.db.php';
+include 'lib/php/class.mak.php';
+
+$main = new mak(false);
 ?>
 
 <?php startblock('title') ?>
-Segélyszolgálat
+Főoldal
 <?php endblock() ?>
 
 <?php startblock('description') ?>
-leírása
+Autóklub
 <?php endblock() ?>
 
 <?php startblock('keywords') ?>
-kulcsszavai
+autoklub,mak
 <?php endblock() ?>
 
 <?php startblock('additional-javascript')?>
@@ -23,7 +30,40 @@ kulcsszavai
 <?php endblock() ?>
 
 <?php startblock('header') ?>
-<?php include 'header.php'; ?>
+<h1><a href="index.php">Magyar Autóklub</a></h1>
+<div id="headerButtons">
+	<div id="loginContainer">
+		<a href="#" id="segelyButton"><img src="img/pictogram-01.png" alt="Segélyszolgálat" /></a>
+		<a href="#" id="szervizButton"><img src="img/pictogram-03.png" alt="Szervizpontok" /></a>
+		<a href="#" id="kozlekButton"><img src="img/pictogram-04.png" alt="Közlekedésbiztonság" /></a>
+		<a href="#" id="travelButton"><img src="img/pictogram-02.png" alt="Travel" /></a>
+		<a href="#" data-reveal-id="loginModal" id="loginButton"><span>Bejelentkezés</span><em></em></a>
+		<div id="loginModal" class="reveal-modal">
+			<form id="loginform" action="#">
+					<h2>Bejelentkezés</h2>
+			        <fieldset>
+			        	<div class="row">
+			        		<label for="loginEmail">Email cím</label>
+				            <input type="text" name="loginEmail" class="required email" id="loginEmail" />
+			        	</div>
+			        	<div class="row">
+			        		<label for="loginPassword">Jelszó</label>
+				            <input class="required" type="password" name="loginPassword" id="loginPassword" />
+			        	</div>
+			        </fieldset>
+			        <input type="submit" id="loginSubmit" value="Belépés" />
+			        <label id="chl" for="checkbox"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
+					<div>
+						<a href="#">Regisztrálás</a>
+						<a href="#">Elfelejtett jelszó?</a>
+					</div>
+			</form>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+	</div>				
+</div>
+<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+<a id="skypeButton" href="skype:zoltan_dublin?call"><img src="http://mystatus.skype.com/smallclassic/zoltan_dublin" style="border: none;" width="114" height="20" alt="My status" /></a>
 <?php endblock() ?>
 
 <?php startblock('promo-slider') ?>
@@ -118,130 +158,17 @@ kulcsszavai
 <?php startblock('nav') ?>
 <ul id="ldd_menu" class="ldd_menu wrapper">
 	<li id="home-menu"><span><a href="index.php">Főoldal</a></span></li>
-	<!--<li><span><a href="#">Aktualitások</a></span></li>-->
-	<li id="segely-menu">
-		<span>Segélyszolgálat</span>
-		<div class="ldd_submenu">
-			<div class="arrow"></div>
-			<div class="in">
-				<ul>
-					<li class="ldd_heading">Helyszíni hibaelhárítás</li>
-					<li><a href="sub.php">Gyorssegély</a></li>
-					<li><a href="sub.php">Akkusegély</a></li>
-					<li><a href="sub.php">Általános segély</a></li>
-				</ul>
-				<ul>
-					<li class="ldd_heading">Autómentés</li>
-					<li><a href="sub.php">Helyszíni autómentés</a></li>
-					<li><a href="sub.php">Autószállítás szervízbe</a></li>
-					<li><a href="sub.php">Hazaszállítás külföldről</a></li>
-					<li><a href="sub.php">Tárolás</a></li>
-					<li><a href="sub.php">Roncsoltatás</a></li>
-					<li><a href="sub.php">Nehezített mentés/daruzás</a></li>
-				</ul>
-				<ul>
-					<li class="ldd_heading">Assistance</li>
-					<li><a href="sub.php">Taxi</a></li>
-					<li><a href="sub.php">Bérautó</a></li>
-					<li><a href="sub.php">Utaztatás</a></li>
-					<li><a href="sub.php">Szállás</a></li>
-					<li><a href="sub.php">Jogsegély</a></li>
-					<li><a href="sub.php">Pénzügyi segítség</a></li>
-					<li><a href="sub.php">Műszaki tanácsadás</a></li>
-					<li><a href="sub.php">Egyéb szolgáltatások</a></li>
-				</ul>
-			</div>
-		</div>
-	</li>
-	<li id="szerviz-menu">
-		<span>Szerviz Pontok</span>
-		<div class="ldd_submenu">
-			<div class="arrow"></div>
-			<div class="in">
-				<ul>
-					<li class="ldd_heading">Vizsgáztatás</li>
-					<li><a href="sub.php">Eredetiség vizsgálat</a></li>
-					<li><a href="sub.php">Műszaki vizsga</a></li>
-					<li><a href="sub.php">Veterán vizsga</a></li>
-					<li><a href="sub.php">Díjak kedvezmények</a></li>
-					<li><a href="sub.php">Vizsgáló állomások (kereső)</a></li>
-				</ul>
-				<ul>
-					<li class="ldd_heading">Autójavítás</li>
-					<li><a href="sub.php">Általános tudnivalók</a></li>
-					<li><a href="sub.php">Vizsgáló állomások</a></li>
-					<li><a href="sub.php">Díjak, kedvezmények</a></li>
-				</ul>
-			</div>
-		</div>
-			</li>
-	<li id="kozlek-menu">
-		<span>Közlekedésbiztonság</span>
-		<div class="ldd_submenu">
-			<div class="arrow"></div>
-			<div class="in">
-				<ul>
-					<li class="ldd_heading">Oktatás-képzés</li>
-					<li><a href="sub.php">Járművezető képzés</a></li>
-					<li><a href="sub.php">Vezetéstechnikai képzés</a></li>
-					<li><a href="sub.php">Diák oktatás</a></li>
-				</ul>
-				<ul>
-					<li class="ldd_heading">Rendezvények</li>
-					<li><a href="sub.php">Roadshow</a></li>
-					<li><a href="sub.php">Mobil rendezvény</a></li>
-					<li><a href="sub.php">Ki a mester két keréken</a></li>					
-					<li><a href="sub.php">Közlekedésbiztonsági Park</a></li>
-				</ul>
-				<ul>
-					<li class="ldd_heading">Tanácsok</li>
-					<li><a href="sub.php">Utazási tanácsok</a></li>
-					<li><a href="sub.php">Biztonsági tanácsok</a></li>
-				</ul>
-			</div>
-		</div>
-	</li>
-	<li id="klub-menu">
-		<span>Klubtagság</span>
-		<div class="ldd_submenu">
-			<div class="arrow"></div>
-			<div class="in">
-				<ul>
-					<li class="ldd_heading">Klubtagság</li>
-					<li><a href="sub.php">Kártyatípusok</a></li>
-					<li><a href="sub.php">Részletes leírás</a></li>
-				</ul>
-			</div>
-		</div>
-	</li>
-	<li id="en-menu">
-		<span>Én Autóklubom</span>
-		<div class="ldd_submenu">
-			<div class="arrow"></div>
-			<div class="in">
-				<ul>
-					<li class="ldd_heading">Érdekképviselet</li>
-					<li><a href="sub.php">Jogi tudástár</a></li>
-					<li><a href="sub.php">Jogi tanácsadás</a></li>
-					<li><a href="sub.php">Műszaki tanácsadás</a></li>
-					<li><a href="sub.php">KRESZ</a></li>
-					<li><a href="sub.php">GYIK</a></li>
-				</ul>
-				<ul>
-					<li class="ldd_heading">Young &amp; Mobile</li>
-					<li><a href="sub.php">1</a></li>
-					<li><a href="sub.php">2</a></li>
-				</ul>
-				
-			</div>
-	</li>
-	<li id="travel-menu">
-		<span>Travel</span>
-	</li>
-	<li class="search">
-		<input type="text" name="search" id="search" placeholder="Keresés..." />
-	</li>
-</ul>
+<!--<li><span><a href="#">Aktualitások</a></span></li>-->
+<?php 	
+	echo $main->render_felso_menu();
+?>	
+<li id="travel-menu">
+	<span>Travel</span>
+</li>
+<li class="search">
+	<input type="text" name="search" id="search" placeholder="Keresés..." />
+</li>
+	</ul>
 <?php endblock() ?>
 
 <?php startblock('newsletter') ?>
@@ -363,51 +290,14 @@ kulcsszavai
 </section>
 <?php endblock() ?>
 
-<?php startblock('footer')?>
-<div class="wrapper">
-	<div id="footerNav">
-		<ul class="first">
-			<li class="heading tagsag">Klubtagság</li>
-			<li>Kártya összehasonlítás</li>
-			<li>Részletes leírás</li>
-		</ul>
-		<ul>
-			<li class="heading segely">Segélyszolgálat</li>
-			<li><a href="#">Helyszíni hibaelhárítás</a></li>
-			<li><a href="">Autómentés</a></li>
-			<li><a href="">Assistance</a></li>
-		</ul>
-		<ul>
-			<li class="heading szerviz">Szerviz Pontok</li>
-			<li><a href="">Vizsgáztatás</a></li>
-			<li><a href="">Autójavítá</a>s</li>
-		</ul>
-		<ul>
-			<li class="heading kozlekedes">Közlekedésbiztonság</li>
-			<li><a href="">Oktatás-képzés</a></li>
-			<li><a href="">Rendezvények</a></li>
-			<li><a href="">Tanácsok</a></li>
-		</ul>
-		<ul>
-			<li class="heading erdek">Érdekképvislet</li>
-			<li><a href="">Tudástár</a></li>
-			<li><a href="">Tanácsadó pontok</a></li>
-			<li><a href="">Általános segély</a></li>
-		</ul>
-		<ul class="last">
-			<li class="heading travel">Travel</li>
-			<li><a href="">Külföldi utak</a></li>
-			<li><a href="">Belföldi utak</a></li>
-			<li><a href="">Exkluzív utak</a></li>
-		</ul>
-	</div>
-	<div id="footerMisc">
-		<p><span>Magyar Autóklub</span>&lowast;<span> Budapest, Rómer Flóris u. 8.</span> &lowast;<span>1/111-1111</span>&lowast;<span class="blue"><a href="mailto:web@autoklub.hu">web@autoklub.hu</a></span></p>
-		<div class="misc">
-			<a href="#">Ászf</a>
-			<a href="#">Impresszum</a>
-			<a href="#">Médiaajánlat</a>
-		</div>
-	</div>
-</div>
+<?php startblock('footer-nav')?>
+<?php 
+	echo $main->render_also_menu();
+?>
+<ul class="last">
+	<li class="heading travel">Travel</li>
+	<li><a href="">Külföldi utak</a></li>
+	<li><a href="">Belföldi utak</a></li>
+	<li><a href="">Exkluzív utak</a></li>
+</ul>
 <?php endblock() ?>			

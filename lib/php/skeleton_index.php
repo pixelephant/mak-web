@@ -9,6 +9,7 @@ require_once 'ti.php';
 <html class="no-js" lang="en">
 	<!--<![endif]-->
 	<head>
+		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -63,7 +64,19 @@ require_once 'ti.php';
 		</div>
 	</section>-->
 	<footer>
-		<?php startblock('footer') ?><?php endblock() ?>
+		<div class="wrapper">
+			<div id="footerNav">
+				<?php startblock('footer-nav')?><?php endblock() ?>
+			</div>
+			<div id="footerMisc">
+				<p><span>Magyar Autóklub</span>&lowast;<span> Budapest, Rómer Flóris u. 8.</span> &lowast;<span>1/111-1111</span>&lowast;<span class="">web@autoklub.hu</span></p>
+				<div class="misc">
+					<a href="#">Ászf</a>
+					<a href="#">Impresszum</a>
+					<a href="#">Médiaajánlat</a>
+				</div>
+			</div>
+		</div>
 	</footer>
 	</div>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">

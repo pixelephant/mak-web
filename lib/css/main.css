@@ -394,11 +394,11 @@ ul.ldd_menu > li{
 	background: url(../../img/nav/fooldal.png) no-repeat left center;
 }
 
-#en-menu > span{
+#enautoklubom-menu > span{
 	background: url(../../img/nav/enautoklubom.png) no-repeat left center;
 }
 
-#segely-menu > span{
+#segelyszolgalat-menu > span{
 	background: url(../../img/nav/segely.png) no-repeat left center;
 }
 
@@ -406,15 +406,15 @@ ul.ldd_menu > li{
 	background: url(../../img/nav/travel.png) no-repeat left center;
 }
 
-#kozlek-menu > span{
+#kozlekedesbiztonsag-menu > span{
 	background: url(../../img/nav/kozlek.png) no-repeat left center;
 }
 
-#szerviz-menu > span{
+#szervizpontok-menu > span{
 	background: url(../../img/nav/szerviz.png) no-repeat left center;
 }
 
-#klub-menu > span{
+#klubtagsag-menu > span{
 	background: url(../../img/nav/klub.png) no-repeat left center;
 }
 
@@ -898,23 +898,23 @@ li.heading{
 	padding-left: 25px !important;
 }
 
-li.heading.tagsag{
+li.heading.klubtagsag{
 	background: url(../../img/klubtagsag-small.png) no-repeat left;
 }
 
-li.heading.segely{
+li.heading.segelyszolgalat{
 	background: url(../../img/segelyszolgalat-small.png) no-repeat left;
 }
 
-li.heading.szerviz{
+li.heading.szervizpontok{
 	background: url(../../img/szervizpont-small.png) no-repeat left;
 }
 
-li.heading.kozlekedes{
+li.heading.kozlekedesbiztonsag{
 	background: url(../../img/kozlekedesbiztonsag-small.png) no-repeat left;
 }
 
-li.heading.erdek{
+li.heading.erdekkepviselet{
 	background: url(../../img/erdekkepviselet-small.png) no-repeat left;
 }
 
