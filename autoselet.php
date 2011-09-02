@@ -75,33 +75,33 @@
 			<h1>Autós Élet - 2011</h1>
 			
 			<div class="embed">
-				<div><object style="width:660px;height:462px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v1/IssuuViewer.swf?mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true&amp;documentId=110816123559-8661617db9244e779c3f3f3086329e21&amp;docName=autoselet&amp;username=soda01&amp;loadingInfoText=Aut%C3%B3s%C3%A9let%20magazin&amp;et=1313499878422&amp;er=46" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><embed src="http://static.issuu.com/webembed/viewers/style1/v1/IssuuViewer.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" style="width:660px;height:462px" flashvars="mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true&amp;documentId=110816123559-8661617db9244e779c3f3f3086329e21&amp;docName=autoselet&amp;username=soda01&amp;loadingInfoText=Aut%C3%B3s%C3%A9let%20magazin&amp;et=1313499878422&amp;er=46" /></object><div style="width:660px;text-align:left;"><a href="http://issuu.com/soda01/docs/autoselet?mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true" target="_blank">Open publication</a> - Free <a href="http://issuu.com" target="_blank">publishing</a> - <a href="http://issuu.com/search?q=autoklub" target="_blank">More autoklub</a></div></div>
+				
 			</div>
 			
 			<div class="row">
-				<div class="autoselet left">
+				<div id="2011-01" class="autoselet left" data-embed='<div><object style="width:660px;height:462px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v1/IssuuViewer.swf?mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true&amp;documentId=110816123559-8661617db9244e779c3f3f3086329e21&amp;docName=autoselet&amp;username=soda01&amp;loadingInfoText=Aut%C3%B3s%C3%A9let%20magazin&amp;et=1313499878422&amp;er=46" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><embed src="http://static.issuu.com/webembed/viewers/style1/v1/IssuuViewer.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" style="width:660px;height:462px" flashvars="mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true&amp;documentId=110816123559-8661617db9244e779c3f3f3086329e21&amp;docName=autoselet&amp;username=soda01&amp;loadingInfoText=Aut%C3%B3s%C3%A9let%20magazin&amp;et=1313499878422&amp;er=46" /></object><div style="width:660px;text-align:left;"><a href="http://issuu.com/soda01/docs/autoselet?mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true" target="_blank">Open publication</a> - Free <a href="http://issuu.com" target="_blank">publishing</a> - <a href="http://issuu.com/search?q=autoklub" target="_blank">More autoklub</a></div></div>'>
 					<div class="img">
 						<img src="media/autoselet/20110203.jpg" alt="" />					
 					</div>
 				</div>
-				<div class="autoselet center">
+				<div id="2011-02" class="autoselet center">
 					<div class="img">
 						<img src="media/autoselet/201104.jpg" alt="" />					
 					</div>
 				</div>
-				<div class="autoselet right">
+				<div id="2011-03" class="autoselet right">
 					<div class="img">
 						<img src="media/autoselet/20110506.jpg" alt="" />				
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="autoselet left">
+				<div id="2011-04" class="autoselet left">
 					<div class="img">
 						<img src="media/autoselet/20110506.jpg" alt="" />				
 					</div>
 				</div>
-				<div class="autoselet center">
+				<div id="2011-05" class="autoselet center">
 					<div class="img">
 						<img src="media/autoselet/20110708.jpg" alt="" />	
 					</div>

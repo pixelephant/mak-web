@@ -1,9 +1,0 @@
-AuthType Basic
-AuthName "MAK"
-AuthUserFile /home/pixeleph/public_html/projects/on-going/mak/.htpasswd
-Require valid-user
-
-    Options +FollowSymLinks  
-    RewriteEngine On
-	RewriteRule ^([a-zA-Z0-9_-]+)$ sub.php?page=$1
-	RewriteRule ^([a-zA-Z0-9_-]+)/$ sub.php?page=$1
