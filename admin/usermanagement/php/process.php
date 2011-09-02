@@ -10,6 +10,15 @@ $main = new mak();
  * $_POST-ban kapott változók mentése
  */
 
+$filter_op['cn'] = 'LIKE';
+$filter_op['nc'] = 'NOT LIKE';
+$filter_op['eq'] = '=';
+$filter_op['ne'] = '!=';
+$filter_op['bw'] = 'LIKE';
+$filter_op['bn'] = 'NOT LIKE';
+$filter_op['ew'] = 'LIKE';
+$filter_op['en'] = 'NOT LIKE';
+
 $search = $_POST['_search'];
 $filters = str_replace("\\","",$_POST['filters']);
 $nd = $_POST['nd'];
@@ -22,6 +31,42 @@ $sord = $_POST['sord'];
 $cond['orderby'] = $sidx . ' ' . $sord;
 $col = 'tagsagi_szam,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja';
 
+if($search == 'true'){
+
+	$a = json_decode($filters,true);
+	
+	foreach($a['rules'] as $k => $v){
+		
+		$cond[$a['rules'][$k]['field']]['and_or'] = $a['groupOp'];
+		$cond[$a['rules'][$k]['field']]['rel'] = $filter_op[$a['rules'][$k]['op']];
+		
+		switch ($a['rules'][$k]['op']){
+			case "cn":
+				$cond[$a['rules'][$k]['field']]['val'] = '%'.$a['rules'][$k]['data'].'%';
+				break;
+			case "bw":
+				$cond[$a['rules'][$k]['field']]['val'] = $a['rules'][$k]['data'].'%';
+				break;
+			case "bn":
+				$cond[$a['rules'][$k]['field']]['val'] = $a['rules'][$k]['data'].'%';
+				break;
+			case "ew":
+				$cond[$a['rules'][$k]['field']]['val'] = '%'.$a['rules'][$k]['data'];
+				break;
+			case "en":
+				$cond[$a['rules'][$k]['field']]['val'] = '%'.$a['rules'][$k]['data'];
+				break;
+			case "nc":
+				$cond[$a['rules'][$k]['field']]['val'] = '%'.$a['rules'][$k]['data'].'%';
+				break;
+			
+			default:
+				$cond[$a['rules'][$k]['field']]['val'] = $a['rules'][$k]['data'];
+		}
+	}
+
+}
+
 $felhasznalo = $main->get_felhasznalo($cond,$col);
 
 /*
@@ -30,7 +75,7 @@ $felhasznalo = $main->get_felhasznalo($cond,$col);
 
 $total = floor( $felhasznalo['count'] / $rows);
 
-if($total == 0){
+if($total == 0 && $felhasznalo['count'] > 0){
 	$total = 1;
 }
 
@@ -70,7 +115,9 @@ for($i = 0; $i < $felhasznalo['count']; $i++){
 
 }
 
-$json = substr($json,0,-1);
+if($felhasznalo['count'] > 0){
+	$json = substr($json,0,-1);
+}
 
 $json .= ']';
 $json .= '}';
