@@ -160,7 +160,17 @@ font-weight: bold;
 	float: none;
 }
 
+
+
 /*Aloldal specifikus*/
+
+#vizsgaztatas{
+	background: url(../../img/vizsgaztatas.png) no-repeat left center;
+}
+
+#autojavitas{
+	background: url(../../img/autojavitas.png) no-repeat left center;
+}
 
 #helyszinihibaelharitas{
 	background: url(../../img/helyszini.png) no-repeat left center;
@@ -174,18 +184,23 @@ font-weight: bold;
 	background: url(../../img/assistance.png) no-repeat left center;
 }
 
-#helyszini .head{
-	background: url(../../img/aloldal/segely/helyszini/multilayer_bg.png);
+
+
+/*Multilayerek*/
+
+
+#helyszinihibaelharitas-body .head{
+	background: url(../../img/aloldal/segelyszolgalat/helyszinihibaelharitas/multilayer_bg.png);
 	background-position-x: 20px;
 }
 
-#helyszini .head .layer1{
-	background: url(../../img/aloldal/segely/helyszini/multilayer_szerelo.png) no-repeat center;
+#helyszinihibaelharitas-body .head .layer1{
+	background: url(../../img/aloldal/segelyszolgalat/helyszinihibaelharitas/multilayer_szerelo.png) no-repeat center;
 	left: -20px;
 }
 
 
-#helyszini .head .layer2{
-	background: url(../../img/aloldal/segely/helyszini/multilayer_auto.png) no-repeat center;
+#helyszinihibaelharitas-body .head .layer2{
+	background: url(../../img/aloldal/segelyszolgalat/helyszinihibaelharitas/multilayer_auto.png) no-repeat center;
 	left: 55px;
 }
