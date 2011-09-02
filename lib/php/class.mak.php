@@ -1049,6 +1049,12 @@ class mak extends db{
 				}
 				
 				break;
+
+			case "regisztralas":
+				
+				
+				
+				break;
 				
 			default:
 				$tartalom = $this->get_oldal_tartalom($aloldal);
@@ -1146,6 +1152,10 @@ class mak extends db{
 		$almenu = '';
 		$html = '';
 		
+		$html .= '<ul id="ldd_menu" class="ldd_menu wrapper">';
+		$html .= '<li id="home-menu"><span><a href="index.php">Főoldal</a></span></li>';
+		$html .= '<!--<li><span><a href="#">Aktualitások</a></span></li>-->';
+		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
 			if($kategoria != $tartalom[$i]['azonosito']){
@@ -1178,6 +1188,14 @@ class mak extends db{
 			}
 			
 		}
+		
+		$html .= '<li id="travel-menu">';
+		$html .= '<span>Travel</span>';
+		$html .= '</li>';
+		$html .= '<li class="search">';
+		$html .= '<input type="text" name="search" id="search" placeholder="Keresés..." />';
+		$html .= '</li>';
+		$html .= '</ul>';
 		
 		return $html;
 		
@@ -1212,7 +1230,7 @@ class mak extends db{
 				
 				$almenu = $tartalom[$i]['url'];
 				
-				$html .= '<li><a href="' . $tartalom[$i]['url'] . '#' . $tartalom[$i]['cim'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				$html .= '<li><a href="' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
 			
 			}
 			
@@ -1222,10 +1240,36 @@ class mak extends db{
 		
 		}
 		
+		$html .= '<ul class="last">';
+		$html .= '<li class="heading travel">Travel</li>';
+		$html .= '<li><a href="">Külföldi utak</a></li>';
+		$html .= '<li><a href="">Belföldi utak</a></li>';
+		$html .= '<li><a href="">Exkluzív utak</a></li>';
+		$html .= '</ul>';
+		
 		return $html;
 	
 	}
 
+	public function render_breadcrumb($url){
+	
+		$url = trim($url);
+	
+		$tartalom = $this->get_oldal_tartalom($url);
+		
+		$html = '<ul id="breadcrumb">';
+		$html .= '<li class="first"><a href="">Főoldal</a></li>';
+		
+		$html .= '<li><a>' . $tartalom[0]['kategoria_nev'] . '</a></li>';
+		$html .= '<li><a>' . $tartalom[0]['almenu'] . '</a></li>';
+		//$html .= '<li><a href="#">' . $tartalom[0]['cim'] . '</a></li>';
+	
+		$html .= '</ul>';
+		
+		echo $html;
+	
+	}
+	
 }
 
 ?>
