@@ -173,6 +173,7 @@ class db{
 		
 		
 		$sql = preg_replace('/ AND /',' WHERE ',$sql,1);
+		$sql = preg_replace('/ OR /',' WHERE ',$sql,1);
 		
 		if(isset($order)){
 			$sql .= " ORDER BY ".$order;
