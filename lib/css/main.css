@@ -360,6 +360,7 @@ nav{
 
 .search{
 	float: right !important;
+	margin-top: 3px;
 }
 
 #search{
