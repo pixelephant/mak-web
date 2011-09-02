@@ -1049,6 +1049,12 @@ class mak extends db{
 				}
 				
 				break;
+
+			case "regisztralas":
+				
+				
+				
+				break;
 				
 			default:
 				$tartalom = $this->get_oldal_tartalom($aloldal);
@@ -1212,7 +1218,7 @@ class mak extends db{
 				
 				$almenu = $tartalom[$i]['url'];
 				
-				$html .= '<li><a href="' . $tartalom[$i]['url'] . '#' . $tartalom[$i]['cim'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				$html .= '<li><a href="' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
 			
 			}
 			
