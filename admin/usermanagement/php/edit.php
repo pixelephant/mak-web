@@ -9,7 +9,7 @@ include '../../../lib/php/class.mak.php';
  */
 $id = 'tagsagi_szam';
 
-$main = new mak(true);
+$main = new mak(false);
 
 if($_POST['oper'] == 'edit'){
 

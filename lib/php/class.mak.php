@@ -100,7 +100,7 @@ class mak extends db{
 		$col = trim($col);
 		
 		if($col == ''){
-			$col = 'mak_login_id,mak_login_id,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas';
+			$col = 'id,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -140,7 +140,7 @@ class mak extends db{
 		$cond['felhasznalonev'] = $felhasznalo_nev;
 		$cond['jelszo'] = $jelszo;
 		
-		$table = 'mak_login';
+		$table = 'mak_felhasznalo';
 		
 		$cond = GUMP::sanitize($cond);
 		
@@ -655,7 +655,7 @@ class mak extends db{
 	public function insert_login($login_array){
 	
 		/*
-		 * Bejelentkezési adatok beillesztése a login táblába
+		 * Bejelentkezési adatok beillesztése a felhasznalo táblába
 		 * 
 		 * @param array login_array - valid key értékek:
 		 * 	felhasznalonev : char(50) - felhasználónév
@@ -691,7 +691,7 @@ class mak extends db{
 		//Validálás vége
 		
 		if($validate === TRUE){
-			if($this->sql_insert('mak_login',$login_array)){
+			if($this->sql_insert('mak_felhasznalo',$login_array)){
 				return 'Sikeres';
 			}else{
 				return 'Sikertelen';
@@ -859,16 +859,16 @@ class mak extends db{
 			'tagsagi_szam' => 'exact_len,11',
 			'nem' => 'exact_len,1',
 			'szuletesi_datum' => 'exact_len,8',
-			'anyja_neve' => 'max_len,40|alpha_dash',
+			'anyja_neve' => 'max_len,40',
 			'elonev' => 'max_len,30',
-			'vezeteknev' => 'max_len,30|alpha',
-			'keresztnev' => 'max_len,20|alpha',
+			'vezeteknev' => 'max_len,30',
+			'keresztnev' => 'max_len,20',
 			'allando_irsz' => 'exact_len,4|numeric',
-			'allando_helyseg' => 'max_len,30|alpha_dash',
+			'allando_helyseg' => 'max_len,30',
 			'allando_kozterulet' => 'max_len,30',
 			'allando_hazszam' => 'max_len,20',
 			'levelezesi_irsz' => 'exact_len,4|numeric',
-			'levelezesi_helyseg' => 'max_len,30|alpha_dash',
+			'levelezesi_helyseg' => 'max_len,30',
 			'levelezesi_kozterulet' => 'max_len,30',
 			'levelezesi_hazszam' => 'max_len,20',
 			'vezetekes_telefon' => 'exact_len,10|numeric',
@@ -894,7 +894,7 @@ class mak extends db{
 			'tagsagi_szam' => 'trim|sanitize_numbers_only',
 			'nem' => 'trim|sanitize_string',
 			'szuletesi_datum' => 'trim|sanitize_numbers_only',
-			'anyja_neve' => 'trim|sanitize_numbers_only',
+			'anyja_neve' => 'trim|sanitize_string',
 			'elonev' => 'trim|sanitize_string',
 			'vezeteknev' => 'trim|sanitize_string',
 			'keresztnev' => 'trim|sanitize_string',

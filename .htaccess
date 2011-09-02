@@ -4,7 +4,12 @@ AuthUserFile /home/pixeleph/public_html/projects/on-going/mak/.htpasswd
 Require valid-user
 
     Options +FollowSymLinks  
+    
     RewriteEngine On
+    
+    RewriteCond %{SCRIPT_FILENAME} !-d  
+	RewriteCond %{SCRIPT_FILENAME} !-f  
+    
     RewriteRule ^(regisztralas)$ register.php
 	RewriteRule ^([a-zA-Z0-9_-]+)$ sub.php?page=$1
 	RewriteRule ^([a-zA-Z0-9_-]+)/$ sub.php?page=$1

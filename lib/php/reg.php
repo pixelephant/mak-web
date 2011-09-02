@@ -4,7 +4,7 @@ require 'Wixel/gump.class.php';
 require 'class.db.php';
 require 'class.mak.php';
 
-$main = new mak();
+$main = new mak(false);
 
 //A függvény gondoskodik a szükséges biztonságról, így átadható a teljes $_POST tömb
 $a = $main->get_adatok_regisztraciohoz($_POST);

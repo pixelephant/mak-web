@@ -61,6 +61,41 @@ $(function(){
       edit: true,
       add: true,
       del: true
-  },{},{},{},{multipleSearch:true});
+  },{
+		afterSubmit:processAddEdit,
+		closeAfterAdd: true,
+		closeAfterEdit: true
+  },{
+	  afterSubmit:processAddEdit,
+		closeAfterAdd: true,
+		closeAfterEdit: true
+  },{
+	  
+  },{
+	  multipleSearch:true
+  });
+  
+  function processAddEdit(response, postdata){
+	  
+	  var resp = response.responseText
+	  var success = '';
+	  var message = '';
+	  var new_id = "1";
+	  
+	  if(resp == 'Sikeres'){
+		  success = false;
+		  message = 'Sikeres';
+	  }else{
+		  success = true;
+		  message = 'Sikertelen. Hibás érték : ' + resp;
+	  }
+	  
+	  alert(resp);
+	  
+	  $("#usermanagement").trigger("reloadGrid");
+	  
+	  return [success,message,new_id];
+	  
+  }
   
 });
