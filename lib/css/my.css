@@ -153,6 +153,22 @@ section .full p{
 	float: none;
 }
 
+
+
+/*Profil oldal*/
+
+#profil div.data{
+	margin:15px 0;
+	font-size: 16px !important;
+}
+
+#profil h3{
+	font-size:16px !important;
+	font-weight: bold;
+	margin-bottom: 5px !important;
+}
+
+
 /*Hosszabbítás*/
 
 #extend-cta{
