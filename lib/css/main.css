@@ -657,8 +657,9 @@ aside .subtext{
 
 .block a{
 	color: #0080B0;
-	font-size: 12px;
+	font-size: 13px;
 	font-style: italic;
+	margin-top: 5px;
 }
 
 .block ul{
