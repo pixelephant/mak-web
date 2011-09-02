@@ -1,3 +1,13 @@
+<?php 
+
+include 'lib/php/Wixel/gump.class.php';
+
+include 'lib/php/class.db.php';
+include 'lib/php/class.mak.php';
+
+$main = new mak(false);
+
+?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
@@ -30,7 +40,9 @@
 			</div>
 		</div>
 	<nav>
-		<?php include "nav.php" ?>
+		<?php
+			echo $main->render_felso_menu();
+		?>
 	</nav>
 	<section id="main" class="wrapper">
 		<aside>
@@ -281,7 +293,16 @@
 	</section>
 	<?php include "cta.php" ?>
 	<footer>
-		<?php include "footer.php" ?>
+		<div class="wrapper">
+			<div id="footerNav">
+				<?php 
+					echo $main->render_also_menu();
+				?>
+			</div>
+			<div id="footerMisc">
+				<?php include 'footer.php';?>
+			</div>
+		</div>
 	</footer>
 	</div>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">

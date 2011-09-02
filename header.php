@@ -1,4 +1,4 @@
-<h1><a href="index.php">Magyar Autóklub</a></h1>
+<h1><a href="">Magyar Autóklub</a></h1>
 <div id="headerButtons">
 	<div id="loginContainer">
 		<a href="#" id="segelyButton"><img src="img/pictogram-01.png" alt="Segélyszolgálat" /></a>
