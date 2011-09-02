@@ -1251,6 +1251,25 @@ class mak extends db{
 	
 	}
 
+	public function render_breadcrumb($url){
+	
+		$url = trim($url);
+	
+		$tartalom = $this->get_oldal_tartalom($url);
+		
+		$html = '<ul id="breadcrumb">';
+		$html .= '<li class="first"><a href="">Főoldal</a></li>';
+		
+		$html .= '<li><a>' . $tartalom[0]['kategoria_nev'] . '</a></li>';
+		$html .= '<li><a>' . $tartalom[0]['almenu'] . '</a></li>';
+		//$html .= '<li><a href="#">' . $tartalom[0]['cim'] . '</a></li>';
+	
+		$html .= '</ul>';
+		
+		echo $html;
+	
+	}
+	
 }
 
 ?>

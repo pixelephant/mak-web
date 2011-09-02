@@ -107,12 +107,9 @@ $parameterek = $main->get_parameterek_urlbol($page);
 <?php endblock() ?>
 
 <?php startblock('breadcrumb')?>
-<ul id="breadcrumb">
-	<li class="first"><a href="#">Főoldal</a></li>
-	<li><a href="#">Klubtagság</a></li>
-	<li><a href="#">Diszkont kártya</a></li>
-	<li><a href="#">Részletes leírás</a></li>
-</ul>
+<?php 
+	echo $main->render_breadcrumb($page);
+?>
 <?php endblock() ?>
 
 <?php startblock('cta')?>
