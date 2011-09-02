@@ -200,6 +200,10 @@
 						<label for="komfortMember">Komfort tagság</label>
 						<input type="radio" name="membership" id="komfortMember" />
 					</div>
+					<div class="row">
+						<label for="webMember">Csak a weboldalra regisztrálok.</label>
+						<input type="radio" name="membership" id="webMember" />
+					</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>
 			</form>
