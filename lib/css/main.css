@@ -659,7 +659,6 @@ aside .subtext{
 	color: #0080B0;
 	font-size: 13px;
 	font-style: italic;
-	margin-top: 5px;
 }
 
 .block ul{
@@ -953,4 +952,16 @@ li.heading.travel{
 
 a.blue{
 	color: #0080B0;
+}
+
+
+
+/*Szervízpontok térképe*/
+
+#map{
+	height:388px;
+	width:648px;
+	padding:5px;
+	background: white;
+	border:1px solid #ccc;
 }
