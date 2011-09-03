@@ -177,10 +177,6 @@ class mak extends db{
 			$cond = GUMP::sanitize($cond);
 		}
 		
-		if($col != ''){
-			$col = GUMP::sanitize($col);
-		}
-		
 		if($join != ''){
 			$join = GUMP::sanitize($join);
 		}
@@ -215,11 +211,13 @@ class mak extends db{
 	public function get_aloldal_tartalom($url){
 	
 		$join[2]['table'] = 'mak_altartalom';		
-		$join[2]['value'] = 'mak_altartalom=mak_almenu.kategoria_id';
+		$join[2]['value'] = 'mak_altartalom.tartalom_id=mak_tartalom.id';
 	
-		$cond['mak_altartalom.url'] = $oldal;
-	
-		$col .= 'mak_altartalom.id AS id,mak_altartalom.almenu_id AS almenu_id,mak_altartalom.cim AS cim,mak_altartalom.szoveg AS szoveg,mak_altartalom.kep AS kep,mak_altartalom.alt AS alt,mak_altartalom.publikalta AS publikalta';
+		$cond['mak_altartalom.url'] = $url;
+		
+		$col = 'mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,';
+		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,';
+		$col .= 'mak_altartalom.id AS id,mak_altartalom.tartalom_id AS tartalom_id,mak_altartalom.cim AS cim,mak_altartalom.szoveg AS szoveg,mak_altartalom.kep AS kep,mak_altartalom.alt AS alt,mak_altartalom.publikalta AS publikalta';
 		
 		return $this->get_tartalom($cond,$col,$join);
 		
@@ -333,6 +331,24 @@ class mak extends db{
 				
 		return $parameterek;
 		
+	}
+
+	public function get_parameterek_aloldal_urlbol($aloldal_url){
+	
+		if($aloldal_url == ''){
+			return FALSE;
+		}
+		
+		$table = 'mak_altartalom';
+		$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
+		$cond['mak_altartalom.url'] = $aloldal_url;
+		
+		$a = $this->sql_select($table,$col,$cond);
+		
+		$parameterek = $a[0];
+				
+		return $parameterek;
+	
 	}
 	
 	public function get_kategoria_urlbol($url){
@@ -1125,13 +1141,14 @@ class mak extends db{
 		return $html;
 	}
 
-	public function render_aloldal_bal_menu($aloldal){
+	public function render_aloldal_bal_menu($aloldal,$subpage=''){
 		
-		if($aloldal == ''){
+		if($aloldal == '' && $subpage == ''){
 			return FALSE;
 		}
 	
 		$aloldal = trim($aloldal);
+		$subpage = trim($subpage);
 		$html = '';
 		$almenu = '';
 		
