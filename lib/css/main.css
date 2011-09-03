@@ -67,15 +67,12 @@ header h1 a{
 	margin-right: 10px;	
 }
 
-#loginContainer img, #loginContainer a{
-	display: block;
-	float: left;
-	margin: 0 2px;
+#loginContainer img{
+	display:block;
 }
 
 #loginButton,#segelyButton,#travelButton,#kozlekButton,#szervizButton{
 	display: block;
-	width: 100px;
 	height: 32px;	
 	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -100,7 +97,7 @@ header h1 a{
 	text-decoration: none;
 	text-shadow: 1px 1px 0px #E8E8E8;
 	padding: 0px 10px;
-	line-height: 32px;
+	line-height: 34px;
 }
 
 #segelyButton,#travelButton,#kozlekButton,#szervizButton{
@@ -116,20 +113,14 @@ header h1 a{
 	}
 
 #loginButton:active,#segelyButton:active,#travelButton:active,#kozlekButton:active,#szervizButton:active {
-	 
-	  
-	   
-	     background-color: #DAE0D4;
-	     background-image: -webkit-gradient(linear, left top, left bottom, from(#DAE0D4), to(#ffffff)); 
-	     background-image: -webkit-linear-gradient(top, #DAE0D4, #ffffff); 
-	     background-image:    -moz-linear-gradient(top, #DAE0D4, #ffffff); 
-	     background-image:     -ms-linear-gradient(top, #DAE0D4, #ffffff); 
-	     background-image:      -o-linear-gradient(top, #DAE0D4, #ffffff); 
-	     background-image:         linear-gradient(top, #DAE0D4, #ffffff);
-	               filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#DAE0D4', EndColorStr='#ffffff'); 
-	   
-	   
-	 
+	background-color: #DAE0D4;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#DAE0D4), to(#ffffff)); 
+	background-image: -webkit-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:    -moz-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:     -ms-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:      -o-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:         linear-gradient(top, #DAE0D4, #ffffff);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#DAE0D4', EndColorStr='#ffffff'); 
 }
 
 #loginButton span{
@@ -140,7 +131,7 @@ header h1 a{
 #loginButton em{
 	width: 14px;
 	height: 13px;
-	margin-top: 8px;
+	margin-top: 10px;
 	background: url(../../img/user-small.png) no-repeat;
 	display: block;
 	float: left;
@@ -165,73 +156,55 @@ header h1 a{
 	margin: 0 3px;
 }
 
+		
+.reveal-modal-bg { 
+	position: fixed; 
+	height: 100%;
+	width: 100%;
+	background: #000;
+	background: rgba(0,0,0,.8);
+	z-index: 100;
+	display: none;
+	top: 0;
+	left: 0; 
+}
 
-/*	--------------------------------------------------
-	Reveal Modals
-	-------------------------------------------------- */
-		
-	.reveal-modal-bg { 
-		position: fixed; 
-		height: 100%;
-		width: 100%;
-		background: #000;
-		background: rgba(0,0,0,.8);
-		z-index: 100;
-		display: none;
-		top: 0;
-		left: 0; 
-		}
-	
-	.reveal-modal {
-		background:#F0F0EE;
-		visibility: hidden;
-		top: 100px; 
-		left: 50%;
-		margin-left: -300px;
-		width: 520px;
-		position: absolute;
-		z-index: 101;
-		padding: 30px;
-		-moz-border-radius: 3px;
-		-webkit-border-radius: 3px;
-		border-radius: 3px;
-		-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
-		-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
-		-box-shadow: 0 0 10px rgba(0,0,0,.4);
-		}
-		
-	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
-	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
-	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
-	.reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
-	
-	.reveal-modal .close-reveal-modal {
-		font-size: 22px;
-		line-height: .5;
-		position: absolute;
-		top: 8px;
-		right: 11px;
-		color: #aaa;
-		text-shadow: 0 -1px 1px rbga(0,0,0,.6);
-		font-weight: bold;
-		cursor: pointer;
-		} 
+.reveal-modal {
+	background:#F0F0EE;
+	visibility: hidden;
+	top: 100px; 
+	left: 50%;
+	margin-left: -300px;
+	width: 520px;
+	position: absolute;
+	z-index: 101;
+	padding: 30px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+
+.reveal-modal .close-reveal-modal {
+	font-size: 22px;
+	line-height: .5;
+	position: absolute;
+	top: 8px;
+	right: 11px;
+	color: #aaa;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+	font-weight: bold;
+	cursor: pointer;
+} 
 		
 		
 .reveal-modal h2{
-		font-size: 20px;
-	margin-bottom: 55px;
+	font-size: 20px;
+	margin-bottom: 10px;
 }
 		
-.reveal-modal fieldset{
-	background: #f9f9f9;
-	margin-bottom: 40px;		
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
-    border-radius: 2px; 
-    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
-}
-
 .reveal-modal form label{
 	min-width: 105px;
 	text-align: left;
@@ -267,8 +240,12 @@ header h1 a{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5'); 
 }
 
+
+.reveal-modal fieldset{
+	margin-bottom: 15px;
+}
+
 .reveal-modal form div.row{
-	background:#E8e8e8;
 	padding: 10px;
 	padding-top: 15px;
 	overflow: hidden;
@@ -311,7 +288,7 @@ header h1 a{
      top:1px;
 }
 
-#loginForm input[type='checkbox'] {
+.reveal-modal input[type='checkbox'] {
     width:auto;
     margin:1px 9px 0 0;
     float:left;
@@ -334,6 +311,12 @@ header h1 a{
 	text-decoration: none;
 	margin-top: 12px !important;
 	float: right !important;
+}
+
+#forgotten{
+	clear: both;
+	float:left !important;
+	font-size: 12px;
 }
 
 /*MENU*/
@@ -390,27 +373,27 @@ ul.ldd_menu > li{
 }
 
 #home-menu > span{
-	background: url(../../img/nav/fooldal.png) no-repeat left center;
+	background: url(../../img/ikonok/small/fooldal.png) no-repeat left center;
 }
 
 #enautoklubom-menu > span{
-	background: url(../../img/nav/enautoklubom.png) no-repeat left center;
+	background: url(../../img/ikonok/small/enautoklubom.png) no-repeat left center;
 }
 
 #segelyszolgalat-menu > span{
-	background: url(../../img/nav/segely.png) no-repeat left center;
+	background: url(../../img/ikonok/small/segely.png) no-repeat left center;
 }
 
 #travel-menu > span{
-	background: url(../../img/nav/travel.png) no-repeat left center;
+	background: url(../../img/ikonok/small/travel.png) no-repeat left center;
 }
 
 #kozlekedesbiztonsag-menu > span{
-	background: url(../../img/nav/kozlek.png) no-repeat left center;
+	background: url(../../img/ikonok/small/kozlek.png) no-repeat left center;
 }
 
 #szervizpontok-menu > span{
-	background: url(../../img/nav/szerviz.png) no-repeat left center;
+	background: url(../../img/ikonok/small/szerviz.png) no-repeat left center;
 }
 
 #klubtagsag-menu > span{
@@ -425,11 +408,11 @@ ul.ldd_menu > li > span{
 	cursor:default;
 	padding:0px 14px;
 	font-size: 13px;
-	padding-left: 25px;
+	padding-left: 28px;
 }
 
 ul.ldd_menu > li > span:hover{
-	color: white;
+	color: #2E2E2E;
 }
 
 ul.ldd_menu > li > span a{
@@ -898,27 +881,23 @@ li.heading{
 }
 
 li.heading.klubtagsag{
-	background: url(../../img/klubtagsag-small.png) no-repeat left;
+	background: url(../../img/ikonok/small/klub.png) no-repeat left;
 }
 
 li.heading.segelyszolgalat{
-	background: url(../../img/segelyszolgalat-small.png) no-repeat left;
+	background: url(../../img/ikonok/small/segely.png) no-repeat left;
 }
 
 li.heading.szervizpontok{
-	background: url(../../img/szervizpont-small.png) no-repeat left;
+	background: url(../../img/ikonok/small/szerviz.png) no-repeat left;
 }
 
 li.heading.kozlekedesbiztonsag{
-	background: url(../../img/kozlekedesbiztonsag-small.png) no-repeat left;
-}
-
-li.heading.erdekkepviselet{
-	background: url(../../img/erdekkepviselet-small.png) no-repeat left;
+	background: url(../../img/ikonok/small/kozlek.png) no-repeat left;
 }
 
 li.heading.travel{
-	background: url(../../img/travel-small.png) no-repeat left;
+	background: url(../../img/ikonok/small/travel.png) no-repeat left;
 }
 
 #footerMisc p{
