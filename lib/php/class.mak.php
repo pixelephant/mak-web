@@ -1193,9 +1193,6 @@ class mak extends db{
 		$html .= '<li id="travel-menu">';
 		$html .= '<span>Travel</span>';
 		$html .= '</li>';
-		$html .= '<li class="search">';
-		$html .= '<input type="text" name="search" id="search" placeholder="Keresés..." />';
-		$html .= '</li>';
 		$html .= '</ul>';
 		
 		return $html;
@@ -1246,7 +1243,7 @@ class mak extends db{
 		$html .= '<li><a href="">Külföldi utak</a></li>';
 		$html .= '<li><a href="">Belföldi utak</a></li>';
 		$html .= '<li><a href="">Exkluzív utak</a></li>';
-		$html .= '</ul>';
+		$html .= '</ul><div class="footer-sep"></div>';
 		
 		return $html;
 	
