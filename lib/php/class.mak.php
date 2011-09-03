@@ -3,6 +3,7 @@
 class mak extends db{
 	
 	private $_imageDir = 'img/';
+	private $_imageDirLeft = 'img/ikonok/big/';
 	private $_galleryDir = 'img/gallery/';
 	private $_autoseletDir = 'media/autoselet/';
 	private $_hirekDir = 'img/hirek/';
@@ -1117,7 +1118,7 @@ class mak extends db{
 		}
 		
 		$html .= '<h2 id="'. $aloldalak[0]['azonosito'] .'">';
-		$html .= '<img src="' . $this->_imageDir . $aloldalak[0]['azonosito'] . '.png" alt="' . $aloldalak[0]['kategoria_nev'] . '" />';
+		$html .= '<img src="' . $this->_imageDirLeft . $aloldalak[0]['azonosito'] . '.png" alt="' . $aloldalak[0]['kategoria_nev'] . '" />';
 		$html .= $aloldalak[0]['kategoria_nev'] . '</h2>';
 		
 		for($i = 0; $i < $aloldalak['count']; $i++){
@@ -1192,9 +1193,6 @@ class mak extends db{
 		$html .= '<li id="travel-menu">';
 		$html .= '<span>Travel</span>';
 		$html .= '</li>';
-		$html .= '<li class="search">';
-		$html .= '<input type="text" name="search" id="search" placeholder="Keresés..." />';
-		$html .= '</li>';
 		$html .= '</ul>';
 		
 		return $html;
@@ -1214,7 +1212,7 @@ class mak extends db{
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 			if($kategoria != $tartalom[$i]['azonosito']){
-				$html .= '<ul';
+				$html .= '<div class="footer-sep"></div><ul';
 			
 				if($kategoria == ''){
 					$html .= ' class="first"';				
@@ -1240,7 +1238,7 @@ class mak extends db{
 		
 		}
 		
-		$html .= '<ul class="last">';
+		$html .= '<div class="footer-sep"></div><ul class="last">';
 		$html .= '<li class="heading travel">Travel</li>';
 		$html .= '<li><a href="">Külföldi utak</a></li>';
 		$html .= '<li><a href="">Belföldi utak</a></li>';

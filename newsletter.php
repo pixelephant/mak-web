@@ -1,3 +1,7 @@
+<div id="search">
+	<input type="text" name="search" placeholder="Keresés..." />
+</div>
+<div class="hr"></div>
 <div class="newsletter">
 	<a href="http://facebook.com" id="facebook" target="_blank"><img height="40" src="img/fb.png" alt="Facebook" /></a>
 	<a href="http://twitter.com" id="twitter" target="_blank"><img height="40" src="img/tw.png" alt="Twitter" /></a>
