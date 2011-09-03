@@ -397,8 +397,8 @@ ul.ldd_menu > li > span{
 	padding-left: 28px;
 }
 
-ul.ldd_menu > li > span:hover{
-	color: #2E2E2E;
+ul.ldd_menu > li:hover{
+	background:#2E2E2E;;
 }
 
 ul.ldd_menu > li > span a{
@@ -472,6 +472,11 @@ aside{
 	float: left;
 	width: 240px;
 	padding: 10px 0;
+}
+
+#search{
+	text-align:center;
+	margin-bottom:15px;
 }
 
 #search input{
@@ -636,13 +641,18 @@ aside .subtext{
 }
 
 .block ul{
-	list-style: disc;
-	list-style-position: inside;
+	
 }
 
 .block ul li{
-	list-style-position: inside;
+	list-style: none;
 	padding: 0 10px;
+}
+
+.block ul li:before{
+	content : "‣ ";
+	color: #0080B0;
+	font-size: 13px;
 }
 
 #ctaWrap{
@@ -801,14 +811,17 @@ aside .subtext{
 
 #breadcrumb li{
 	float: left;
-	list-style-image: url(../../img/nyilak.png);
-	list-style-position: inside;
+	list-style: none;
 	margin: 0 3px;
 	padding: 0 3px;
 }
 
-#breadcrumb li.first{
-	list-style-image: none;
+#breadcrumb li:before{
+	content : "‣ ";
+}
+
+#breadcrumb li.first:before{
+	content: "";
 }
 #breadcrumb li a{
 	text-decoration: none;
@@ -827,19 +840,20 @@ footer{
 }
 
 .footer-sep{
-	float:left;
-	width:3px;
+	float: left;
+	width: 3px;
 	background: url(../../img/footer-sep.png) repeat-y;
-	height:150px;
+	height: 136px;
+	margin-top: 1px;
 }
 
 #footerNav ul{
-	width: 162.5px;
+	width: 171px;
 	float: left;
 	font-size: 12px;
 	color: #1c1c1c;
 	height: 135px;
-	padding-top: 10px;
+	padding: 10px 10px 0 10px;
 }
 
 #footerNav ul li.heading{
@@ -848,14 +862,19 @@ footer{
 }
 
 #footerNav ul li{
-	list-style-image: url(../../img/nyilak.png);
+	/*list-style-image: url(../../img/nyilak.png);*/
 	margin: 6px 0;
 	list-style-position: inside;
 	padding-left: 6px;
 }
 
-#footerNav ul li.heading{
-	list-style-image: none;
+#footerNav ul li:before{
+	content : "‣ ";
+	color: #1c1c1c;
+}
+
+#footerNav ul li.heading:before{
+	content : "";
 }
 
 #footerNav a{

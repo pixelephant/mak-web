@@ -62,9 +62,13 @@
 font-style: italic;
 }
 
-#slider ul{
-	list-style: disc;
-	list-style-position: inside;
+#slider ul li{
+	list-style: none;
+}
+
+#slider ul li:before{
+	content : "‣ ";
+	font-size: 12px;
 }
 
 #slider .slide a{
@@ -134,4 +138,8 @@ font-style: italic;
 
 .slide.first p,.slide.first h2,.slide.first a{
 	color: white !important;
+}
+
+.slide.first li:before{
+	color:white !important; 
 }
