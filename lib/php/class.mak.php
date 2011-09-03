@@ -185,7 +185,9 @@ class mak extends db{
 			$join = GUMP::sanitize($join);
 		}
 		
-		$cond['orderby'] = 'mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC';
+		if(!isset($cond['orderby'])){
+			$cond['orderby'] = 'mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC';
+		}
 		
 		$join[0]['table'] = 'mak_almenu';
 		$join[0]['value'] = 'mak_almenu.id=mak_tartalom.almenu_id';
@@ -207,6 +209,19 @@ class mak extends db{
 		$cond['mak_almenu.url'] = $oldal;
 	
 		return $this->get_tartalom($cond);
+		
+	}
+	
+	public function get_aloldal_tartalom($url){
+	
+		$join[2]['table'] = 'mak_altartalom';		
+		$join[2]['value'] = 'mak_altartalom=mak_almenu.kategoria_id';
+	
+		$cond['mak_altartalom.url'] = $oldal;
+	
+		$col .= 'mak_altartalom.id AS id,mak_altartalom.almenu_id AS almenu_id,mak_altartalom.cim AS cim,mak_altartalom.szoveg AS szoveg,mak_altartalom.kep AS kep,mak_altartalom.alt AS alt,mak_altartalom.publikalta AS publikalta';
+		
+		return $this->get_tartalom($cond,$col,$join);
 		
 	}
 	
