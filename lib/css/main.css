@@ -319,12 +319,12 @@ header h1 a{
 	font-size: 12px;
 }
 
-/*MENU*/
-
 #callCenterContainer{
 	float: right;
 	margin-top: 55px;
 }
+
+/*MENU*/
 
 nav{
 	background-color: #3E3E3E;
@@ -339,20 +339,6 @@ nav{
 	-moz-box-shadow: 0px 4px 12px #333; 
 	-webkit-box-shadow: 0px 4px 12px #333; 
 	box-shadow: 0px 4px 12px #333; 
-}
-
-.search{
-	float: right !important;
-	margin-top: 3px;
-}
-
-#search{
-	margin-top: 8px;
-	height: 18px;
-	width: 120px;
-	border: 1px solid #333;
-	background: url(../../img/magnifier.png) no-repeat center left white;
-	padding-left:20px
 }
 
 ul.ldd_menu{
@@ -488,6 +474,15 @@ aside{
 	padding: 10px 0;
 }
 
+#search input{
+	margin-top: 8px;
+	height: 18px;
+	width: 120px;
+	border: 1px solid #333;
+	background: url(../../img/magnifier.png) no-repeat center left white;
+	padding-left:20px
+}
+
 aside .newsletter form{
 	display: none;
 	margin-top: 20px;
@@ -559,22 +554,18 @@ aside #newsletterbutton{
 
 aside #newsletterbutton:hover {
 	 top:10px;
-	}
+}
 
 aside #newsletterbutton:active {
-	
-	  
-	    background-color: #DAE0D4;
-	    background-image: -webkit-gradient(linear, left top, left bottom, from(#DAE0D4), to(#ffffff)); 
-	    background-image: -webkit-linear-gradient(top, #DAE0D4, #ffffff); 
-	    background-image:    -moz-linear-gradient(top, #DAE0D4, #ffffff); 
-	    background-image:     -ms-linear-gradient(top, #DAE0D4, #ffffff); 
-	    background-image:      -o-linear-gradient(top, #DAE0D4, #ffffff); 
-	    background-image:         linear-gradient(top, #DAE0D4, #ffffff);
-	              filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#DAE0D4', EndColorStr='#ffffff'); 
-	  
-	
-	}
+	background-color: #DAE0D4;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#DAE0D4), to(#ffffff)); 
+	background-image: -webkit-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:    -moz-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:     -ms-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:      -o-linear-gradient(top, #DAE0D4, #ffffff); 
+	background-image:         linear-gradient(top, #DAE0D4, #ffffff);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#DAE0D4', EndColorStr='#ffffff'); 
+}
 
 aside img.ad{
 	margin: 15px auto;
@@ -719,14 +710,10 @@ aside .subtext{
 }
 
 #ctaWrap a:active {
-	
-	 
-	   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcb614), color-stop(1, #fdd300) );
-	   background:-moz-linear-gradient( center top, #fcb614 5%, #fdd300 100% );
-	   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcb614', endColorstr='#fdd300');
-	   background-color:#fcb614;
-	 
-	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcb614), color-stop(1, #fdd300) );
+	background:-moz-linear-gradient( center top, #fcb614 5%, #fdd300 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcb614', endColorstr='#fdd300');
+	background-color:#fcb614;
 }
 
 #ctaWrap a:hover{
@@ -829,7 +816,6 @@ aside .subtext{
 	font-size: 12px;
 }
 
-
 footer{
 	background: url(../../img/footer-loop.png) repeat-x;
 	height: 180px;
@@ -838,6 +824,13 @@ footer{
 
 #footerNav{
 	overflow: hidden;
+}
+
+.footer-sep{
+	float:left;
+	width:3px;
+	background: url(../../img/footer-sep.png) repeat-y;
+	height:150px;
 }
 
 #footerNav ul{
@@ -932,7 +925,6 @@ li.heading.travel{
 a.blue{
 	color: #0080B0;
 }
-
 
 
 /*Szervízpontok térképe*/
