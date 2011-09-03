@@ -1193,12 +1193,9 @@ class mak extends db{
 		$html .= '<li id="travel-menu">';
 		$html .= '<span>Travel</span>';
 		$html .= '</li>';
-<<<<<<< HEAD
-=======
-		/*$html .= '<li class="search">';
+		$html .= '<li class="search">';
 		$html .= '<input type="text" name="search" id="search" placeholder="Keresés..." />';
-		$html .= '</li>';*/
->>>>>>> 770841ec4bb8f6e985db85753bf2e03bee74bbdf
+		$html .= '</li>';
 		$html .= '</ul>';
 		
 		return $html;
