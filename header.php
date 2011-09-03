@@ -17,13 +17,13 @@
 			        	<div class="row">
 			        		<label for="loginPassword">Jelszó</label>
 				            <input class="required" type="password" name="loginPassword" id="loginPassword" />
+				            <a id="forgotten" href="#">Elfelejtett jelszó?</a>
 			        	</div>
 			        </fieldset>
 			        <input type="submit" id="loginSubmit" value="Belépés" />
 			        <label id="chl" for="checkbox"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 					<div>
-						<a href="#">Regisztrálás</a>
-						<a href="#">Elfelejtett jelszó?</a>
+						<a href="register.php">Még nem klubtagunk? Regisztráljon!</a>
 					</div>
 			</form>
 			<a class="close-reveal-modal">&#215;</a>

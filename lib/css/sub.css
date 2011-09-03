@@ -162,28 +162,43 @@ font-weight: bold;
 
 
 
-/*Aloldal specifikus*/
+/*Aloldal specifikus oldalsáv képek*/
 
 #vizsgaztatas{
-	background: url(../../img/vizsgaztatas.png) no-repeat left center;
+	background: url(../../img/ikonok/medium/vizsgaztatas.png) no-repeat left center;
 }
 
 #autojavitas{
-	background: url(../../img/autojavitas.png) no-repeat left center;
+	background: url(../../img/ikonok/medium/autojavitas.png) no-repeat left center;
 }
 
 #helyszinihibaelharitas{
-	background: url(../../img/helyszini.png) no-repeat left center;
+	background: url(../../img/ikonok/medium/helyszini.png) no-repeat left center;
 }
 
 #automentes{
-	background: url(../../img/automentes.png) no-repeat left center;
+	background: url(../../img/ikonok/medium/automentes.png) no-repeat left center;
 }
 
 #assistance{
-	background: url(../../img/assistance.png) no-repeat left center;
+	background: url(../../img/ikonok/medium/assistance.png) no-repeat left center;
 }
 
+#oktatas-kepzes{
+	background: url(../../img/ikonok/medium/oktatas.png) no-repeat left center;
+}
+
+#rendezvenyek{
+	background: url(../../img/ikonok/medium/rendezvenyek.png) no-repeat left center;
+}
+
+#tanacsok{
+	background: url(../../img/ikonok/medium/tanacsok.png) no-repeat left center;
+}
+
+#autoselet{
+	background: url(../../img/ikonok/medium/autoselet.png) no-repeat left center;
+}
 
 
 /*Multilayerek*/
