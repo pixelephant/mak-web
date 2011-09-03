@@ -45,7 +45,7 @@ article p{
 	overflow: hidden;
 	display: block;
 	margin: 30px 0;
-	height: 215px;
+	height: 245px;
 }
 
 .autoselet{
@@ -54,6 +54,13 @@ article p{
 	float: left;
 	background: url(../../img/autoselet-shadow.png) no-repeat center bottom;
 	cursor: pointer;
+}
+
+.autoselet .title{
+	text-align: center;
+	font-weight: 700;
+	color:#0080B0;
+	margin-top: 30px;
 }
 
 .autoselet .img{
@@ -119,7 +126,7 @@ article p{
 }
 
 .embed{
-	display: none;
+
 }
 
 .embed div div{

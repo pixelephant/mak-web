@@ -636,12 +636,12 @@ aside .subtext{
 
 .block a{
 	color: #0080B0;
-	font-size: 13px;
+	font-size: 14px;
 	font-style: italic;
 }
 
 .block ul{
-	
+	margin-top: 10px;
 }
 
 .block ul li{
@@ -652,7 +652,7 @@ aside .subtext{
 .block ul li:before{
 	content : "‣ ";
 	color: #0080B0;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 #ctaWrap{
