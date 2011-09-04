@@ -278,6 +278,7 @@ header h1 a{
 	font-weight: bold;
 	padding: 0px 10px;
 	line-height: 34px;
+	color:#1c1c1c;
 }
 
 #segelyButton,#travelButton,#kozlekButton,#szervizButton{
@@ -356,13 +357,17 @@ header h1 a{
 	margin-top: 10px;
 }
 
+#chl input[type="checkbox"]{
+	margin:4px 5px 0 0;
+}
+
 #loginform a{
 	font-style: italic;
 	color: #0080B0;
 	float: right;
 	text-decoration: none;
 	margin-top: 12px !important;
-	float: right !important;
+	float: right;
 }
 
 #forgotten{
@@ -484,6 +489,7 @@ ul.ldd_menu ul{
 li.ldd_heading{
 	padding:0px 0px 10px 0px;
 	font-size: 14px;
+	color:black;
 }
 ul.ldd_menu ul li a{
 	font-size:12px;
@@ -553,12 +559,12 @@ aside{
 }
 
 #newsletter input[type="text"]{
-	width: 90px;
-	margin-left: 23px;
+	margin-left: 20px;
+	height: 20px;
+	width: 110px;
 }
 
 #newsletterbutton{
-	display: block;
 	margin: 9px auto 10px auto;
 	font-size: 14px;
 	font-weight: bold;
@@ -566,6 +572,7 @@ aside{
 	position: relative;
 	top: 9px;
 	left: 2px;
+	color:black;
 }
 
 #newsletterbutton:hover {
@@ -701,6 +708,7 @@ aside img.ad{
 	font-size: 24px;
 	font-weight: bold;
 	padding: 16px 48px;
+	color:black;
 }
 
 #ctaWrap a span{
@@ -1057,7 +1065,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndC
 	font-weight: bold;
 }
 
-#szervizpont-data .mailto{
+#szervizpont-data .link{
 	font-style: italic;
-	color:#0080B0;
 }

@@ -5,7 +5,7 @@
 		<a href="#" id="szervizButton" class="gray-button"><img src="img/pictogram-03.png" alt="Szervizpontok" /></a>
 		<a href="#" id="kozlekButton" class="gray-button"><img src="img/pictogram-04.png" alt="Közlekedésbiztonság" /></a>
 		<a href="#" id="travelButton" class="gray-button"><img src="img/pictogram-02.png" alt="Travel" /></a>
-		<a href="#" data-reveal-id="loginModal" id="loginButton"><span>Bejelentkezés</span><em></em></a>
+		<a href="#" data-reveal-id="loginModal" id="loginButton" class="gray-button"><span>Bejelentkezés</span><em></em></a>
 		<div id="loginModal" class="reveal-modal">
 			<form id="loginform" action="#">
 					<h2>Bejelentkezés</h2>

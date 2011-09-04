@@ -2,7 +2,7 @@
 	<input type="text" name="search" placeholder="Keresés..." />
 </div>
 <div class="hr"></div>
-<div cid="newsletter">
+<div id="newsletter">
 	<a href="http://facebook.com" id="facebook" target="_blank"><img height="40" src="img/fb.png" alt="Facebook" /></a>
 	<a href="http://twitter.com" id="twitter" target="_blank"><img height="40" src="img/tw.png" alt="Twitter" /></a>
 	<a id="newsletterbutton" class="gray-button" href="#"><span>Hírlevél</span> <em></em></a>
