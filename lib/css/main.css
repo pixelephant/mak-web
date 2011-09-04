@@ -949,14 +949,24 @@ a.blue{
 .mak-table{
 	margin-top:15px;
 	border:1px solid #797E81;
-	background: #DADADA;
 	text-align: left;
 	width: 100%;
 	font-size: 14px;
+	color:#010101;
 }
 
 .mak-table thead tr{
 	border-bottom:2px solid #919598;
+	
+  background-color: #e1e1e1;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
+  background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
+
 }
 
 .mak-table thead th{
@@ -973,8 +983,31 @@ a.blue{
 	padding:10px;
 }
 
-.mak-table td.odd{
-	background: #E7E7E7;
+.mak-table td{
+	
+  background-color: #e1e1e1;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
+  background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
+
+}
+
+.mak-table td.odd{	
+	
+  background-color: #ededed;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#c6c6c6)); 
+  background-image: -webkit-linear-gradient(top, #ededed, #c6c6c6); 
+  background-image:    -moz-linear-gradient(top, #ededed, #c6c6c6); 
+  background-image:     -ms-linear-gradient(top, #ededed, #c6c6c6); 
+  background-image:      -o-linear-gradient(top, #ededed, #c6c6c6); 
+  background-image:         linear-gradient(top, #ededed, #c6c6c6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ededed', EndColorStr='#c6c6c6'); 
+
+	border-right: #dcdcdc;
 }
 
 .mak-table tbody tr{
@@ -983,8 +1016,52 @@ a.blue{
 
 .mak-table tfoot{
 	padding:5px;
-	border-top:1px solid #919598;
-	border-bottom:1px solid #919598;
+	
+  background-color: #e1e1e1;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
+  background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
+  background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
+            	border-top:2px solid #919598;
+
+}
+
+#hours-table,#vizsga-table{
+	float:left;
+	width: 45%;
+}
+
+#vizsga-table{
+	float: right;
+}
+
+
+/*GYIK*/
+
+#gyik{
+	margin-top:15px;
+}
+
+#gyik li{
+	list-style-type: decimal;
+	list-style-position: inside;
+	font-size:16px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+#gyik .answer{
+	padding-left: 10px;
+	font-size: 14px;
+	color:#1c1c1c;
+}
+
+#gyik .link{
+	color:#0080B0;
+	text-decoration: none;
 }
 
 /*Szervízpontok*/
