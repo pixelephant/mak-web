@@ -177,15 +177,13 @@ class mak extends db{
 			$cond = GUMP::sanitize($cond);
 		}
 		
-		if($col != ''){
-			$col = GUMP::sanitize($col);
-		}
-		
 		if($join != ''){
 			$join = GUMP::sanitize($join);
 		}
 		
-		$cond['orderby'] = 'mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC';
+		if(!isset($cond['orderby'])){
+			$cond['orderby'] = 'mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC';
+		}
 		
 		$join[0]['table'] = 'mak_almenu';
 		$join[0]['value'] = 'mak_almenu.id=mak_tartalom.almenu_id';
@@ -207,6 +205,21 @@ class mak extends db{
 		$cond['mak_almenu.url'] = $oldal;
 	
 		return $this->get_tartalom($cond);
+		
+	}
+	
+	public function get_aloldal_tartalom($url){
+	
+		$join[2]['table'] = 'mak_altartalom';		
+		$join[2]['value'] = 'mak_altartalom.tartalom_id=mak_tartalom.id';
+	
+		$cond['mak_altartalom.url'] = $url;
+		
+		$col = 'mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,';
+		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,';
+		$col .= 'mak_altartalom.id AS id,mak_altartalom.tartalom_id AS tartalom_id,mak_altartalom.cim AS cim,mak_altartalom.szoveg AS szoveg,mak_altartalom.kep AS kep,mak_altartalom.alt AS alt,mak_altartalom.publikalta AS publikalta';
+		
+		return $this->get_tartalom($cond,$col,$join);
 		
 	}
 	
@@ -307,15 +320,35 @@ class mak extends db{
 		if($url == ''){
 			return FALSE;
 		}
-	
+		
 		$table = 'mak_almenu';
 		$col = 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.keywords AS keywords,mak_almenu.description AS description,mak_almenu.css AS css,mak_almenu.javascript AS javascript';
 		$cond['mak_almenu.url'] = $url;
 	
 		$a = $this->sql_select($table,$col,$cond);
 		
-		return $a[0];
+		$parameterek = $a[0];
+				
+		return $parameterek;
 		
+	}
+
+	public function get_parameterek_aloldal_urlbol($aloldal_url){
+	
+		if($aloldal_url == ''){
+			return FALSE;
+		}
+		
+		$table = 'mak_altartalom';
+		$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
+		$cond['mak_altartalom.url'] = $aloldal_url;
+		
+		$a = $this->sql_select($table,$col,$cond);
+		
+		$parameterek = $a[0];
+				
+		return $parameterek;
+	
 	}
 	
 	public function get_kategoria_urlbol($url){
@@ -974,6 +1007,13 @@ class mak extends db{
 		
 		switch($aloldal){
 			
+			case "szervizpontok":
+			
+				$html = '<div id="map"></div>';
+				$html .= '<table cellpadding="2" cellspacing="2"><tbody><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-1">1112 Budapest, Budaörsi út 138.</a></td><td>1/310-2958</td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-2">1095 Budapest, Soroksári út 158/a</a></td><td>1/358-1491</td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas">1183 Budapest, Nefelejcs u. 4.</a></td><td>1/295-0871</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-4">1043 Budapest, Berda J. u. 15. </a></td><td>1/231-1170 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-5">1044 Budapest, Megyeri út 15/a </a></td><td>1/272-1477 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-6">9027 Győr,  Tompa u. 2. </a></td><td>96/317-900 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-7">9200 Mosonmagyaróvár, Gabona rkp. 2-6.</a></td><td>96/315-708 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-8">2500 Esztergom, Schweidel u. 5.</a></td><td>33/411-908 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-9">2800 Tatabánya, Komáromi u. 68.</a></td><td>34/310-504 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-10">2084 Pilisszentiván, Bánki D. u. 1. </a></td><td>26/367-888 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-11">2310 Szigetszentmiklós, Gyári út 9. kapu</a></td><td>24/465-407</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-12">2049 Diósd, Vadrózsa u. 19. (Ipari park)</a></td><td>23/545-107</td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-13">2760 Nagykáta, Jászberényi út 1.</a></td><td>29/440-385 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-14">5000 Szolnok, Thököly út 48-56. </a></td><td>56/420-801 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-14">6724 Szeged, Kossuth Lajos sgt. 114.</a></td><td>62/ 474-874</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-13">6800 Hódmezővásárhely, Lévai u. 48.</a></td><td>62/533-220 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-15">6600 Szentes, Villogó u. 20.</a></td><td>63/560-130 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-16">6000 Kecskemét, Izzó u.1.</a></td><td>76/ 486-840</td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-1">6300 Kalocsa, Miskei u. 5.</a></td><td>78/461-854 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-4">6100 Kiskunfélegyháza, Szegedi út 38.</a></td><td>76/560-058 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-0">6060 Tiszakécske, Szolnoki út 79.</a></td><td>76/540-005 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-17">5600 Békéscsaba, Szarvasi út 82.</a></td><td>66/325-653, 66/325-658 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-18">4400 Nyíregyháza, Debreceni út 155.</a></td><td>42/409-319, 42/463-521 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-9">4465 Rakamaz, Szent István u. 148.</a></td><td>42/370-245 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-8">4765 Csenger, Ady Endre u. 86.</a></td><td>44/342-346 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-22">2660 Balassagyarmat, Mikszáth u. 26.</a></td><td>35/300-197 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-19">3100 Salgótarján, Bartók B. u. 14/a</a></td><td>32/310-662 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-23">3200 Gyöngyös, Déli Külhatár út 6.</a></td><td>37/311-097 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-24">3300 Eger, Kistályai út 6.</a></td><td>36/410-437 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-25">3531 Miskolc, Győri kapu 32.</a></td><td>46/412-854 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-21">3600 Ózd, Vasvári u. 110. </a></td><td>48/471-614 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-17">5350 Tiszafüred, Fürdő út 21. </a></td><td>59/352-355 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-16">7630 Pécs, Hengermalom u. 3. </a></td><td>72/516-083 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-15">7100 Szekszárd, Tolnai L. u. 2/a </a></td><td>74/315-630 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-12">7400 Kaposvár, Dombóvári u. 6. </a></td><td>82/319-232 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-6">8600 Siófok, Vak Bottyán u. 55.  </a></td><td>84/311-992 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-10">8000 Székesfehérvár, Sárkeresztúri u. 8. </a></td><td>22/311-365 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-11">2400 Dunaújváros, Kenyérgyári út. 7. </a></td><td>25/ 413-311</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-7">8200 Veszprém, Aradi Vértanúk u. 1. </a></td><td>88/421-006 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-5">8900 Zalaegerszeg, Alsóerdei út 3/a </a></td><td>92/550-195 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-3">8800 Nagykanizsa, Ligeti u. 21. </a></td><td>93/311-256 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-20">8960 Lenti, Táncsics u. 17 </a></td><td>92/351-365 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas">9900 Körmend,  Nap u. 1.</a></td><td>94/410-411</td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-19">9700 Szombathely, Csaba u. 7. </a></td><td>94/314-754 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-0">9730 Kőszeg, Szombathelyi út 3. </a></td><td>94/360-592 </td></tr><tr><td>Műszaki állomás</td><td><a href="szervizpontok/muszaki-allomas-18">9500 Celldömölk,  Zalka M. úti garázssor </a></td><td>95/420-538 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a href="szervizpontok/szervizpont-muszaki-allomas-2">9400 Sopron, Lackner Kristóf u. 60. </a></td><td>99/311-352 </td></tr></tbody></table>';
+			
+				break;
+		
 			case "autoselet":
 
 				$position[0] = 'left';
@@ -1101,13 +1141,14 @@ class mak extends db{
 		return $html;
 	}
 
-	public function render_aloldal_bal_menu($aloldal){
+	public function render_aloldal_bal_menu($aloldal,$subpage=''){
 		
-		if($aloldal == ''){
+		if($aloldal == '' && $subpage == ''){
 			return FALSE;
 		}
 	
 		$aloldal = trim($aloldal);
+		$subpage = trim($subpage);
 		$html = '';
 		$almenu = '';
 		
