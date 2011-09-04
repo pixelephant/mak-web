@@ -94,7 +94,7 @@ window.jQuery || document.write('<script src="lib/js/jquery-1.6.2.js">\x3C/scrip
 		<script type="text/javascript" src="lib/js/my.js">
 		</script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
-		<script type="text/javascript" src="lib/js/szervizpontok.js">
+		<script type="text/javascript" src="lib/js/szervizpont.js">
 		</script>
 		<script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
