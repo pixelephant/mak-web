@@ -187,8 +187,10 @@ class mak extends db{
 		
 		$join[0]['table'] = 'mak_almenu';
 		$join[0]['value'] = 'mak_almenu.id=mak_tartalom.almenu_id';
+		$join[0]['type'] = 'LEFT JOIN';
 		$join[1]['table'] = 'mak_kategoria';		
 		$join[1]['value'] = 'mak_kategoria.id=mak_almenu.kategoria_id';
+		$join[1]['type'] = 'LEFT JOIN';
 		
 		if($col == ''){
 			$col = 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,';
@@ -253,11 +255,20 @@ class mak extends db{
 		
 			$cond['cim']['val'] = '%'.$keres['kereses'].'%';
 			$cond['cim']['rel'] = "LIKE";
+			$cond['cim']['and_or'] = "OR";
 			
 			$cond['szoveg']['val'] = '%'.$keres['kereses'].'%';
 			$cond['szoveg']['rel'] = "LIKE";
 			$cond['szoveg']['and_or'] = "OR";
+			
+			$cond['almenu']['val'] = '%'.$keres['kereses'].'%';
+			$cond['almenu']['rel'] = "LIKE";
+			$cond['almenu']['and_or'] = "OR";
 		
+			$cond['kategoria_nev']['val'] = '%'.$keres['kereses'].'%';
+			$cond['kategoria_nev']['rel'] = "LIKE";
+			$cond['kategoria_nev']['and_or'] = "OR";
+			
 			return $this->get_tartalom($cond);
 		
 		}else{
@@ -328,7 +339,7 @@ class mak extends db{
 		$a = $this->sql_select($table,$col,$cond);
 		
 		$parameterek = $a[0];
-				
+		
 		return $parameterek;
 		
 	}
@@ -349,6 +360,8 @@ class mak extends db{
 		
 			$a = $this->get_szervizpont_idbol($aloldal_url);
 
+			$parameterek = $a[0];
+			
 			$parameterek['h1'] = 'Szervízpont - ' . $a[0]['cim'];
 			
 			$kw = explode(" ",$a[0]['cim']);
@@ -421,7 +434,7 @@ class mak extends db{
 		
 		$table = 'mak_szervizpontok';
 		
-		$col = 'id,cim,telefon_fax,e_mail,nyitvatartas,szoveg,modositas';	
+		$col = 'id,cim,telefon_fax,e_mail,nyitvatartas,szoveg,lat,lng,modositas';	
 		
 		return $this->sql_select($table,$col,$cond);
 	
@@ -1357,6 +1370,51 @@ class mak extends db{
 	
 	}
 
+	public function render_search_checkbox(){
+	
+		$tartalom = $this->get_tartalom();
+		$kategoria = '';
+		$html = '';
+		
+		for($i = 0; $i < $tartalom['count']; $i++){
+		
+			if($kategoria != $tartalom[$i]['azonosito']){
+				$kategoria = $tartalom[$i]['azonosito'];
+					
+				$html .= '<label for="only-' . $tartalom[$i]['azonosito'] . '">' . $tartalom[$i]['kategoria_nev'] . '</label><input type="checkbox" name="only-' . $tartalom[$i]['azonosito'] . '" id="only-' . $tartalom[$i]['azonosito'] . '" checked="checked" />';
+			}
+		}
+		
+		return $html;		
+	
+	}
+
+	public function render_search_results($query){
+	
+		if($query == ''){
+			return FALSE;
+		}
+		
+		$kereses[0] = $query;
+		
+		$kereses = GUMP::sanitize($kereses);
+		
+		$eredmenyek = $this->get_tartalom_kereses($kereses[0]);
+		$html = '';
+		
+		for($i = 0;$i<$eredmenyek['count'];$i++){
+		
+			$html .= '<li>';
+			$html .= '<h3><a href="' . $eredmenyek[$i]['url'] . '#' . $eredmenyek[$i]['cim'] . '">' . $eredmenyek[$i]['cim'] . '</a></h3>';  
+			$html .= '<div>' . $this->mark_search_result($kereses[0],$eredmenyek[$i]['szoveg']) . '</div>';
+			$html .= '</li>';	
+		
+		}
+		
+		return $html;
+	
+	}
+	
 	public function render_breadcrumb($url){
 	
 		$url = trim($url);
@@ -1373,6 +1431,30 @@ class mak extends db{
 		$html .= '</ul>';
 		
 		echo $html;
+	
+	}
+	
+	//Kiegészítő függvények
+	
+	public function mark_search_result($query_string,$result_string){
+	
+		$mark_start = '<span class="mark">';
+		$mark_end = '</span>';
+		$max_hossz = '200';
+		
+		$pozicio = stripos($result_string,$query_string);
+		
+		$eleje = substr($result_string, 0, $pozicio);
+		$kozepe = substr($result_string, $pozicio, strlen($query_string));
+		$vege = substr($result_string, $pozicio + strlen($query_string));
+		
+		$string = $eleje . $mark_start . $kozepe . $mark_end . $vege;
+		
+		if($pozicio === FALSE){
+			return $result_string;
+		}else{
+			return substr($string, 0, $max_hossz);
+		}
 	
 	}
 	

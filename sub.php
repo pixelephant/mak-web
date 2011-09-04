@@ -60,6 +60,14 @@ if($subpage != ''){
 ?>
 <?php endblock() ?>
 
+<?php startblock('body-data') ?>
+<?php 
+	if(isset($parameterek['lat']) && isset($parameterek['lng'])){
+		echo 'data-lat="' . $parameterek['lat'] . '" data-lng="' . $parameterek['lng'] . '"';	
+	}
+?>
+<?php endblock() ?>
+
 <?php startblock('nav') ?>
 <?php 	
 	echo $main->render_felso_menu();

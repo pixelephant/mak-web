@@ -26,7 +26,7 @@ session_start();
 		<?php startblock('additional-css') ?><?php endblock() ?>
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="<?php startblock('body-id') ?><?php endblock() ?>-body">
+	<body id="<?php startblock('body-id') ?><?php endblock() ?>-body"<?php startblock('body-data') ?><?php endblock() ?>>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
