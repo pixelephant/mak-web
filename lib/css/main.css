@@ -947,11 +947,47 @@ a.blue{
 /*Táblázat design*/
 
 .mak-table{
-	
+	margin-top:15px;
+	border:1px solid #797E81;
+	background: #DADADA;
+	text-align: left;
+	width: 100%;
+	font-size: 14px;
 }
 
+.mak-table thead tr{
+	border-bottom:2px solid #919598;
+}
 
-/*Szervízpontok térképe*/
+.mak-table thead th{
+	font-size:16px;
+	font-weight: bold;
+	padding:15px;
+}
+
+.mak-table tr{
+	padding:10px;
+}
+
+.mak-table td{
+	padding:10px;
+}
+
+.mak-table td.odd{
+	background: #E7E7E7;
+}
+
+.mak-table tbody tr{
+	border-top:1px solid #919598;
+}
+
+.mak-table tfoot{
+	padding:5px;
+	border-top:1px solid #919598;
+	border-bottom:1px solid #919598;
+}
+
+/*Szervízpontok*/
 
 #map{
 	height:388px;
@@ -959,4 +995,24 @@ a.blue{
 	padding:5px;
 	background: white;
 	border:1px solid #ccc;
+}
+
+#szervizpont-data{
+	font-size: 14px;
+	margin:15px 0;
+}
+
+#szervizpont-data p{
+	margin:5px 0;
+	font-size: 16px !important;
+}
+
+#szervizpont-data span{
+	font-style: italic;
+	font-weight: bold;
+}
+
+#szervizpont-data .mailto{
+	font-style: italic;
+	color:#0080B0;
 }

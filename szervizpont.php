@@ -75,17 +75,22 @@
 			<h1>Szervízpont neve ide jön</h1>
 			<div id="map"></div>
 			<div id="szervizpont-data">
-				<p><span>Cím</span> 1112 Bukarest, Cím utca3</p>
-				<p><span>Tel.:</span>+36-30-30-30-30</p>
-				<p><span>Fax:</span>+36-30-40-40-40</p>
-				<p><span>Email:</span><a href="mailto:au@tokl.ub" class="mailto">au@tokl.ub</a></p>
+				<p><span>Cím: </span> 1112 Bukarest, Cím utca3</p>
+				<p><span>Tel.: </span>+36-30-30-30-30</p>
+				<p><span>Fax: </span>+36-30-40-40-40</p>
+				<p><span>Email: </span><a href="mailto:au@tokl.ub" class="mailto">au@tokl.ub</a></p>
 			</div>
 			<table id="hours-table" class="mak-table">
 				<thead>
-					<tr colspan="2">
-						<th>Nyitva tartás</th>
+					<tr>
+						<th colspan="2">Nyitva tartás</th>
 					</tr>
 				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="2"></td>
+					</tr>
+				</tfoot>
 				<tbody>
 					<tr>
 						<td>Hétfő</td>
@@ -120,10 +125,15 @@
 			
 			<table class="mak-table" id="vizsga-table">
 				<thead>
-					<tr colspan="2">
-						<th>Műszaki vizsga időpontok</th>
+					<tr>
+						<th colspan="2">Műszaki vizsga időpontok</th>
 					</tr>
 				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="2"></td>
+					</tr>
+				</tfoot>
 				<tbody>
 					<tr>
 						<td>Hétfő</td>
