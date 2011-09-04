@@ -339,14 +339,36 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		$table = 'mak_altartalom';
-		$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
-		$cond['mak_altartalom.url'] = $aloldal_url;
+		/*
+		 * A szervízőpontok id alapján kerülnek azonosításra, 
+		 * más esetben nem használunk kizárólag numerikus karaktereket
+		 * az aloldal meghatározására
+		 */
 		
-		$a = $this->sql_select($table,$col,$cond);
+		if(is_numeric($aloldal_url)){
 		
-		$parameterek = $a[0];
-				
+			$a = $this->get_szervizpont_idbol($aloldal_url);
+
+			$parameterek['h1'] = 'Szervízpont - ' . $a[0]['cim'];
+			
+			$kw = explode(" ",$a[0]['cim']);
+			$kws = implode(",",$kw);
+			
+			$parameterek['keywords'] = 'szervizpont,' . $kws;
+			$parameterek['description'] = 'Részletes információk az alábbi címen található Szervizpontunkról: ' . $a[0]['cim'];
+		
+		}else{
+		
+			$table = 'mak_altartalom';
+			$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
+			$cond['mak_altartalom.url'] = $aloldal_url;
+			
+			$a = $this->sql_select($table,$col,$cond);
+			
+			$parameterek = $a[0];
+
+		}
+		
 		return $parameterek;
 	
 	}
@@ -387,6 +409,36 @@ class mak extends db{
 	
 	}
 	
+	public function get_szervizpont($cond=''){
+	
+		if(!is_array($cond) && $cond != ''){
+			return FALSE;
+		}
+		
+		if($cond != ''){
+			GUMP::sanitize($cond);
+		}
+		
+		$table = 'mak_szervizpontok';
+		
+		$col = 'id,cim,telefon_fax,e_mail,nyitvatartas,szoveg,modositas';	
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+	
+	public function get_szervizpont_idbol($id){
+	
+		if($id == ''){
+			return FALSE;
+		}
+	
+		$id = (int)$id;
+		$cond['id'] = $id;
+	
+		return $this->get_szervizpont($cond);
+	
+	}
 	
 	//INSERT
 	
@@ -1007,6 +1059,21 @@ class mak extends db{
 		
 		switch($aloldal){
 			
+			case "szervizpont":
+			
+				$szervizpont = $this->get_szervizpont_idbol($valtozo);
+				$szervizpont = $szervizpont[0];
+			
+				$html = '<div id="map"></div>';
+				$html .='<div id="szervizpont-data">';
+				$html .= '<p><span>Cím: </span>' . $szervizpont['cim'] . '</p>';
+				$html .= '<p>' . $szervizpont['telefon_fax'] . '</p>';
+				$html .= '<p><span>Email: </span><a href="mailto:' . $szervizpont['e_mail'] . '" class="mailto">' . $szervizpont['e_mail'] . '</a></p>';
+				$html .= '</div>';
+				$html .= $szervizpont['nyitvatartas'];
+			
+				break;
+		
 			case "szervizpontok":
 			
 				$html = '<div id="map"></div>';

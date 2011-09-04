@@ -24,7 +24,7 @@ require_once 'ti.php';
 		<?php startblock('additional-css') ?><?php endblock() ?>
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body>
+	<body id="fooldal">
 	<div id="wrap">
 	<div class="header-wrap">
 		<div class="header-outer">

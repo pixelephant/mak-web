@@ -108,7 +108,7 @@ if($subpage != ''){
 
 <?php startblock('sections')?>
 <?php 
-	echo $main->render_aloldal_section($page);
+	echo $main->render_aloldal_section($page,$subpage);
 ?>
 <?php endblock() ?>
 
