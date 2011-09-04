@@ -7,7 +7,7 @@
 			<li>Évszázados tapasztalat</li>
 		</ul>
 		<div class="a">
-			<a class="button" href="regisztralas"><span>Tagbelépés</span> <em></em></a>
+			<a class="yellow-button" href="regisztralas"><span>Tagbelépés</span> <em></em></a>
 		</div>
 	</div>
 </section>

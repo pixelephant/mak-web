@@ -1,118 +1,69 @@
-/* Skype swf eltüntetése */
-#skypedetectionswf {
+/*Színek
+
+Autóklub kék: #0080B0;
+Autóklub sárga: #FFD400;
+Autóklub fekete: #1C1C1C;
+Autóklub platina: #797E82;
+
+*/
+
+
+/* Egyéb apróságok, segédosztályok */
+
+#skypedetectionswf { /*Skype swf eltüntetése*/
 	display: none;
 }
 
-html,body{
-	width: 100%;
-	height: 100%;
-	background: url(../../img/bg.png) repeat #EEF4E6;
-	font-family: "Myriad Pro", Arial;
+.link{ /*Szövegben elhelyezett linkek*/
+	text-decoration: none;
+	color:#0080B0;
 }
 
-.wrapper{
-	width: 975px;
-	margin: 0 auto;
-}
-
-.header-outer{
-	  background-color: #ffd400;
-	  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd400), to(#F2BE00)); 
-	  background-image: -webkit-linear-gradient(top, #ffd400, #F2BE00); 
-	  background-image:    -moz-linear-gradient(top, #ffd400, #F2BE00); 
-	  background-image:     -ms-linear-gradient(top, #ffd400, #F2BE00); 
-	  background-image:      -o-linear-gradient(top, #ffd400, #F2BE00); 
-	  background-image:         linear-gradient(top, #ffd400, #F2BE00);
-	            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffd400', EndColorStr='#F2BE00'); 
-}
-
-.header-wrap .hr{
-	clear: both;
-	width: 100%;
-	background: url(../../img/header-loop.png) repeat-x center;
-	height: 17px;
-}
-
-aside .hr,footer .hr{
+aside .hr{ /*Oldalsáv elválasztó vonala*/
 	clear: both;
 	width: 100%;
 	background: url(../../img/hr_yellow.png) repeat-x center;
 	height: 17px;
 }
 
-header{
-	height: 80px;
-	padding: 15px;
-	width: 945px;
-	position: relative;
+#content .hr{ /*Tartalom elválasztó vonala*/
+	clear: both;
+	width: 100%;
+	height: 62px;
+	background: url(../../img/hr_grey.png) repeat-x center;
 }
 
-header h1 a{
-	font-size: 20px;
-	font-family: "Myriad Pro",Arial;
+strong{
 	font-weight: bold;
-	height: 80px;
-	padding-left: 90px;
-	background: url(../../img/logo.png) no-repeat left center;
-	line-height: 80px;
-	float: left;
-	text-decoration: none;
-	color: #1c1c1c;
 }
 
-#skypeButton{
-	float: right;
-	top: 25px;
-	position: relative;
-	margin-right: 10px;	
-}
-
-#loginContainer img{
-	display:block;
-}
-
-#loginButton,#segelyButton,#travelButton,#kozlekButton,#szervizButton{
-	display: block;
-	height: 32px;	
+.gray-button{ /*Szürke átmenetes gomb*/
 	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	
-	  background-color: #ffffff;
-	  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#DAE0D4)); 
-	  background-image: -webkit-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:    -moz-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:     -ms-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:      -o-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:         linear-gradient(top, #ffffff, #DAE0D4);
-	            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#DAE0D4'); 
-		-moz-border-radius: 2px;
+	background-color: #ffffff;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#DAE0D4)); 
+	background-image: -webkit-linear-gradient(top, #ffffff, #DAE0D4); 
+	background-image:    -moz-linear-gradient(top, #ffffff, #DAE0D4); 
+	background-image:     -ms-linear-gradient(top, #ffffff, #DAE0D4); 
+	background-image:      -o-linear-gradient(top, #ffffff, #DAE0D4); 
+	background-image:         linear-gradient(top, #ffffff, #DAE0D4);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#DAE0D4'); 
+	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
 	border: 1px solid #5E5E5E;
 	display: inline-block;
-	color: #1C1C1C;
-	font-size: 12px;
-	font-weight: bold;
 	text-decoration: none;
 	text-shadow: 1px 1px 0px #E8E8E8;
-	padding: 0px 10px;
-	line-height: 34px;
 }
 
-#segelyButton,#travelButton,#kozlekButton,#szervizButton{
-	width: auto;
-	height: auto;
-	line-height: auto;
-	padding: 0;
+.gray-button:hover{ /*Szürke átmenetes gomb hover*/
+	position:relative;
+	top:1px;
 }
 
-#loginButton:hover,#segelyButton:hover,#travelButton:hover,#kozlekButton:hover,#szervizButton:hover {
-	 position:relative;
-	 top:1px;
-	}
-
-#loginButton:active,#segelyButton:active,#travelButton:active,#kozlekButton:active,#szervizButton:active {
+.gray-button:active{ /*Szürke átmenetes gomb active*/
 	background-color: #DAE0D4;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#DAE0D4), to(#ffffff)); 
 	background-image: -webkit-linear-gradient(top, #DAE0D4, #ffffff); 
@@ -123,39 +74,37 @@ header h1 a{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#DAE0D4', EndColorStr='#ffffff'); 
 }
 
-#loginButton span{
-	float: left;
-	margin-right: 4px;
+.yellow-button{ /*Sárga átmenetes gomb*/
+	-moz-box-shadow: inset 0px 1px 0px 0px #ffff00;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffff00;
+	box-shadow: inset 0px 1px 0px 0px #ffff00;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FDD300), color-stop(1, #FCB614) );
+	background: -moz-linear-gradient( center top, #FDD300 5%, #FCB614 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd300', endColorstr='#fcb614');
+	background-color: #FDD300;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #DAA41A;
+	display: inline-block;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px yellow;
 }
 
-#loginButton em{
-	width: 14px;
-	height: 13px;
-	margin-top: 10px;
-	background: url(../../img/user-small.png) no-repeat;
-	display: block;
-	float: left;
+.yellow-button:hover{ /*Sárga átmenetes gomb hover*/
+	position:relative;
+	top:1px;
 }
 
-#headerButtons{
-	-moz-border-radius: 2px; 
-	-webkit-border-radius: 2px; 
-	border-radius: 2px;           
-	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-	width: 306px;
-	float: right;
-	border-top: 1px solid #a58535; 	
-	border-bottom: 1px solid #fee54b;
-	background: #e4b53b;
-	padding: 5px;
-	margin-top: 14px;
+.yellow-button:active{ /*Sárga átmenetes gomb active*/
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcb614), color-stop(1, #fdd300) );
+	background:-moz-linear-gradient( center top, #fcb614 5%, #fdd300 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcb614', endColorstr='#fdd300');
+	background-color:#fcb614;
 }
 
-#headerButtons a{
-	cursor: pointer;
-	margin: 0 3px;
-}
 
+/*Felugró ablak*/
 		
 .reveal-modal-bg { 
 	position: fixed; 
@@ -198,14 +147,163 @@ header h1 a{
 	font-weight: bold;
 	cursor: pointer;
 } 
-		
-		
+			
 .reveal-modal h2{
 	font-size: 20px;
 	margin-bottom: 10px;
 }
+
+/*Űrlap elemek*/
+
+input[type='text'],input[type='password']{ 
+	border: 1px solid #797e82;	
+	background-color: #E0E0E0;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#E0E0E0), to(#F5F5F5)); 
+	background-image: -webkit-linear-gradient(top, #E0E0E0, #F5F5F5); 
+	background-image:    -moz-linear-gradient(top, #E0E0E0, #F5F5F5); 
+	background-image:     -ms-linear-gradient(top, #E0E0E0, #F5F5F5); 
+	background-image:      -o-linear-gradient(top, #E0E0E0, #F5F5F5); 
+	background-image:         linear-gradient(top, #E0E0E0, #F5F5F5);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5');
+}
+
+input[type='checkbox'] {
+    width:auto;
+    margin:1px 9px 0 0;
+    float:left;
+    padding:0;
+    border:0;
+    *margin:-3px 9px 0 0; /* IE7 Fix */
+}
+
+label.error,label.succes{
+	display: block;
+	color: red !important;
+	font-size: 11px;
+	clear: both;
+	padding: 8px;
+}
+
+label.success{
+	color: green !important;
+}
+
+html,body{
+	width: 100%;
+	height: 100%;
+	background: url(../../img/bg.png) repeat #EEF4E6;
+	font-family: "Myriad Pro", Arial;
+	color:#1c1c1c;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.wrapper{
+	width: 975px;
+	margin: 0 auto;
+}
+
+/*Fejléc*/
+
+.header-outer{
+	  background-color: #FFD400;
+	  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd400), to(#F2BE00)); 
+	  background-image: -webkit-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:    -moz-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:     -ms-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:      -o-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:         linear-gradient(top, #ffd400, #F2BE00);
+	  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffd400', EndColorStr='#F2BE00'); 
+}
+
+.header-wrap .hr{
+	clear: both;
+	width: 100%;
+	background: url(../../img/header-loop.png) repeat-x center;
+	height: 17px;
+}
+
+header{
+	height: 80px;
+	padding: 15px;
+	width: 945px;
+	position: relative;
+}
+
+header h1 a{
+	font-size: 20px;
+	font-weight: bold;
+	height: 80px;
+	padding-left: 90px;
+	background: url(../../img/logo.png) no-repeat left center;
+	line-height: 80px;
+	float: left;
+	text-decoration: none;
+	color: #1c1c1c;
+}
+
+#skypeButton{
+	float: right;
+	top: 25px;
+	position: relative;
+	margin-right: 10px;	
+}
+
+#headerButtons{
+	-moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; 
+	border-radius: 2px;           
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+	width: 306px;
+	float: right;
+	border-top: 1px solid #a58535; 	
+	border-bottom: 1px solid #fee54b;
+	background: #e4b53b;
+	padding: 5px;
+	margin-top: 14px;
+}
+
+#headerButtons a{
+	cursor: pointer;
+	margin: 0 3px;
+}
+
+#loginContainer img{
+	display:block;
+}
+
+#loginButton,#segelyButton,#travelButton,#kozlekButton,#szervizButton{
+	height: 32px;	
+	font-size: 12px;
+	font-weight: bold;
+	padding: 0px 10px;
+	line-height: 34px;
+}
+
+#segelyButton,#travelButton,#kozlekButton,#szervizButton{
+	width: auto;
+	height: auto;
+	line-height: auto;
+	padding: 0;
+}
+
+#loginButton span{
+	float: left;
+	margin-right: 4px;
+}
+
+#loginButton em{
+	width: 14px;
+	height: 13px;
+	margin-top: 10px;
+	background: url(../../img/user-small.png) no-repeat;
+	display: block;
+	float: left;
+}
+
+/*Bejelentkezés*/
 		
-.reveal-modal form label{
+#loginform label{
 	min-width: 105px;
 	text-align: left;
 	margin-right: 5px;
@@ -216,7 +314,7 @@ header h1 a{
 	line-height: 20px;
 }
 
-.reveal-modal form label.error{
+#loginform label.error{
 	font-size: 12px;
 	color: red;
 	width: auto;
@@ -225,27 +323,18 @@ header h1 a{
 	float: right;
 }
 
-.reveal-modal form input[type='text'],.reveal-modal form input[type='password']{
+#loginform input[type='text'],#loginform input[type='password']{
 	width: 200px;
 	height: 20px;
 	float: left;
-	border: 1px solid #797e82;	
-	background-color: #E0E0E0;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#E0E0E0), to(#F5F5F5)); 
-	background-image: -webkit-linear-gradient(top, #E0E0E0, #F5F5F5); 
-	background-image:    -moz-linear-gradient(top, #E0E0E0, #F5F5F5); 
-	background-image:     -ms-linear-gradient(top, #E0E0E0, #F5F5F5); 
-	background-image:      -o-linear-gradient(top, #E0E0E0, #F5F5F5); 
-	background-image:         linear-gradient(top, #E0E0E0, #F5F5F5);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5'); 
+	 
 }
 
-
-.reveal-modal fieldset{
+#login-form-inner{
 	margin-bottom: 15px;
 }
 
-.reveal-modal form div.row{
+#loginform .row{
 	padding: 10px;
 	padding-top: 15px;
 	overflow: hidden;
@@ -253,48 +342,11 @@ header h1 a{
 	margin: 0 !important;
 }
 
-.reveal-modal input[type='submit']{
-	-moz-box-shadow: inset 0px 1px 0px 0px #ffff00;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #ffff00;
-    box-shadow: inset 0px 1px 0px 0px #ffff00;
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FDD300), color-stop(1, #FCB614) );
-    background: -moz-linear-gradient( center top, #FDD300 5%, #FCB614 100% );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd300', endColorstr='#fcb614');
-    background-color: #FDD300;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    border: 1px solid #DAA41A;
-    display: inline-block;
-    color: #1C1C1C;
+#loginform input[type='submit']{
     font-size: 12px;
     font-weight: bold;
     padding: 8px 24px;
-    text-decoration: none;
-    text-shadow: 1px 1px 0px yellow;
     float:left;
-}
-
-
-.reveal-modal input[type='submit']:active {
-   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcb614), color-stop(1, #fdd300) );
-   background:-moz-linear-gradient( center top, #fcb614 5%, #fdd300 100% );
-   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcb614', endColorstr='#fdd300');
-   background-color:#fcb614;
-}
-
-.reveal-modal input[type='submit']:hover{
-     position:relative;
-     top:1px;
-}
-
-.reveal-modal input[type='checkbox'] {
-    width:auto;
-    margin:1px 9px 0 0;
-    float:left;
-    padding:0;
-    border:0;
-    *margin:-3px 9px 0 0; /* IE7 Fix */
 }
 
 #chl{
@@ -304,7 +356,7 @@ header h1 a{
 	margin-top: 10px;
 }
 
-.reveal-modal a{
+#loginform a{
 	font-style: italic;
 	color: #0080B0;
 	float: right;
@@ -319,33 +371,12 @@ header h1 a{
 	font-size: 12px;
 }
 
-#callCenterContainer{
-	float: right;
-	margin-top: 55px;
-}
 
-/*MENU*/
+/*Menüsor*/
 
 nav{
 	background: url(../../img/menu-loop.png) repeat-x;
 	height: 67px;
-}
-
-ul.ldd_menu{
-	width: 975px;
-	height:45px;
-	list-style:none;
-	font-size: 11px;
-	color: #DAE0D4;
-	z-index: 5;
-	position: relative;
-}
-ul.ldd_menu a{
-	text-decoration:none;
-}
-ul.ldd_menu > li{
-	float:left;
-	position: relative;
 }
 
 #home-menu > span{
@@ -383,6 +414,22 @@ ul.ldd_menu > li{
 		background-position: 10px;
 }
 
+ul.ldd_menu{
+	width: 975px;
+	height:45px;
+	list-style:none;
+	font-size: 11px;
+	color: #DAE0D4;
+	z-index: 5;
+	position: relative;
+}
+ul.ldd_menu a{
+	text-decoration:none;
+}
+ul.ldd_menu > li{
+	float:left;
+	position: relative;
+}
 ul.ldd_menu > li > span{
 	float:left;
 	color: #DAE0D4;
@@ -390,24 +437,19 @@ ul.ldd_menu > li > span{
 	line-height:45px;
 	cursor:default;
 	padding:0px 14px;
-	font-size: 13px;
 	padding-left: 37px;
 	padding-right: 10px;
 }
-
 ul.ldd_menu > li:hover{
 	background:#2E2E2E;;
 }
-
 ul.ldd_menu > li > span a{
 	color: #DAE0D4;
 }
-
 ul.ldd_menu .ldd_submenu .arrow{
 	background: url(../../img/menu-arrow.png) 13px 0 no-repeat;
 	height: 7px;
 }
-
 ul.ldd_menu .ldd_submenu{
 	height: auto;
 	position:absolute;
@@ -419,7 +461,6 @@ ul.ldd_menu .ldd_submenu{
 	z-index: 5;
 	width: 540px;
 }
-
 ul.ldd_menu .ldd_submenu .in{
 	background-color: #ffffff;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dae0d4)); 
@@ -434,7 +475,6 @@ ul.ldd_menu .ldd_submenu .in{
 	overflow: hidden;
 	padding: 15px;
 }
-
 ul.ldd_menu ul{
 	list-style:none;
 	float:left;
@@ -442,7 +482,6 @@ ul.ldd_menu ul{
 	width: 150px;
 }
 li.ldd_heading{
-	color:#1c1c1c;
 	padding:0px 0px 10px 0px;
 	font-size: 14px;
 }
@@ -455,6 +494,8 @@ ul.ldd_menu ul li a{
 ul.ldd_menu ul li a:hover{
 	color: #1c1c1c;
 }
+
+/*Belső rész*/
 
 #main{
 	overflow: hidden;
@@ -472,6 +513,8 @@ aside{
 	padding: 10px 0;
 }
 
+/*Keresés*/
+
 #search{
 	text-align:center;
 	margin-bottom:15px;
@@ -486,89 +529,64 @@ aside{
 	padding-left:20px
 }
 
-aside .newsletter form{
-	display: none;
-	margin-top: 20px;
-	text-align: center;
-}
+/*Hírlevél sáv*/
 
-aside .newsletter form div{
-	overflow: hidden;
-}
-
-aside .newsletter form input{
-	float: left;
-}
-
-aside .newsletter input[type="text"]{
-	width: 90px;
-	margin-left: 23px;
-}
-
-aside .newsletter{
+#newsletter{
 	font-size: 16px;
 	color: #1c1c1c;
 	text-align: center;
 	margin-bottom: 10px;
 }
 
-#loginForm label.error, #loginForm label.success,aside label.error, aside label.success{
-	display: block;
-	color: red !important;
-	font-size: 11px;
-	clear: both;
-	padding: 8px;
+#newsletter form{
+	display: none;
+	margin-top: 20px;
+	text-align: center;
 }
 
-#loginForm label.success, aside label.success{
-	color: green !important;
+#newsletter form div{
+	overflow: hidden;
 }
 
-aside #newsletterbutton{
+#newsletter form input{
+	float: left;
+}
+
+#newsletter input[type="text"]{
+	width: 90px;
+	margin-left: 23px;
+}
+
+#newsletterbutton{
 	display: block;
 	margin: 9px auto 10px auto;
-	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	
-	  background-color: #ffffff;
-	  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#DAE0D4)); 
-	  background-image: -webkit-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:    -moz-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:     -ms-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:      -o-linear-gradient(top, #ffffff, #DAE0D4); 
-	  background-image:         linear-gradient(top, #ffffff, #DAE0D4);
-	            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#DAE0D4'); 
-		-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	border: 1px solid #5E5E5E;
-	display: inline-block;
-	color: #1C1C1C;
 	font-size: 14px;
 	font-weight: bold;
-	text-decoration: none;
-	text-shadow: 1px 1px 0px #E8E8E8;
 	padding: 12px 20px;
 	position: relative;
 	top: 9px;
 	left: 2px;
 }
 
-aside #newsletterbutton:hover {
+#newsletterbutton:hover {
 	 top:10px;
 }
 
-aside #newsletterbutton:active {
-	background-color: #DAE0D4;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#DAE0D4), to(#ffffff)); 
-	background-image: -webkit-linear-gradient(top, #DAE0D4, #ffffff); 
-	background-image:    -moz-linear-gradient(top, #DAE0D4, #ffffff); 
-	background-image:     -ms-linear-gradient(top, #DAE0D4, #ffffff); 
-	background-image:      -o-linear-gradient(top, #DAE0D4, #ffffff); 
-	background-image:         linear-gradient(top, #DAE0D4, #ffffff);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#DAE0D4', EndColorStr='#ffffff'); 
+#newsletterbutton span{
+	font-size: 14px;
+	line-height: 14px;
+	float: left;
+	margin-right: 8px;
 }
+
+#newsletterbutton em{
+	float: left;
+	background: url(../../img/hirlevel.png) no-repeat;
+	width: 20px;
+	height: 14px;
+}
+
+/*Hírdetések*/
 
 aside img.ad{
 	margin: 15px auto;
@@ -579,14 +597,7 @@ aside img.ad{
 	border: 1px solid #333;
 }
 
-aside .subtext{
-	font-size: 12px;
-	font-style: italic;
-	margin-left: 45px;
-	margin-bottom: 45px;
-	padding-right: 45px;
-	line-height: 1.5;
-}
+/*Tartalom*/
 
 #content{
 	width: 660px;
@@ -595,63 +606,53 @@ aside .subtext{
 	overflow: hidden;
 }
 
-#content .hr{
-	clear: both;
-	width: 100%;
-	height: 62px;
-	background: url(../../img/hr_grey.png) repeat-x center;
-}
+/*Főoldal belső grid*/
 
-.block{
+#fooldal .block{
 	width: 315px;
 	float: left;
 }
 
-.block.right{
+#fooldal .block.right{
 	float: right;
 }
 
-.block h2{
+#fooldal .block h2{
 	font-weight: bold;
 	font-size: 18px;
 	margin-bottom: 30px;
-	color: #1c1c1c;
 }
 
-.block img{
+#fooldal .block img{
 	margin-bottom: 30px;
 }
 
-.block p{
-	font-size: 13px;
-	line-height: 1.5;
+#fooldal .block p{
 	padding: 0 10px;
 }
 
-.block p strong{
-	font-weight: bold;
+#fooldal .block ul{
+	margin-top: 10px;
 }
 
-.block a{
+#fooldal .block ul a{
 	color: #0080B0;
 	font-size: 14px;
 	font-style: italic;
 }
 
-.block ul{
-	margin-top: 10px;
-}
-
-.block ul li{
+#fooldal .block ul li{
 	list-style: none;
 	padding: 0 10px;
 }
 
-.block ul li:before{
+#fooldal .block ul li:before{
 	content : "‣ ";
 	color: #0080B0;
 	font-size: 14px;
 }
+
+/*Call-to-action sáv*/
 
 #ctaWrap{
 	margin-top: 30px;	
@@ -693,57 +694,22 @@ aside .subtext{
 	float: left;
 	width: 305px;
 	text-align: right;
-	padding: 27px 10px;
+	padding-top:25px;
 }
 
 #ctaWrap a{
-	-moz-box-shadow: inset 0px 1px 0px 0px #ffff00;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #ffff00;
-	box-shadow: inset 0px 1px 0px 0px #ffff00;
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FDD300), color-stop(1, #FCB614) );
-	background: -moz-linear-gradient( center top, #FDD300 5%, #FCB614 100% );
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd300', endColorstr='#fcb614');
-	background-color: #FDD300;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	border: 1px solid #DAA41A;
-	display: inline-block;
-	color: #1C1C1C;
 	font-size: 24px;
 	font-weight: bold;
 	padding: 16px 48px;
-	text-decoration: none;
-	text-shadow: 1px 1px 0px yellow;
-}
-
-#ctaWrap a:active {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcb614), color-stop(1, #fdd300) );
-	background:-moz-linear-gradient( center top, #fcb614 5%, #fdd300 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcb614', endColorstr='#fdd300');
-	background-color:#fcb614;
-}
-
-#ctaWrap a:hover{
-	 position:relative;
-	 top:1px;
-}
-
-#ctaWrap a span,#newsletterbutton span{
-	float: left;
-	margin-right: 8px;
 }
 
 #ctaWrap a span{
+	float: left;
+	margin-right: 8px;
 	margin-top: 3px;
 }
 
-#newsletterbutton span{
-	font-size: 14px;
-	line-height: 14px;
-}
-
-#ctaWrap a em,#newsletterbutton em{
+#ctaWrap a em{
 	width: 28px;
 	height: 28px;
 	background: url(../../img/right_02.png) no-repeat;
@@ -751,11 +717,7 @@ aside .subtext{
 	float: left;
 }
 
-#newsletterbutton em{
-	background: url(../../img/hirlevel.png) no-repeat;
-	width: 20px;
-	height: 14px;
-}
+/*Lapozgató*/
 
 #pagination{
 	overflow: hidden;
@@ -801,23 +763,22 @@ aside .subtext{
 	background: url(../../img/nyilak.png) no-repeat center transparent;
 }
 
+/*Breadcrumb*/
+
 #breadcrumb{
 	overflow: hidden;
 	position: absolute;
 	bottom: 10px;
 }
-
 #breadcrumb li{
 	float: left;
 	list-style: none;
 	margin: 0 3px;
 	padding: 0 3px;
 }
-
 #breadcrumb li:before{
 	content : "‣ ";
 }
-
 #breadcrumb li.first:before{
 	content: "";
 }
@@ -827,16 +788,16 @@ aside .subtext{
 	font-size: 12px;
 }
 
+/*Lábléc*/
+
 footer{
 	background: url(../../img/footer-loop.png) repeat-x;
 	height: 180px;
 	overflow: hidden;
 }
-
 #footerNav{
 	overflow: hidden;
 }
-
 .footer-sep{
 	float: left;
 	width: 3px;
@@ -844,103 +805,73 @@ footer{
 	height: 136px;
 	margin-top: 1px;
 }
-
 #footerNav ul{
 	width: 171px;
 	float: left;
 	font-size: 12px;
-	color: #1c1c1c;
 	height: 135px;
 	padding: 10px 10px 0 10px;
 }
-
 #footerNav ul li.heading{
 	font-size: 14px;
 	margin-bottom: 20px;
 }
-
 #footerNav ul li{
-	/*list-style-image: url(../../img/nyilak.png);*/
 	margin: 6px 0;
 	list-style-position: inside;
 	padding-left: 6px;
 }
-
 #footerNav ul li:before{
 	content : "‣ ";
 	color: #1c1c1c;
 }
-
 #footerNav ul li.heading:before{
 	content : "";
 }
-
 #footerNav a{
 	text-decoration: none;
 	color: #3B2314;
 }
-
 #footerNav a:hover{
 	color: black;
 }
-
 li.heading{
 	height: 22px;
 	line-height: 22px;
 	padding-left: 25px !important;
 }
-
 li.heading.klubtagsag{
 	background: url(../../img/ikonok/small/klub.png) no-repeat left;
 }
-
 li.heading.segelyszolgalat{
 	background: url(../../img/ikonok/small/segely.png) no-repeat left;
 }
-
 li.heading.szervizpontok{
 	background: url(../../img/ikonok/small/szerviz.png) no-repeat left;
 }
-
 li.heading.kozlekedesbiztonsag{
 	background: url(../../img/ikonok/small/kozlek.png) no-repeat left;
 }
-
 li.heading.travel{
 	background: url(../../img/ikonok/small/travel.png) no-repeat left;
 }
-
 #footerMisc p{
 	float: left;
 }
-
 #footerMisc span{
 	margin: 0 5px;
 }
-
-#footerMisc p span.mail{
-	color: #0080B0;
-}
-
 #footerMisc .misc{
 	float: right;
 }
-
 #footerMisc{
 	padding: 10px 0;
 	font-size: 12px;
 	overflow: hidden;
 }
-
 #footerMisc a{
 	margin: 0 5px;
-	color: #0080B0;
 	font-size: 12px;
-	text-decoration: none;
-}
-
-a.blue{
-	color: #0080B0;
 }
 
 
@@ -952,81 +883,62 @@ a.blue{
 	text-align: left;
 	width: 100%;
 	font-size: 14px;
-	color:#010101;
 }
-
 .mak-table thead tr{
-	border-bottom:2px solid #919598;
-	
-  background-color: #e1e1e1;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
-  background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
-
+	border-bottom:2px solid #919598;	
+	background-color: #e1e1e1;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
+	background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6');
 }
-
 .mak-table thead th{
 	font-size:16px;
 	font-weight: bold;
 	padding:15px;
 }
-
 .mak-table tr{
 	padding:10px;
 }
-
 .mak-table td{
-	padding:10px;
+padding:10px;	
+background-color: #e1e1e1;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
+background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
+background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
+background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
+background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
+background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
 }
-
-.mak-table td{
-	
-  background-color: #e1e1e1;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
-  background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
-
-}
-
 .mak-table td.odd{	
-	
-  background-color: #ededed;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#c6c6c6)); 
-  background-image: -webkit-linear-gradient(top, #ededed, #c6c6c6); 
-  background-image:    -moz-linear-gradient(top, #ededed, #c6c6c6); 
-  background-image:     -ms-linear-gradient(top, #ededed, #c6c6c6); 
-  background-image:      -o-linear-gradient(top, #ededed, #c6c6c6); 
-  background-image:         linear-gradient(top, #ededed, #c6c6c6);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ededed', EndColorStr='#c6c6c6'); 
-
+	background-color: #ededed;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#c6c6c6)); 
+	background-image: -webkit-linear-gradient(top, #ededed, #c6c6c6); 
+	background-image:    -moz-linear-gradient(top, #ededed, #c6c6c6); 
+	background-image:     -ms-linear-gradient(top, #ededed, #c6c6c6); 
+	background-image:      -o-linear-gradient(top, #ededed, #c6c6c6); 
+	background-image:         linear-gradient(top, #ededed, #c6c6c6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ededed', EndColorStr='#c6c6c6'); 
 	border-right: #dcdcdc;
 }
-
 .mak-table tbody tr{
 	border-top:1px solid #919598;
 }
-
 .mak-table tfoot{
 	padding:5px;
-	
-  background-color: #e1e1e1;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
-  background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
-  background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
-            	border-top:2px solid #919598;
-
+	background-color: #e1e1e1;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
+	background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
+	background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
+	border-top:2px solid #919598;
 }
 
 #hours-table,#vizsga-table{
@@ -1056,13 +968,69 @@ a.blue{
 #gyik .answer{
 	padding-left: 10px;
 	font-size: 14px;
-	color:#1c1c1c;
+	
 }
 
 #gyik .link{
 	color:#0080B0;
 	text-decoration: none;
 }
+
+
+/* Összetett keresés */
+
+#advanced-search input[type="text"]{
+	width: 550px;
+	height: 20px;
+	float: left;
+}
+
+#advanced-search input[type='submit']{
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 24px;
+    float:left;
+    margin-top:-1px;
+}
+
+#advanced-search label{
+	font-size:14px;
+	
+	margin-right: 5px;
+}
+
+#advanced-search input[type='checkbox'] {
+    float: none !important;
+}
+
+#advanced-search div{
+	clear:both;
+	padding-top: 10px;
+}
+
+#results{
+	margin-top:30px;
+}
+
+#results li{
+	margin:10px 0;
+}
+
+#results li h3 a{
+	color:black;
+	font-size:16px;
+	margin-bottom: 5px;
+	cursor:pointer;
+}
+
+#results li div{
+	font-size:14px;
+}
+
+#results .mark{
+	background: #FCF58D;
+}
+
 
 /*Szervízpontok*/
 
