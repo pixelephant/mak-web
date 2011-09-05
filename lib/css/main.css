@@ -496,6 +496,7 @@ li.ldd_heading{
 	background-image:      -o-linear-gradient(top, #ffd400, #f2be00); 
 	background-image:         linear-gradient(top, #ffd400, #f2be00);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffd400', EndColorStr='#f2be00'); 
+	padding:15px 15px 0 15px;
 }
 ul.ldd_menu ul li a{
 	font-size:12px;
