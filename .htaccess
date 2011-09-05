@@ -11,5 +11,6 @@ Require valid-user
 	RewriteCond %{SCRIPT_FILENAME} !-f  
     
     RewriteRule ^(regisztralas)$ register.php
+    RewriteRule ^(kereses)$ search.php [QSA]
 	RewriteRule ^([a-zA-Z0-9_-]+)$ sub.php?page=$1
 	RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ sub.php?page=$1&subpage=$2
