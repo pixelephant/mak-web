@@ -318,6 +318,11 @@ class mak extends db{
 		 */
 		
 		$almenu = trim($almenu);
+		
+		if($almenu == ''){
+			return FALSE;
+		}
+		
 		$kategoria = $this->get_kategoria_urlbol($almenu);
 		
 		$cond['mak_almenu.kategoria_id'] = $kategoria;
@@ -1275,7 +1280,7 @@ class mak extends db{
 		$html = '';
 		
 		$html .= '<ul id="ldd_menu" class="ldd_menu wrapper">';
-		$html .= '<li id="home-menu"><span><a href="index.php">Főoldal</a></span></li>';
+		$html .= '<li id="home-menu"><span><a href="">Főoldal</a></span></li>';
 		$html .= '<!--<li><span><a href="#">Aktualitások</a></span></li>-->';
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
@@ -1284,7 +1289,7 @@ class mak extends db{
 				$kategoria = $tartalom[$i]['azonosito'];
 					
 				$html .= '<li id="' . $kategoria . '-menu">';
-				$html .= '<span>' . $tartalom[$i]['kategoria_nev'] . '</span>';
+				$html .= '<span><a href="' . $kategoria . '">' . $tartalom[$i]['kategoria_nev'] . '</a></span>';
 				$html .= '<div class="ldd_submenu">';
 				$html .= '<div class="arrow"></div>';
 				$html .= '<div class="in">';
