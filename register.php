@@ -104,7 +104,7 @@ $main = new mak(false);
 					</div>
 					<div class="row">
 						<label for="coZip">Székhely irányítószáma</label>
-						<input class="zip" size="4" minlength="4" maxlength="4" class="digits" type="text" name="coZip" id="coZip" />
+						<input class="zip digits" size="4" minlength="4" maxlength="4" type="text" name="coZip" id="coZip" />
 					</div>
 					<div class="row">
 						<label for="coCity">Székhely települése</label>
@@ -148,7 +148,7 @@ $main = new mak(false);
 					</div>
 					<div class="row">
 						<label for="natZip">Irányítószám</label>
-						<input class="zip" size="4" minlength="4" maxlength="4" class="digits required" type="text" name="natZip" id="natZip" />
+						<input class="zip digits required" size="4" minlength="4" maxlength="4" type="text" name="natZip" id="natZip" />
 					</div>
 					<div class="row">
 						<label for="natCity">Település</label>
