@@ -478,18 +478,24 @@ ul.ldd_menu .ldd_submenu .in{
 	opacity: 0.99;
 	height: auto;
 	overflow: hidden;
-	padding: 15px;
 }
 ul.ldd_menu ul{
 	list-style:none;
 	float:left;
-	margin: 0 10px;
 	width: 150px;
 }
 li.ldd_heading{
 	padding:0px 0px 10px 0px;
 	font-size: 14px;
-	color:black;
+	color:black;	
+	background-color: #ffd400;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd400), to(#f2be00)); 
+	background-image: -webkit-linear-gradient(top, #ffd400, #f2be00); 
+	background-image:    -moz-linear-gradient(top, #ffd400, #f2be00); 
+	background-image:     -ms-linear-gradient(top, #ffd400, #f2be00); 
+	background-image:      -o-linear-gradient(top, #ffd400, #f2be00); 
+	background-image:         linear-gradient(top, #ffd400, #f2be00);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffd400', EndColorStr='#f2be00'); 
 }
 ul.ldd_menu ul li a{
 	font-size:12px;
