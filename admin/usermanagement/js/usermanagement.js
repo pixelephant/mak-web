@@ -54,7 +54,8 @@ $(function(){
     viewrecords: true,
     gridview: true,
     caption: 'Regisztrál felhasználók kezelése',
-    editurl: 'php/edit.php'
+    editurl: 'php/edit.php',
+    shrinkToFit: false
   });
   
   $("#usermanagement").jqGrid('navGrid', '#pager', {
@@ -74,6 +75,15 @@ $(function(){
   },{
 	  multipleSearch:true
   });
+  
+  $("#usermanagement").jqGrid('navButtonAdd','#pager',{
+      caption: "Oszlopok",
+      title: "Oszlopok rendezése",
+      onClickButton : function (){
+        jQuery("#usermanagement").jqGrid('columnChooser');
+    }
+   });
+ 
   
   function processAddEdit(response, postdata){
 	  

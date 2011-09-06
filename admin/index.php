@@ -34,7 +34,7 @@
 	</nav>
 	<div id="content">
 		<div id="newsletter">
-			<!-- >iframe src="newsletter/index.php" width="100%" height="495px"></iframe-->
+			<iframe src="newsletter/index.php" width="100%" height="495px"></iframe>
 		</div>
 		<hr />
 		<div id="analytics">

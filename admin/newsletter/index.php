@@ -78,9 +78,9 @@
 	
 // TABLES
 	
-	$table_emails = "newsletter_emails";
-	$table_categories = "newsletter_categories";
-	$table_sent = "newsletter_sent_mails";
+	$table_emails = "mak_hirlevel";
+	$table_categories = "mak_hirlevel_kategoriak";
+	$table_sent = "mak_hirlevel_elkuldve";
 	
 // PROTECTED CATEGORIES 
 
@@ -1160,7 +1160,7 @@ if ($password_protection == true) {
 						<br />
 						<textarea id="emailbody" name="emailbody" cols="40" onfocus="if (this.value=='Write your message here ...') this.value='';" rows="8" style="width:400px;">Üzenet szövege</textarea><br />
 						<br />
-						<input type="file" name="fileToUpload" id="fileToUpload" onchange="return ajaxFileUpload();" /> <input type="text" readonly="readonly" id="filename" style="color:#83B440;font-weight:bold;" value="" /><br />
+						<!-- input type="file" name="fileToUpload" id="fileToUpload" onchange="return ajaxFileUpload();" /> <input type="text" readonly="readonly" id="filename" style="color:#83B440;font-weight:bold;" value="" /><br /-->
 						<br />
 					</div>
 					<div style="float:right;width:500px;text-align:center;padding-top:120px;">

@@ -33,6 +33,10 @@ $json = substr($json,0,-1);
 
 $json .= ']';
 
+/*
+ * Átlagos idő az oldalon, visszafordulások aránya
+ */
+
 $ga->requestReportData($report_id,array('visitorType'),array('avgTimeOnSite','bounces'));
 $ga->getResults();
 
@@ -54,6 +58,44 @@ $json .= '"' . ($avg_time / 2) . '"';
 $json .= ',"bounces":';
 $json .= '"' . $bounce_rate . '"';
 
+/*
+ * Új látogatók arány, visszatérő látogatók aránya
+ */
+
+$ga->requestReportData($report_id,array('visitCount'),array('percentNewVisits'));
+$ga->getResults();
+
+foreach($ga->getResults() as $result){
+	
+	$new_visits = $result->getPercentNewVisits();
+
+}
+
+$ret_visits = 100 - $new_visits;
+
+$json .= ',"new_visits":"' . $new_visits . '",';
+$json .= '"ret_visits":"' . $ret_visits . '",';
+
+/*
+ * Látogatások aloldalakon
+ */
+
+$ga->requestReportData($report_id,array('pagePath'),array('pageviews'),'-pageviews');
+$ga->getResults();
+
+$json .= '"pageviews":[';
+
+foreach($ga->getResults() as $result){
+	
+	  $json .= '{';
+	  $json .= '"pageview":"' . $result->getPageviews() . '",';
+	  $json .= '"pagepath":"' . $result->getPagePath() . '"';
+	  $json .= '},';
+	
+}
+
+$json = substr($json,0,-1);
+$json .= ']';
 
 $json .= '}';
 

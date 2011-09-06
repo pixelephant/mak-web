@@ -1,5 +1,6 @@
- 	google.load("visualization", "1", {packages:["corechart"]});
+	google.load("visualization", "1", {packages:["corechart"]});
     google.setOnLoadCallback(drawChart);
+    
     function drawChart() {
     	
     	$.post("php/process.php", 
@@ -29,8 +30,24 @@
     				 
     			 $("#avg_time_span").html(resp.avgTime.substr(0,5));
     			 $("#bounce_rate_span").html(resp.bounces.substr(0,5));
+    			 $("#new_visits_span").html(resp.new_visits.substr(0,5));
+    			 $("#ret_visits_span").html(resp.ret_visits.substr(0,5));
+    			 
+    			 var pagev = '<ol>';
+    			 i = 0;
+    			 
+    			 $.each(resp.pageviews, function() {
+    				 if(i < 5){
+    					pagev += '<li>' + this.pagepath + ' -> ' + this.pageview + ' látogató </li>';
+ 		                i = i + 1; 
+    				 }
+		         });
+    			 
+    			 pagev += '</ol>';
+    			 
+    			 $("#pageviews_span").html(pagev);
     			 
     			 },"json"
-    	);    	
+    	);
       
     };
