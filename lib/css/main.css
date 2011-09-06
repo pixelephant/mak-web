@@ -458,7 +458,7 @@ ul.ldd_menu .ldd_submenu .arrow{
 ul.ldd_menu .ldd_submenu{
 	height: auto;
 	position:absolute;
-	top:35px;
+	top:38px;
 	display:none;
 	opacity:0.95;
 	left:0px;
@@ -467,27 +467,29 @@ ul.ldd_menu .ldd_submenu{
 	width: 540px;
 }
 ul.ldd_menu .ldd_submenu .in{
-	background-color: #ffffff;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dae0d4)); 
-	background-image: -webkit-linear-gradient(top, #ffffff, #dae0d4); 
-	background-image:    -moz-linear-gradient(top, #ffffff, #dae0d4); 
-	background-image:     -ms-linear-gradient(top, #ffffff, #dae0d4); 
-	background-image:      -o-linear-gradient(top, #ffffff, #dae0d4); 
-	background-image:         linear-gradient(top, #ffffff, #dae0d4);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#dae0d4'); 
+	background-color: #20201E;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#20201E), to(#797E82)); 
+	background-image: -webkit-linear-gradient(top, #20201E, #797E82); 
+	background-image:    -moz-linear-gradient(top, #20201E, #797E82); 
+	background-image:     -ms-linear-gradient(top, #20201E, #797E82); 
+	background-image:      -o-linear-gradient(top, #20201E, #797E82); 
+	background-image:         linear-gradient(top, #20201E, #797E82);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#20201E', EndColorStr='#797E82'); 
 	opacity: 0.99;
 	height: auto;
 	overflow: hidden;
+	border: 1px solid #797E82;
+	border-top:none;
+	padding-bottom: 15px;
 }
 ul.ldd_menu ul{
 	list-style:none;
 	float:left;
-	width: 150px;
+	width: 170px;
+	background: url(../../img/menu-sep.png) repeat-y right; 
 }
 li.ldd_heading{
-	padding:0px 0px 10px 0px;
-	font-size: 14px;
-	color:black;	
+	font-size: 13px;	
 	background-color: #ffd400;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd400), to(#f2be00)); 
 	background-image: -webkit-linear-gradient(top, #ffd400, #f2be00); 
@@ -496,16 +498,30 @@ li.ldd_heading{
 	background-image:      -o-linear-gradient(top, #ffd400, #f2be00); 
 	background-image:         linear-gradient(top, #ffd400, #f2be00);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffd400', EndColorStr='#f2be00'); 
-	padding:15px 15px 0 15px;
+	height:30px;
+	line-height:30px;
+	font-weight: bold;
+	color:black;
+	padding:0 15px;
+	margin-bottom: 15px;
+}
+.ldd_submenu li{
+	padding:0 15px;
 }
 ul.ldd_menu ul li a{
 	font-size:12px;
 	line-height:20px;
 	color:#0080B0;
 	padding:1px 3px;
+	color:white;
+}
+ul.ldd_menu ul li a:before{
+	content : "‣ ";
+	color: white;
+	font-size: 12px;
 }
 ul.ldd_menu ul li a:hover{
-	color: #1c1c1c;
+	
 }
 
 /*Belső rész*/
