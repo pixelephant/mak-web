@@ -740,6 +740,11 @@ class mak extends db{
 
 		//Validálás vége
 		
+		if($felhasznalo_array['szuletesi_datum'] != ''){
+			$felhasznalo_array['szuletesi_datum'] = substr($felhasznalo_array['szuletesi_datum'],0,4) . 
+			substr($felhasznalo_array['szuletesi_datum'],4,1) . substr($felhasznalo_array['szuletesi_datum'],6); 
+		}
+		
 		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
 		$felhasznalo_array['regisztracio_ideje'] = strtotime('now');
 		
