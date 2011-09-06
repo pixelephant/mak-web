@@ -5,6 +5,8 @@ include 'Wixel/gump.class.php';
 include 'class.db.php';
 include 'class.mak.php';
 
+$autoklub_email = 'info@autoklub.hu';
+
 $main = new mak(false);
 
 $form = array();
@@ -13,6 +15,9 @@ $adatok = array();
 
 parse_str($_POST['formData'], $form);
 parse_str($_POST['memberData'], $member);
+
+$form = GUMP::sanitize($form);
+$member = GUMP::sanitize($member);
 
 /*
  * Természetes személy regisztrációja
@@ -70,24 +75,46 @@ $adatok['jelszo'] = sha1($form['pass']);
 $adatok['felhasznalonev'] = $form['email'];
 
 if($form['memberRadio'] == 'new'){
-	$a = $main->insert_felhasznalo($adatok);
+	$valasz = $main->insert_felhasznalo($adatok);
 }
 
 if($form['memberRadio'] == 'old'){
 	$cond['tagsagi_szam'] = $form['cardNum'];
 	$cond['e_mail'] = $form['email'];
-	$a = $main->update_felhasznalo($adatok,$cond);
+	$valasz = $main->update_felhasznalo($adatok,$cond);
 }
 
-if($a == 'Sikeres'){
+if($valasz == 'Sikeres'){
 
-/*
- * Siker esetén e-mail küldés
- */
+	/*
+	 * Siker esetén e-mail küldés
+	 */
+	
+	require_once("phpmailer/phpmailer.inc.php");
+	
+	$mail = new PHPMailer();
+	
+	$link = 'http://www.pixelephant.hu/projects/on-going/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . sha1($adatok['jelszo']));
+	
+	//$mail->IsSMTP(); // SMTP használata
+	$mail->From = "regisztracio@autoklub.hu";
+	$mail->FromName = "Magyar Autóklub weboldala";
+	//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
+	$mail->AddAddress($adatok['e_mail'], $nev);
+	$mail->AddReplyTo($autoklub_email, "Magyar Autóklub");
+	$mail->WordWrap = 50;
+	
+	$mail->IsHTML(true);    // HTML e-mail
+	$mail->Subject = "Magyar Autóklub - sikeres regisztráció a weboldalra";
+	$mail->Body = 'Köszönjük, hogy regisztrált weboldalunkra! <br />Kérjük, az alábbi <a href="' . $link . '">linkre kattintva</a> erősítse meg a regisztrációt!';
+	
+	if($mail->Send() === FALSE){
+		$valasz = 'Sikertelen e-mail küldés!';
+	}
 
 }
 
-echo strtolower($a);
+echo strtolower($valasz);
 
 $main->close();
-?>	
+?>

@@ -1,5 +1,7 @@
 <div id="search">
-	<input type="text" name="search" placeholder="Keresés..." />
+	<form action="kereses" method="POST">
+		<input type="text" name="search" placeholder="Keresés..." />
+	</form>
 </div>
 <div class="hr"></div>
 <div id="newsletter">

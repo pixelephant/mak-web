@@ -225,7 +225,7 @@ class mak extends db{
 		
 	}
 	
-	public function get_tartalom_kereses($kereses){
+	public function get_tartalom_kereses($kereses,$cond=''){
 	
 		/*
 		 * A szabadszavas keresőből érkező kifejezésnek megfelelő tartalmak
@@ -253,22 +253,22 @@ class mak extends db{
 		
 		if($validate === TRUE){
 		
-			$cond['cim']['val'] = '%'.$keres['kereses'].'%';
-			$cond['cim']['rel'] = "LIKE";
-			$cond['cim']['and_or'] = "OR";
+			$cond['mak_tartalom.cim']['val'] = '%'.$keres['kereses'].'%';
+			$cond['mak_tartalom.cim']['rel'] = "LIKE";
+			$cond['mak_tartalom.cim']['and_or'] = "OR";
 			
-			$cond['szoveg']['val'] = '%'.$keres['kereses'].'%';
-			$cond['szoveg']['rel'] = "LIKE";
-			$cond['szoveg']['and_or'] = "OR";
-			
-			$cond['almenu']['val'] = '%'.$keres['kereses'].'%';
-			$cond['almenu']['rel'] = "LIKE";
-			$cond['almenu']['and_or'] = "OR";
+			$cond['mak_tartalom.szoveg']['val'] = '%'.$keres['kereses'].'%';
+			$cond['mak_tartalom.szoveg']['rel'] = "LIKE";
+			$cond['mak_tartalom.szoveg']['and_or'] = "OR";
+			/*
+			$cond['mak_almenu.almenu']['val'] = '%'.$keres['kereses'].'%';
+			$cond['mak_almenu.almenu']['rel'] = "LIKE";
+			$cond['mak_almenu.almenu']['and_or'] = "OR";
 		
-			$cond['kategoria_nev']['val'] = '%'.$keres['kereses'].'%';
-			$cond['kategoria_nev']['rel'] = "LIKE";
-			$cond['kategoria_nev']['and_or'] = "OR";
-			
+			$cond['mak_kategoria.kategoria_nev']['val'] = '%'.$keres['kereses'].'%';
+			$cond['mak_kategoria.kategoria_nev']['rel'] = "LIKE";
+			$cond['mak_kategoria.kategoria_nev']['and_or'] = "OR";
+			*/
 			return $this->get_tartalom($cond);
 		
 		}else{
@@ -740,6 +740,9 @@ class mak extends db{
 
 		//Validálás vége
 		
+		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
+		$felhasznalo_array['regisztracio_ideje'] = strtotime('now');
+		
 		if($validate === TRUE){
 			if($this->sql_insert('mak_felhasznalo',$felhasznalo_array)){
 				return 'Sikeres';
@@ -950,7 +953,7 @@ class mak extends db{
 	
 	public function update_felhasznalo($felhasznalo_array,$cond=''){
 	
-	if(!is_array($felhasznalo_array) || (!is_array($cond) && $cond != '')){
+		if(!is_array($felhasznalo_array) || (!is_array($cond) && $cond != '')){
 			return FALSE;
 		}
 	
@@ -1041,6 +1044,8 @@ class mak extends db{
 		}
 		
 		//Validálás vége
+		
+		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
 		
 		if($validate === TRUE && $validate2){
 			if($this->sql_update('mak_felhasznalo',$felhasznalo_array,$cond)){
@@ -1394,7 +1399,7 @@ class mak extends db{
 	
 	}
 
-	public function render_search_results($query){
+	public function render_search_results($query,$advanced=''){
 	
 		if($query == ''){
 			return FALSE;
@@ -1404,7 +1409,50 @@ class mak extends db{
 		
 		$kereses = GUMP::sanitize($kereses);
 		
-		$eredmenyek = $this->get_tartalom_kereses($kereses[0]);
+		/*
+		 * Összetett kereső
+		 */
+		
+		if($advanced != '' && isset($advanced['advanced-search-input'])){
+			
+			$col = "mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_tartalom.publikalta AS publikalta FROM mak_tartalom LEFT JOIN mak_almenu ON mak_almenu.id=mak_tartalom.almenu_id";
+		
+			$sql = "SELECT DISTINCT " . $col . " LEFT JOIN mak_kategoria ON mak_kategoria.id=mak_almenu.kategoria_id";
+
+			$cols = explode(",",$col);
+			
+			if($advanced['only-enautoklubom'] == 'on'){
+				$adv .= " OR mak_kategoria.azonosito='enautoklubom'";
+			}
+			if($advanced['only-klubtagsag'] == 'on'){
+				$adv .= " OR mak_kategoria.azonosito='klubtagsag'";
+			}
+			if($advanced['only-kozlekedesbiztonsag'] == 'on'){
+				$adv .= " OR mak_kategoria.azonosito='kozlekedesbiztonsag'";
+			}
+			if($advanced['only-segelyszolgalat'] == 'on'){
+				$adv .= " OR mak_kategoria.azonosito='segelyszolgalat'";
+			}
+			if($advanced['only-szervizpontok'] == 'on'){
+				$adv .= " OR mak_kategoria.azonosito='szervizpontok'";
+			}
+			
+			$adv = preg_replace('/ OR /',' WHERE (',$adv,1);
+			
+			$adv .= ")";
+			
+			$sql = $sql . $adv;
+			
+			$sql .= " AND (mak_tartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_tartalom.szoveg LIKE '%" . $kereses[0] . "%')";
+			
+			$sql .= " ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC";
+			
+			$eredmenyek = $a = $this->results($this->query($sql),$cols);
+			
+		}else{
+			$eredmenyek = $this->get_tartalom_kereses($kereses[0]);
+		}
+		
 		$html = '';
 		
 		for($i = 0;$i<$eredmenyek['count'];$i++){
@@ -1458,7 +1506,7 @@ class mak extends db{
 		if($pozicio === FALSE){
 			return $result_string;
 		}else{
-			return substr($string, 0, $max_hossz);
+			return substr($string, $pozicio - 100, $max_hossz);
 		}
 	
 	}

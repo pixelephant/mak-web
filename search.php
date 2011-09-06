@@ -5,7 +5,17 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
+error_reporting(0);
+
 $main = new mak(false);
+
+if(isset($_POST['search'])){
+	$search = trim($_POST['search']);
+}
+
+if(isset($_POST['advanced-search-input'])){
+	$search = trim($_POST['advanced-search-input']);
+}
 
 ?>
 <!DOCTYPE HTML>
@@ -57,8 +67,8 @@ $main = new mak(false);
 			<h1>Keresési találatok</h1>
 			<article>
 				<div id="advanced-search">
-				<form id="advanced-search-form" action="#" method="#">
-					<input type="text" name="advanced-search-input" id="advanced-search-input" value="Keresési kifejezés" />
+				<form id="advanced-search-form" action="" method="POST">
+					<input type="text" name="advanced-search-input" id="advanced-search-input" value="<?php echo $search; ?>" />
 					<input class="yellow-button" type="submit" value="Keresés" />
 					<div>
 						<?php echo $main->render_search_checkbox(); ?>
@@ -66,7 +76,7 @@ $main = new mak(false);
 				</form>
 			</div>
 			<ul id="results">
-				<?php echo $main->render_search_results('ipsum'); ?>
+				<?php echo $main->render_search_results($search,$_POST); ?>
 			</ul>
 			</article>
 		</article>					
