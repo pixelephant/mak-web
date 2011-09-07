@@ -164,7 +164,7 @@ input[type='text'],input[type='password']{
 	background-image:     -ms-linear-gradient(top, #E0E0E0, #F5F5F5); 
 	background-image:      -o-linear-gradient(top, #E0E0E0, #F5F5F5); 
 	background-image:         linear-gradient(top, #E0E0E0, #F5F5F5);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5');
+	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5');*/
 }
 
 input[type='checkbox'] {
@@ -182,6 +182,9 @@ label.error,label.succes{
 	font-size: 11px;
 	clear: both;
 	padding: 8px;
+	position: absolute;
+	top:10px;
+	right:0;	
 }
 
 label.success{
@@ -278,13 +281,11 @@ header h1 a{
 	margin-right: 10px;	
 }
 
-
 #headerButtons{
 	-moz-border-radius: 2px; 
 	-webkit-border-radius: 2px; 
 	border-radius: 2px;           
 	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-	width: 306px;
 	float: right;
 	border-top: 1px solid #a58535; 	
 	border-bottom: 1px solid #fee54b;
@@ -292,7 +293,7 @@ header h1 a{
 	padding: 5px;
 	margin-top: 30px;
 	height:35px;
-	width:292px;
+	line-height:35px;
 }
 
 #headerButtons a{
@@ -373,6 +374,7 @@ header h1 a{
 	overflow: hidden;
 	height: auto !important;
 	margin: 0 !important;
+	position: relative;
 }
 
 #loginform input[type='submit']{
@@ -398,7 +400,7 @@ header h1 a{
 	color: #0080B0;
 	float: right;
 	text-decoration: none;
-	margin-top: 12px !important;
+	margin-top: 3px !important;
 	float: right;
 }
 
@@ -520,11 +522,9 @@ ul.ldd_menu ul{
 	background: url(../../img/menu-sep.png) repeat-y right; 
 	padding-bottom:15px;
 }
-
 ul.ldd_menu ul:last-child{
 	background:none;
 }
-
 li.ldd_heading{
 	font-size: 13px;	
 	background-color: #ffd400;
@@ -773,8 +773,8 @@ aside img.ad{
 
 #ctaWrap a span{
 	float: left;
-	margin-right: 8px;
-	margin-top: 3px;
+	line-height:1.2;
+	margin-right: 3px;
 }
 
 #ctaWrap a em{

@@ -51,22 +51,22 @@
 	color: #1C1C1C;
 	font-size: 20px;
 	font-weight: bold;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 
 #promoSliderWrap p{
 	font-size: 14px;
 	line-height: 1.5;
-	margin-bottom:20px;
+	margin-bottom:10px;
 	color: 	#0080B0;
-font-style: italic;
+	font-style: italic;
 }
 
 #slider ul li{
 	list-style: none;
 }
 
-#slider ul li:before{
+#slider ul li a:before{
 	content : "‣ ";
 	font-size: 12px;
 }
@@ -86,14 +86,14 @@ font-style: italic;
 .slide .text h2,.slide .text ul,.slide .text p{
 	position: relative;
 	left: -500px;
-	opacity: 0;
+/*	opacity: 0;*/
 }
 
 .slide img{
 	float: right;
 	position: relative;
 	right: -500px;
-	opacity: 0;
+/*	opacity: 0;*/
 	margin-top: 20px;
 }
 
