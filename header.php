@@ -1,4 +1,7 @@
 <h1><a href="">Magyar Autóklub</a></h1>
+<div id="userBar">
+	<span>Üdvözöljük <strong>Árpád!</strong> | Ön <strong>Komfort</strong> klubtagunk.</span>
+</div>
 <div id="headerButtons">
 	<div id="loginContainer">
 		<a href="#" id="segelyButton" class="gray-button"><img src="img/pictogram-01.png" alt="Segélyszolgálat" /></a>

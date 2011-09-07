@@ -88,6 +88,10 @@ aside .links{
 	color: #5A4A42;
 }
 
+.subsub{
+	padding-left:10px;
+}
+
 aside .links li{
 	list-style-image: url(../../img/nyilak.png);
 	list-style-position: inside;

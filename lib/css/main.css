@@ -164,7 +164,7 @@ input[type='text'],input[type='password']{
 	background-image:     -ms-linear-gradient(top, #E0E0E0, #F5F5F5); 
 	background-image:      -o-linear-gradient(top, #E0E0E0, #F5F5F5); 
 	background-image:         linear-gradient(top, #E0E0E0, #F5F5F5);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5');
+	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E0E0', EndColorStr='#F5F5F5');*/
 }
 
 input[type='checkbox'] {
@@ -182,6 +182,9 @@ label.error,label.succes{
 	font-size: 11px;
 	clear: both;
 	padding: 8px;
+	position: absolute;
+	top:10px;
+	right:0;	
 }
 
 label.success{
@@ -242,9 +245,38 @@ header h1 a{
 	color: #1c1c1c;
 }
 
+#userBar{
+	position:absolute;
+	top:0;
+	right:15px;
+	height:34px;
+	border:2px solid F0C500;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;     
+	background-color: #626568;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#626568), to(#212121)); 
+	background-image: -webkit-linear-gradient(top, #626568, #212121); 
+	background-image:    -moz-linear-gradient(top, #626568, #212121); 
+	background-image:     -ms-linear-gradient(top, #626568, #212121); 
+	background-image:      -o-linear-gradient(top, #626568, #212121); 
+	background-image:         linear-gradient(top, #626568, #212121);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#626568', EndColorStr='#212121'); 
+	line-height:34px;
+	color:white;
+	padding:0 4px;
+	font-size:12px;
+	width:292px;
+	text-align:center;
+}
+
 #skypeButton{
 	float: right;
-	top: 25px;
+	top: 45px;  
 	position: relative;
 	margin-right: 10px;	
 }
@@ -254,13 +286,14 @@ header h1 a{
 	-webkit-border-radius: 2px; 
 	border-radius: 2px;           
 	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-	width: 306px;
 	float: right;
 	border-top: 1px solid #a58535; 	
 	border-bottom: 1px solid #fee54b;
 	background: #e4b53b;
 	padding: 5px;
-	margin-top: 14px;
+	margin-top: 30px;
+	height:35px;
+	line-height:35px;
 }
 
 #headerButtons a{
@@ -341,6 +374,7 @@ header h1 a{
 	overflow: hidden;
 	height: auto !important;
 	margin: 0 !important;
+	position: relative;
 }
 
 #loginform input[type='submit']{
@@ -366,7 +400,7 @@ header h1 a{
 	color: #0080B0;
 	float: right;
 	text-decoration: none;
-	margin-top: 12px !important;
+	margin-top: 3px !important;
 	float: right;
 }
 
@@ -480,13 +514,16 @@ ul.ldd_menu .ldd_submenu .in{
 	overflow: hidden;
 	border: 1px solid #797E82;
 	border-top:none;
-	padding-bottom: 15px;
 }
 ul.ldd_menu ul{
 	list-style:none;
 	float:left;
 	width: 170px;
 	background: url(../../img/menu-sep.png) repeat-y right; 
+	padding-bottom:15px;
+}
+ul.ldd_menu ul:last-child{
+	background:none;
 }
 li.ldd_heading{
 	font-size: 13px;	
@@ -545,17 +582,22 @@ aside{
 /*Keresés*/
 
 #search{
-	text-align:center;
 	margin-bottom:15px;
+	padding:0 20px;
 }
 
-#search input{
+#search input[type="text"]{
 	margin-top: 8px;
-	height: 18px;
-	width: 120px;
-	border: 1px solid #333;
+	height: 20px;
+	width: 110px;
 	background: url(../../img/magnifier.png) no-repeat center left white;
-	padding-left:20px
+	padding-left:20px;
+}
+
+#search input[type="submit"]{
+	height:26px;
+	margin-left: 3px;
+	width:64px;
 }
 
 /*Hírlevél sáv*/
@@ -565,16 +607,18 @@ aside{
 	color: #1c1c1c;
 	text-align: center;
 	margin-bottom: 10px;
+	padding:0 20px;
 }
 
 #newsletter form{
 	display: none;
-	margin-top: 20px;
+	margin-top: 10px;
 	text-align: center;
 }
 
 #newsletter form div{
 	overflow: hidden;
+	height:25px;
 }
 
 #newsletter form input{
@@ -582,16 +626,22 @@ aside{
 }
 
 #newsletter input[type="text"]{
-	margin-left: 20px;
 	height: 20px;
-	width: 110px;
+	width: 129px;
+	background: white;
+}
+
+#newsletter input[type="submit"]{
+	height: 24px;
+	width:64px;
+	margin-left:3px;
 }
 
 #newsletterbutton{
 	margin: 9px auto 10px auto;
 	font-size: 14px;
 	font-weight: bold;
-	padding: 12px 20px;
+	padding: 12px 17px;
 	position: relative;
 	top: 9px;
 	left: 2px;
@@ -736,8 +786,8 @@ aside img.ad{
 
 #ctaWrap a span{
 	float: left;
-	margin-right: 8px;
-	margin-top: 3px;
+	line-height:1.2;
+	margin-right: 3px;
 }
 
 #ctaWrap a em{
@@ -1011,7 +1061,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndC
 /* Összetett keresés */
 
 #advanced-search input[type="text"]{
-	width: 550px;
+	width: 475px;
 	height: 20px;
 	float: left;
 }
@@ -1025,7 +1075,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndC
 }
 
 #advanced-search label{
-	font-size:14px;
+	font-size:13px;
 	
 	margin-right: 5px;
 }

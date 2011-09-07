@@ -93,6 +93,7 @@
 	padding: 10px;
 	padding-top: 15px;
 	overflow: hidden;
+	position:relative;
 }
 
 #content form .info{
@@ -118,6 +119,10 @@ span.sum{
 
 .otp{
 	background : url(../../img/otp.png) no-repeat right center #e8e8e8  !important;
+}
+
+#registerform input[type="checkbox"]{
+	float:none;
 }
 
 #content form input[type='button'], #content form input[type='submit']{
