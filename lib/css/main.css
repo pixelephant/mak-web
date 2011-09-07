@@ -582,17 +582,22 @@ aside{
 /*Keresés*/
 
 #search{
-	text-align:center;
 	margin-bottom:15px;
+	padding:0 20px;
 }
 
-#search input{
+#search input[type="text"]{
 	margin-top: 8px;
-	height: 18px;
-	width: 120px;
-	border: 1px solid #333;
+	height: 20px;
+	width: 110px;
 	background: url(../../img/magnifier.png) no-repeat center left white;
-	padding-left:20px
+	padding-left:20px;
+}
+
+#search input[type="submit"]{
+	height:26px;
+	margin-left: 3px;
+	width:64px;
 }
 
 /*Hírlevél sáv*/
@@ -602,16 +607,18 @@ aside{
 	color: #1c1c1c;
 	text-align: center;
 	margin-bottom: 10px;
+	padding:0 20px;
 }
 
 #newsletter form{
 	display: none;
-	margin-top: 20px;
+	margin-top: 10px;
 	text-align: center;
 }
 
 #newsletter form div{
 	overflow: hidden;
+	height:25px;
 }
 
 #newsletter form input{
@@ -619,16 +626,22 @@ aside{
 }
 
 #newsletter input[type="text"]{
-	margin-left: 20px;
 	height: 20px;
-	width: 110px;
+	width: 129px;
+	background: white;
+}
+
+#newsletter input[type="submit"]{
+	height: 24px;
+	width:64px;
+	margin-left:3px;
 }
 
 #newsletterbutton{
 	margin: 9px auto 10px auto;
 	font-size: 14px;
 	font-weight: bold;
-	padding: 12px 20px;
+	padding: 12px 17px;
 	position: relative;
 	top: 9px;
 	left: 2px;
@@ -1048,7 +1061,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndC
 /* Összetett keresés */
 
 #advanced-search input[type="text"]{
-	width: 550px;
+	width: 475px;
 	height: 20px;
 	float: left;
 }
@@ -1062,7 +1075,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndC
 }
 
 #advanced-search label{
-	font-size:14px;
+	font-size:13px;
 	
 	margin-right: 5px;
 }

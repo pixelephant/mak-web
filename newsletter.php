@@ -1,6 +1,6 @@
 <div id="search">
 	<form action="kereses" method="POST">
-		<input type="text" name="search" placeholder="Keresés..." />
+		<input type="text" name="search" placeholder="Keresés..." /><input type="submit" value="Keresés" class="yellow-button" />
 	</form>
 </div>
 <div class="hr"></div>
@@ -10,8 +10,7 @@
 	<a id="newsletterbutton" class="gray-button" href="#"><span>Hírlevél</span> <em></em></a>
 	<form action="#">
 		<div>
-		<input type="text" class="required email" name="newsletter-mail" id="newsletter-mail" placeholder="Email cím" />
-		<input type="submit" value="Feliratkozom" />
+		<input type="text" class="required email" name="newsletter-mail" id="newsletter-mail" placeholder="Email cím" /><input type="submit" value="Ok" class="yellow-button" />
 		</div>
 	</form>
 </div>
