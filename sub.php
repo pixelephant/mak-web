@@ -6,16 +6,19 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
-$main = new mak(false);
+$main = new mak(true);
 
 $page = trim($_GET['page']);
 $subpage = trim($_GET['subpage']);
+$subsubpage = trim($_GET['subsubpage']);
 
 $parameterek = $main->get_parameterek_urlbol($page);
 
 if($subpage != ''){
 	$a = $main->get_parameterek_aloldal_urlbol($subpage);
-	$parameterek = array_merge($parameterek , $a);
+	if(is_array($a)){
+		$parameterek = array_merge($parameterek , $a);
+	}
 }
 
 ?>
@@ -80,7 +83,7 @@ if($subpage != ''){
 
 <?php startblock('left-menu') ?>
 <?php 
-	echo $main->render_aloldal_bal_menu($page,$subpage);
+	echo $main->render_aloldal_bal_menu($page);
 ?>
 <?php endblock() ?>
 
@@ -116,7 +119,7 @@ if($subpage != ''){
 
 <?php startblock('sections')?>
 <?php 
-	echo $main->render_aloldal_section($page,$subpage);
+	echo $main->render_section($page,$subpage,$subsubpage);
 ?>
 <?php endblock() ?>
 
