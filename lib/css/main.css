@@ -512,14 +512,19 @@ ul.ldd_menu .ldd_submenu .in{
 	overflow: hidden;
 	border: 1px solid #797E82;
 	border-top:none;
-	padding-bottom: 15px;
 }
 ul.ldd_menu ul{
 	list-style:none;
 	float:left;
 	width: 170px;
 	background: url(../../img/menu-sep.png) repeat-y right; 
+	padding-bottom:15px;
 }
+
+ul.ldd_menu ul:last-child{
+	background:none;
+}
+
 li.ldd_heading{
 	font-size: 13px;	
 	background-color: #ffd400;
