@@ -38,11 +38,11 @@ article section{
 	overflow: hidden;
 }
 
-article section img{
+article section .rightside{
 	float: right;
 }
 
-article section p{
+article section .leftside{
 	float: left;
 	width: 440px;
 }
@@ -107,6 +107,15 @@ aside .links a,aside h3 a{
 
 aside .links li.active a{
 	color:#0080B0;
+	margin-left:-2px;
+}
+
+aside .links li.active li a{
+	color:#1c1c1c;
+	margin-left:0px;
+}
+
+aside .links li li a:hover{
 	margin-left:-2px;
 }
 
@@ -179,6 +188,10 @@ h3 a{
 
 /*Aloldal specifikus oldalsáv képek*/
 
+#erdekkepviselet{
+	background: url(../../img/ikonok/medium/erdekkepviselet.png) no-repeat left center;
+}
+
 #vizsgaztatas{
 	background: url(../../img/ikonok/medium/vizsgaztatas.png) no-repeat left center;
 }
@@ -197,6 +210,10 @@ h3 a{
 
 #assistance{
 	background: url(../../img/ikonok/medium/assistance.png) no-repeat left center;
+}
+
+#assistrent{
+	background: url(../../img/ikonok/medium/assistrent.png) no-repeat left center;
 }
 
 #oktatas-kepzes{

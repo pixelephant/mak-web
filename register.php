@@ -190,7 +190,7 @@ $main = new mak(false);
 				<fieldset>
 				<h3>Feltételek</h3>
 				<div class="row">
-					<label for="terms">Elfogadom a <a class="blue" target="_blank" href="#">feltételeket</a></label>
+					<label for="terms">Elfogadom a <a class="link" target="_blank" href="#">feltételeket</a></label>
 					<input class="required" type="checkbox" name="terms" id="terms" />
 				</div>
 				</fieldset>

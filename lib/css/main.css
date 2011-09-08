@@ -22,15 +22,15 @@ Autóklub platina: #797E82;
 aside .hr{ /*Oldalsáv elválasztó vonala*/
 	clear: both;
 	width: 100%;
-	background: url(../../img/aside-sep.png) no-repeat center;
-	height: 17px;
+	background: url(../../img/sep-sidebar.png) no-repeat center;
+	height: 2px;
 }
 
 #content .hr{ /*Tartalom elválasztó vonala*/
 	clear: both;
 	width: 100%;
 	height: 62px;
-	background: url(../../img/hr_grey.png) repeat-x center;
+	background: url(../../img/sep-content.png) no-repeat center center;
 }
 
 strong{
@@ -338,10 +338,9 @@ header h1 a{
 /*Bejelentkezés*/
 
 #loginform .hr{
-	background: url(../../img/login-sep.png) no-repeat center;
+	background: url(../../img/sep-login.png) no-repeat center center;
 	width:520px;
-	height:2px;
-	background-size: stretch;
+	height:12px;
 }
 		
 #loginform label{
@@ -369,10 +368,6 @@ header h1 a{
 	height: 20px;
 	float: left;
 	 
-}
-
-#login-form-inner{
-	margin-bottom: 15px;
 }
 
 #loginform .row{
@@ -407,14 +402,17 @@ header h1 a{
 	color: #0080B0;
 	float: right;
 	text-decoration: none;
+	margin:0;
 	margin-top: 3px !important;
 	float: right;
 }
 
 #forgotten{
 	clear: both;
-	float:left !important;
 	font-size: 12px;
+	float: none !important;
+	display:block;
+	height:16px;
 }
 
 
@@ -476,6 +474,11 @@ ul.ldd_menu > li{
 	float:left;
 	position: relative;
 }
+
+ul.ldd_menu > li.active > span a{
+	color:#FFD400;
+}
+
 ul.ldd_menu > li > span{
 	float:left;
 	color: #DAE0D4;
@@ -487,8 +490,13 @@ ul.ldd_menu > li > span{
 	padding-right: 10px;
 }
 ul.ldd_menu > li:hover{
-	background:#2E2E2E;;
+	background:#2E2E2E;
 }
+
+ul.ldd_menu > li:hover >span a{
+	color:#FFD400;
+}
+
 ul.ldd_menu > li > span a{
 	color: #DAE0D4;
 }
@@ -550,14 +558,7 @@ li.ldd_heading{
 	margin-bottom: 15px;
 }
 
-li.ldd_heading a{
-	color:black;
-}
 
-li.ldd_heading a:before{
-	content : "‣ ";
-	color: black;
-}
 
 .ldd_submenu li{
 	padding:0 15px;
@@ -577,6 +578,16 @@ ul.ldd_menu ul li a:before{
 ul.ldd_menu ul li a:hover{
 	
 }
+
+li.ldd_heading a{
+	color:black !important;
+}
+
+li.ldd_heading a:before{
+	content : "‣ ";
+	color: black !important;
+}
+
 
 /*Belső rész*/
 
