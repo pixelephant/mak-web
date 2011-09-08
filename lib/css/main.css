@@ -22,7 +22,7 @@ Autóklub platina: #797E82;
 aside .hr{ /*Oldalsáv elválasztó vonala*/
 	clear: both;
 	width: 100%;
-	background: url(../../img/hr_yellow.png) repeat-x center;
+	background: url(../../img/aside-sep.png) no-repeat center;
 	height: 17px;
 }
 
@@ -549,6 +549,16 @@ li.ldd_heading{
 	padding:0 15px;
 	margin-bottom: 15px;
 }
+
+li.ldd_heading a{
+	color:black;
+}
+
+li.ldd_heading a:before{
+	content : "‣ ";
+	color: black;
+}
+
 .ldd_submenu li{
 	padding:0 15px;
 }
