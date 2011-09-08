@@ -100,11 +100,16 @@ aside .links li{
 aside .links a{
 	text-decoration: none;
 	line-height: 1.5;
-	color: #3B2314;
+	color: #1c1c1c;
+}
+
+aside .links a.active{
+	color:#0080B0;
+	margin-left:-2px;
 }
 
 aside .links a:hover{
-	color: black;
+	margin-left:-2px;
 }
 
 #subcontact{

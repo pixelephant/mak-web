@@ -199,18 +199,18 @@ $main = new mak(false);
 			<form action="#" id="memberform" class="step2">
 				<h2>2. lépés - Klubtagsági szint kiválasztása</h2>
 				<fieldset>
-					<h3>Tagsági szint <span class="sum">14 000 Ft/év</span></h3>
+					<h3>Tagsági szint <span class="sum"></span></h3>
 					<div class="row">
 						<label for="diszkontMember">Diszkont tagság</label>
-						<input type="radio" name="membership" id="diszkontMember" />
+						<input data-price="1 000 Ft/év" type="radio" name="membership" id="diszkontMember" />
 					</div>
 					<div class="row">
 						<label for="standardMember">Standard tagság</label>
-						<input type="radio" name="membership" id="standardMember" />
+						<input data-price="10 000 Ft/év" type="radio" name="membership" id="standardMember" />
 					</div>
 					<div class="row">
 						<label for="komfortMember">Komfort tagság</label>
-						<input type="radio" name="membership" id="komfortMember" />
+						<input data-price="100 000 Ft/év" type="radio" name="membership" id="komfortMember" />
 					</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>
@@ -276,15 +276,15 @@ $main = new mak(false);
 					</div>
 				</fieldset>
 				<fieldset id="chequeDetails" class="detail">
-					<h3>Csekkes fizetés <span class="sum">14 000 Ft/év</span></h3>
+					<h3>Csekkes fizetés <span class="sum"></span></h3>
 					<div class="row">Majd kap számlát.</div>
 				</fieldset>
 				<fieldset id="transferDetails" class="detail">
-					<h3>Banki átutalással való fizetés <span class="sum">14 000 Ft/év</span></h3>
+					<h3>Banki átutalással való fizetés <span class="sum"></span></h3>
 					<div class="row">Ide utalja : 1111111-1-1111111-1-1-</div>
 				</fieldset>
 				<fieldset id="cardDetails" class="detail">
-					<h3>Bankkártyás fizetés <span class="sum">14 000 Ft/év</span></h3>
+					<h3>Bankkártyás fizetés <span class="sum"></span></h3>
 					<div class="row">Átirányítjuk...</div>
 				</fieldset>
 				<input type="submit" value="Véglegesítés" />

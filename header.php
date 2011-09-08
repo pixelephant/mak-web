@@ -12,6 +12,7 @@
 		<div id="loginModal" class="reveal-modal">
 			<form id="loginform" action="#">
 					<h2>Bejelentkezés</h2>
+					<div class="hr"></div>
 			        	<div id="login-form-inner">
 			        		<div class="row">
 			        		<label for="loginEmail">Email cím</label>
@@ -23,8 +24,9 @@
 								<a id="forgotten" href="#">Elfelejtett jelszó?</a>
 							</div>
 			        	</div>
-			        <input class="yellow-button" type="submit" id="loginSubmit" value="Belépés" />
-			        <label id="chl" for="checkbox"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
+			        <div class="hr"></div>
+			        <input class="yellow-button" type="submit" id="loginSubmit" value="Belépek" />
+			        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 					<div>
 						<a href="register.php">Még nem klubtagunk? Regisztráljon!</a>
 					</div>
