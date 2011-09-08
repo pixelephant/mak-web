@@ -10,16 +10,10 @@ $main = new mak(false);
 
 $page = trim($_GET['page']);
 $subpage = trim($_GET['subpage']);
+$tartalom = trim($_GET['tartalom']);
 $subsubpage = trim($_GET['subsubpage']);
 
-$parameterek = $main->get_parameterek_urlbol($page);
-
-if($subpage != ''){
-	$a = $main->get_parameterek_aloldal_urlbol($subpage);
-	if(is_array($a)){
-		$parameterek = array_merge($parameterek , $a);
-	}
-}
+$parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpage);
 
 ?>
 
@@ -83,7 +77,7 @@ if($subpage != ''){
 
 <?php startblock('left-menu') ?>
 <?php 
-	echo $main->render_aloldal_bal_menu($page);
+	echo $main->render_aloldal_bal_menu($page,$subpage,$tartalom);
 ?>
 <?php endblock() ?>
 
@@ -119,7 +113,7 @@ if($subpage != ''){
 
 <?php startblock('sections')?>
 <?php 
-	echo $main->render_section($page,$subpage,$subsubpage);
+	echo $main->render_section($page,$subpage,$tartalom,$subsubpage);
 ?>
 <?php endblock() ?>
 
