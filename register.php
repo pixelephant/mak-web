@@ -194,7 +194,7 @@ $main = new mak(false);
 					<input class="required" type="checkbox" name="terms" id="terms" />
 				</div>
 				</fieldset>
-				<input id="toStep2" type="submit" value="Tovább" />
+				<input id="toStep2" type="submit" value="Regisztrálás a weboldalra" />
 			</form>
 			<form action="#" id="memberform" class="step2">
 				<h2>2. lépés - Klubtagsági szint kiválasztása</h2>
@@ -211,10 +211,6 @@ $main = new mak(false);
 					<div class="row">
 						<label for="komfortMember">Komfort tagság</label>
 						<input type="radio" name="membership" id="komfortMember" />
-					</div>
-					<div class="row">
-						<label for="webMember">Csak a weboldalra regisztrálok.</label>
-						<input type="radio" name="membership" id="webMember" />
 					</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>
