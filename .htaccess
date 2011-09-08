@@ -13,7 +13,7 @@ Require valid-user
     RewriteRule ^(regisztralas)$ register.php
     RewriteRule ^(regisztraciomegerositese)$ regisztraciomegerositese.php [QSA]
     RewriteRule ^(kereses)$ search.php [QSA]
-    RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ sub.php?page=$1&subpage=$2&tartalom=$3&subsubpage=$4
+    RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ sub.php?page=$1&subpage=$2&tartalom=$3&subsubpage=$4
     RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ sub.php?page=$1&subpage=$2&tartalom=$3
     RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ sub.php?page=$1&subpage=$2
 	RewriteRule ^([a-zA-Z0-9_-]+)$ sub.php?page=$1

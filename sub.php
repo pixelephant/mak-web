@@ -77,7 +77,7 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('left-menu') ?>
 <?php 
-	echo $main->render_aloldal_bal_menu($page,$subpage,$tartalom);
+	echo $main->render_aloldal_bal_menu($page,$subpage,$tartalom,$subsubpage);
 ?>
 <?php endblock() ?>
 
@@ -107,7 +107,7 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('h1')?>
 <?php 
-	echo $parameterek['almenu'];
+	echo $parameterek['title'];
 ?>
 <?php endblock() ?>
 

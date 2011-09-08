@@ -499,7 +499,7 @@ class mak extends db{
 		
 		$table = 'mak_kategoria';
 		$col = 'mak_kategoria.kategoria_nev AS title,mak_kategoria.keywords AS keywords,mak_kategoria.description AS description,mak_kategoria.css AS css,mak_kategoria.javascript AS javascript';
-		$cond['mak_almenu.azonosito'] = $aloldal_url;
+		$cond['mak_kategoria.azonosito'] = $url;
 		
 		$a = $this->sql_select($table,$col,$cond);
 		
@@ -1191,7 +1191,7 @@ class mak extends db{
 
 	public function render_aloldal_section_default($tart){
 	
-		$tartalom = $this->get_aloldal_tartalom($tart);
+		$tartalom = $this->get_oldal_tartalom($tart);
 					
 		if($tartalom == '' || !is_array($tartalom)){
 			return FALSE;
@@ -1199,34 +1199,40 @@ class mak extends db{
 		
 		$galeria = '';
 		$html = '';
+		$tartalom_url = '';
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
-			$html .= '<section id="' . $tartalom[$i]['cim'] . '">';
-			$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
-			$html .= '<p>'.$tartalom[$i]['szoveg'].'</p>';
-			$html .= '<img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
-		
-			$galeria = $this->get_galeria_tartalomhoz($tartalom[$i]['id']);
-			
-			if($galeria === FALSE){
-				return FALSE;
-			}
-			
-			if($galeria['count'] > 0){
-				$html .= '<div class="gallery">';
-				for($j = 0; $j < $galeria['count']; $j++){
-					$html .= '<a rel="' . $i . '" href="' . $this->_galleryDir . $galeria[$j]['kep_filenev'] .'"><img src="' . $this->_galleryDir . $galeria[$j]['thumbnail_filenev'] . '" alt="' . $galeria[$j]['thumbnail_filenev'] . '" /></a>';
+			if($tartalom_url != $tartalom[$i]['url']){
+				$html .= '<section id="' . $tartalom[$i]['azonosito'] . '">';
+				$html .= '<h2>'.$tartalom[$i]['almenu'].'</h2>';
+				$html .= '<p>'.$tartalom[$i]['almenu_szoveg'].'</p>';
+				
+				if($tartalom[$i]['kep'] != ''){
+					$html .= '<img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
 				}
-				$html .= '</div>';
+				
+				$galeria = $this->get_galeria_tartalomhoz($tartalom[$i]['id']);
+				
+				if($galeria === FALSE){
+					return FALSE;
+				}
+				
+				if($galeria['count'] > 0){
+					$html .= '<div class="gallery">';
+					for($j = 0; $j < $galeria['count']; $j++){
+						$html .= '<a rel="' . $i . '" href="' . $this->_galleryDir . $galeria[$j]['kep_filenev'] .'"><img src="' . $this->_galleryDir . $galeria[$j]['thumbnail_filenev'] . '" alt="' . $galeria[$j]['thumbnail_filenev'] . '" /></a>';
+					}
+					$html .= '</div>';
+				}
+				
+				$html .= '</section>';
+				
+				//if($i + 1 < $tartalom['count']){
+					$html .= '<div class="hr"></div>';
+				//}
+				$tartalom_url = $tartalom[$i]['url'];
 			}
-			
-			$html .= '</section>';
-			
-			if($i + 1 < $tartalom['count']){
-				$html .= '<div class="hr"></div>';
-			}
-		
 		}
 		
 		return $html;
@@ -1513,7 +1519,7 @@ class mak extends db{
 			
 			case "almenu":
 				
-				$html =  $this->render_aloldal_section_default($kategoria);
+				$html =  $this->render_aloldal_section_default($almenu);
 			
 			break;
 			
@@ -1534,7 +1540,7 @@ class mak extends db{
 		return $html;
 	}
 
-	public function render_aloldal_bal_menu($aloldal,$subpage,$tartalom=''){
+	public function render_aloldal_bal_menu($aloldal,$subpage,$tartalom='',$subsubpage=''){
 		
 		if($aloldal == ''){
 			return FALSE;
@@ -1547,6 +1553,7 @@ class mak extends db{
 		$altartalom_id = '';
 		$subpage = trim($subpage);
 		$tartalom = trim($tartalom);
+		$subsubpage = trim($subsubpage);
 		
 		$aloldalak = $this->get_menu_aktualis_almenuhoz($aloldal);
 		
@@ -1591,7 +1598,14 @@ class mak extends db{
 					$altartalom_id = $aloldalak[$i]['tartalom_id'];
 				}
 				
-				$html .= '<li><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['altartalom_url'] . '">' . $aloldalak[$i]['altartalom_cim'] . '</a></li>';
+				$html .= '<li';
+				
+				if($aloldalak[$i]['altartalom_url'] == $subsubpage){
+					$html = str_replace('class="active"','',$html);
+					$html .= ' class="active"';
+				}
+				
+				$html .= '><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '/' . $aloldalak[$i]['altartalom_url'] . '">' . $aloldalak[$i]['altartalom_cim'] . '</a></li>';
 				
 				if($altartalom_id != $aloldalak[$i+1]['tartalom_id']){
 					$html .= '</ul>';
