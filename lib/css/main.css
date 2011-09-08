@@ -142,7 +142,7 @@ strong{
 	position: absolute;
 	top: 8px;
 	right: 11px;
-	color: #aaa;
+	color: #1c1c1c;
 	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
 	font-weight: bold;
 	cursor: pointer;
@@ -336,6 +336,13 @@ header h1 a{
 }
 
 /*Bejelentkezés*/
+
+#loginform .hr{
+	background: url(../../img/login-sep.png) no-repeat center;
+	width:520px;
+	height:2px;
+	background-size: stretch;
+}
 		
 #loginform label{
 	min-width: 105px;
@@ -598,6 +605,7 @@ aside{
 	height:26px;
 	margin-left: 3px;
 	width:64px;
+	font-weight: bold;
 }
 
 /*Hírlevél sáv*/
@@ -635,6 +643,7 @@ aside{
 	height: 24px;
 	width:64px;
 	margin-left:3px;
+	font-weight: bold;
 }
 
 #newsletterbutton{
