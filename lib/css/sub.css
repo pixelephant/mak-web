@@ -169,6 +169,10 @@ font-weight: bold;
 	float: none;
 }
 
+h3 a{
+	text-decoration: none;
+	color: #1C1C1C;
+}
 
 
 /*Aloldal specifikus oldalsáv képek*/
