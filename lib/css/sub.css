@@ -97,13 +97,15 @@ aside .links li{
 	list-style-position: inside;
 }
 
-aside .links a{
+
+
+aside .links a,aside h3 a{
 	text-decoration: none;
 	line-height: 1.5;
 	color: #1c1c1c;
 }
 
-aside .links a.active{
+aside .links li.active a{
 	color:#0080B0;
 	margin-left:-2px;
 }
