@@ -7,7 +7,7 @@ include 'class.mak.php';
 
 $autoklub_email = 'info@autoklub.hu';
 
-$main = new mak(false);
+$main = new mak(true);
 
 $form = array();
 $member = array();
@@ -114,7 +114,7 @@ if($valasz == 'Sikeres'){
 
 }
 
-echo strtolower($valasz);
+//echo strtolower($valasz);
 
 $main->close();
 ?>

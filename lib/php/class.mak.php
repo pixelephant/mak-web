@@ -194,9 +194,9 @@ class mak extends db{
 		
 		
 		if($col == ''){
-			$col = 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,';
+			$col = 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_tartalom.url AS tartalom_url,';
 			$col .= 'mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,';
-			$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_tartalom.publikalta AS publikalta';
+			$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_tartalom.publikalta AS publikalta,mak_almenu.szoveg AS almenu_szoveg';
 		}
 		
 		return $this->sql_select($table,$col,$cond,$join);
@@ -227,7 +227,7 @@ class mak extends db{
 		
 	}
 	
-	public function get_aloldal_tartalom($url){
+	public function get_aloldal_altartalom($url){
 	
 		$join[2]['table'] = 'mak_altartalom';		
 		$join[2]['value'] = 'mak_altartalom.tartalom_id=mak_tartalom.id';
@@ -240,6 +240,19 @@ class mak extends db{
 		
 		return $this->get_tartalom($cond,$col,$join);
 		
+	}
+	
+	public function get_aloldal_tartalom($url){
+	
+		$cond['mak_tartalom.url'] = $url;
+		
+		/*
+		$col = 'mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,';
+		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_almenu.szoveg AS szoveg';
+		$col .= 'mak_altartalom.id AS id,mak_altartalom.tartalom_id AS tartalom_id,mak_altartalom.cim AS cim,mak_altartalom.szoveg AS szoveg,mak_altartalom.kep AS kep,mak_altartalom.alt AS alt,mak_altartalom.publikalta AS publikalta';
+		*/
+		return $this->get_tartalom($cond,$col,$join);
+	
 	}
 	
 	public function get_tartalom_kereses($kereses,$cond=''){
@@ -357,7 +370,7 @@ class mak extends db{
 		$col = 'mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,';
 		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,';
 		$col .= 'mak_altartalom.id AS altartalom_id,mak_altartalom.tartalom_id AS tartalom_id,mak_altartalom.cim AS altartalom_cim,mak_altartalom.szoveg AS altartalom_szoveg,mak_altartalom.kep AS altartalom_kep,mak_altartalom.alt AS altartalom_alt,mak_altartalom.publikalta AS altartalom_publikalta,mak_altartalom.url AS altartalom_url,';
-		$col .= 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt';
+		$col .= 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_tartalom.url AS tartalom_url';
 		
 		$join[0]['table'] = 'mak_almenu';		
 		$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
@@ -374,7 +387,33 @@ class mak extends db{
 		return $this->sql_select($table,$col,$cond,$join);
 	}
 	
-	public function get_parameterek_urlbol($url){
+	public function get_parameterek_urlbol($url,$aloldal='',$tartalom='',$altartalom=''){
+	
+		$parameterek = array();
+		
+		if($url == ''){
+			return FALSE;
+		}
+		
+		$parameterek = $this->get_kategoria_parameterek_urlbol($url);
+		
+		if($aloldal != ''){
+			$parameterek = array_merge($parameterek , $this->get_aloldal_parameterek_urlbol($aloldal));
+		}
+		
+		if($tartalom != ''){
+			$parameterek = array_merge($parameterek , $this->get_tartalom_parameterek_urlbol($tartalom));
+		}
+		
+		if($altartalom != ''){
+			$parameterek = array_merge($parameterek , $this->get_altartalom_parameterek_urlbol($altartalom));
+		}
+		
+		return $parameterek;
+	
+	}
+	
+	public function get_aloldal_parameterek_urlbol($url){
 		
 		if($url == ''){
 			return FALSE;
@@ -392,7 +431,7 @@ class mak extends db{
 		
 	}
 
-	public function get_parameterek_aloldal_urlbol($aloldal_url){
+	public function get_altartalom_parameterek_urlbol($aloldal_url){
 	
 		if($aloldal_url == ''){
 			return FALSE;
@@ -419,7 +458,7 @@ class mak extends db{
 			$parameterek['description'] = 'Részletes információk az alábbi címen található Szervizpontunkról: ' . $a[0]['cim'];
 		
 		}else{
-		
+			
 			$table = 'mak_altartalom';
 			$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
 			$cond['mak_altartalom.url'] = $aloldal_url;
@@ -431,6 +470,43 @@ class mak extends db{
 		}
 		
 		return $parameterek;
+	
+	}
+	
+	public function get_tartalom_parameterek_urlbol($aloldal_url){
+	
+		if($aloldal_url == ''){
+			return FALSE;
+		}
+		
+		$table = 'mak_tartalom';
+		$col = 'mak_tartalom.cim AS title,mak_tartalom.keywords AS keywords,mak_tartalom.description AS description,mak_tartalom.css AS css,mak_tartalom.javascript AS javascript';
+		$cond['mak_tartalom.url'] = $aloldal_url;
+		
+		$a = $this->sql_select($table,$col,$cond);
+		
+		$parameterek = $a[0];
+		
+		return $parameterek;
+	
+	}
+	
+	public function get_kategoria_parameterek_urlbol($url){
+	
+		if($url == ''){
+			return FALSE;
+		}
+		
+		$table = 'mak_kategoria';
+		$col = 'mak_kategoria.kategoria_nev AS title,mak_kategoria.keywords AS keywords,mak_kategoria.description AS description,mak_kategoria.css AS css,mak_kategoria.javascript AS javascript';
+		$cond['mak_almenu.azonosito'] = $aloldal_url;
+		
+		$a = $this->sql_select($table,$col,$cond);
+		
+		$parameterek = $a[0];
+		
+		return $parameterek;
+	
 	
 	}
 	
@@ -784,8 +860,7 @@ class mak extends db{
 		//Validálás vége
 		
 		if($felhasznalo_array['szuletesi_datum'] != ''){
-			$felhasznalo_array['szuletesi_datum'] = substr($felhasznalo_array['szuletesi_datum'],0,4) . 
-			substr($felhasznalo_array['szuletesi_datum'],4,1) . substr($felhasznalo_array['szuletesi_datum'],6); 
+			$felhasznalo_array['szuletesi_datum'] = $this->date_dash($felhasznalo_array['szuletesi_datum']);
 		}
 		
 		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
@@ -1116,7 +1191,7 @@ class mak extends db{
 
 	public function render_aloldal_section_default($tart){
 	
-		$tartalom = $this->get_oldal_tartalom($tart);
+		$tartalom = $this->get_aloldal_tartalom($tart);
 					
 		if($tartalom == '' || !is_array($tartalom)){
 			return FALSE;
@@ -1204,7 +1279,51 @@ class mak extends db{
 	
 	public function render_altartalom_section_default($altart){
 	
-		$tartalom = $this->get_aloldal_tartalom($altart);
+		$tartalom = $this->get_aloldal_altartalom($altart);
+					
+		if($tartalom == '' || !is_array($tartalom)){
+			return FALSE;
+		}
+		
+		$galeria = '';
+		$html = '';
+		
+		for($i = 0; $i < $tartalom['count']; $i++){
+		
+			$html .= '<section id="' . $tartalom[$i]['cim'] . '">';
+			$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
+			$html .= '<p>'.$tartalom[$i]['szoveg'].'</p>';
+			$html .= '<img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
+		
+			$galeria = $this->get_galeria_tartalomhoz($tartalom[$i]['id']);
+			
+			if($galeria === FALSE){
+				return FALSE;
+			}
+			
+			if($galeria['count'] > 0){
+				$html .= '<div class="gallery">';
+				for($j = 0; $j < $galeria['count']; $j++){
+					$html .= '<a rel="' . $i . '" href="' . $this->_galleryDir . $galeria[$j]['kep_filenev'] .'"><img src="' . $this->_galleryDir . $galeria[$j]['thumbnail_filenev'] . '" alt="' . $galeria[$j]['thumbnail_filenev'] . '" /></a>';
+				}
+				$html .= '</div>';
+			}
+			
+			$html .= '</section>';
+			
+			if($i + 1 < $tartalom['count']){
+				$html .= '<div class="hr"></div>';
+			}
+		
+		}
+		
+		return $html;
+	
+	}
+	
+	public function render_tartalom_section_default($tart){
+	
+		$tartalom = $this->get_oldal_tartalom($tart);
 					
 		if($tartalom == '' || !is_array($tartalom)){
 			return FALSE;
@@ -1352,7 +1471,7 @@ class mak extends db{
 	
 	}
 	
-	public function render_section($kategoria,$tartalom='',$altartalom=''){
+	public function render_section($kategoria,$almenu='',$tartalom='',$altartalom=''){
 
 		/*
 		 * @param string $kategoria : a megfelelő aloldal url-ben található azonosítója
@@ -1362,6 +1481,7 @@ class mak extends db{
 		$kategoria = trim($kategoria);
 		$tartalom = trim($tartalom);
 		$altartalom = trim($altartalom);
+		$almenu = trim($almenu);
 		
 		$html = '';
 		
@@ -1370,6 +1490,10 @@ class mak extends db{
 		}
 		
 		$szint = 'kategoria';
+		
+		if($almenu != ''){
+			$szint = 'almenu';	
+		}
 		
 		if($tartalom != ''){
 			$szint = 'tartalom';	
@@ -1387,9 +1511,15 @@ class mak extends db{
 			
 			break;
 			
+			case "almenu":
+				
+				$html =  $this->render_aloldal_section_default($kategoria);
+			
+			break;
+			
 			case "tartalom":
 				
-				$html =  $this->render_aloldal_section_default($tartalom);
+				$html =  $this->render_tartalom_section_default($tartalom);
 			
 			break;
 			
@@ -1404,17 +1534,19 @@ class mak extends db{
 		return $html;
 	}
 
-	public function render_aloldal_bal_menu($aloldal){
+	public function render_aloldal_bal_menu($aloldal,$subpage,$tartalom=''){
 		
 		if($aloldal == ''){
 			return FALSE;
 		}
-	
+		
 		$aloldal = trim($aloldal);
 		$html = '';
 		$almenu = '';
 		$aloldal_azonosito = '';
 		$altartalom_id = '';
+		$subpage = trim($subpage);
+		$tartalom = trim($tartalom);
 		
 		$aloldalak = $this->get_menu_aktualis_almenuhoz($aloldal);
 		
@@ -1433,13 +1565,23 @@ class mak extends db{
 					$html .= '</ul>';
 				}
 				$almenu = $aloldalak[$i]['url'];
-				$html .= '<h3 id="' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</h3>';
+				$html .= '<h3 id="' . $aloldalak[$i]['url'] . '"><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</a></h3>';
 				$html .= '<ul class="links">';	
 			}
 			
 			if($aloldal_azonosito != $aloldalak[$i]['id']){
-				$html .= '<li>';
-				$html .= '<a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '#' . $aloldalak[$i]['cim'] . '">' . $aloldalak[$i]['cim'] . '</a>';
+				$html .= '<li';
+				
+				/*
+				 * Aktuális almenü kijelölése
+				 */
+				
+				if($aloldalak[$i]['tartalom_url'] == $tartalom){
+					$html .= ' class="active"';
+				}
+				
+				$html .= '>';
+				$html .= '<a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '">' . $aloldalak[$i]['cim'] . '</a>';
 				$aloldal_azonosito = $aloldalak[$i]['id'];
 			}
 			
@@ -1497,10 +1639,10 @@ class mak extends db{
 				$almenu = $tartalom[$i]['url'];
 			
 				$html .= '<ul>';
-				$html .= '<li class="ldd_heading">' . $tartalom[$i]['almenu'] . '</li>';
+				$html .= '<li class="ldd_heading"><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
 			}
 			
-			$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '#' . $tartalom[$i]['cim'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
+			$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
 			
 			if($almenu != $tartalom[$i+1]['url']){
 				$html .= '</ul>';
@@ -1545,7 +1687,7 @@ class mak extends db{
 				$kategoria = $tartalom[$i]['azonosito'];
 				
 				$html .= '>';
-				$html .= '<li class="heading ' . $tartalom[$i]['azonosito'] . '">' . $tartalom[$i]['kategoria_nev'] . '</li>';
+				$html .= '<li class="heading ' . $tartalom[$i]['azonosito'] . '"><a href="' . $tartalom[$i]['azonosito'] . '">' . $tartalom[$i]['kategoria_nev'] . '</a></li>';
 			}
 			
 			if($almenu != $tartalom[$i]['url']){
@@ -1709,6 +1851,20 @@ class mak extends db{
 		}
 		
 		return substr($a, 0, strrpos($a,' '));
+	}
+	
+	public function date_dash($date_string){
+	
+		if(strlen($date_string) != 8){
+			return false;
+		}
+		
+		$date = substr($date_string,0,4) . "-";
+		$date .= substr($date_string,4,2) . "-";
+		$date .= substr($date_string,6,2);
+		
+		return $date;
+	
 	}
 	
 }
