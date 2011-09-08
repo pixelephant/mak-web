@@ -21,7 +21,7 @@ $main = new mak(false);
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
-		
+		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
 		<title>Regisztráció - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />

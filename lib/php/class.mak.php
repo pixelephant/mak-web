@@ -1651,7 +1651,7 @@ class mak extends db{
 		for($i = 0;$i<$eredmenyek['count'];$i++){
 		
 			$html .= '<li>';
-			$html .= '<h3><a href="' . $eredmenyek[$i]['url'] . '#' . $eredmenyek[$i]['cim'] . '">' . $eredmenyek[$i]['cim'] . '</a></h3>';  
+			$html .= '<h3><a href="' . $eredmenyek[$i]['azonosito'] . '/' . $eredmenyek[$i]['url'] . '#' . $eredmenyek[$i]['cim'] . '">' . $eredmenyek[$i]['cim'] . '</a></h3>';  
 			$html .= '<div>' . $this->mark_search_result($kereses[0],$eredmenyek[$i]['szoveg']) . '</div>';
 			$html .= '</li>';	
 		
@@ -1697,11 +1697,18 @@ class mak extends db{
 		$string = $eleje . $mark_start . $kozepe . $mark_end . $vege;
 		
 		if($pozicio === FALSE){
-			return $result_string;
+			$a = substr($result_string, 0, $max_hossz);
 		}else{
-			return substr($string, $pozicio - 100, $max_hossz);
+			if($pozicio - 100 < 0){
+				$pozicio = 0;
+			}else{
+				$pozicio = $pozicio - 100;
+			}
+			$a = substr($string, $pozicio, $max_hossz);
+			
 		}
-	
+		
+		return substr($a, 0, strrpos($a,' '));
 	}
 	
 }

@@ -47,9 +47,9 @@ autoklub,mak
 				<h2>Miért érdemes klubtagnak lenni?</h2>
 				<p>Mert ez az egyetlen "Klub" az országban, amely már 111 éve kínálja az autósok százezreinek a népszerű és széles körű szolgáltatásait, piaci verseny közepette.</p>
 				<ul>
-					<li><a href="#">Regisztráció</a></li>
-					<li><a href="#">Tagság típsuok</a></li>
-					<li><a href="#">Kedvezmények</a></li>
+					<li><a href="regisztralas">Regisztráció</a></li>
+					<li><a href="klubtagsag/klubtagsag#K%C3%A1rtyat%C3%ADpusok">Tagság típsuok</a></li>
+					<li><a href="klubtagsag/klubtagsag#Kedvezm%C3%A9nyek%20%C3%A9s%20jogosults%C3%A1gok">Kedvezmények</a></li>
 				</ul>
 			</div>
 			<img src="img/slider/audi.png" alt="Audio" width="200" />
@@ -94,7 +94,7 @@ autoklub,mak
 				<h2>KRESZ oktatás gyerekeknek</h2>
 				<p>A Magyar Autóklub felvállalta az általános iskolák diákjainak a közlekedésbiztonságra való nevelésének lehetőségét, tanórán kívüli oktatási formában.</p>
 				<ul>
-					<li><a href="#">Ki a mester két keréken</a></li>
+					<li><a href="kozlekedesbiztonsag/rendezvenyek#Ki%20a%20mester%20k%C3%A9t%20ker%C3%A9ken">Ki a mester két keréken</a></li>
 					<li><a href="#">Fékezd magad</a></li>
 					<li><a href="#">Jelentkezés</a></li>
 				</ul>
@@ -108,7 +108,7 @@ autoklub,mak
 				<p>Minden kétséget kizáróan Prince monstre nagyszínpados koncertje lesz az idei Sziget nulladik napjának legnagyobb attrakciója.</p>
 				<ul>
 					<li><a href="#">Jegyek akár fél áron</a></li>
-					<li><a href="#">Légy te is klubtag</a></li>
+					<li><a href="regisztralas">Légy te is klubtag</a></li>
 				</ul>
 			</div>
 			<img src="img/slider/young.png" alt="Sziget fesztivál" width="200" />
@@ -145,7 +145,7 @@ autoklub,mak
 	<ul>
 		<li><a href="#">Kártyatípusaink</a></li>
 		<li><a href="#">Miért érdemes?</a></li>
-		<li><a href="#">Online regisztrálás</a></li>
+		<li><a href="regisztralas">Online regisztrálás</a></li>
 	</ul>
 </div>
 <div class="block right">
@@ -154,7 +154,7 @@ autoklub,mak
 	<p>A gépjárművek és pótkocsijukidőszakos műszaki vizsgálatáról szóló 2009/40 EK irányelv szabályainak magyar jogrendbe való integrálása [5/1990. (IV. 12.) KöHÉM és a 77/2009 (XII. 15.) KHEM-IRM-KvVM rendeletek] alapján 2010. január 1-jétől jelentősen módosult a járművek műszaki vizsgálatának rendje.
 	Az egyablakos ügyintézés megvalósításának első jelentős lépéseként a környezetvédelmi felülvizsgálat a műszaki vizsga részét képezi, ezáltal adott a lehetőség, hogy a környezetvédelmi és a műszaki követelmények megfelelőségének ellenőrzése egy helyszínen, egy eljárásban történjen, ebből következően lényegesen rövidebb idő alatt valósuljanak meg.</p>
 	<ul>
-		<li><a href="#">Térkép</a></li>
+		<li><a href="szervizpontok/vizsgaztatas#Vizsg%C3%A1l%C3%B3%20%C3%A1llom%C3%A1sok%20(keres%C5%91)">Térkép</a></li>
 		<li><a href="#">Szolgáltatások</a></li>
 	</ul>
 </div>
@@ -167,7 +167,7 @@ autoklub,mak
 	 Sárga angyalaink 80 db korszerűen felszerelt segélyszolgálati gépkocsival igyekeznek a legmagasabb technikai színvonalon segítséget nyújtani Önnek, és megpróbálják még a helyszínen helyreállítani járműve menetkészségét; szükség esetén a járművet a legközelebbi szervizbe, vagy az Ön által igényelt helyszínre szállítják.</p>
 	<ul>
 		<li><a href="#">Sárga angyalok</a></li>
-		<li><a href="#">Bosch akkusegély</a></li>
+		<li><a href="segelyszolgalat/helyszinihibaelharitas#Akkuseg%C3%A9ly">Bosch akkusegély</a></li>
 		<li><a href="#">Díjtételek</a></li>
 	</ul>
 </div>
@@ -192,9 +192,9 @@ autoklub,mak
 	
 	Az idézet tanúsítja, hogy  a Magyar Autóklub autósiskolája vitathatatlanul a legrégebben működő iskola. A közel 110 éves múlt kötelezi iskoláinkat a magas színvonalú oktatásra.</p>
 	<ul>
-		<li><a href="#">Közlekedésbiztonsági és Oktatási Park</a></li>
-		<li><a href="#">Rendezvényszervezés</a></li>
-		<li><a href="#">Biztonságosan közlekedni egy életúton</a></li>
+		<li><a href="kozlekedesbiztonsag/rendezvenyek#K%C3%B6zleked%C3%A9sbiztons%C3%A1gi%20park">Közlekedésbiztonsági és Oktatási Park</a></li>
+		<li><a href="kozlekedesbiztonsag/rendezvenyek#Mobil%20rendezv%C3%A9ny">Rendezvényszervezés</a></li>
+		<li><a href="kozlekedesbiztonsag/rendezvenyek#Biztons%C3%A1gosan%20k%C3%B6zlekedni%20egy%20%C3%A9let%C3%BAton">Biztonságosan közlekedni egy életúton</a></li>
 	</ul>
 </div>
 <div class="block right">
