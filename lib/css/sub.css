@@ -286,18 +286,19 @@ h3 a{
 }
 
 .segelyszolgalat .head{
-	background: url(../../img/aloldal/segelyszolgalat/multilayer_bg.png) no-repeat center;
+	background: url(../../img/aloldal/segelyszolgalat/multilayer_bg.png);
 	background-position-x: 20px;
 }
 
 .segelyszolgalat .head .layer1{
 	background: url(../../img/aloldal/segelyszolgalat/multilayer_truck.png) no-repeat center;
-	left: -20px;
+	left: 250px;
+	z-index: 1;
 }
 
 .segelyszolgalat .head .layer2{
 	background: url(../../img/aloldal/segelyszolgalat/multilayer_car.png) no-repeat center;
-	left: 55px;
+	left: -250px;
 }
 
 
