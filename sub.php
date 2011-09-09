@@ -119,7 +119,7 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('breadcrumb')?>
 <?php 
-	echo $main->render_breadcrumb($page);
+	echo $main->render_breadcrumb($page,$subpage,$tartalom,$subsubpage);
 ?>
 <?php endblock() ?>
 
