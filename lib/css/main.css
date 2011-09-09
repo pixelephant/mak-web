@@ -10,6 +10,14 @@ Autóklub platina: #797E82;
 
 /* Egyéb apróságok, segédosztályok */
 
+.floatleft{
+	float:left;
+}
+
+.floatright{
+	float:right;
+}
+
 #skypedetectionswf { /*Skype swf eltüntetése*/
 	display: none;
 }
