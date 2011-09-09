@@ -57,6 +57,12 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 ?>
 <?php endblock() ?>
 
+<?php startblock('body-class') ?>
+<?php 
+	echo $page;
+?>
+<?php endblock() ?>
+
 <?php startblock('body-data') ?>
 <?php 
 	if(isset($parameterek['lat']) && isset($parameterek['lng'])){
