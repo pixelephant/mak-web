@@ -1275,7 +1275,7 @@ class mak extends db{
 				 * Bővebben link
 				 */
 				
-				$html .= '<a class="link" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">Bővebben</a>';
+				$html .= '<a class="link hasarrow" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">Bővebben</a>';
 				
 				$html .= '</section>';
 				
@@ -1373,7 +1373,7 @@ class mak extends db{
 				 * Bővebben link
 				 */
 				
-				$html .= '<a class="link" href="' . $kategoria[$i]['azonosito'] . '/' . $kategoria[$i]['almenu_url'] . '">Bővebben</a>';
+				$html .= '<a class="link hasarrow" href="' . $kategoria[$i]['azonosito'] . '/' . $kategoria[$i]['almenu_url'] . '">Bővebben</a>';
 				
 				$html .= '</section>';
 				
@@ -1505,7 +1505,7 @@ class mak extends db{
 				
 				$html .= '<p>'.$this->betekinto($tartalom[$i]['altartalom_szoveg']).'</p>';
 				
-				$html .= '<a class="link" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['almenu'] . '/' . $tartalom[$i]['tartalom_url'] . '/' . $tartalom[$i]['altartalom_url'] . '">Bővebben</a>';
+				$html .= '<a class="link hasarrow" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['almenu'] . '/' . $tartalom[$i]['tartalom_url'] . '/' . $tartalom[$i]['altartalom_url'] . '">Bővebben</a>';
 				
 				$html .= '</section>';
 			
