@@ -210,10 +210,14 @@ class mak extends db{
 		
 		$table = 'mak_kategoria';
 		
-		$cond['azonosito'] = $kategoria;
-		$cond['limit'] = '1';
+		$join[0]['table'] = 'mak_almenu';
+		$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
+		$join[0]['type'] = 'INNER JOIN';
 		
-		$col = 'id,kategoria_nev,azonosito,email,telefon,szoveg,kep,alt';
+		$cond['azonosito'] = $kategoria;
+		
+		$col = 'mak_kategoria.id AS id,kategoria_nev,azonosito,email,telefon,mak_kategoria.szoveg AS szoveg,kep,alt';
+		$col .= ',mak_almenu.url AS almenu_url,mak_almenu.almenu AS almenu,mak_almenu.title AS almenu_title,mak_almenu.szoveg AS almenu_szoveg';
 		
 		return $this->sql_select($table,$col,$cond,$join);
 	
@@ -1249,34 +1253,42 @@ class mak extends db{
 		
 		$galeria = '';
 		$html = '';
+		$kateg = '';
 		
 		for($i = 0; $i < $kategoria['count']; $i++){
 		
-			$html .= '<section id="' . $kategoria[$i]['cim'] . '">';
-			$html .= '<h2>'.$kategoria[$i]['cim'].'</h2>';
-			$html .= '<p>'.$kategoria[$i]['szoveg'].'</p>';
-			$html .= '<img src="' . $this->_imageDir . 'aloldal/' . $kategoria[$i]['azonosito'] . '/' . $kategoria[$i]['url'] . '/' . $kategoria[$i]['kep'] . '" alt="' . $kategoria[$i]['alt'] . '" />';
-		
-			$galeria = $this->get_galeria_tartalomhoz($kategoria[$i]['id']);
+			//if($kateg != $kategoria[$i]['cim']){
 			
-			if($galeria === FALSE){
-				return FALSE;
-			}
-			
-			if($galeria['count'] > 0){
-				$html .= '<div class="gallery">';
-				for($j = 0; $j < $galeria['count']; $j++){
-					$html .= '<a rel="' . $i . '" href="' . $this->_galleryDir . $galeria[$j]['kep_filenev'] .'"><img src="' . $this->_galleryDir . $galeria[$j]['thumbnail_filenev'] . '" alt="' . $galeria[$j]['thumbnail_filenev'] . '" /></a>';
+				$html .= '<section id="' . $kategoria[$i]['cim'] . '">';
+				$html .= '<h2>'.$kategoria[$i]['cim'].'</h2>';
+				$html .= '<p>'.$kategoria[$i]['szoveg'].'</p>';
+				
+				if($kategoria[$i]['kep'] != ''){
+					$html .= '<img src="' . $this->_imageDir . 'aloldal/' . $kategoria[$i]['azonosito'] . '/' . $kategoria[$i]['url'] . '/' . $kategoria[$i]['kep'] . '" alt="' . $kategoria[$i]['alt'] . '" />';
 				}
-				$html .= '</div>';
-			}
-			
-			$html .= '</section>';
-			
-			if($i + 1 < $kategoria['count']){
-				$html .= '<div class="hr"></div>';
-			}
-		
+				
+				$galeria = $this->get_galeria_tartalomhoz($kategoria[$i]['id']);
+				
+				if($galeria === FALSE){
+					return FALSE;
+				}
+				
+				if($galeria['count'] > 0){
+					$html .= '<div class="gallery">';
+					for($j = 0; $j < $galeria['count']; $j++){
+						$html .= '<a rel="' . $i . '" href="' . $this->_galleryDir . $galeria[$j]['kep_filenev'] .'"><img src="' . $this->_galleryDir . $galeria[$j]['thumbnail_filenev'] . '" alt="' . $galeria[$j]['thumbnail_filenev'] . '" /></a>';
+					}
+					$html .= '</div>';
+				}
+				
+				$html .= '</section>';
+				
+				if($i + 1 < $kategoria['count']){
+					$html .= '<div class="hr"></div>';
+				}
+				
+				$kateg = $kategoria[$i]['cim'];
+			//}
 		}
 		
 		return $html;
@@ -1329,7 +1341,9 @@ class mak extends db{
 	
 	public function render_tartalom_section_default($tart){
 	
-		$tartalom = $this->get_oldal_tartalom($tart);
+		$cond['mak_tartalom.url'] = $tart;
+	
+		$tartalom = $this->get_tartalom($cond);
 					
 		if($tartalom == '' || !is_array($tartalom)){
 			return FALSE;
@@ -1817,22 +1831,48 @@ class mak extends db{
 	
 	}
 	
-	public function render_breadcrumb($url){
+	public function render_breadcrumb($kategoria,$almenu='',$tartalom='',$altartalom=''){
 	
-		$url = trim($url);
+		$kategoria = trim($kategoria);
+		$almenu = trim($almenu);
+		$tartalom = trim($tartalom);
+		$altartalom = trim($altartalom);
 	
-		$tartalom = $this->get_oldal_tartalom($url);
+		$table = 'mak_kategoria,mak_almenu,mak_tartalom,mak_altartalom';
+		$col = 'mak_kategoria.kategoria_nev AS kategoria,mak_almenu.almenu AS almenu,mak_tartalom.cim AS tartalom,mak_altartalom.cim AS altartalom';
+		$cond['mak_kategoria.azonosito'] = $kategoria;
+		$cond['mak_almenu.url'] = $almenu;
+		$cond['mak_tartalom.url'] = $tartalom;
+		$cond['mak_altartalom.url'] = $altartalom;
+		
+		$breadcrumb = $this->sql_select($table,$col,$cond);
 		
 		$html = '<ul id="breadcrumb">';
 		$html .= '<li class="first"><a href="">Főoldal</a></li>';
 		
-		$html .= '<li><a>' . $tartalom[0]['kategoria_nev'] . '</a></li>';
-		$html .= '<li><a>' . $tartalom[0]['almenu'] . '</a></li>';
-		//$html .= '<li><a href="#">' . $tartalom[0]['cim'] . '</a></li>';
+		if($kategoria != ''){
+			$link = $kategoria;
+			$html .= '<li><a href="' . $link . '">' . $breadcrumb[0]['kategoria'] . '</a></li>';
+		}
+		
+		if($almenu != ''){
+			$link .= '/' . $almenu;
+			$html .= '<li><a href="' . $link . '">' . $breadcrumb[0]['almenu'] . '</a></li>';
+		}
+		
+		if($tartalom != ''){
+			$link .= '/' . $tartalom;
+			$html .= '<li><a href="' . $link . '">' . $breadcrumb[0]['tartalom'] . '</a></li>';
+		}
+		
+		if($altartalom != ''){
+			$link .= '/' . $altartalom;
+			$html .= '<li><a href="' . $link . '">' . $breadcrumb[0]['altartalom'] . '</a></li>';
+		}
 	
 		$html .= '</ul>';
 		
-		echo $html;
+		return $html;
 	
 	}
 	
@@ -1881,6 +1921,20 @@ class mak extends db{
 	
 	}
 	
+	public function split_text($string){
+	
+		$max_len = 300;
+	
+		$text[0] = trim($string);
+		$text = GUMP::sanitize($text);
+		
+		if(strlen($string)){
+		
+			
+		
+		}
+	
+	}
 }
 
 ?>
