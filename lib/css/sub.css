@@ -47,6 +47,39 @@ article section .leftside{
 	width: 440px;
 }
 
+.fullside{
+	clear: both;
+	margin-top: 25px;
+	float: left;
+}
+
+.fullside p{
+	margin:5px 0;
+}
+
+.fullside .mak-table{
+	margin: 20px 0;
+}
+
+.fullside h3{
+	font-size: 18px;
+	margin: 15px 0;
+}
+
+.fullside ul{
+	margin:10px 0;
+}
+
+.fullside li{
+	margin-left:10px;
+	color:#1c1c1c;
+}
+
+.fullside li:before{
+	content : "‣ ";
+	color:#1c1c1c;
+}
+
 section p a{
 	color: #0080B0;
 }
@@ -236,18 +269,36 @@ h3 a{
 /*Multilayerek*/
 
 
-#helyszinihibaelharitas-body .head{
-	background: url(../../img/aloldal/segelyszolgalat/helyszinihibaelharitas/multilayer_bg.png);
+.szervizpontok .head{
+	background: url(../../img/aloldal/szervizpontok/multilayer_bg.png);
 	background-position-x: 20px;
 }
 
-#helyszinihibaelharitas-body .head .layer1{
-	background: url(../../img/aloldal/segelyszolgalat/helyszinihibaelharitas/multilayer_szerelo.png) no-repeat center;
+.szervizpontok .head .layer1{
+	background: url(../../img/aloldal/szervizpontok/multilayer_szerelo.png) no-repeat center;
 	left: -20px;
 }
 
 
-#helyszinihibaelharitas-body .head .layer2{
-	background: url(../../img/aloldal/segelyszolgalat/helyszinihibaelharitas/multilayer_auto.png) no-repeat center;
+.szervizpontok .head .layer2{
+	background: url(../../img/aloldal/szervizpontok/multilayer_auto.png) no-repeat center;
 	left: 55px;
+}
+
+.segelyszolgalat .head{
+	background: url(../../img/aloldal/segelyszolgalat/multilayer_bg.png);
+	background-position-x: 20px;
+}
+
+.segelyszolgalat .head .layer1{
+	background: url(../../img/aloldal/segelyszolgalat/multilayer_truck.png);
+	left: -20px;
+}
+
+.segelyszolgalat .head .layer2{
+	background: url(../../img/aloldal/segelyszolgalat/multilayer_car.png);
+	left: 55px;
+}
+
+
 }
