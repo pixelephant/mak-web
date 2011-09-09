@@ -6,6 +6,8 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
+error_reporting(0);
+
 $main = new mak(false);
 
 $page = trim($_GET['page']);
