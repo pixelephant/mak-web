@@ -391,11 +391,11 @@ class mak extends db{
 		
 		$join[0]['table'] = 'mak_almenu';		
 		$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
-		$join[0]['type'] = 'INNER JOIN';
+		$join[0]['type'] = 'LEFT JOIN';
 		
 		$join[1]['table'] = 'mak_tartalom';		
 		$join[1]['value'] = 'mak_tartalom.almenu_id=mak_almenu.id';
-		$join[1]['type'] = 'INNER JOIN';
+		$join[1]['type'] = 'LEFT JOIN';
 		
 		$join[2]['table'] = 'mak_altartalom';		
 		$join[2]['value'] = 'mak_altartalom.tartalom_id=mak_tartalom.id';
