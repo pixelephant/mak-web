@@ -6,7 +6,9 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
-$main = new mak(false);
+error_reporting(0);
+
+$main = new mak(true);
 
 $page = trim($_GET['page']);
 $subpage = trim($_GET['subpage']);
@@ -73,7 +75,7 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('nav') ?>
 <?php 	
-	echo $main->render_felso_menu();
+	echo $main->render_felso_menu($page);
 ?>
 <?php endblock() ?>
 

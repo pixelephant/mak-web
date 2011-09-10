@@ -98,7 +98,7 @@ strong{
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
-	border: 1px solid #DAA41A;
+	border: 1px solid #000000;
 	display: inline-block;
 	text-decoration: none;
 	text-shadow: 1px 1px 0px yellow;
@@ -469,6 +469,10 @@ nav{
 #klubtagsag-menu > span{
 	background: url(../../img/nav/klub.png) no-repeat left center;
 		background-position: 10px;
+}
+
+li.active_menu > span a{
+	color:#FFD400 !important;
 }
 
 ul.ldd_menu{
