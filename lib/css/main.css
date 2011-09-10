@@ -471,8 +471,8 @@ nav{
 		background-position: 10px;
 }
 
-li.active_menu{
-	background:#2E2E2E;
+li.active_menu > span a{
+	color:#FFD400 !important;
 }
 
 ul.ldd_menu{

@@ -1780,7 +1780,7 @@ class mak extends db{
 			
 	}
 
-	public function render_felso_menu(){
+	public function render_felso_menu($aktualis_menu){
 	
 		$cond['mak_kategoria.menu_elem'] = '1';
 	
@@ -1798,7 +1798,13 @@ class mak extends db{
 			if($kategoria != $tartalom[$i]['azonosito']){
 				$kategoria = $tartalom[$i]['azonosito'];
 					
-				$html .= '<li id="' . $kategoria . '-menu">';
+				$html .= '<li id="' . $kategoria . '-menu"';
+				
+				if($kategoria == $aktualis_menu){
+					$html .= ' class="active_menu"';
+				}
+				
+				$html .= '>';
 				$html .= '<span><a href="' . $kategoria . '">' . $tartalom[$i]['kategoria_nev'] . '</a></span>';
 				$html .= '<div class="ldd_submenu">';
 				$html .= '<div class="arrow"></div>';

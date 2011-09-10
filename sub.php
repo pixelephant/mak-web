@@ -75,7 +75,7 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('nav') ?>
 <?php 	
-	echo $main->render_felso_menu();
+	echo $main->render_felso_menu($page);
 ?>
 <?php endblock() ?>
 
