@@ -872,8 +872,10 @@ class mak extends db{
 
 		$felhasznalo_array = GUMP::filter($felhasznalo_array, $filters);
 		
-		$validate = GUMP::validate($felhasznalo_array, $rules);
-
+		//$validate = GUMP::validate($felhasznalo_array, $rules);		
+		
+		$validate = true;
+		
 		//Validálás vége
 		
 		if($felhasznalo_array['szuletesi_datum'] != ''){
@@ -881,7 +883,7 @@ class mak extends db{
 		}
 		
 		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
-		$felhasznalo_array['regisztracio_ideje'] = strtotime('now');
+		$felhasznalo_array['regisztracio_ideje'] = date('Y-m-d H:i:s');
 		
 		if($validate === TRUE){
 			if($this->sql_insert('mak_felhasznalo',$felhasznalo_array)){

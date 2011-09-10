@@ -41,7 +41,7 @@ $main = new mak(false);
 		</div>
 	<nav>
 		<?php
-			echo $main->render_felso_menu();
+			echo $main->render_felso_menu('');
 		?>
 	</nav>
 	<section id="main" class="wrapper">
@@ -135,6 +135,13 @@ $main = new mak(false);
 						</select>
 					</div>
 					<div class="row">
+						<label for="natGender">Neme</label>
+						<select name="natGender" id="natGender">
+							<option value="N">Nő</option>
+							<option value="F">Férfi</option>
+						</select>
+					</div>
+					<div class="row">
 						<label for="natFName">Vezetéknév</label>
 						<input class="required" type="text" name="natFName" id="natFName" />
 					</div>
@@ -167,11 +174,11 @@ $main = new mak(false);
 						<input class="required email" type="text" name="email" id="email" />
 						<img src="img/info.png" alt="" class="info" title="Ezen a címen fogjuk a kapcsolatot tartani Önnel, valamint ezzel tud majd a Saját Autóklubomba belépni." />
 					</div>
-					<div class="row">
+					<!-- >div class="row">
 						<label for="phone">Telefonszám</label>
 						<input class="required digits" type="text" name="phone" id="phone" />
 						<img src="img/info.png" alt="" class="info" title="Az elvárt formátum : 06301111111" />
-					</div>
+					</div-->
 				</fieldset>
 				
 				<fieldset>
@@ -190,7 +197,7 @@ $main = new mak(false);
 				<fieldset>
 				<h3>Feltételek</h3>
 				<div class="row">
-					<label for="terms">Elfogadom a <a class="link" target="_blank" href="#">feltételeket</a></label>
+					<label for="terms">Elfogadom a <a class="link" target="_blank" href="aszf">feltételeket</a></label>
 					<input class="required" type="checkbox" name="terms" id="terms" />
 				</div>
 				</fieldset>

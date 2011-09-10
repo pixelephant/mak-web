@@ -8,7 +8,7 @@ include 'lib/php/class.mak.php';
 
 error_reporting(0);
 
-$main = new mak(true);
+$main = new mak(false);
 
 $page = trim($_GET['page']);
 $subpage = trim($_GET['subpage']);
