@@ -32,6 +32,7 @@ if(!empty($form)){
 	
 		$adatok['vezeteknev'] = $form['natFName'];
 		$adatok['keresztnev'] = $form['natLName'];
+		$adatok['nem'] = $form['natGender'];
 		$adatok['szuletesi_datum'] = $form['natDate'];
 		$adatok['allando_irsz'] = $form['natZip'];
 		$adatok['allando_helyseg'] = $form['natCity'];	
