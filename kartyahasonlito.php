@@ -65,10 +65,10 @@ if(isset($_POST['advanced-search-input'])){
 		<section id="content">
 		<article>
 			<h1>Kártya összehasonlítás</h1>
-			<table class="mak-table" id="compare">
+			<table class="mak-table" id="compare" valign="center">
 				<thead>
 					<tr>
-						<th colspan="3"></th>
+						<th></th>
 						<th id="compare-diszkont">Diszkont</th>
 						<th id="compare-standard">Standard</th>
 						<th id="compare-komfort">Komfort</th>
@@ -76,7 +76,10 @@ if(isset($_POST['advanced-search-input'])){
 				</thead>
 				<tfoot>
 					<tr>
-						<td colspan="4"></td>
+						<td></td>
+						<td><a href="/regisztralas" class="gray-button">Belépek</a></td>						
+						<td><a href="/regisztralas" class="gray-button">Belépek</a></td>
+						<td><a href="/regisztralas" class="gray-button">Belépek</a></td>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -84,148 +87,151 @@ if(isset($_POST['advanced-search-input'])){
 						<td>Szállás</td>
 						<td></td>
 						<td></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Gépjármű tárolás szerviz nyitásig</td>
 						<td></td>
 						<td></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Haza(tovább) utazás vasúton/távolsági autóbusszal</td>
 						<td></td>
 						<td></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Visszautazás gépjárműért vasúton/távolsági autóbusszal</td>
 						<td></td>
 						<td></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Csereautó</td>
 						<td></td>
 						<td></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Segélyszolgálat</td>
 						<td></td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Jogi tanácsadás</td>
 						<td></td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Baleseti helyszínelés</td>
 						<td></td>
 						<td></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Autósélet</td>
 						<td></td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Csoportos élet- és balesetbiztosítás</td>
 						<td></td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Taxi a műszaki hiba helyétől a legközelebbi vasút/buszállomásra</td>
 						<td></td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Speciális segélyhívó telefon: 188</td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Gépjármű szállítás legközelebbi szervizbe</td>
-						<td class="percentage"></td>
-						<td class="pipa"></td>
-						<td class="pipa"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td> 
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>MAK műszaki szolgáltatások</td>
 						<td></td>
-						<td class="percentage"></td>
-						<td class="pipa"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Gépjármű hazaszállítás</td>
 						<td></td>
-						<td class="percentage"></td>
-						<td class="pipa"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="pipa"><img src="img/tick-blue.png" /></td>
 					</tr>
 					<tr>
 						<td>Gépjárművezető képzés</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Bérautó (Assistrent)</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Gépjármű biztosítások (kötelező, casco)</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Utazási biztosítáok (BBP)</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Szervezett Autoclub Travel utazások</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Klub cikkek</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Bizományosi cikkek (térképek, útikönyvek, úti cikkek)</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Egyéb kedvezmények</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 					<tr>
 						<td>Külföldi partnerek szolgáltatói kedvezménye: Show your Card!</td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
-						<td class="percentage"></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
+						<td class="percentage"><img src="img/dot.png" /></td>
 					</tr>
 				</tbody>
 			</table>
+			<div id="seged">
+				<p><strong>Nem tud dönteni?</strong> <a href="#">Próbálja ki kártyaválasztó segédünket! <img src="img/right_02.png" alt="" /></a></p>
+			</div>
 		</article>					
 		</section>
 	</section>
