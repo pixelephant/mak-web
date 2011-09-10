@@ -925,7 +925,7 @@ footer{
 .footer-sep{
 	float: left;
 	width: 3px;
-	background: url(../../img/footer-sep.png) repeat-y;
+	background: url(../../img/sep-footer.png) center no-repeat;
 	height: 136px;
 	margin-top: 1px;
 }
