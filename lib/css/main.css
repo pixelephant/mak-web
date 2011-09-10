@@ -471,6 +471,10 @@ nav{
 		background-position: 10px;
 }
 
+li.active_menu{
+	background:#2E2E2E;
+}
+
 ul.ldd_menu{
 	width: 975px;
 	height:45px;

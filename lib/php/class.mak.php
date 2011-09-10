@@ -212,7 +212,7 @@ class mak extends db{
 		
 		$join[0]['table'] = 'mak_almenu';
 		$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
-		$join[0]['type'] = 'INNER JOIN';
+		$join[0]['type'] = 'LEFT JOIN';
 		
 		$cond['azonosito'] = $kategoria;
 		
@@ -1207,10 +1207,6 @@ class mak extends db{
 	//RENDER
 
 	public function render_aloldal_section_default($tart){
-		
-		if(is_numeric($tart)){
-			return $this->render_szervizpont($tart);
-		}
 	
 		$cond['mak_almenu.url'] = $tart;
 	
@@ -1294,10 +1290,6 @@ class mak extends db{
 	
 	public function render_kategoria_section_default($kat){
 		
-		if($kat == 'szervizpontok'){
-			return $this->render_szervizpontok();
-		}
-	
 		$kategoria = $this->get_kategoria_tartalom($kat);
 	
 		if($kategoria == '' || !is_array($kategoria)){
@@ -1323,7 +1315,7 @@ class mak extends db{
 					$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/' . $kategoria[$i]['azonosito'] . '/' . $kategoria[$i]['url'] . '/' . $kategoria[$i]['almenu_kep'] . '" alt="' . $kategoria[$i]['almenu_alt'] . '" /></div>';
 				}
 				
-				$html .= '<p>'.$kategoria[$i]['almenu_szoveg'].'</p>';
+				$html .= '<p>'.$kategoria[$i]['szoveg'].'</p>';
 				
 				$galeria = $this->get_galeria_tartalomhoz($kategoria[$i]['id']);
 				
@@ -1666,14 +1658,22 @@ class mak extends db{
 		switch($szint){
 		
 			case "kategoria":
-				
-				$html =  $this->render_kategoria_section_default($kategoria);
+
+				if($kategoria == 'szervizpontok'){
+					$html = $this->render_szervizpontok();
+				}else{
+					$html =  $this->render_kategoria_section_default($kategoria);
+				}
 			
 			break;
 			
 			case "almenu":
 				
-				$html =  $this->render_aloldal_section_default($almenu);
+				if(is_numeric($almenu)){
+					$html = $this->render_szervizpont($almenu);
+				}else{
+					$html =  $this->render_aloldal_section_default($almenu);
+				}
 			
 			break;
 			
@@ -1782,7 +1782,9 @@ class mak extends db{
 
 	public function render_felso_menu(){
 	
-		$tartalom = $this->get_tartalom();
+		$cond['mak_kategoria.menu_elem'] = '1';
+	
+		$tartalom = $this->get_tartalom($cond);
 		$kategoria = '';
 		$almenu = '';
 		$html = '';
@@ -1837,6 +1839,7 @@ class mak extends db{
 
 	public function render_also_menu(){
 	
+		$cond['mak_kategoria.menu_elem'] = '1';
 		$cond['mak_kategoria.azonosito']['and_or'] = 'AND';
 		$cond['mak_kategoria.azonosito']['rel'] = ' != ';
 		$cond['mak_kategoria.azonosito']['val'] = 'enautoklubom';
