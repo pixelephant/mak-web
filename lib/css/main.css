@@ -28,7 +28,7 @@ Autóklub platina: #797E82;
 }
 
 .link.hasarrow:before{
-	content : "‣ ";
+	content : "> ";
 	color:#0080B0;
 }
 
