@@ -61,6 +61,9 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('body-class') ?>
 <?php 
+	if($page == 'szervizpont'){
+		$page .= 'ok';
+	}
 	echo $page;
 ?>
 <?php endblock() ?>
