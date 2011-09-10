@@ -29,7 +29,7 @@ $sidx = $_POST['sidx'];
 $sord = $_POST['sord'];
 
 $cond['orderby'] = $sidx . ' ' . $sord;
-$col = 'tagsagi_szam,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja';
+$col = 'id,tagsagi_szam,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja';
 
 if($search == 'true'){
 
@@ -90,7 +90,7 @@ $json .= '"total":' . $total . ',';
  * Cellák felépítése
  * 
  * Cella sorrend:
- * 'Tagsági szám','Nem', 'Születési dátum','Anyja neve','Előnév','Vezetéknév','Keresztnév',
+ * 'Id','Tagsági szám','Nem', 'Születési dátum','Anyja neve','Előnév','Vezetéknév','Keresztnév',
  * 'Állandó irányítószám','Állandó helység','Állandó közterület','Állandó házszám',
  * 'Levelezési irányítószám','Levelezési helység','Levelezési küzterület','Levelezési házszám',
  * 'Vezetékes telefon','Mobil telefon','E-mail','Rendszám','Tagtípus','Díjkategória','Státusz',
@@ -102,7 +102,7 @@ $json .= '"rows":[';
 
 for($i = 0; $i < $felhasznalo['count']; $i++){
 
-	$json .= '{"id":"' . $felhasznalo[$i]['tagsagi_szam'] . '",';
+	$json .= '{"id":"' . $felhasznalo[$i]['id'] . '",';
 	$json .= '"cell":[';
 	
 	foreach($felhasznalo[$i] as $mezo => $ertek){
