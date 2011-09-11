@@ -27,6 +27,11 @@ Autóklub platina: #797E82;
 	color:#0080B0;
 }
 
+#results .link{
+	left: 500px;
+    position: relative;	
+}
+
 .link.hasarrow:before{
 	content : "> ";
 	color:#0080B0;
@@ -1191,6 +1196,7 @@ li.heading.travel{
     padding: 4px 24px;
     float:left;
     margin-top:-1px;
+    height:25px;
 }
 
 #advanced-search label{
