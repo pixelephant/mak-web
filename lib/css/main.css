@@ -625,10 +625,9 @@ li.ldd_heading a{
 }
 
 li.ldd_heading a:before{
-	content : "‣ ";
+	content : " " !important;
 	color: black !important;
 }
-
 
 /*Belső rész*/
 
