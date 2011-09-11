@@ -1553,6 +1553,10 @@ class mak extends db{
 		$position[1] = 'center';
 		$position[2] = 'right';
 	
+		if($evfolyam == ''){
+			$evfolyam = 1;
+		}
+		
 		$tartalom = $this->get_autoselet($evfolyam);
 		
 		if($tartalom === FALSE){
@@ -1562,7 +1566,7 @@ class mak extends db{
 		$html = '<div class="embed">';
 		$html .= '</div>';
 		
-		for($i = 0; $i < $tartalom['count']; $i = $i + 3){
+		for($i = 0; $i < $tartalom['count']; $i++){
 			
 			$html .= '<div class="row">';
 			$html .= '<div class="autoselet ';					
@@ -1577,6 +1581,8 @@ class mak extends db{
 			$html .= '</div>';
 		
 		}
+		
+		return $html;
 	
 	}
 	
@@ -1674,6 +1680,8 @@ class mak extends db{
 				
 				if(is_numeric($almenu)){
 					$html = $this->render_szervizpont($almenu);
+				}elseif($almenu == 'autoselet'){
+					$html = $this->render_autoselet('1');
 				}else{
 					$html =  $this->render_aloldal_section_default($almenu);
 				}
@@ -2009,7 +2017,7 @@ class mak extends db{
 				$html .= '<h3>' . $eredmenyek[$i]['cim'] . '</a></h3>';
 				$html .= '<div>' . $this->mark_search_result($kereses[0],$eredmenyek[$i]['szoveg']);
 				
-				$html .= '<div><a href="' . $this->href($eredmenyek[$i]['url']) . '" class="link">Bővebben</a></div>';
+				$html .= '<div><a href="' . $this->href($eredmenyek[$i]['azonosito'],$eredmenyek[$i]['url'],$eredmenyek[$i]['tartalom_url'],$eredmenyek[$i]['altartalom_url']) . '" class="link">Bővebben</a></div>';
 				
 				$html .= '</div>';
 				$html .= '</li>';
@@ -2156,7 +2164,7 @@ class mak extends db{
 			$poz[] = strrpos($str,"?");
 			return substr($str,0,max($poz)+1);
 		}else{
-			return $string;
+			return strip_tags($string);
 		}
 	
 	}
