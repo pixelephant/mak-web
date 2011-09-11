@@ -1,4 +1,4 @@
-<h1><a href="">Magyar Autóklub</a></h1>
+<h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>
 <div id="userBar">
 	<span>Üdvözöljük <strong>Árpád!</strong> | Ön <strong>Komfort</strong> klubtagunk.</span>
 </div>

@@ -236,25 +236,31 @@ if(isset($_POST['advanced-search-input'])){
 			
 			<div id="jatek">
 				<div id="jatek-bg">
+					A játék indításához kattintson a start gombra.
 					<img src="img/jatek/1.png" data-correct="1" alt="" />
 					<img src="img/jatek/2.png" data-correct="2" alt="" />
 					<img src="img/jatek/3.png" data-correct="3" alt="" />
 					<img src="img/jatek/4.png" data-correct="4" alt="" />
 					<img src="img/jatek/5.png" data-correct="5" alt="" />
 				</div>
-				<div id="choices">
-					<select name="choice-select" id="choice-select">
-						<option value="1">Egyes szám</option>
-						<option value="2">Kettes szám</option>
-						<option value="3">Hármas szám</option>
-						<option value="4">Négyes szám</option>
-						<option value="5">Ötös szám</option>
-					</select>
-					<button id="tipp">Ok</button>
-				</div>
-				<div id="score">
-					<button id="startgame">Start</button>
-					<span id="currentscore">0</span>
+				<div id="jatek-bar">
+					<div id="endscore">
+						Játék vége. A játék során <span></span> helyes választ adott.
+					</div>
+					<div id="choices">
+						<select name="choice-select" id="choice-select">
+							<option value="1">Egyes szám</option>
+							<option value="2">Kettes szám</option>
+							<option value="3">Hármas szám</option>
+							<option value="4">Négyes szám</option>
+							<option value="5">Ötös szám</option>
+						</select>
+						<button id="tipp" class="yellow-button">Ok</button>
+					</div>
+					<div id="score">
+						<button class="yellow-button" id="startgame">Start</button>
+						<span id="currentscore">Helyes válaszok : <span>0</span></span>
+					</div>
 				</div>
 			</div>
 			
@@ -311,20 +317,32 @@ window.jQuery || document.write('<script src="lib/js/jquery-1.6.2.js">\x3C/scrip
 		});
 		
 		function startGame(){
+			correctNo = 0;
 			var $items = $("#jatek-bg").find("img").rand(5);
 			$("#jatek-bg").empty().append($items);
 			$items.eq(0).addClass("current").fadeIn();
+			$("#endscore").hide();
+			$("#startgame").hide();
+			$("#currentscore span").html(0).end().css("color","black");
+			$("#currentscore,#choices").fadeIn();
 		}
 		
 		$("#tipp").click(function(){
+			
+			if($("#jatek-bg .current").next("img").length == 0){
+				$("#choices").hide();
+				$("#currentscore").hide();
+				$("#startgame").show();
+				$("#endscore").show().find("span").html(correctNo);
+			}
 			if($("#jatek-bg .current").data("correct") == $("#choice-select").find("option:selected").val()){
 				correctNo++;
-				$("#currentscore").css("background","green").html(correctNo);
+				$("#currentscore span").css("color","green").html(correctNo);
 				$("#jatek-bg .current").fadeOut().removeClass("current").next("img").addClass("current").fadeIn();
 			}
 			else{
 				$("#jatek-bg .current").fadeOut().removeClass("current").next("img").addClass("current").fadeIn();
-				$("#currentscore").css("background","red");
+				$("#currentscore span").css("color","red");
 			}
 		});
 		
