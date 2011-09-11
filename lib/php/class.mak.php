@@ -136,25 +136,23 @@ class mak extends db{
 	
 	}
 	
-	public function get_login($felhasznalo_nev,$jelszo){
+	public function get_login($felhasznalo_nev){
 	
 		$cond['felhasznalonev'] = $felhasznalo_nev;
-		$cond['jelszo'] = $jelszo;
+		//$cond['jelszo'] = $jelszo;
 		
 		$table = 'mak_felhasznalo';
 		
 		$cond = GUMP::sanitize($cond);
 		
-		$col = 'id';
+		$col = 'id,jelszo,nem,keresztnev,kapcsolattarto_keresztnev,tagtipus';
 		
 		$filters = array(
-			'felhasznalonev' => 'trim|sanitize_string',
-			'jelszo'	  	=> 'trim',
+			'felhasznalonev' => 'trim',
 		);
 		
 		$rules = array(
-			'felhasznalonev'    => 'required|alpha_numeric|max_len,100|min_len,6',
-			'jelszo'    => 'required|max_len,100|min_len,6',
+			'felhasznalonev'    => 'required|max_len,100|min_len,6',
 		);
 		
 		if(GUMP::validate(GUMP::filter($cond, $filters), $rules) === TRUE){

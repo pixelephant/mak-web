@@ -284,7 +284,7 @@ header h1 a span{
 
 #userBar{
 	position:absolute;
-	top:0;
+	top:-35px;
 	right:15px;
 	height:34px;
 	border:2px solid F0C500;
