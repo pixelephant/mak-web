@@ -42,7 +42,17 @@ autoklub,mak
 <div id="rightSlider">
 <div class="glow">
 	<div id="slider" class="wrapper">
-		<div class="slide first">
+		<div class="slide first" id="makslide">
+			<h2>Magyar Autóklub <span>A hűséges Partner</span></h2>
+			<div id="picto">
+				<a href=""><img src="img/pikto-01.jpg" alt="" />Segélyszolgálat</a>
+				<a href=""><img src="img/pikto-02.jpg" alt="" />Szerviz Pontok</a>
+				<a href=""><img src="img/pikto-03.jpg" alt="" />Közlekedésbiztonság</a>
+				<a href=""><img src="img/pikto-04.jpg" alt="" />Travel</a>
+			</div>
+			<img id="makauto" src="img/slider/makauto.png" alt="" />
+		</div>
+		<div class="slide">
 			<div class="text">
 				<h2>Miért érdemes klubtagnak lenni?</h2>
 				<p>Mert ez az egyetlen "Klub" az országban, amely már 111 éve kínálja az autósok százezreinek a népszerű és széles körű szolgáltatásait, piaci verseny közepette.</p>

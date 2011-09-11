@@ -143,3 +143,51 @@
 .slide.first li:before{
 	color:white !important; 
 }
+
+#makslide{
+	
+}
+
+#makslide h2{
+	position: relative;
+	top: 80px;
+	left: 200px;
+	opacity: 0;
+}
+
+#makslide h2 span{
+	display: block;
+	position: relative;
+	top: 0;
+	left: 92px;
+	font-style: italic;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+#makauto{
+	position: relative;
+	top: -55px;
+	left: 410px;
+}
+
+#picto{
+	position:absolute;
+	left:20px;
+	top:28px;
+}
+
+#picto a{
+	display:block;
+	position: relative;
+	left:-200px;
+}
+
+#picto a img{
+	float: none;
+	display: inline;
+	margin: 0;
+	top: 8px;
+	margin-right: 5px;
+	right:0;
+}
