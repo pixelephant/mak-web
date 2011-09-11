@@ -1909,7 +1909,7 @@ class mak extends db{
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
-			if($kategoria != $tartalom[$i]['azonosito']){
+			if($kategoria != $tartalom[$i]['azonosito'] && $tartalom[$i]['azonosito'] != 'travel'){
 				$kategoria = $tartalom[$i]['azonosito'];
 					
 				$html .= '<label for="only-' . $tartalom[$i]['azonosito'] . '">' . $tartalom[$i]['kategoria_nev'] . '</label><input type="checkbox" name="only-' . $tartalom[$i]['azonosito'] . '" id="only-' . $tartalom[$i]['azonosito'] . '" checked="checked" />';
@@ -1936,9 +1936,9 @@ class mak extends db{
 		
 		if($advanced != '' && isset($advanced['advanced-search-input'])){
 			
-			$col = "mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_tartalom.publikalta AS publikalta FROM mak_tartalom LEFT JOIN mak_almenu ON mak_almenu.id=mak_tartalom.almenu_id";
+			$col = "mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_tartalom.publikalta AS publikalta, mak_tartalom.url AS tartalom_url, mak_altartalom.url AS altartalom_url";
 		
-			$sql = "SELECT DISTINCT " . $col . " LEFT JOIN mak_kategoria ON mak_kategoria.id=mak_almenu.kategoria_id";
+			$sql = "SELECT DISTINCT " . $col . " FROM mak_tartalom LEFT JOIN mak_almenu ON mak_almenu.id=mak_tartalom.almenu_id LEFT JOIN mak_kategoria ON mak_kategoria.id=mak_almenu.kategoria_id LEFT JOIN mak_altartalom ON mak_altartalom.tartalom_id=mak_tartalom.id";
 
 			$cols = explode(",",$col);
 			
@@ -1964,9 +1964,13 @@ class mak extends db{
 			
 			$sql = $sql . $adv;
 			
-			$sql .= " AND (mak_tartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_tartalom.szoveg LIKE '%" . $kereses[0] . "%')";
+			$sql .= " AND (mak_tartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_tartalom.szoveg LIKE '%" . $kereses[0] . "%'";
+			$sql .= " OR mak_kategoria.kategoria_nev LIKE '%" . $kereses[0] . "%' OR mak_kategoria.szoveg LIKE '%" . $kereses[0] . "%'";
+			$sql .= " OR mak_almenu.kategoria_nev LIKE '%" . $kereses[0] . "%' OR mak_almenu.szoveg LIKE '%" . $kereses[0] . "%'";
+			$sql .= " OR mak_altartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_altartalom.szoveg LIKE '%" . $kereses[0] . "%'";
+			$sql .= ")";
 			
-			$sql .= " ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC";
+			$sql .= " ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC, mak_altartalom.sorrend";
 			
 			$eredmenyek = $a = $this->results($this->query($sql),$cols);
 			
@@ -1976,10 +1980,13 @@ class mak extends db{
 		
 		$html = '';
 		
+		$class[0] = 'even';
+		$class[1] = 'odd';
+		
 		for($i = 0;$i<$eredmenyek['count'];$i++){
 		
-			$html .= '<li>';
-			$html .= '<h3><a href="' . $eredmenyek[$i]['azonosito'] . '/' . $eredmenyek[$i]['url'] . '#' . $eredmenyek[$i]['cim'] . '">' . $eredmenyek[$i]['cim'] . '</a></h3>';  
+			$html .= '<li class="' . $class[$i % 2] . '">';
+			$html .= '<h3>' . $eredmenyek[$i]['cim'] . '</a></h3>';  
 			$html .= '<div>' . $this->mark_search_result($kereses[0],$eredmenyek[$i]['szoveg']) . '</div>';
 			$html .= '</li>';	
 		
@@ -2066,6 +2073,8 @@ class mak extends db{
 		$mark_end = '</span>';
 		$max_hossz = '200';
 		
+		$result_string = strip_tags($result_string,'<h3>');
+		
 		$pozicio = stripos($result_string,$query_string);
 		
 		$eleje = substr($result_string, 0, $pozicio);
@@ -2082,8 +2091,9 @@ class mak extends db{
 			}else{
 				$pozicio = $pozicio - 100;
 			}
-			$a = substr($string, $pozicio, $max_hossz);
-			
+			$b = substr($string, $pozicio, $max_hossz);
+			$utolso = strpos($b,' ');
+			$a = substr($b,$utolso);
 		}
 		
 		return substr($a, 0, strrpos($a,' '));
