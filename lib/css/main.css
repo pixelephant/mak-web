@@ -1241,3 +1241,9 @@ li.heading.travel{
 #szervizpont-data .link{
 	font-style: italic;
 }
+
+//játék
+
+#jatek-bg img{
+	display:none;
+}

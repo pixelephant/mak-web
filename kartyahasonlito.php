@@ -232,6 +232,32 @@ if(isset($_POST['advanced-search-input'])){
 			<div id="seged">
 				<p><strong>Nem tud dönteni?</strong> <a href="#">Próbálja ki kártyaválasztó segédünket! <img src="img/right_02.png" alt="" /></a></p>
 			</div>
+			
+			
+			<div id="jatek">
+				<div id="jatek-bg">
+					<img src="img/jatek/1.png" data-correct="1" alt="" />
+					<img src="img/jatek/2.png" data-correct="2" alt="" />
+					<img src="img/jatek/3.png" data-correct="3" alt="" />
+					<img src="img/jatek/4.png" data-correct="4" alt="" />
+					<img src="img/jatek/5.png" data-correct="5" alt="" />
+				</div>
+				<div id="choices">
+					<select name="choice-select" id="choice-select">
+						<option value="1">Egyes szám</option>
+						<option value="2">Kettes szám</option>
+						<option value="3">Hármas szám</option>
+						<option value="4">Négyes szám</option>
+						<option value="5">Ötös szám</option>
+					</select>
+					<button id="tipp">Ok</button>
+				</div>
+				<div id="score">
+					<button id="startgame">Start</button>
+					<span id="currentscore">0</span>
+				</div>
+			</div>
+			
 		</article>					
 		</section>
 	</section>
@@ -257,6 +283,51 @@ window.jQuery || document.write('<script src="lib/js/jquery-1.6.2.js">\x3C/scrip
 		<script type="text/javascript" src="lib/js/ui-1.8.15.js">
 		</script>
 		<script type="text/javascript" src="lib/js/main.js">
+		</script>
+		<script type="text/javascript">
+		/*
+* jQuery.fn.rand();
+*
+* Return a random, but defined numbers of elements from a jQuery Object.
+* $('element').rand(); // returns one element from the jQuery Object.
+* $('element').rand(4); // returns four elements from the jQuery Object.
+*
+* Version 0.8.5
+* www.labs.skengdon.com/rand
+* www.labs.skengdon.com/rand/js/rand.min.js
+*
+* And:
+* http://phpjs.org/functions/array_rand:332
+*/
+;(function($){$.fn.rand=function(number){var array_rand=function(input,num_req){var indexes=[];var ticks=num_req||1;var checkDuplicate=function(input,value){var exist=false,index=0;while(index<input.length){if(input[index]===value){exist=true;break;};index++;};return exist;};while(true){var rand=Math.floor((Math.random()*input.length));if(indexes.length===ticks){break;};if(!checkDuplicate(indexes,rand)){indexes.push(rand);}};return((ticks==1)?indexes.join():indexes);};if(typeof number!=='number')var number=1;if(number>this.length)number=this.length;var numbers=array_rand(this,number);var $return=[];for(var i=0;i<number;i++){$return[i]=this.get(numbers[i]);};return $($return);};}(jQuery));
+		
+		$("#jatek-bg").find("img").hide();
+		
+		var correctNo = 0;
+		
+		
+		$("#startgame").click(function(){
+			startGame();
+		});
+		
+		function startGame(){
+			var $items = $("#jatek-bg").find("img").rand(5);
+			$("#jatek-bg").empty().append($items);
+			$items.eq(0).addClass("current").fadeIn();
+		}
+		
+		$("#tipp").click(function(){
+			if($("#jatek-bg .current").data("correct") == $("#choice-select").find("option:selected").val()){
+				correctNo++;
+				$("#currentscore").css("background","green").html(correctNo);
+				$("#jatek-bg .current").fadeOut().removeClass("current").next("img").addClass("current").fadeIn();
+			}
+			else{
+				$("#jatek-bg .current").fadeOut().removeClass("current").next("img").addClass("current").fadeIn();
+				$("#currentscore").css("background","red");
+			}
+		});
+		
 		</script>
 		<script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
