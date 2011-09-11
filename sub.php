@@ -8,7 +8,7 @@ include 'lib/php/class.mak.php';
 
 error_reporting(0);
 
-$main = new mak(true);
+$main = new mak(false);
 
 $page = trim($_GET['page']);
 $subpage = trim($_GET['subpage']);
@@ -61,6 +61,9 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('body-class') ?>
 <?php 
+	if($page == 'szervizpont'){
+		$page .= 'ok';
+	}
 	echo $page;
 ?>
 <?php endblock() ?>

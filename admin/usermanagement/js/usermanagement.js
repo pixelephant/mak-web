@@ -3,12 +3,13 @@ $(function(){
     url:'php/process.php',
     datatype: 'json',
     mtype: 'POST',
-    colNames:['Tagsági szám','Nem', 'Születési dátum','Anyja neve','Előnév','Vezetéknév','Keresztnév',
+    colNames:['Id','Tagsági szám','Nem', 'Születési dátum','Anyja neve','Előnév','Vezetéknév','Keresztnév',
               'Állandó irányítószám','Állandó helység','Állandó közterület','Állandó házszám',
               'Levelezési irányítószám','Levelezési helység','Levelezési küzterület','Levelezési házszám',
               'Vezetékes telefon','Mobil telefon','E-mail','Rendszám','Tagtípus','Díjkategória','Státusz',
               'Belépés dátuma','Érvényesség dátuma','Befizetés dátuma','Befizetett összeg','Tranzakció kódja'],
     colModel :[ 
+      {name:'id', index:'id', width:34, align:'center',editable:false},
       {name:'tagsagi_szam', index:'tagsagi_szam', width:90, editable:true}, 
       {
     	  name:'nem', 

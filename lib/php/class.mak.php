@@ -436,13 +436,38 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		$table = 'mak_almenu';
-		$col = 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.keywords AS keywords,mak_almenu.description AS description,mak_almenu.css AS css,mak_almenu.javascript AS javascript';
-		$cond['mak_almenu.url'] = $url;
-	
-		$a = $this->sql_select($table,$col,$cond);
+		/*
+		 * A szervízőpontok id alapján kerülnek azonosításra, 
+		 * más esetben nem használunk kizárólag numerikus karaktereket
+		 * az aloldal meghatározására
+		 */		
 		
-		$parameterek = $a[0];
+		
+		if(is_numeric($url)){
+		
+			$a = $this->get_szervizpont_idbol($url);
+
+			$parameterek = $a[0];
+			
+			$parameterek['h1'] = 'Szervízpont - ' . $a[0]['cim'];
+			
+			$kw = explode(" ",$a[0]['cim']);
+			$kws = implode(",",$kw);
+			
+			$parameterek['keywords'] = 'szervizpont,' . $kws;
+			$parameterek['description'] = 'Részletes információk az alábbi címen található Szervizpontunkról: ' . $a[0]['cim'];
+			
+		}else{
+		
+			$table = 'mak_almenu';
+			$col = 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.keywords AS keywords,mak_almenu.description AS description,mak_almenu.css AS css,mak_almenu.javascript AS javascript';
+			$cond['mak_almenu.url'] = $url;
+		
+			$a = $this->sql_select($table,$col,$cond);
+			
+			$parameterek = $a[0];
+			
+		}
 		
 		return $parameterek;
 		
@@ -454,38 +479,14 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		/*
-		 * A szervízőpontok id alapján kerülnek azonosításra, 
-		 * más esetben nem használunk kizárólag numerikus karaktereket
-		 * az aloldal meghatározására
-		 */
+		$table = 'mak_altartalom';
+		$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
+		$cond['mak_altartalom.url'] = $aloldal_url;
 		
-		if(is_numeric($aloldal_url)){
+		$a = $this->sql_select($table,$col,$cond);
 		
-			$a = $this->get_szervizpont_idbol($aloldal_url);
-
-			$parameterek = $a[0];
-			
-			$parameterek['h1'] = 'Szervízpont - ' . $a[0]['cim'];
-			
-			$kw = explode(" ",$a[0]['cim']);
-			$kws = implode(",",$kw);
-			
-			$parameterek['keywords'] = 'szervizpont,' . $kws;
-			$parameterek['description'] = 'Részletes információk az alábbi címen található Szervizpontunkról: ' . $a[0]['cim'];
-		
-		}else{
-			
-			$table = 'mak_altartalom';
-			$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
-			$cond['mak_altartalom.url'] = $aloldal_url;
-			
-			$a = $this->sql_select($table,$col,$cond);
-			
-			$parameterek = $a[0];
-
-		}
-		
+		$parameterek = $a[0];
+	
 		return $parameterek;
 	
 	}
@@ -872,8 +873,10 @@ class mak extends db{
 
 		$felhasznalo_array = GUMP::filter($felhasznalo_array, $filters);
 		
-		$validate = GUMP::validate($felhasznalo_array, $rules);
-
+		//$validate = GUMP::validate($felhasznalo_array, $rules);		
+		
+		$validate = true;
+		
 		//Validálás vége
 		
 		if($felhasznalo_array['szuletesi_datum'] != ''){
@@ -881,7 +884,7 @@ class mak extends db{
 		}
 		
 		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
-		$felhasznalo_array['regisztracio_ideje'] = strtotime('now');
+		$felhasznalo_array['regisztracio_ideje'] = date('Y-m-d H:i:s');
 		
 		if($validate === TRUE){
 			if($this->sql_insert('mak_felhasznalo',$felhasznalo_array)){
