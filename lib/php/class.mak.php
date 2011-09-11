@@ -381,6 +381,8 @@ class mak extends db{
 		$cond['mak_kategoria.azonosito']['val'] = $almenu;
 		$cond['mak_kategoria.azonosito']['and_or'] = 'OR';
 		$cond['mak_kategoria.azonosito']['rel'] = '=';
+		
+		$cond['orderby'] = 'mak_kategoria.sorrend ASC,mak_almenu.sorrend ASC,mak_tartalom.sorrend ASC,mak_altartalom.sorrend ASC';
 
 		$table = 'mak_kategoria';
 
