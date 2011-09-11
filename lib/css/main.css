@@ -258,6 +258,17 @@ header h1 a{
 	color: #1c1c1c;
 }
 
+header h1 a span{
+	display: block;
+	position: relative;
+	top: -56px;
+	left: 92px;
+	font-style: italic;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+
 #userBar{
 	position:absolute;
 	top:0;
