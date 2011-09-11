@@ -202,14 +202,9 @@ label.error,label.succes{
 
 /* Hírlevél hiba*/
 #newsletter-form label.error,#newsletter-form label.succes{
-	display: block;
-	color: red !important;
-	font-size: 11px;
-	clear: both;
-	padding: 8px;
-	position: absolute;
-	top:50px !important;
-	right:0;	
+	top:157px;
+	left:22px;
+	display:table;
 }
 
 

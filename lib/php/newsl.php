@@ -6,7 +6,11 @@ require 'class.mak.php';
 
 $main = new mak();
 
-$email = $_POST['email'];
+$email = trim($_POST['email']);
+
+if($email == ''){
+	return false;
+}
 
 echo $main->insert_hirlevel($email);
 
