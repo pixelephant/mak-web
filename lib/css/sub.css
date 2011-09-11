@@ -125,9 +125,10 @@ aside .links{
 	padding-left:10px;
 }
 
-aside .links li{
-	list-style-image: url(../../img/nyilak.png);
-	list-style-position: inside;
+aside .links li:before{
+	content : "‣  ";
+	color: #1c1c1c;
+	font-size: 14px;
 }
 
 
