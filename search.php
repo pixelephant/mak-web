@@ -7,7 +7,7 @@ include 'lib/php/class.mak.php';
 
 error_reporting(0);
 
-$main = new mak(false);
+$main = new mak(true);
 
 if(isset($_POST['search'])){
 	$search = trim($_POST['search']);
@@ -71,6 +71,7 @@ if(isset($_POST['advanced-search-input'])){
 					<input type="text" name="advanced-search-input" id="advanced-search-input" value="<?php echo $search; ?>" />
 					<input class="yellow-button" type="submit" value="Keresés" />
 					<div>
+						Válassza ki egy vagy több kategóriát, ahol keresni szeretne!<br />
 						<?php echo $main->render_search_checkbox(); ?>
 					</div>
 				</form>
