@@ -1244,6 +1244,79 @@ li.heading.travel{
 
 //játék
 
+#jatek{
+	height:300px;
+	width:660px;
+}
+
+#jatek-bg{
+	width:660px;
+	height:255px;
+	background: #ccc;
+	line-height: 255px;
+	text-align: center;
+	font-size: 16px;
+}
+
+#jatek-bar{
+	height:45px;
+	background:white;
+	line-height:40px;
+}
+
+#choices{
+	display:none;
+	float: left;
+	margin-left:10px;
+	padding-top:3px;
+}
+
+#choice-select{
+	margin-right:5px;
+}
+
+#tipp,#startgame{
+	color:#1c1c1c;
+	padding:5px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#startgame{
+	float:right;
+	margin-top: 9px;
+	margin-right: 10px;
+}
+
+#currentscore{
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	float: left;
+	display: none;
+	margin:0 10px;
+}
+
+#currentscore span{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#endscore{
+	display:none;
+	float:left;
+	font-size: 13px;
+	padding: 3px 5px;
+}
+
+#endscore span{
+	font-weight: bold;
+}
+
+#score{
+	float:right;
+}
+
 #jatek-bg img{
 	display:none;
 }
