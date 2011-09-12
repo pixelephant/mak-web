@@ -15,7 +15,7 @@ $kartya[2] = 'Standard';
 		<a href="kozlekedesbiztonsag" id="kozlekButton" class="gray-button"><img src="img/pictogram-04.png" alt="Közlekedésbiztonság" /></a>
 		<a href="travel" id="travelButton" class="gray-button"><img src="img/pictogram-02.png" alt="Travel" /></a>
 <?php 
-	if(isset($_SESSION['id'])){
+	if(isset($_SESSION['user_id'])){
 ?>
 		<a href="#" id="logoutButton" class="gray-button"><span>Kijelentkezés</span><em></em></a>
 <?php

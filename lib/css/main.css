@@ -343,7 +343,7 @@ header h1 a span{
 	display:block;
 }
 
-#loginButton,#segelyButton,#travelButton,#kozlekButton,#szervizButton{
+#logoutButton,#loginButton,#segelyButton,#travelButton,#kozlekButton,#szervizButton{
 	height: 32px;	
 	font-size: 12px;
 	font-weight: bold;
@@ -360,6 +360,11 @@ header h1 a span{
 }
 
 #loginButton span{
+	float: left;
+	margin-right: 4px;
+}
+
+#logoutButton span{
 	float: left;
 	margin-right: 4px;
 }
