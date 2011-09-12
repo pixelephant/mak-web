@@ -2549,7 +2549,11 @@ class mak extends db{
 		$val[2] = $poll[0]['valasz2_db'];
 		$val[3] = $poll[0]['valasz3_db'];
 
+		$json = '[{"choice":"choice0","votes":"' . $val[1] . '"},';
+		$json .= '{"choice":"choice1","votes":"' . $val[2] . '"},';
+		$json .= '{"choice":"choice2","votes":"' . $val[3] . '"}]';
 		
+		return $json;
 	
 	}
 }
