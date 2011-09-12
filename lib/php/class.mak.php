@@ -627,6 +627,36 @@ class mak extends db{
 	
 	}
 	
+	public function get_felmeres($cond,$col=''){
+	
+		$table = 'mak_felmeres';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,kerdes,valasz1,valasz2,valasz3,modositas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+	
+	public function get_felmeres_idbol($id){
+	
+		$id = trim($id);
+	
+		$cond['id'] = $id;
+	
+		return $this->get_felmeres($cond);
+	
+	}
+	
 	//INSERT
 	
 	public function insert_hirlevel($email){
@@ -1029,6 +1059,61 @@ class mak extends db{
 	
 	}
 	
+	public function insert_felmeres($felmeres_array){
+	
+		if(!is_array($felmeres_array)){
+			return FALSE;
+		}
+	
+		
+		$felmeres_array = GUMP::sanitize($felmeres_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'kerdes' => 'required|max_len,255',
+			'valasz1' => 'required|max_len,255',
+			'valasz2' => 'required|max_len,255',
+			'valasz3' => 'required|max_len,255',
+		);
+		
+		$filters = array(
+			'kerdes' => 'trim|sanitize_string',
+			'valasz1' => 'trim|sanitize_string',
+			'valasz2' => 'trim|sanitize_string',
+			'valasz3' => 'trim|sanitize_string',
+		);
+
+		$felmeres_array = GUMP::filter($felmeres_array, $filters);
+		
+		$validate = GUMP::validate($felmeres_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_insert('mak_felmeres',$felmeres_array)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}
+	
+	}
+	
+	public function insert_felmeres_felhasznalo($felmeres_id,$valasz){
+	
+		$felmeres_array['kerdes_id'] = $felmeres_id;
+		$felmeres_array['valasz'] = $valasz;
+		$felmeres_array['felhasznalo_id'] = $_SESSION['user_id'];
+	
+		if($this->sql_insert('mak_felmeres_felhasznalo',$felmeres_array)){
+			return 'Sikeres';
+		}else{
+			return 'Sikertelen';
+		}
+
+	}
+	
 	//UPDATE
 	
 	public function update_tartalom($tartalom_array,$cond=''){
@@ -1336,6 +1421,74 @@ class mak extends db{
 		 $col['utolso_mutatas'] = date('Y-m-d H:i:s');
 		 
 		 return $this->update_hirdetes($col,$cond);
+	
+	}
+	
+	public function update_felmeres($felmeres_array,$cond=''){
+	
+		if(($cond != '' && !is_array($cond)) || !is_array($felmeres_array)){
+			return FALSE;
+		}
+		
+		$felmeres_array = GUMP::sanitize($felmeres_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'kerdes' => 'max_len,255',
+			'valasz1' => 'max_len,255',
+			'valasz2' => 'max_len,255',
+			'valasz3' => 'max_len,255',
+			'valasz1_db' => 'numeric',
+			'valasz2_db' => 'numeric',
+			'valasz3_db' => 'numeric',
+		);
+		
+		$filters = array(
+			'kerdes' => 'trim|sanitize_string',
+			'valasz1' => 'trim|sanitize_string',
+			'valasz2' => 'trim|sanitize_string',
+			'valasz3' => 'trim|sanitize_string',
+			'valasz1_db' => 'trim|sanitize_numbers_only',
+			'valasz2_db' => 'trim|sanitize_numbers_only',
+			'valasz3_db' => 'trim|sanitize_numbers_only',
+		);
+
+		$felmeres_array = GUMP::filter($felmeres_array, $filters);
+		
+		$validate = GUMP::validate($felmeres_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_update('mak_felmeres',$felmeres_array,$cond)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}else{
+			if($this->debug){
+				print_r($validate);
+			}else{
+				return 'Invalid adat';
+			}
+		}
+	
+	}
+	
+	public function update_felmeres_valasz($id,$valasz){
+	
+		$id = trim($id);
+		$valasz = trim($valasz);
+	
+		$felmeres = $this->get_felmeres_idbol($id);
+		
+		$cond['id'] = $id;
+		$col['valasz'.$valasz] = $felmeres[0]['valasz'.$valasz.'_db'] + 1;
+		
+		$this->insert_felmeres_felhasznalo($id,$valasz);
+		
+		return $this->update_felmeres($col,$cond);
 	
 	}
 	
@@ -2381,6 +2534,23 @@ class mak extends db{
 		}
 		
 		return $url;
+	}
+	
+	public function poll($valasz,$poll_id){
+
+		$valasz = trim($valasz);
+		$poll_id = trim($poll_id);
+		
+		$this->update_felmeres_valasz($poll_id,$valasz);
+		
+		$poll = $this->get_felmeres_idbol($poll_id);
+		
+		$val[1] = $poll[0]['valasz1_db'];
+		$val[2] = $poll[0]['valasz2_db'];
+		$val[3] = $poll[0]['valasz3_db'];
+
+		
+	
 	}
 }
 
