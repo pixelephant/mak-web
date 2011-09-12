@@ -2255,7 +2255,7 @@ class mak extends db{
 		$hirdetes = $this->get_hirdetes_urlhez($url);
 		$html = '';
 		
-		if($hirdetes === FALSE || $hirdetes['count'] == 0){
+		if($hirdetes === FALSE || $hirdetes['count'] == 0 || $url == ''){
 		
 			/*
 			 * Default hírdetés
@@ -2269,7 +2269,7 @@ class mak extends db{
 		
 			for($i = 0; $i < $hirdetes['count']; $i++){
 			
-				$html .= '<a target="_blank" href="' . $hirdetes[$i]['cel_url'] . '"><img class="ad" src="' . $hirdetes[$i]['kep'] . '" alt="' . $hirdetes[$i]['alt'] . '" /></a>';
+				$html .= '<a target="_blank" href="' . $hirdetes[$i]['cel_url'] . '"><img class="ad" src="' . $this->_hirdetesDir . $hirdetes[$i]['kep'] . '" alt="' . $hirdetes[$i]['alt'] . '" /></a>';
 				$this->update_hirdetes_utolso_mutatas($hirdetes[$i]['id']);
 			
 			}
