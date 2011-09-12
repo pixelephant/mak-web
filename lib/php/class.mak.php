@@ -7,6 +7,7 @@ class mak extends db{
 	private $_galleryDir = 'img/gallery/';
 	private $_autoseletDir = 'media/autoselet/';
 	private $_hirekDir = 'img/hirek/';
+	private $_hirdetesDir = 'img/ad/';
 
 	public function __construct($debug=false){
 		parent::__construct('','','','','',$debug);
@@ -608,7 +609,7 @@ class mak extends db{
 		}
 		
 		if($col == ''){
-			$col = 'id,mak_url,kep,cel_url,modositas,utolso_mutatas';
+			$col = 'id,mak_url,kep,alt,cel_url,modositas,utolso_mutatas';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -1001,12 +1002,14 @@ class mak extends db{
 		$rules = array(
 			'mak_url' => 'required|max_len,255',
 			'cel_url' => 'required|max_len,255',
+			'alt' => 'required|max_len,80',
 			'kep' => 'required|max_len,80',
 		);
 		
 		$filters = array(
 			'mak_url' => 'trim|sanitize_string',
 			'cel_url' => 'trim|sanitize_string',
+			'alt' => 'trim|sanitize_string',
 			'kep' => 'trim|sanitize_string',
 		);
 
@@ -1290,12 +1293,14 @@ class mak extends db{
 		$rules = array(
 			'mak_url' => 'required|max_len,255',
 			'cel_url' => 'required|max_len,255',
+			'alt' => 'required|max_len,80',
 			'kep' => 'required|max_len,80',
 		);
 		
 		$filters = array(
 			'mak_url' => 'trim|sanitize_string',
 			'cel_url' => 'trim|sanitize_string',
+			'alt' => 'trim|sanitize_string',
 			'kep' => 'trim|sanitize_string',
 		);
 
@@ -2223,6 +2228,62 @@ class mak extends db{
 		
 		return $html;
 	
+	}
+	
+	public function render_hirdetes($page,$subpage,$tartalom,$subsubpage){
+	
+		$url = trim($page);
+		
+		if(trim($subpage) != ''){
+			$url = trim($subpage);
+		}
+		
+		if(trim($tartalom) != ''){
+			$url = trim($tartalom);
+		}
+		
+		if(trim($subsubpage) != ''){
+			$url = trim($subsubpage);
+		}
+		
+		/*
+		 * Hány darab hírdetés jelenik meg maximálisan az oldalon
+		 */
+		
+		$limit = 3;
+		
+		$hirdetes = $this->get_hirdetes_urlhez($url);
+		$html = '';
+		
+		if($hirdetes === FALSE || $hirdetes['count'] == 0){
+		
+			/*
+			 * Default hírdetés
+			 */
+		
+			$html .= '<a target="_blank" href="http://www.arceurope.com/EN/memberservices.aspx"><img class="ad" src="img/ad/arc.gif" alt="ARC europe - Show your card!" /></a>';
+			$html .= '<a target="_blank" href="http://www.erscharter.eu/"><img class="ad" src="img/ad/ersc.gif" alt="European road safety charter" /></a>';
+			$html .= '<a target="_blank" href="https://www.generali.hu/GeneraliBiztosito.aspx"><img class="ad" src="img/ad/generali.gif" alt="Generali biztosító" /></a>';
+		
+		}else{
+		
+			for($i = 0; $i < $hirdetes['count']; $i++){
+			
+				$html .= '<a target="_blank" href="' . $hirdetes[$i]['cel_url'] . '"><img class="ad" src="' . $hirdetes[$i]['kep'] . '" alt="' . $hirdetes[$i]['alt'] . '" /></a>';
+				$this->update_hirdetes_utolso_mutatas($hirdetes[$i]['id']);
+			
+			}
+		
+		}
+
+		/*
+		 * Facebook social plugin
+		 */
+		
+		$html .= '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFrontline-m%25C3%25A9dia-Kft%2F134495689944678&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=black&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px; background:white; margin: 0 auto; display: block;" allowTransparency="true"></iframe>';
+	
+		return $html;
+		
 	}
 	
 	//Kiegészítő függvények

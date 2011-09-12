@@ -144,7 +144,9 @@ autoklub,mak
 <?php endblock() ?>
 
 <?php startblock('ad') ?>
-<?php include 'ad.php';?>
+<?php 
+	echo $main->render_hirdetes($url);
+?>
 <?php endblock() ?>
 
 <?php startblock('content') ?>
