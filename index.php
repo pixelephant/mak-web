@@ -43,7 +43,8 @@ autoklub,mak
 <div class="glow">
 	<div id="slider" class="wrapper">
 		<div class="slide first" id="makslide">
-			<h2>Magyar Autóklub <span>A hűséges Partner</span></h2>
+			<h2>Magyar Autóklub</h2>
+			<h3>A hűséges Partner</h3>
 			<div id="picto">
 				<a href=""><img src="img/pikto-01.jpg" alt="" />Segélyszolgálat</a>
 				<a href=""><img src="img/pikto-02.jpg" alt="" />Szerviz Pontok</a>
