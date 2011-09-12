@@ -152,8 +152,6 @@
 	position: relative;
 	top: -200px;
 	left: 200px;
-	opacity: 0;
-	color:#1c1c1c !important;
 }
 
 #makslide h3{
@@ -162,6 +160,7 @@
 	left: 291px;
 	font-style: italic;
 	font-size: 15px;
+	color:white;
 }
 
 #makauto{
@@ -180,7 +179,6 @@
 	display:block;
 	position: relative;
 	left:-200px;
-	color:#1c1c1c !important;
 }
 
 #picto a img{

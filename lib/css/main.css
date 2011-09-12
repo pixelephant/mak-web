@@ -942,8 +942,7 @@ aside img.ad{
 /*Lábléc*/
 
 footer{
-	background: url(../../img/footer-loop.png) repeat-x;
-	height: 180px;
+	background:url(../../img/footer-shadow-top.png) repeat-x #FFD400;
 	overflow: hidden;
 }
 #footerNav{
@@ -953,7 +952,7 @@ footer{
 	float: left;
 	width: 3px;
 	background: url(../../img/sep-footer.png) no-repeat;
-	background-position: 0 50px;
+	background-position: 0 60px;
 	height: 136px;
 	margin-top: 1px;
 }
@@ -961,7 +960,6 @@ footer{
 	width: 171px;
 	float: left;
 	font-size: 12px;
-	height: 135px;
 	padding: 10px 10px 0 10px;
 }
 #footerNav ul li.heading{
@@ -1016,10 +1014,18 @@ li.heading.travel{
 #footerMisc .misc{
 	float: right;
 }
+
+#footerMiscWrap{
+	width: 980px;
+	margin:0 auto;
+	background: url(../../img/footer-shadow-bottom.png) repeat-x;
+}
+
 #footerMisc{
 	padding: 10px 0;
 	font-size: 12px;
 	overflow: hidden;
+	width:980px;
 }
 #footerMisc a{
 	margin: 0 5px;
