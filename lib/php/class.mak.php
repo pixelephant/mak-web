@@ -1320,6 +1320,17 @@ class mak extends db{
 		}
 	
 	}
+
+	public function update_hirdetes_utolso_mutatas($id){
+	
+		 $id = (int)$id;
+		 
+		 $cond['id'] = $id;
+		 $col['utolso_mutatas'] = date('Y-m-d H:i:s');
+		 
+		 return $this->update_hirdetes($col,$cond);
+	
+	}
 	
 	//RENDER
 
