@@ -10,6 +10,11 @@ Autóklub platina: #797E82;
 
 /* Egyéb apróságok, segédosztályok */
 
+.twtr-widget{
+	margin:20px;
+}
+
+
 .floatleft{
 	float:left;
 }
@@ -1015,7 +1020,7 @@ li.heading.travel{
 	float: right;
 }
 
-#footerMiscWrap{
+#fotterMiscWrap{
 	background: url(../../img/footer-shadow-bottom.png) repeat-x;
 }
 
