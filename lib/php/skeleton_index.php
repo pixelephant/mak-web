@@ -70,8 +70,10 @@ session_start();
 				<?php startblock('footer-nav')?><?php endblock() ?>
 			</div>
 		</div>
-		<div id="footerMisc">
-			<?php include 'footer.php';?>
+		<div id="fotterMiscWrap">
+			<div id="footerMisc">
+				<?php include 'footer.php';?>
+			</div>
 		</div>
 	</footer>
 	</div>
