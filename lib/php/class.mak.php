@@ -595,6 +595,37 @@ class mak extends db{
 	
 	}
 	
+	public function get_hirdetes($cond,$col=''){
+	
+		$table = 'mak_hirdetes';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,mak_url,kep,cel_url,modositas,utolso_mutatas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+
+	public function get_hirdetes_urlhez($url){
+	
+		$url = trim($url);
+		
+		$cond['mak_url'] = $url;
+		$cond['orderby'] = 'utolso_mutatas ASC';
+		
+		return $this->get_hirdetes($cond);
+	
+	}
+	
 	//INSERT
 	
 	public function insert_hirlevel($email){
@@ -956,6 +987,45 @@ class mak extends db{
 	
 	}
 	
+	public function insert_hirdetes($hirdetes_array){
+	
+		if(!is_array($hirdetes_array)){
+			return FALSE;
+		}
+	
+		
+		$hirdetes_array = GUMP::sanitize($hirdetes_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'mak_url' => 'required|max_len,255',
+			'cel_url' => 'required|max_len,255',
+			'kep' => 'required|max_len,80',
+		);
+		
+		$filters = array(
+			'mak_url' => 'trim|sanitize_string',
+			'cel_url' => 'trim|sanitize_string',
+			'kep' => 'trim|sanitize_string',
+		);
+
+		$hirdetes_array = GUMP::filter($hirdetes_array, $filters);
+		
+		$validate = GUMP::validate($hirdetes_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_insert('mak_hirdetes',$hirdetes_array)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}
+	
+	}
+	
 	//UPDATE
 	
 	public function update_tartalom($tartalom_array,$cond=''){
@@ -1200,6 +1270,50 @@ class mak extends db{
 			if($this->debug){
 				print_r($validate);
 				print_r($validate2);
+			}else{
+				return 'Invalid adat';
+			}
+		}
+	
+	}
+	
+	public function update_hirdetes($hirdetes_array,$cond=''){
+	
+		if(($cond != '' && !is_array($cond)) || !is_array($hirdetes_array)){
+			return FALSE;
+		}
+		
+		$hirdetes_array = GUMP::sanitize($hirdetes_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'mak_url' => 'required|max_len,255',
+			'cel_url' => 'required|max_len,255',
+			'kep' => 'required|max_len,80',
+		);
+		
+		$filters = array(
+			'mak_url' => 'trim|sanitize_string',
+			'cel_url' => 'trim|sanitize_string',
+			'kep' => 'trim|sanitize_string',
+		);
+
+		$hirdetes_array = GUMP::filter($hirdetes_array, $filters);
+		
+		$validate = GUMP::validate($hirdetes_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_update('mak_hirdetes',$hirdetes_array,$cond)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}else{
+			if($this->debug){
+				print_r($validate);
 			}else{
 				return 'Invalid adat';
 			}
