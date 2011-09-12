@@ -1016,8 +1016,6 @@ li.heading.travel{
 }
 
 #footerMiscWrap{
-	width: 980px;
-	margin:0 auto;
 	background: url(../../img/footer-shadow-bottom.png) repeat-x;
 }
 
@@ -1025,7 +1023,8 @@ li.heading.travel{
 	padding: 10px 0;
 	font-size: 12px;
 	overflow: hidden;
-	width:980px;
+	width: 980px;
+	margin:0 auto;
 }
 #footerMisc a{
 	margin: 0 5px;
