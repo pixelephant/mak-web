@@ -949,7 +949,13 @@ aside img.ad{
 footer{
 	background:url(../../img/footer-shadow-top.png) repeat-x #FFD400;
 	overflow: hidden;
+	background-position: 0 50px;
 }
+
+.footerIn{
+	background: url(../../img/footer-shadow-bottom.png) bottom repeat-x;
+}
+
 #footerNav{
 	overflow: hidden;
 }
@@ -957,7 +963,7 @@ footer{
 	float: left;
 	width: 3px;
 	background: url(../../img/sep-footer.png) no-repeat;
-	background-position: 0 60px;
+	background-position: 0 70px;
 	height: 136px;
 	margin-top: 1px;
 }
@@ -969,7 +975,7 @@ footer{
 }
 #footerNav ul li.heading{
 	font-size: 14px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 #footerNav ul li{
 	margin: 6px 0;
@@ -1021,7 +1027,7 @@ li.heading.travel{
 }
 
 #fotterMiscWrap{
-	background: url(../../img/footer-shadow-bottom.png) repeat-x;
+
 }
 
 #footerMisc{
@@ -1362,4 +1368,79 @@ li.heading.travel{
 
 #jatek-bg img{
 	display:none;
+}
+
+
+/*szavazás*/
+
+#poll-container{
+	margin-top: 40px;
+	width: 330px;
+	background:white;
+}
+
+#poll-container h3{
+	line-height:30px;
+	background:#0080B0;
+	color:white;
+	font-size:18px;
+	padding:0 10px;
+}
+
+#pollChoices{
+	background: white;
+	padding:10px;
+	padding-right: 0;
+	border-bottom:1px solid #0080B0;
+}
+
+#pollChoices div{
+	padding: 5px;
+	padding-right: 0;
+	overflow: hidden;
+}
+
+#pollChoices label{
+	font-size:16px;
+	width: 100px;
+	display:block;
+	float: left;
+}
+
+#pollChoices.result label{
+
+}
+
+#pollChoices input{
+	margin-left:15px;
+	display: block;
+	float: left;
+}
+
+#pollChoices span{
+	height:25px;
+	line-height: 25px;
+	text-align: center;
+	color:white;
+	display:block;
+	float: left;
+	margin-left: 15px;
+}
+
+#pollChoices span.color1{
+	background:red;
+}
+
+#pollChoices span.color2{
+	background:green;
+}
+
+#pollChoices span.color3{
+	background:blue;
+}
+#poll-container .yellow-button{
+	color:#1c1c1c;
+	padding:10px;
+	font-weight: bold;
+	margin:10px;
 }

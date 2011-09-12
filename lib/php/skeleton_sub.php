@@ -58,9 +58,11 @@ session_start();
 	</section>
 	<?php startblock('cta')?><?php endblock() ?>
 	<footer>
-		<div class="wrapper">
-			<div id="footerNav">
-				<?php startblock('footer-nav')?><?php endblock() ?>
+		<div class="footerIn">
+			<div class="wrapper">
+				<div id="footerNav">
+					<?php startblock('footer-nav')?><?php endblock() ?>
+				</div>
 			</div>
 		</div>
 		<div id="fotterMiscWrap">

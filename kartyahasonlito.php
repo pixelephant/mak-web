@@ -264,6 +264,24 @@ if(isset($_POST['advanced-search-input'])){
 				</div>
 			</div>
 			
+			
+			<div id="poll-container">
+				<h3>Milyen színű az alma?</h3>
+				<div id="pollChoices">
+					<div id="choice1-wrap">
+						<label for="choice1">Piros</label><input type="radio" name="poll-choice" id="choice1" />
+					</div>
+					<div id="choice2-wrap">
+						<label for="choice2">Zöld</label><input type="radio" name="poll-choice" id="choice2" checked="checked" />
+					</div>
+					<div id="choice3-wrap">
+						<label for="choice3">Kék</label><input type="radio" name="poll-choice" id="choice3" />
+					</div>
+				</div>
+				<button class="yellow-button" id="vote">Szavazok</button>
+			</div>
+			
+			
 		</article>					
 		</section>
 	</section>

@@ -32,5 +32,4 @@ new TWTR.Widget({
     behavior: 'all'
   }
 }).render().setUser('cultofmac').start();
-$(".twtr-join-conv").html("Csatlakozz Twitteren is!");
 </script>
