@@ -2230,7 +2230,7 @@ class mak extends db{
 	
 	}
 	
-	public function render_hirdetes($page,$subpage,$tartalom,$subsubpage){
+	public function render_hirdetes($page,$subpage='',$tartalom='',$subsubpage=''){
 	
 		$url = trim($page);
 		
