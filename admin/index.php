@@ -44,6 +44,9 @@
 		<div id="usermanagement">
 			<iframe src="usermanagement/index.php" width="100%" height="495px"></iframe>
 		</div>
+		<div id="hirdetesmanagement">
+			<iframe src="hirdetesmanagement/index.php" width="100%" height="495px"></iframe>
+		</div>
 	</div>
 	
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">

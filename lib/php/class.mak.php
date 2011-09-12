@@ -1291,10 +1291,11 @@ class mak extends db{
 		//Validálás
 		
 		$rules = array(
-			'mak_url' => 'required|max_len,255',
-			'cel_url' => 'required|max_len,255',
-			'alt' => 'required|max_len,80',
-			'kep' => 'required|max_len,80',
+			'mak_url' => 'max_len,255',
+			'cel_url' => 'max_len,255',
+			'alt' => 'max_len,80',
+			'kep' => 'max_len,80',
+			'utolso_mutatas' => 'max_len,80',
 		);
 		
 		$filters = array(
@@ -1302,6 +1303,7 @@ class mak extends db{
 			'cel_url' => 'trim|sanitize_string',
 			'alt' => 'trim|sanitize_string',
 			'kep' => 'trim|sanitize_string',
+			'utolso_mutatas' => 'trim',
 		);
 
 		$hirdetes_array = GUMP::filter($hirdetes_array, $filters);
@@ -1328,7 +1330,7 @@ class mak extends db{
 
 	public function update_hirdetes_utolso_mutatas($id){
 	
-		 $id = (int)$id;
+		 //$id = (int)$id;
 		 
 		 $cond['id'] = $id;
 		 $col['utolso_mutatas'] = date('Y-m-d H:i:s');
@@ -2270,6 +2272,7 @@ class mak extends db{
 			for($i = 0; $i < $hirdetes['count']; $i++){
 			
 				$html .= '<a target="_blank" href="' . $hirdetes[$i]['cel_url'] . '"><img class="ad" src="' . $this->_hirdetesDir . $hirdetes[$i]['kep'] . '" alt="' . $hirdetes[$i]['alt'] . '" /></a>';
+				
 				$this->update_hirdetes_utolso_mutatas($hirdetes[$i]['id']);
 			
 			}
