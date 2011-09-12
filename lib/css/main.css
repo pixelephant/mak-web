@@ -1364,3 +1364,9 @@ li.heading.travel{
 #jatek-bg img{
 	display:none;
 }
+
+//Poll
+
+#poll-container{
+	float: left;	
+}

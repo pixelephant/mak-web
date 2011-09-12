@@ -640,7 +640,7 @@ class mak extends db{
 		}
 		
 		if($col == ''){
-			$col = 'id,kerdes,valasz1,valasz2,valasz3,modositas';
+			$col = 'id,kerdes,valasz1,valasz2,valasz3,valasz1_db,valasz2_db,valasz3_db,modositas';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -654,6 +654,17 @@ class mak extends db{
 		$cond['id'] = $id;
 	
 		return $this->get_felmeres($cond);
+	
+	}
+	
+	public function get_felmeres_legujabb_id(){
+		
+		$cond['limit'] = 1;
+		$cond['orderby'] = 'modositas desc';
+	
+		$a = $this->get_felmeres($cond);
+		
+		return $a[0]['id'];
 	
 	}
 	
@@ -1484,7 +1495,7 @@ class mak extends db{
 		$felmeres = $this->get_felmeres_idbol($id);
 		
 		$cond['id'] = $id;
-		$col['valasz'.$valasz] = $felmeres[0]['valasz'.$valasz.'_db'] + 1;
+		$col['valasz'.$valasz.'_db'] = $felmeres[0]['valasz'.$valasz.'_db'] + 1;
 		
 		$this->insert_felmeres_felhasznalo($id,$valasz);
 		
@@ -2442,6 +2453,37 @@ class mak extends db{
 		
 	}
 	
+	public function render_poll(){
+	
+		$cond['limit'] = 1;
+		$cond['orderby'] = 'modositas desc';
+	
+		$felm = $this->get_felmeres($cond);
+		
+		if($felm !== FALSE && $felm['count'] != 0 && isset($_SESSION['user_id'])){
+		
+			$html = '<div id="poll-container">';
+			$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
+			$html .= '<div id="pollChoices">';
+			$html .= '<div id="choice1-wrap">';
+			$html .= '<label for="choice1">' . $felm[0]['valasz1'] . '</label><input type="radio" name="poll-choice" id="valasz1" />';
+			$html .= '</div>';
+			$html .= '<div id="choice2-wrap">';
+			$html .= '<label for="choice2">' . $felm[0]['valasz2'] . '</label><input type="radio" name="poll-choice" id="valasz2" />';
+			$html .= '</div>';
+			$html .= '<div id="choice3-wrap">';
+			$html .= '<label for="choice3">' . $felm[0]['valasz3'] . '</label><input type="radio" name="poll-choice" id="valasz3" />';
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '<button class="yellow-button" id="vote">Szavazok</button>';
+			$html .= '</div>';
+			
+			return $html;
+			
+		}
+	
+	}
+	
 	//Kiegészítő függvények
 	
 	public function mark_search_result($query_string,$result_string){
@@ -2536,10 +2578,10 @@ class mak extends db{
 		return $url;
 	}
 	
-	public function poll($valasz,$poll_id){
+	public function poll($valasz){
 
 		$valasz = trim($valasz);
-		$poll_id = trim($poll_id);
+		$poll_id = $this->get_felmeres_legujabb_id();
 		
 		$this->update_felmeres_valasz($poll_id,$valasz);
 		
