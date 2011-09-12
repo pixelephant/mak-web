@@ -136,25 +136,23 @@ class mak extends db{
 	
 	}
 	
-	public function get_login($felhasznalo_nev,$jelszo){
+	public function get_login($felhasznalo_nev){
 	
 		$cond['felhasznalonev'] = $felhasznalo_nev;
-		$cond['jelszo'] = $jelszo;
+		//$cond['jelszo'] = $jelszo;
 		
 		$table = 'mak_felhasznalo';
 		
 		$cond = GUMP::sanitize($cond);
 		
-		$col = 'id';
+		$col = 'id,jelszo,nem,keresztnev,kapcsolattarto_keresztnev,tagtipus';
 		
 		$filters = array(
-			'felhasznalonev' => 'trim|sanitize_string',
-			'jelszo'	  	=> 'trim',
+			'felhasznalonev' => 'trim',
 		);
 		
 		$rules = array(
-			'felhasznalonev'    => 'required|alpha_numeric|max_len,100|min_len,6',
-			'jelszo'    => 'required|max_len,100|min_len,6',
+			'felhasznalonev'    => 'required|max_len,100|min_len,6',
 		);
 		
 		if(GUMP::validate(GUMP::filter($cond, $filters), $rules) === TRUE){
@@ -1555,6 +1553,10 @@ class mak extends db{
 		$position[1] = 'center';
 		$position[2] = 'right';
 	
+		if($evfolyam == ''){
+			$evfolyam = 1;
+		}
+		
 		$tartalom = $this->get_autoselet($evfolyam);
 		
 		if($tartalom === FALSE){
@@ -1564,7 +1566,7 @@ class mak extends db{
 		$html = '<div class="embed">';
 		$html .= '</div>';
 		
-		for($i = 0; $i < $tartalom['count']; $i = $i + 3){
+		for($i = 0; $i < $tartalom['count']; $i++){
 			
 			$html .= '<div class="row">';
 			$html .= '<div class="autoselet ';					
@@ -1579,6 +1581,8 @@ class mak extends db{
 			$html .= '</div>';
 		
 		}
+		
+		return $html;
 	
 	}
 	
@@ -1676,6 +1680,8 @@ class mak extends db{
 				
 				if(is_numeric($almenu)){
 					$html = $this->render_szervizpont($almenu);
+				}elseif($almenu == 'autoselet'){
+					$html = $this->render_autoselet('1');
 				}else{
 					$html =  $this->render_aloldal_section_default($almenu);
 				}
@@ -1926,6 +1932,8 @@ class mak extends db{
 			return FALSE;
 		}
 		
+		$adv = '';
+		
 		$kereses[0] = $query;
 		
 		$kereses = GUMP::sanitize($kereses);
@@ -1934,13 +1942,15 @@ class mak extends db{
 		 * Összetett kereső
 		 */
 		
-		if($advanced != '' && isset($advanced['advanced-search-input'])){
-			
-			$col = "mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_tartalom.publikalta AS publikalta, mak_tartalom.url AS tartalom_url, mak_altartalom.url AS altartalom_url";
 		
-			$sql = "SELECT DISTINCT " . $col . " FROM mak_tartalom LEFT JOIN mak_almenu ON mak_almenu.id=mak_tartalom.almenu_id LEFT JOIN mak_kategoria ON mak_kategoria.id=mak_almenu.kategoria_id LEFT JOIN mak_altartalom ON mak_altartalom.tartalom_id=mak_tartalom.id";
+		
+		$col = "mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_tartalom.publikalta AS publikalta, mak_tartalom.url AS tartalom_url, mak_altartalom.url AS altartalom_url";
+	
+		$sql = "SELECT DISTINCT " . $col . " FROM mak_tartalom LEFT JOIN mak_almenu ON mak_almenu.id=mak_tartalom.almenu_id LEFT JOIN mak_kategoria ON mak_kategoria.id=mak_almenu.kategoria_id LEFT JOIN mak_altartalom ON mak_altartalom.tartalom_id=mak_tartalom.id";
 
-			$cols = explode(",",$col);
+		$cols = explode(",",$col);
+
+		if($advanced != '' && isset($advanced['advanced-search-input'])){
 			
 			if($advanced['only-enautoklubom'] == 'on'){
 				$adv .= " OR mak_kategoria.azonosito='enautoklubom'";
@@ -1961,34 +1971,59 @@ class mak extends db{
 			$adv = preg_replace('/ OR /',' WHERE (',$adv,1);
 			
 			$adv .= ")";
-			
-			$sql = $sql . $adv;
-			
-			$sql .= " AND (mak_tartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_tartalom.szoveg LIKE '%" . $kereses[0] . "%'";
-			$sql .= " OR mak_kategoria.kategoria_nev LIKE '%" . $kereses[0] . "%' OR mak_kategoria.szoveg LIKE '%" . $kereses[0] . "%'";
-			$sql .= " OR mak_almenu.kategoria_nev LIKE '%" . $kereses[0] . "%' OR mak_almenu.szoveg LIKE '%" . $kereses[0] . "%'";
-			$sql .= " OR mak_altartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_altartalom.szoveg LIKE '%" . $kereses[0] . "%'";
-			$sql .= ")";
-			
-			$sql .= " ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC, mak_altartalom.sorrend";
-			
-			$eredmenyek = $a = $this->results($this->query($sql),$cols);
-			
-		}else{
-			$eredmenyek = $this->get_tartalom_kereses($kereses[0]);
+
 		}
+			
+		$sql = $sql . $adv;
+		
+		$sql .= " AND (mak_tartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_tartalom.szoveg LIKE '%" . $kereses[0] . "%'";
+		$sql .= " OR mak_kategoria.kategoria_nev LIKE '%" . $kereses[0] . "%' OR mak_kategoria.szoveg LIKE '%" . $kereses[0] . "%'";
+		$sql .= " OR mak_almenu.almenu LIKE '%" . $kereses[0] . "%' OR mak_almenu.szoveg LIKE '%" . $kereses[0] . "%'";
+		$sql .= " OR mak_altartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_altartalom.szoveg LIKE '%" . $kereses[0] . "%'";
+		$sql .= ")";
+		
+		$sql .= " ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC, mak_altartalom.sorrend";
+		
+		if($advanced == '' || !isset($advanced['advanced-search-input'])){
+			$sql = preg_replace('/ AND /',' WHERE ',$sql,1);
+		}
+		
+		$eredmenyek = $a = $this->results($this->query($sql),$cols);	
 		
 		$html = '';
 		
 		$class[0] = 'even';
 		$class[1] = 'odd';
 		
-		for($i = 0;$i<$eredmenyek['count'];$i++){
+		$c = 0;
 		
-			$html .= '<li class="' . $class[$i % 2] . '">';
-			$html .= '<h3>' . $eredmenyek[$i]['cim'] . '</a></h3>';  
-			$html .= '<div>' . $this->mark_search_result($kereses[0],$eredmenyek[$i]['szoveg']) . '</div>';
-			$html .= '</li>';	
+		$kat = '';
+		$sub = '';
+		$tart = '';
+		$subsub = '';
+		
+		for($i = 0;$i<$eredmenyek['count'];$i++){
+
+			if($kat != $eredmenyek[$i]['azonosito'] || $sub != $eredmenyek[$i]['url']){
+				
+			//|| $tart != $eredmenyek[$i]['cim'] || $subsub != $eredmenyek[$i]['altartalom_url']
+			
+				$kat = $eredmenyek[$i]['azonosito'];
+				$sub = $eredmenyek[$i]['url'];
+				$tart = $eredmenyek[$i]['cim'];
+				$subsub = $eredmenyek[$i]['altartalom_url'];
+			
+				$html .= '<li class="' . $class[$c % 2] . '">';
+				$html .= '<h3>' . $eredmenyek[$i]['cim'] . '</a></h3>';
+				$html .= '<div>' . $this->mark_search_result($kereses[0],$eredmenyek[$i]['szoveg']);
+				
+				$html .= '<div><a href="' . $this->href($eredmenyek[$i]['azonosito'],$eredmenyek[$i]['url'],$eredmenyek[$i]['tartalom_url'],$eredmenyek[$i]['altartalom_url']) . '" class="link">Bővebben</a></div>';
+				
+				$html .= '</div>';
+				$html .= '</li>';
+
+				$c++;
+			}
 		
 		}
 		
@@ -2096,7 +2131,9 @@ class mak extends db{
 			$a = substr($b,$utolso);
 		}
 		
-		return substr($a, 0, strrpos($a,' '));
+		$string = substr($a, 0, strrpos($a,' '));
+		
+		return $string;
 	}
 	
 	public function date_dash($date_string){
@@ -2127,12 +2164,35 @@ class mak extends db{
 			$poz[] = strrpos($str,"?");
 			return substr($str,0,max($poz)+1);
 		}else{
-			return $string;
+			return strip_tags($string);
 		}
 	
 	}
 
-
+	public function href($page,$sub='',$tartalom='',$subsub=''){
+		
+		if($page == ''){
+			return FALSE;
+		}
+		
+		$url = '';
+		
+		$url .= $page;
+		
+		if($sub != ''){
+			return $url .= '/' . $sub;
+		}
+	
+		if($tartalom != ''){
+			return $url .= '/' . $tartalom;
+		}
+		
+		if($subsub != ''){
+			return $url .= '/' . $subsub;
+		}
+		
+		return $url;
+	}
 }
 
 ?>

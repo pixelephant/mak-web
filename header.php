@@ -1,6 +1,11 @@
+<?php
+
+$kartya[1] = 'Komfort';
+$kartya[2] = 'Standard';
+?>
 <h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>
 <div id="userBar">
-	<span>Üdvözöljük <strong>Árpád!</strong> | Ön <strong>Komfort</strong> klubtagunk.</span>
+	<span>Üdvözöljük <strong id="logedInName"><?php echo $_SESSION['keresztnev']; ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo $kartya[$_SESSION['tagsag']]; ?></strong> klubtagunk.</span>
 </div>
 <div id="headerButtons">
 	<div id="loginContainer">
@@ -28,7 +33,7 @@
 			        <input class="yellow-button" type="submit" id="loginSubmit" value="Belépek" />
 			        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 					<div>
-						<a href="register.php">Még nem klubtagunk? Regisztráljon!</a>
+						<a href="regisztralok">Még nem klubtagunk? Regisztráljon!</a>
 					</div>
 			</form>
 			<a class="close-reveal-modal">&#215;</a>

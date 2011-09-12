@@ -1,5 +1,6 @@
 <?php 
 require_once 'ti.php';
+session_start();
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->

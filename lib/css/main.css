@@ -27,6 +27,11 @@ Autóklub platina: #797E82;
 	color:#0080B0;
 }
 
+#results .link{
+	left: 500px;
+    position: relative;	
+}
+
 .link.hasarrow:before{
 	content : "> ";
 	color:#0080B0;
@@ -279,7 +284,7 @@ header h1 a span{
 
 #userBar{
 	position:absolute;
-	top:0;
+	top:-35px;
 	right:15px;
 	height:34px;
 	border:2px solid F0C500;
@@ -620,10 +625,9 @@ li.ldd_heading a{
 }
 
 li.ldd_heading a:before{
-	content : "‣ ";
+	content : " " !important;
 	color: black !important;
 }
-
 
 /*Belső rész*/
 
@@ -1191,6 +1195,7 @@ li.heading.travel{
     padding: 4px 24px;
     float:left;
     margin-top:-1px;
+    height:25px;
 }
 
 #advanced-search label{
