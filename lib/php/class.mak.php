@@ -7,6 +7,7 @@ class mak extends db{
 	private $_galleryDir = 'img/gallery/';
 	private $_autoseletDir = 'media/autoselet/';
 	private $_hirekDir = 'img/hirek/';
+	private $_hirdetesDir = 'img/ad/';
 
 	public function __construct($debug=false){
 		parent::__construct('','','','','',$debug);
@@ -595,6 +596,78 @@ class mak extends db{
 	
 	}
 	
+	public function get_hirdetes($cond,$col=''){
+	
+		$table = 'mak_hirdetes';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,mak_url,kep,alt,cel_url,modositas,utolso_mutatas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+
+	public function get_hirdetes_urlhez($url){
+	
+		$url = trim($url);
+		
+		$cond['mak_url'] = $url;
+		$cond['orderby'] = 'utolso_mutatas ASC';
+		
+		return $this->get_hirdetes($cond);
+	
+	}
+	
+	public function get_felmeres($cond,$col=''){
+	
+		$table = 'mak_felmeres';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,kerdes,valasz1,valasz2,valasz3,valasz1_db,valasz2_db,valasz3_db,modositas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+	
+	public function get_felmeres_idbol($id){
+	
+		$id = trim($id);
+	
+		$cond['id'] = $id;
+	
+		return $this->get_felmeres($cond);
+	
+	}
+	
+	public function get_felmeres_legujabb_id(){
+		
+		$cond['limit'] = 1;
+		$cond['orderby'] = 'modositas desc';
+	
+		$a = $this->get_felmeres($cond);
+		
+		return $a[0]['id'];
+	
+	}
+	
 	//INSERT
 	
 	public function insert_hirlevel($email){
@@ -956,6 +1029,102 @@ class mak extends db{
 	
 	}
 	
+	public function insert_hirdetes($hirdetes_array){
+	
+		if(!is_array($hirdetes_array)){
+			return FALSE;
+		}
+	
+		
+		$hirdetes_array = GUMP::sanitize($hirdetes_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'mak_url' => 'required|max_len,255',
+			'cel_url' => 'required|max_len,255',
+			'alt' => 'required|max_len,80',
+			'kep' => 'required|max_len,80',
+		);
+		
+		$filters = array(
+			'mak_url' => 'trim|sanitize_string',
+			'cel_url' => 'trim|sanitize_string',
+			'alt' => 'trim|sanitize_string',
+			'kep' => 'trim|sanitize_string',
+		);
+
+		$hirdetes_array = GUMP::filter($hirdetes_array, $filters);
+		
+		$validate = GUMP::validate($hirdetes_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_insert('mak_hirdetes',$hirdetes_array)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}
+	
+	}
+	
+	public function insert_felmeres($felmeres_array){
+	
+		if(!is_array($felmeres_array)){
+			return FALSE;
+		}
+	
+		
+		$felmeres_array = GUMP::sanitize($felmeres_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'kerdes' => 'required|max_len,255',
+			'valasz1' => 'required|max_len,255',
+			'valasz2' => 'required|max_len,255',
+			'valasz3' => 'required|max_len,255',
+		);
+		
+		$filters = array(
+			'kerdes' => 'trim|sanitize_string',
+			'valasz1' => 'trim|sanitize_string',
+			'valasz2' => 'trim|sanitize_string',
+			'valasz3' => 'trim|sanitize_string',
+		);
+
+		$felmeres_array = GUMP::filter($felmeres_array, $filters);
+		
+		$validate = GUMP::validate($felmeres_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_insert('mak_felmeres',$felmeres_array)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}
+	
+	}
+	
+	public function insert_felmeres_felhasznalo($felmeres_id,$valasz){
+	
+		$felmeres_array['kerdes_id'] = $felmeres_id;
+		$felmeres_array['valasz'] = $valasz;
+		$felmeres_array['felhasznalo_id'] = $_SESSION['user_id'];
+	
+		if($this->sql_insert('mak_felmeres_felhasznalo',$felmeres_array)){
+			return 'Sikeres';
+		}else{
+			return 'Sikertelen';
+		}
+
+	}
+	
 	//UPDATE
 	
 	public function update_tartalom($tartalom_array,$cond=''){
@@ -1204,6 +1373,133 @@ class mak extends db{
 				return 'Invalid adat';
 			}
 		}
+	
+	}
+	
+	public function update_hirdetes($hirdetes_array,$cond=''){
+	
+		if(($cond != '' && !is_array($cond)) || !is_array($hirdetes_array)){
+			return FALSE;
+		}
+		
+		$hirdetes_array = GUMP::sanitize($hirdetes_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'mak_url' => 'max_len,255',
+			'cel_url' => 'max_len,255',
+			'alt' => 'max_len,80',
+			'kep' => 'max_len,80',
+			'utolso_mutatas' => 'max_len,80',
+		);
+		
+		$filters = array(
+			'mak_url' => 'trim|sanitize_string',
+			'cel_url' => 'trim|sanitize_string',
+			'alt' => 'trim|sanitize_string',
+			'kep' => 'trim|sanitize_string',
+			'utolso_mutatas' => 'trim',
+		);
+
+		$hirdetes_array = GUMP::filter($hirdetes_array, $filters);
+		
+		$validate = GUMP::validate($hirdetes_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_update('mak_hirdetes',$hirdetes_array,$cond)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}else{
+			if($this->debug){
+				print_r($validate);
+			}else{
+				return 'Invalid adat';
+			}
+		}
+	
+	}
+
+	public function update_hirdetes_utolso_mutatas($id){
+	
+		 //$id = (int)$id;
+		 
+		 $cond['id'] = $id;
+		 $col['utolso_mutatas'] = date('Y-m-d H:i:s');
+		 
+		 return $this->update_hirdetes($col,$cond);
+	
+	}
+	
+	public function update_felmeres($felmeres_array,$cond=''){
+	
+		if(($cond != '' && !is_array($cond)) || !is_array($felmeres_array)){
+			return FALSE;
+		}
+		
+		$felmeres_array = GUMP::sanitize($felmeres_array);
+		
+		//Validálás
+		
+		$rules = array(
+			'kerdes' => 'max_len,255',
+			'valasz1' => 'max_len,255',
+			'valasz2' => 'max_len,255',
+			'valasz3' => 'max_len,255',
+			'valasz1_db' => 'numeric',
+			'valasz2_db' => 'numeric',
+			'valasz3_db' => 'numeric',
+		);
+		
+		$filters = array(
+			'kerdes' => 'trim|sanitize_string',
+			'valasz1' => 'trim|sanitize_string',
+			'valasz2' => 'trim|sanitize_string',
+			'valasz3' => 'trim|sanitize_string',
+			'valasz1_db' => 'trim|sanitize_numbers_only',
+			'valasz2_db' => 'trim|sanitize_numbers_only',
+			'valasz3_db' => 'trim|sanitize_numbers_only',
+		);
+
+		$felmeres_array = GUMP::filter($felmeres_array, $filters);
+		
+		$validate = GUMP::validate($felmeres_array, $rules);
+	
+		//Validálás vége
+		
+		if($validate === TRUE){
+			if($this->sql_update('mak_felmeres',$felmeres_array,$cond)){
+				return 'Sikeres';
+			}else{
+				return 'Sikertelen';
+			}	
+		}else{
+			if($this->debug){
+				print_r($validate);
+			}else{
+				return 'Invalid adat';
+			}
+		}
+	
+	}
+	
+	public function update_felmeres_valasz($id,$valasz){
+	
+		$id = trim($id);
+		$valasz = trim($valasz);
+	
+		$felmeres = $this->get_felmeres_idbol($id);
+		
+		$cond['id'] = $id;
+		$col['valasz'.$valasz.'_db'] = $felmeres[0]['valasz'.$valasz.'_db'] + 1;
+		
+		$this->insert_felmeres_felhasznalo($id,$valasz);
+		
+		return $this->update_felmeres($col,$cond);
 	
 	}
 	
@@ -2100,6 +2396,94 @@ class mak extends db{
 	
 	}
 	
+	public function render_hirdetes($page,$subpage='',$tartalom='',$subsubpage=''){
+	
+		$url = trim($page);
+		
+		if(trim($subpage) != ''){
+			$url = trim($subpage);
+		}
+		
+		if(trim($tartalom) != ''){
+			$url = trim($tartalom);
+		}
+		
+		if(trim($subsubpage) != ''){
+			$url = trim($subsubpage);
+		}
+		
+		/*
+		 * Hány darab hírdetés jelenik meg maximálisan az oldalon
+		 */
+		
+		$limit = 3;
+		
+		$hirdetes = $this->get_hirdetes_urlhez($url);
+		$html = '';
+		
+		if($hirdetes === FALSE || $hirdetes['count'] == 0 || $url == ''){
+		
+			/*
+			 * Default hírdetés
+			 */
+		
+			$html .= '<a target="_blank" href="http://www.arceurope.com/EN/memberservices.aspx"><img class="ad" src="img/ad/arc.gif" alt="ARC europe - Show your card!" /></a>';
+			$html .= '<a target="_blank" href="http://www.erscharter.eu/"><img class="ad" src="img/ad/ersc.gif" alt="European road safety charter" /></a>';
+			$html .= '<a target="_blank" href="https://www.generali.hu/GeneraliBiztosito.aspx"><img class="ad" src="img/ad/generali.gif" alt="Generali biztosító" /></a>';
+		
+		}else{
+		
+			for($i = 0; $i < $hirdetes['count']; $i++){
+			
+				$html .= '<a target="_blank" href="' . $hirdetes[$i]['cel_url'] . '"><img class="ad" src="' . $this->_hirdetesDir . $hirdetes[$i]['kep'] . '" alt="' . $hirdetes[$i]['alt'] . '" /></a>';
+				
+				$this->update_hirdetes_utolso_mutatas($hirdetes[$i]['id']);
+			
+			}
+		
+		}
+
+		/*
+		 * Facebook social plugin
+		 */
+		
+		$html .= '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFrontline-m%25C3%25A9dia-Kft%2F134495689944678&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=black&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px; background:white; margin: 0 auto; display: block;" allowTransparency="true"></iframe>';
+	
+		return $html;
+		
+	}
+	
+	public function render_poll(){
+	
+		$cond['limit'] = 1;
+		$cond['orderby'] = 'modositas desc';
+	
+		$felm = $this->get_felmeres($cond);
+		
+		if($felm !== FALSE && $felm['count'] != 0 && isset($_SESSION['user_id'])){
+		
+			$html = '<div id="poll-container">';
+			$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
+			$html .= '<div id="pollChoices">';
+			$html .= '<div id="choice1-wrap">';
+			$html .= '<label for="choice1">' . $felm[0]['valasz1'] . '</label><input type="radio" name="poll-choice" id="valasz1" />';
+			$html .= '</div>';
+			$html .= '<div id="choice2-wrap">';
+			$html .= '<label for="choice2">' . $felm[0]['valasz2'] . '</label><input type="radio" name="poll-choice" id="valasz2" />';
+			$html .= '</div>';
+			$html .= '<div id="choice3-wrap">';
+			$html .= '<label for="choice3">' . $felm[0]['valasz3'] . '</label><input type="radio" name="poll-choice" id="valasz3" />';
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '<button class="yellow-button" id="vote">Szavazok</button>';
+			$html .= '</div>';
+			
+			return $html;
+			
+		}
+	
+	}
+	
 	//Kiegészítő függvények
 	
 	public function mark_search_result($query_string,$result_string){
@@ -2192,6 +2576,27 @@ class mak extends db{
 		}
 		
 		return $url;
+	}
+	
+	public function poll($valasz){
+
+		$valasz = trim($valasz);
+		$poll_id = $this->get_felmeres_legujabb_id();
+		
+		$this->update_felmeres_valasz($poll_id,$valasz);
+		
+		$poll = $this->get_felmeres_idbol($poll_id);
+		
+		$val[1] = $poll[0]['valasz1_db'];
+		$val[2] = $poll[0]['valasz2_db'];
+		$val[3] = $poll[0]['valasz3_db'];
+
+		$json = '[{"choice":"choice0","votes":"' . $val[1] . '"},';
+		$json .= '{"choice":"choice1","votes":"' . $val[2] . '"},';
+		$json .= '{"choice":"choice2","votes":"' . $val[3] . '"}]';
+		
+		return $json;
+	
 	}
 }
 

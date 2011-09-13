@@ -13,5 +13,6 @@
 		<input type="text" class="required email" name="newsletter-mail" id="newsletter-mail" placeholder="Email cím" /><input type="submit" value="Ok" class="yellow-button" />
 		</div>
 	</form>
+	<div id="newsletter-response"></div>
 </div>
 <div class="hr"></div>

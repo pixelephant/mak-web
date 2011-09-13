@@ -2,6 +2,7 @@
 
 $kartya[1] = 'Komfort';
 $kartya[2] = 'Standard';
+
 ?>
 <h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>
 <div id="userBar">
@@ -13,6 +14,13 @@ $kartya[2] = 'Standard';
 		<a href="szervizpontok" id="szervizButton" class="gray-button"><img src="img/pictogram-03.png" alt="Szervizpontok" /></a>
 		<a href="kozlekedesbiztonsag" id="kozlekButton" class="gray-button"><img src="img/pictogram-04.png" alt="Közlekedésbiztonság" /></a>
 		<a href="travel" id="travelButton" class="gray-button"><img src="img/pictogram-02.png" alt="Travel" /></a>
+<?php 
+	if(isset($_SESSION['user_id'])){
+?>
+		<a href="#" id="logoutButton" class="gray-button"><span>Kijelentkezés</span><em></em></a>
+<?php
+	}else{
+?>			
 		<a href="#" data-reveal-id="loginModal" id="loginButton" class="gray-button"><span>Bejelentkezés</span><em></em></a>
 		<div id="loginModal" class="reveal-modal">
 			<form id="loginform" action="#">
@@ -26,18 +34,21 @@ $kartya[2] = 'Standard';
 							<div class="row">
 								<label for="loginPassword">Jelszó</label>
 								<input class="required" type="password" name="loginPassword" id="loginPassword" />
-								<a id="forgotten" href="#">Elfelejtett jelszó?</a>
+								<a id="forgotten" href="#">Elfelejtett a jelszavát?</a>
 							</div>
 			        	</div>
 			        <div class="hr"></div>
-			        <input class="yellow-button" type="submit" id="loginSubmit" value="Belépek" />
+			        <input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
 			        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 					<div>
-						<a href="regisztralok">Még nem klubtagunk? Regisztráljon!</a>
+						<a href="regisztralok">Először jár nálunk? Regisztráljon!</a>
 					</div>
 			</form>
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
+<?php 
+	}
+?>			
 	</div>				
 </div>
 <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>

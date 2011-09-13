@@ -307,7 +307,9 @@ $main = new mak(false);
 				<?php 
 					echo $main->render_also_menu();
 				?>
-			</div>
+			</div>			
+		</div>
+		<div id="fotterMiscWrap">
 			<div id="footerMisc">
 				<?php include 'footer.php';?>
 			</div>

@@ -173,6 +173,7 @@ strong{
 			
 .reveal-modal h2{
 	font-size: 20px;
+	font-weight: bold;
 	margin-bottom: 10px;
 }
 
@@ -347,7 +348,7 @@ header h1 a span{
 	display:block;
 }
 
-#loginButton,#segelyButton,#travelButton,#kozlekButton,#szervizButton{
+#logoutButton,#loginButton,#segelyButton,#travelButton,#kozlekButton,#szervizButton{
 	height: 32px;	
 	font-size: 12px;
 	font-weight: bold;
@@ -364,6 +365,11 @@ header h1 a span{
 }
 
 #loginButton span{
+	float: left;
+	margin-right: 4px;
+}
+
+#logoutButton span{
 	float: left;
 	margin-right: 4px;
 }
@@ -1370,6 +1376,7 @@ li.heading.travel{
 	display:none;
 }
 
+<<<<<<< HEAD
 
 /*szavazás*/
 
@@ -1443,4 +1450,10 @@ li.heading.travel{
 	padding:10px;
 	font-weight: bold;
 	margin:10px;
+=======
+//Poll
+
+#poll-container{
+	float: left;	
+>>>>>>> 6d06f650413e69a7ab3e98020d0ba69384d32ded
 }

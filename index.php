@@ -144,7 +144,10 @@ autoklub,mak
 <?php endblock() ?>
 
 <?php startblock('ad') ?>
-<?php include 'ad.php';?>
+<?php 
+	echo $main->render_hirdetes($page,$subpage,$tartalom,$subsubpage);
+	echo $main->render_poll();
+?>
 <?php endblock() ?>
 
 <?php startblock('content') ?>

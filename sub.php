@@ -108,7 +108,9 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 <?php endblock() ?>
 
 <?php startblock('ad') ?>
-<?php include 'ad.php';?>
+<?php 
+	echo $main->render_hirdetes($page,$subpage,$tartalom,$subsubpage);
+?>
 <?php endblock() ?>
 
 <?php startblock('3d')?>
