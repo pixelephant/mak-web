@@ -411,6 +411,11 @@ header h1 a span{
 	float: right;
 }
 
+#login-error label.error{
+	top: 145px;
+	left: 365px;
+}
+
 #loginform input[type='text'],#loginform input[type='password']{
 	width: 200px;
 	height: 20px;

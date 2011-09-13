@@ -693,7 +693,7 @@ class mak extends db{
 		$cond['felhasznalo_id'] = $_SESSION['user_id'];
 		$cond['kerdes_id'] = $this->get_felmeres_legujabb_id();
 	
-		$valasz = $this->get_felmeres_felhasznalo();
+		$valasz = $this->get_felmeres_felhasznalo($cond);
 		
 		if($valasz === FALSE || $valasz['count'] == 0){
 			return FALSE;

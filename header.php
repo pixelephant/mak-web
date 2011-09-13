@@ -36,6 +36,7 @@ $kartya[2] = 'Standard';
 								<input class="required" type="password" name="loginPassword" id="loginPassword" />
 								<a id="forgotten" href="#">Elfelejtett a jelszavát?</a>
 							</div>
+							<div id="login-error"></div>
 			        	</div>
 			        <div class="hr"></div>
 			        <input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
