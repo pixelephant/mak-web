@@ -1376,13 +1376,12 @@ li.heading.travel{
 	display:none;
 }
 
-<<<<<<< HEAD
-
 /*szavazás*/
 
 #poll-container{
 	margin-top: 40px;
-	width: 330px;
+	margin-left: 20px;
+	width: 200px;
 	background:white;
 }
 
@@ -1450,10 +1449,9 @@ li.heading.travel{
 	padding:10px;
 	font-weight: bold;
 	margin:10px;
-=======
+	margin-left: 50px;
 //Poll
 
 #poll-container{
 	float: left;	
->>>>>>> 6d06f650413e69a7ab3e98020d0ba69384d32ded
 }

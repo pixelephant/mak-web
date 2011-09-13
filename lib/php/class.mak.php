@@ -668,6 +668,41 @@ class mak extends db{
 	
 	}
 	
+	public function get_felmeres_felhasznalo($cond,$col=''){
+	
+		$table = 'mak_felmeres_felhasznalo';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,kerdes_id,felhasznalo_id,valasz';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+
+	public function get_felmeres_felhasznalo_szavazott(){
+	
+		$cond['felhasznalo_id'] = $_SESSION['user_id'];
+		$cond['kerdes_id'] = $this->get_felmeres_legujabb_id();
+	
+		$valasz = $this->get_felmeres_felhasznalo();
+		
+		if($valasz === FALSE || $valasz['count'] == 0){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	
+	}
+	
 	//INSERT
 	
 	public function insert_hirlevel($email){
@@ -2462,21 +2497,41 @@ class mak extends db{
 		
 		if($felm !== FALSE && $felm['count'] != 0 && isset($_SESSION['user_id'])){
 		
-			$html = '<div id="poll-container">';
-			$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
-			$html .= '<div id="pollChoices">';
-			$html .= '<div id="choice1-wrap">';
-			$html .= '<label for="choice1">' . $felm[0]['valasz1'] . '</label><input type="radio" name="poll-choice" id="valasz1" />';
-			$html .= '</div>';
-			$html .= '<div id="choice2-wrap">';
-			$html .= '<label for="choice2">' . $felm[0]['valasz2'] . '</label><input type="radio" name="poll-choice" id="valasz2" />';
-			$html .= '</div>';
-			$html .= '<div id="choice3-wrap">';
-			$html .= '<label for="choice3">' . $felm[0]['valasz3'] . '</label><input type="radio" name="poll-choice" id="valasz3" />';
-			$html .= '</div>';
-			$html .= '</div>';
-			$html .= '<button class="yellow-button" id="vote">Szavazok</button>';
-			$html .= '</div>';
+			if($this->get_felmeres_felhasznalo_szavazott()){
+				
+				$sum = $felm[0]['valasz1_db'] + $felm[0]['valasz2_db'] + $felm[0]['valasz3_db'];
+				$perc[1]  = substr($felm[0]['valasz1_db'] / $sum, 0 ,4);
+				$perc[2]  = substr($felm[0]['valasz2_db'] / $sum, 0 ,4);
+				$perc[3]  = 1 - ($perc[1] + $perc[2]);
+			
+				$html = '<div id="poll-container">';
+				$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
+				$html .= '<div id="pollChoices" class="result">';
+				$html .= '<div id="choice1-wrap"><label for="choice1">' . $felm[0]['valasz1'] . '</label><span class="color1" style="width: ' . 215 * $perc[1] . 'px;">' . $perc[1] * 100 . '</span></div>';
+				$html .= '<div id="choice2-wrap"><label for="choice2">' . $felm[0]['valasz2'] . '</label><span class="color2" style="width: ' . 215 * $perc[2] . 'px;">' . $perc[2] * 100 . '</span></div>';
+				$html .= '<div id="choice3-wrap"><label for="choice3">' . $felm[0]['valasz3'] . '</label><span class="color3" style="width: ' . 215 * $perc[3] . 'px;">' . $perc[3] * 100 . '</span></div>';
+				$html .= '</div>';
+				$html .= '</div>';
+			
+			}else{
+		
+				$html = '<div id="poll-container">';
+				$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
+				$html .= '<div id="pollChoices">';
+				$html .= '<div id="choice1-wrap">';
+				$html .= '<label for="choice1">' . $felm[0]['valasz1'] . '</label><input type="radio" name="poll-choice" id="valasz1" />';
+				$html .= '</div>';
+				$html .= '<div id="choice2-wrap">';
+				$html .= '<label for="choice2">' . $felm[0]['valasz2'] . '</label><input type="radio" name="poll-choice" id="valasz2" />';
+				$html .= '</div>';
+				$html .= '<div id="choice3-wrap">';
+				$html .= '<label for="choice3">' . $felm[0]['valasz3'] . '</label><input type="radio" name="poll-choice" id="valasz3" />';
+				$html .= '</div>';
+				$html .= '</div>';
+				$html .= '<button class="yellow-button" id="vote">Szavazok</button>';
+				$html .= '</div>';
+				
+			}
 			
 			return $html;
 			
@@ -2590,10 +2645,15 @@ class mak extends db{
 		$val[1] = $poll[0]['valasz1_db'];
 		$val[2] = $poll[0]['valasz2_db'];
 		$val[3] = $poll[0]['valasz3_db'];
+		
+		$full = array_sum($val);
+		$perc[1] = substr($val[1] / $full, 0, 4);
+		$perc[2] = substr($val[2] / $full, 0, 4);
+		$perc[3] = 1 - ($perc[1] + $perc[2]);
 
-		$json = '[{"choice":"choice0","votes":"' . $val[1] . '"},';
-		$json .= '{"choice":"choice1","votes":"' . $val[2] . '"},';
-		$json .= '{"choice":"choice2","votes":"' . $val[3] . '"}]';
+		$json = '[{"choice":"choice1","votes":"' . $val[1] . '","percent":"' . $perc[1] . '"},';
+		$json .= '{"choice":"choice2","votes":"' . $val[2] . '","percent":"' . $perc[2] . '"},';
+		$json .= '{"choice":"choice3","votes":"' . $val[3] . '","percent":"' . $perc[3] . '"}]';
 		
 		return $json;
 	
