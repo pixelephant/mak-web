@@ -575,6 +575,7 @@ class mak extends db{
 		$utolso = $this->get_autoselet();
 		
 		$autoselet[0] = $utolso[0];
+		$autoselet['count'] = 1;
 		
 		return $autoselet;
 	
@@ -797,6 +798,26 @@ class mak extends db{
 		
 		return $this->sql_select($table,$col,$cond,$join);
 	
+	
+	}
+	
+	public function get_hirek($cond='',$col=''){
+	
+		$table = 'mak_hirek';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,cim,szoveg,kep,alt,publikalta,modositas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
 	
 	}
 	
@@ -2045,29 +2066,34 @@ class mak extends db{
 	
 	public function render_enautoklubom(){
 	
-		$tartalom = $this->get_oldal_tartalom('enautoklubom');
+		$tartalom = $this->get_hirek();
 						
 		if($tartalom === FALSE){
 			return FALSE;
 		}
+		
+		$pos[0] = '';
+		$pos[1] = ' right';
 	
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
-			$html = '<section>';
+			$html = '<div class="block' . $pos[$i % 2] . '">';
 			$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
 			
-			$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
+			//$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
 			
-			$html .= '<h3>' . $idopont . $tartalom[$i]['publikalta'] . '</h3>';
+			//$html .= '<h3>' . $idopont . ' - írta: ' . $tartalom[$i]['publikalta'] . '</h3>';
+			$html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
 			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
-		    $html .= '<img src="' . $_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
-			$html .=  '</section>';
+			$html .=  '</div>';
 			
 			if($i != $tartalom['count'] - 1){
 				$html .= '<div class="hr"></div>';
 			}
 			
 		}
+		
+		return $html;
 	
 	}
 	
