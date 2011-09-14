@@ -2071,18 +2071,21 @@ class mak extends db{
 		if($tartalom === FALSE){
 			return FALSE;
 		}
+		
+		$pos[0] = '';
+		$pos[1] = ' right';
 	
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
-			$html = '<section>';
+			$html = '<div class="block' . $pos[$i % 2] . '">';
 			$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
 			
 			//$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
 			
 			//$html .= '<h3>' . $idopont . ' - írta: ' . $tartalom[$i]['publikalta'] . '</h3>';
+			$html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
 			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
-		    $html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
-			$html .=  '</section>';
+			$html .=  '</div>';
 			
 			if($i != $tartalom['count'] - 1){
 				$html .= '<div class="hr"></div>';
