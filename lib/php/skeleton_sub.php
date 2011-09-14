@@ -46,9 +46,7 @@ session_start();
 			<?php startblock('ad') ?><?php endblock() ?>
 		</aside>
 		<section id="content">
-			<div class="head">
-				<?php startblock('3d')?><?php endblock() ?>
-			</div>
+			<?php startblock('3d')?><?php endblock() ?>
 		<article>
 			<h1><?php startblock('h1')?><?php endblock() ?></h1>
 			<?php startblock('sections')?><?php endblock() ?>
