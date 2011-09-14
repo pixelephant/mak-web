@@ -545,14 +545,19 @@ class mak extends db{
 	
 	}
 	
-	public function get_autoselet($evfolyam=''){
+	public function get_autoselet($evfolyam='',$lapszam=''){
 	
 		$table = 'mak_autoselet';
 		
 		$evfolyam = trim($evfolyam);
+		$lapszam = trim($lapszam);
 		
 		if($evfolyam != ''){
 			$cond['evfolyam'] = $evfolyam;
+		}
+		
+		if($lapszam != ''){
+			$cond['lapszam'] = $lapszam;
 		}
 		
 		$cond['orderby'] = ' evfolyam desc, lapszam asc';
@@ -1981,17 +1986,23 @@ class mak extends db{
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 			
-			$html .= '<div class="row">';
+			if($i % 3 == 0){
+				$html .= '<div class="row">';
+			}
 			$html .= '<div class="autoselet ';					
 			$html .= $position[$i % 3];
-			$html .= '">';
+			$html .= '" id="' . $tartalom[$i]['evfolyam'] . '/' . $tartalom[$i]['lapszam'] . '">';
 			
 			$html .= '<div class="img">';
 			$html .= '<img src="' . $this->_autoseletDir . $tartalom[$i]['kep_filenev'] . '" alt="Autosélet - ' . $tartalom[$i]['evfolyam'] . '/' . $tartalom[$i]['lapszam'] . '" />';					
 			$html .= '</div>';
 			
 			$html .= '</div>';
-			$html .= '</div>';
+			
+			if($i % 3 == 2 || $i + 1 == $tartalom['count']){
+				$html .= '</div>';
+			}
+			
 		
 		}
 		
@@ -2148,7 +2159,11 @@ class mak extends db{
 			
 			case "tartalom":
 				
-				$html =  $this->render_tartalom_section_default($tartalom);
+				if($tartalom == 'autoselet'){
+					$html = $this->render_autoselet();
+				}else{
+					$html =  $this->render_tartalom_section_default($tartalom);
+				}
 			
 			break;
 			

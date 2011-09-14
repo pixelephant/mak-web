@@ -1,5 +1,20 @@
 <?php
 
-echo ('<div><object style="width:660px;height:462px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v1/IssuuViewer.swf?mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true&amp;documentId=110816123559-8661617db9244e779c3f3f3086329e21&amp;docName=autoselet&amp;username=soda01&amp;loadingInfoText=Aut%C3%B3s%C3%A9let%20magazin&amp;et=1313499878422&amp;er=46" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><embed src="http://static.issuu.com/webembed/viewers/style1/v1/IssuuViewer.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" style="width:660px;height:462px" flashvars="mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true&amp;documentId=110816123559-8661617db9244e779c3f3f3086329e21&amp;docName=autoselet&amp;username=soda01&amp;loadingInfoText=Aut%C3%B3s%C3%A9let%20magazin&amp;et=1313499878422&amp;er=46" /></object><div style="width:660px;text-align:left;"><a href="http://issuu.com/soda01/docs/autoselet?mode=embed&amp;layout=http%3A%2F%2Fskin.issuu.com%2Fv%2Flight%2Flayout.xml&amp;showFlipBtn=true" target="_blank">Open publication</a> - Free <a href="http://issuu.com" target="_blank">publishing</a> - <a href="http://issuu.com/search?q=autoklub" target="_blank">More autoklub</a></div></div>');
+include 'Wixel/gump.class.php';
 
+include 'class.db.php';
+include 'class.mak.php';
+
+$main = new mak(false);
+
+$autoselet = explode("/",$_POST['id']);
+
+$evfolyam = $autoselet[0];
+$lapszam = $autoselet[1];
+
+$ae = $main->get_autoselet($evfolyam,$lapszam);
+
+echo $ae[0]['embed_kod'];
+
+$main->close();
 ?>
