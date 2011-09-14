@@ -575,6 +575,7 @@ class mak extends db{
 		$utolso = $this->get_autoselet();
 		
 		$autoselet[0] = $utolso[0];
+		$autoselet['count'] = 1;
 		
 		return $autoselet;
 	
