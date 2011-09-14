@@ -801,6 +801,26 @@ class mak extends db{
 	
 	}
 	
+	public function get_hirek($cond='',$col=''){
+	
+		$table = 'mak_hirek';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,cim,szoveg,kep,alt,publikalta,modositas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+	
 	//INSERT
 	
 	public function insert_hirlevel($email){
@@ -2046,7 +2066,7 @@ class mak extends db{
 	
 	public function render_enautoklubom(){
 	
-		$tartalom = $this->get_oldal_tartalom('enautoklubom');
+		$tartalom = $this->get_hirek();
 						
 		if($tartalom === FALSE){
 			return FALSE;
@@ -2057,11 +2077,11 @@ class mak extends db{
 			$html = '<section>';
 			$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
 			
-			$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
+			//$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
 			
-			$html .= '<h3>' . $idopont . $tartalom[$i]['publikalta'] . '</h3>';
+			//$html .= '<h3>' . $idopont . ' - írta: ' . $tartalom[$i]['publikalta'] . '</h3>';
 			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
-		    $html .= '<img src="' . $_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
+		    $html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
 			$html .=  '</section>';
 			
 			if($i != $tartalom['count'] - 1){
@@ -2069,6 +2089,8 @@ class mak extends db{
 			}
 			
 		}
+		
+		return $html;
 	
 	}
 	

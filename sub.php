@@ -115,14 +115,14 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('3d')?>
 <?php 
-	if($subpage != 'autoselet'){ 
+	if($tartalom != 'autoselet'){
 ?>
 <div class="head">
 	<div class="layer1"></div>
 	<div class="layer2"></div>
 </div>
 <?php 
-}
+	}
 ?>
 <?php endblock() ?>
 
