@@ -774,45 +774,45 @@ aside img.ad{
 
 /*Főoldal belső grid*/
 
-#fooldal .block{
+.block{
 	width: 315px;
 	float: left;
 }
 
-#fooldal .block.right{
+.block.right{
 	float: right;
 }
 
-#fooldal .block h2{
+.block h2{
 	font-weight: bold;
 	font-size: 18px;
 	margin-bottom: 30px;
 }
 
-#fooldal .block img{
+.block img{
 	margin-bottom: 30px;
 }
 
-#fooldal .block p{
+ .block p{
 	padding: 0 10px;
 }
 
-#fooldal .block ul{
+ .block ul{
 	margin-top: 10px;
 }
 
-#fooldal .block ul a{
+ .block ul a{
 	color: #0080B0;
 	font-size: 14px;
 	font-style: italic;
 }
 
-#fooldal .block ul li{
+ .block ul li{
 	list-style: none;
 	padding: 0 10px;
 }
 
-#fooldal .block ul li:before{
+ .block ul li:before{
 	content : "> ";
 	color: #0080B0;
 	font-size: 14px;
