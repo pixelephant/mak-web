@@ -756,6 +756,35 @@ class mak extends db{
 	
 	}
 	
+	public function get_oldalterkep(){
+	
+		$table = 'mak_kategoria';	
+		
+		if($col == ''){
+			$col = 'mak_kategoria.kategoria_nev AS kategoria,mak_kategoria.azonosito AS kategoria_url,';
+			$col .= 'mak_almenu.almenu AS almenu,mak_almenu.url AS almenu_url,';
+			$col .= 'mak_tartalom.cim AS tartalom,mak_tartalom.url AS tartalom_url,';
+			$col .= 'mak_altartalom.cim AS altartalom,mak_altartalom.url AS altartalom_url';
+		}
+		
+		$cond = array();
+		$cond['orderby'] = 'mak_kategoria.sorrend ASC,mak_almenu.sorrend ASC,mak_tartalom.sorrend ASC,mak_altartalom.sorrend ASC';
+		
+		$join[0]['table'] = 'mak_almenu';
+		$join[0]['value'] = 'mak_kategoria.id=mak_almenu.kategoria_id';
+		$join[0]['type'] = 'LEFT JOIN';
+		$join[1]['table'] = 'mak_tartalom';		
+		$join[1]['value'] = 'mak_almenu.id=mak_tartalom.almenu_id';
+		$join[1]['type'] = 'LEFT JOIN';
+		$join[2]['table'] = 'mak_altartalom';		
+		$join[2]['value'] = 'mak_tartalom.id=mak_altartalom.tartalom_id';
+		$join[2]['type'] = 'LEFT JOIN';
+		
+		return $this->sql_select($table,$col,$cond,$join);
+	
+	
+	}
+	
 	//INSERT
 	
 	public function insert_hirlevel($email){
@@ -2016,6 +2045,49 @@ class mak extends db{
 	
 	}
 	
+	public function render_oldalterkep(){
+	
+		$html = '';
+		
+		$oldalterkep = $this->get_oldalterkep();
+		
+		$kat = '';
+		$alm = '';
+		$tart = '';
+		$altart = '';
+		
+		$html .= '<ul>';
+		
+		for($i = 0;$i < $oldalterkep['count'];$i++){
+		
+			if($kat != $oldalterkep[$i]['kategoria_url']){
+				$html .= '<li class="kategoria"><a href="' . $oldalterkep[$i]['kategoria_url'] . '">' . $oldalterkep[$i]['kategoria'] . '</a></li>';
+				$kat = $oldalterkep[$i]['kategoria_url'];
+			}
+			
+			if($alm != $oldalterkep[$i]['almenu_url'] && $oldalterkep[$i]['almenu_url'] != ''){
+				$html .= '<li class="almenu"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '">' . $oldalterkep[$i]['almenu'] . '</a></li>';
+				$alm = $oldalterkep[$i]['almenu_url'];
+			}
+			
+			if($tart != $oldalterkep[$i]['tartalom_url'] && $oldalterkep[$i]['tartalom_url'] != ''){
+				$html .= '<li class="tartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '">' . $oldalterkep[$i]['tartalom'] . '</a></li>';
+				$tart = $oldalterkep[$i]['tartalom_url'];
+			}
+			
+			if($altart != $oldalterkep[$i]['altartalom_url'] && $oldalterkep[$i]['altartalom_url'] != ''){
+				$html .= '<li class="altartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '/' . $oldalterkep[$i]['altartalom_url'] . '">' . $oldalterkep[$i]['altartalom'] . '</a></li>';
+				$altart = $oldalterkep[$i]['altartalom_url'];
+			}
+		
+		}
+		
+		$html .= '</ul>';
+		
+		return $html;
+	
+	}
+	
 	public function render_section($kategoria,$almenu='',$tartalom='',$altartalom=''){
 
 		/*
@@ -2054,6 +2126,8 @@ class mak extends db{
 
 				if($kategoria == 'szervizpontok'){
 					$html = $this->render_szervizpontok();
+				}elseif($kategoria == 'oldalterkep'){
+					 $html = $this->render_oldalterkep();
 				}else{
 					$html =  $this->render_kategoria_section_default($kategoria);
 				}
