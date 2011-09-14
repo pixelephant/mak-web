@@ -102,7 +102,7 @@ class mak extends db{
 		$col = trim($col);
 		
 		if($col == ''){
-			$col = 'id,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas';
+			$col = 'id,nem,tagsagi_szam,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -700,6 +700,59 @@ class mak extends db{
 		}else{
 			return TRUE;
 		}
+	
+	}
+	
+	public function sorsolas($felmeres_id,$jo_valasz_szama,$felhasznalo_darab){
+	
+		$cond['kerdes_id'] = trim($felmeres_id);
+		
+		if($jo_valasz_szama > 0 && $jo_valasz_szama != ''){
+			$cond['valasz'] = trim($jo_valasz_szama);
+		}
+		
+		$felhasznalok = $this->get_felmeres_felhasznalo($cond);
+		
+		if($felhasznalok === FALSE){
+			return FALE;
+		}
+		
+		if($felhasznalo_darab > $felhasznalok['count']){
+			$felhasznalo_darab = $felhasznalok['count'];
+		}
+		
+		//$kisorsolt = array_rand($felhasznalok, $felhasznalo_darab);
+		$kisorsolt = array();
+		
+		while(count($kisorsolt) < $felhasznalo_darab){
+			$b = rand(0,$felhasznalok['count']-1);
+			if(!in_array($b, $kisorsolt)){
+				$kisorsolt[] = $b;	
+			}
+		}
+		
+		$html = '';
+		
+		//print_r($kisorsolt);
+		
+		foreach($kisorsolt as $key){
+		
+			$cond = array();
+			$cond['id'] = $felhasznalok[$key]['felhasznalo_id'];
+			$a = $this->get_felhasznalo($cond);
+			
+			if($a[0]['nem'] == 'C'){
+				$nev = $a[0]['kapcsolattarto_vezeteknev'] . ' ' . $a[0]['kapcsolattarto_keresztnev'];
+			}else{
+				$nev = $a[0]['elonev'] . ' ' . $a[0]['vezeteknev'] . ' ' . $a[0]['keresztnev'];
+			}
+			
+			if($nev != '' && $a[0]['tagsagi_szam'] != ''){
+				$html .= '<div class="user">' . $nev . ' - ' . $a[0]['tagsagi_szam'] . '</div>';
+			}
+		}
+		
+		return $html;
 	
 	}
 	

@@ -29,7 +29,7 @@ $sidx = $_POST['sidx'];
 $sord = $_POST['sord'];
 
 $cond['orderby'] = $sidx . ' ' . $sord;
-$col = 'id,mak_url,kep,alt,cel_url,utolso_mutatas';
+$col = 'id,kerdes,valasz1,valasz2,valasz3,valasz1_db+valasz2_db+valasz3_db AS osszes_valasz, modositas';
 
 if($search == 'true'){
 
@@ -67,15 +67,15 @@ if($search == 'true'){
 
 }
 
-$hirdetes = $main->get_hirdetes($cond,$col);
+$felmeres = $main->get_felmeres($cond,$col);
 
 /*
  * Összesen hány találati oldal van?
  */
 
-$total = floor( $hirdetes['count'] / $rows);
+$total = floor( $felmeres['count'] / $rows);
 
-if($total == 0 && $hirdetes['count'] > 0){
+if($total == 0 && $felmeres['count'] > 0){
 	$total = 1;
 }
 
@@ -90,18 +90,18 @@ $json .= '"total":' . $total . ',';
  * Cellák felépítése
  * 
  * Cella sorrend:
- * id,mak_url,kep,alt,cel_url,utolso_mutatas
+ * id,kerdes,valasz1,valasz2,valasz3,osszes_valasz,modositas
  * 
  */
 
 $json .= '"rows":[';
 
-for($i = 0; $i < $hirdetes['count']; $i++){
+for($i = 0; $i < $felmeres['count']; $i++){
 
-	$json .= '{"id":"' . $hirdetes[$i]['id'] . '",';
+	$json .= '{"id":"' . $felmeres[$i]['id'] . '",';
 	$json .= '"cell":[';
 	
-	foreach($hirdetes[$i] as $mezo => $ertek){
+	foreach($felmeres[$i] as $mezo => $ertek){
 		$json .= '"' . $ertek . '",';
 	}
 	
@@ -111,7 +111,7 @@ for($i = 0; $i < $hirdetes['count']; $i++){
 
 }
 
-if($hirdetes['count'] > 0){
+if($felmeres['count'] > 0){
 	$json = substr($json,0,-1);
 }
 

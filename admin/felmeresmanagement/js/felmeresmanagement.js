@@ -1,16 +1,17 @@
 $(function(){ 
-  $("#hirdetesmanagement").jqGrid({
+  $("#felmeresmanagement").jqGrid({
     url:'php/process.php',
     datatype: 'json',
     mtype: 'POST',
-    colNames:['Id','Melyik oldalhoz?','Képfájl neve', 'Képfájl alt. szöveg','Hova mutat? (http://...)','Utolsó mutatás'],
+    colNames:['Id','Kérdés','Válasz 1.', 'Válasz 2.','Válasz 3.','Összes válasz száma', 'Módosítás'],
     colModel :[ 
       {name:'id', index:'id', width:60, align:'center',editable:false}, 
-      {name:'mak_url', index:'mak_url', width:200, align:'center',editable:true}, 
-      {name:'kep', index:'kep', width:100, align:'center',editable:true}, 
-      {name:'alt', index:'alt', width:100, align:'center',editable:true}, 
-      {name:'cel_url', index:'cel_url', width:200 , align:'center',editable:true},
-      {name:'utolso_mutatas', index:'utolso_mutatas', width:150, align:'center',editable:false}, 
+      {name:'kerdes', index:'kerdes', width:200, align:'center',editable:true}, 
+      {name:'valasz1', index:'valasz1', width:100, align:'center',editable:true}, 
+      {name:'valasz2', index:'valasz2', width:100, align:'center',editable:true}, 
+      {name:'valasz3', index:'valasz3', width:200 , align:'center',editable:true},
+      {name:'osszes_valasz', index:'osszes_valasz', width:150, align:'center',editable:false, sortable:false},
+      {name:'modositas', index:'modositas', width:200 , align:'center',editable:false},
     ],
     pager: $('#pager'),
     rowNum:10,
@@ -19,12 +20,12 @@ $(function(){
     sortorder: 'desc',
     viewrecords: true,
     gridview: true,
-    caption: 'Hírdetések kezelése',
+    caption: 'Felmérések kezelése',
     editurl: 'php/edit.php',
     shrinkToFit: false
   });
   
-  $("#hirdetesmanagement").jqGrid('navGrid', '#pager', {
+  $("#felmeresmanagement").jqGrid('navGrid', '#pager', {
       edit: true,
       add: true,
       del: true
@@ -42,11 +43,11 @@ $(function(){
 	  multipleSearch:true
   });
   
-  $("#hirdetesmanagement").jqGrid('navButtonAdd','#pager',{
+  $("#felmeresmanagement").jqGrid('navButtonAdd','#pager',{
       caption: "Oszlopok",
       title: "Oszlopok rendezése",
       onClickButton : function (){
-        jQuery("#hirdetesmanagement").jqGrid('columnChooser');
+        jQuery("#felmeresmanagement").jqGrid('columnChooser');
     }
    });
  
@@ -68,10 +69,26 @@ $(function(){
 	  
 	  alert(resp);
 	  
-	  $("#hirdetesmanagement").trigger("reloadGrid");
+	  $("#felmeresmanagement").trigger("reloadGrid");
 	  
 	  return [success,message,new_id];
 	  
   }
+  
+  $("#sorsolas").click(function(){
+		
+	  var valasz = $("#valasz").val();
+	  var darab = $("#darab").val();
+	  var kerdes = $("#kerdes").val();
+	  
+		$.post("php/sorsolas.php",{
+	    	"valasz" : valasz,
+	    	"darab" : darab,
+	    	"kerdes" : kerdes
+	      },function(resp){
+	    	  $("#eredmeny").html(resp);
+	      });
+		
+	});
   
 });

@@ -23,7 +23,7 @@ if($_POST['oper'] == 'edit'){
 	unset($adatok['oper']);
 	unset($adatok['id']);
 	
-	$a = $main->update_hirdetes($adatok,$cond);
+	$a = $main->update_felmeres($adatok,$cond);
 	
 	echo $a;
 }
@@ -31,7 +31,7 @@ if($_POST['oper'] == 'edit'){
 if($_POST['oper'] == 'add'){
 
 	/*
-	 * Új felhasználó hozzáadása
+	 * Új felmérés
 	 */
 
 	 
@@ -39,7 +39,7 @@ if($_POST['oper'] == 'add'){
 	unset($adatok['oper']);
 	unset($adatok['id']);
 	
-	$a = $main->insert_hirdetes($adatok);
+	$a = $main->insert_felmeres($adatok);
 	
 	echo $a;
 
