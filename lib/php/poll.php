@@ -1,9 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-echo '[{"choice":"choice0","votes":"2183"},{"choice":"choice1","votes":"2345"},{"choice":"choice2","votes":"2261"},{"choice":"choice3","votes":"1949"},{"choice":"choice4","votes":"1852"}]';
-
-=======
 session_start();
 
 include 'Wixel/gump.class.php';
@@ -20,5 +16,5 @@ $valasz = substr($valasz,-1);
 echo $main->poll($valasz);
 
 $main->close();
->>>>>>> 6d06f650413e69a7ab3e98020d0ba69384d32ded
+
 ?>

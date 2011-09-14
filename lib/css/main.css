@@ -411,6 +411,11 @@ header h1 a span{
 	float: right;
 }
 
+#login-error label.error{
+	top: 145px;
+	left: 365px;
+}
+
 #loginform input[type='text'],#loginform input[type='password']{
 	width: 200px;
 	height: 20px;
@@ -1376,13 +1381,12 @@ li.heading.travel{
 	display:none;
 }
 
-<<<<<<< HEAD
-
 /*szavazás*/
 
 #poll-container{
 	margin-top: 40px;
-	width: 330px;
+	margin-left: 20px;
+	width: 200px;
 	background:white;
 }
 
@@ -1450,10 +1454,9 @@ li.heading.travel{
 	padding:10px;
 	font-weight: bold;
 	margin:10px;
-=======
+	margin-left: 50px;
 //Poll
 
 #poll-container{
 	float: left;	
->>>>>>> 6d06f650413e69a7ab3e98020d0ba69384d32ded
 }

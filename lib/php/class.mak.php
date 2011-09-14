@@ -102,7 +102,7 @@ class mak extends db{
 		$col = trim($col);
 		
 		if($col == ''){
-			$col = 'id,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas';
+			$col = 'id,nem,tagsagi_szam,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -665,6 +665,123 @@ class mak extends db{
 		$a = $this->get_felmeres($cond);
 		
 		return $a[0]['id'];
+	
+	}
+	
+	public function get_felmeres_felhasznalo($cond,$col=''){
+	
+		$table = 'mak_felmeres_felhasznalo';
+		
+		if($cond != ''){
+			$cond = GUMP::sanitize($cond);
+		}
+		
+		if($cond != '' && !is_array($cond)){
+			return FALSE;
+		}
+		
+		if($col == ''){
+			$col = 'id,kerdes_id,felhasznalo_id,valasz';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+
+	public function get_felmeres_felhasznalo_szavazott(){
+	
+		$cond['felhasznalo_id'] = $_SESSION['user_id'];
+		$cond['kerdes_id'] = $this->get_felmeres_legujabb_id();
+	
+		$valasz = $this->get_felmeres_felhasznalo($cond);
+		
+		if($valasz === FALSE || $valasz['count'] == 0){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	
+	}
+	
+	public function sorsolas($felmeres_id,$jo_valasz_szama,$felhasznalo_darab){
+	
+		$cond['kerdes_id'] = trim($felmeres_id);
+		
+		if($jo_valasz_szama > 0 && $jo_valasz_szama != ''){
+			$cond['valasz'] = trim($jo_valasz_szama);
+		}
+		
+		$felhasznalok = $this->get_felmeres_felhasznalo($cond);
+		
+		if($felhasznalok === FALSE){
+			return FALE;
+		}
+		
+		if($felhasznalo_darab > $felhasznalok['count']){
+			$felhasznalo_darab = $felhasznalok['count'];
+		}
+		
+		//$kisorsolt = array_rand($felhasznalok, $felhasznalo_darab);
+		$kisorsolt = array();
+		
+		while(count($kisorsolt) < $felhasznalo_darab){
+			$b = rand(0,$felhasznalok['count']-1);
+			if(!in_array($b, $kisorsolt)){
+				$kisorsolt[] = $b;	
+			}
+		}
+		
+		$html = '';
+		
+		//print_r($kisorsolt);
+		
+		foreach($kisorsolt as $key){
+		
+			$cond = array();
+			$cond['id'] = $felhasznalok[$key]['felhasznalo_id'];
+			$a = $this->get_felhasznalo($cond);
+			
+			if($a[0]['nem'] == 'C'){
+				$nev = $a[0]['kapcsolattarto_vezeteknev'] . ' ' . $a[0]['kapcsolattarto_keresztnev'];
+			}else{
+				$nev = $a[0]['elonev'] . ' ' . $a[0]['vezeteknev'] . ' ' . $a[0]['keresztnev'];
+			}
+			
+			if($nev != '' && $a[0]['tagsagi_szam'] != ''){
+				$html .= '<div class="user">' . $nev . ' - ' . $a[0]['tagsagi_szam'] . '</div>';
+			}
+		}
+		
+		return $html;
+	
+	}
+	
+	public function get_oldalterkep(){
+	
+		$table = 'mak_kategoria';	
+		
+		if($col == ''){
+			$col = 'mak_kategoria.kategoria_nev AS kategoria,mak_kategoria.azonosito AS kategoria_url,';
+			$col .= 'mak_almenu.almenu AS almenu,mak_almenu.url AS almenu_url,';
+			$col .= 'mak_tartalom.cim AS tartalom,mak_tartalom.url AS tartalom_url,';
+			$col .= 'mak_altartalom.cim AS altartalom,mak_altartalom.url AS altartalom_url';
+		}
+		
+		$cond = array();
+		$cond['orderby'] = 'mak_kategoria.sorrend ASC,mak_almenu.sorrend ASC,mak_tartalom.sorrend ASC,mak_altartalom.sorrend ASC';
+		
+		$join[0]['table'] = 'mak_almenu';
+		$join[0]['value'] = 'mak_kategoria.id=mak_almenu.kategoria_id';
+		$join[0]['type'] = 'LEFT JOIN';
+		$join[1]['table'] = 'mak_tartalom';		
+		$join[1]['value'] = 'mak_almenu.id=mak_tartalom.almenu_id';
+		$join[1]['type'] = 'LEFT JOIN';
+		$join[2]['table'] = 'mak_altartalom';		
+		$join[2]['value'] = 'mak_tartalom.id=mak_altartalom.tartalom_id';
+		$join[2]['type'] = 'LEFT JOIN';
+		
+		return $this->sql_select($table,$col,$cond,$join);
+	
 	
 	}
 	
@@ -1928,6 +2045,49 @@ class mak extends db{
 	
 	}
 	
+	public function render_oldalterkep(){
+	
+		$html = '';
+		
+		$oldalterkep = $this->get_oldalterkep();
+		
+		$kat = '';
+		$alm = '';
+		$tart = '';
+		$altart = '';
+		
+		$html .= '<ul>';
+		
+		for($i = 0;$i < $oldalterkep['count'];$i++){
+		
+			if($kat != $oldalterkep[$i]['kategoria_url']){
+				$html .= '<li class="kategoria"><a href="' . $oldalterkep[$i]['kategoria_url'] . '">' . $oldalterkep[$i]['kategoria'] . '</a></li>';
+				$kat = $oldalterkep[$i]['kategoria_url'];
+			}
+			
+			if($alm != $oldalterkep[$i]['almenu_url'] && $oldalterkep[$i]['almenu_url'] != ''){
+				$html .= '<li class="almenu"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '">' . $oldalterkep[$i]['almenu'] . '</a></li>';
+				$alm = $oldalterkep[$i]['almenu_url'];
+			}
+			
+			if($tart != $oldalterkep[$i]['tartalom_url'] && $oldalterkep[$i]['tartalom_url'] != ''){
+				$html .= '<li class="tartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '">' . $oldalterkep[$i]['tartalom'] . '</a></li>';
+				$tart = $oldalterkep[$i]['tartalom_url'];
+			}
+			
+			if($altart != $oldalterkep[$i]['altartalom_url'] && $oldalterkep[$i]['altartalom_url'] != ''){
+				$html .= '<li class="altartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '/' . $oldalterkep[$i]['altartalom_url'] . '">' . $oldalterkep[$i]['altartalom'] . '</a></li>';
+				$altart = $oldalterkep[$i]['altartalom_url'];
+			}
+		
+		}
+		
+		$html .= '</ul>';
+		
+		return $html;
+	
+	}
+	
 	public function render_section($kategoria,$almenu='',$tartalom='',$altartalom=''){
 
 		/*
@@ -1966,6 +2126,8 @@ class mak extends db{
 
 				if($kategoria == 'szervizpontok'){
 					$html = $this->render_szervizpontok();
+				}elseif($kategoria == 'oldalterkep'){
+					 $html = $this->render_oldalterkep();
 				}else{
 					$html =  $this->render_kategoria_section_default($kategoria);
 				}
@@ -2462,21 +2624,41 @@ class mak extends db{
 		
 		if($felm !== FALSE && $felm['count'] != 0 && isset($_SESSION['user_id'])){
 		
-			$html = '<div id="poll-container">';
-			$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
-			$html .= '<div id="pollChoices">';
-			$html .= '<div id="choice1-wrap">';
-			$html .= '<label for="choice1">' . $felm[0]['valasz1'] . '</label><input type="radio" name="poll-choice" id="valasz1" />';
-			$html .= '</div>';
-			$html .= '<div id="choice2-wrap">';
-			$html .= '<label for="choice2">' . $felm[0]['valasz2'] . '</label><input type="radio" name="poll-choice" id="valasz2" />';
-			$html .= '</div>';
-			$html .= '<div id="choice3-wrap">';
-			$html .= '<label for="choice3">' . $felm[0]['valasz3'] . '</label><input type="radio" name="poll-choice" id="valasz3" />';
-			$html .= '</div>';
-			$html .= '</div>';
-			$html .= '<button class="yellow-button" id="vote">Szavazok</button>';
-			$html .= '</div>';
+			if($this->get_felmeres_felhasznalo_szavazott()){
+				
+				$sum = $felm[0]['valasz1_db'] + $felm[0]['valasz2_db'] + $felm[0]['valasz3_db'];
+				$perc[1]  = substr($felm[0]['valasz1_db'] / $sum, 0 ,4);
+				$perc[2]  = substr($felm[0]['valasz2_db'] / $sum, 0 ,4);
+				$perc[3]  = 1 - ($perc[1] + $perc[2]);
+			
+				$html = '<div id="poll-container">';
+				$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
+				$html .= '<div id="pollChoices" class="result">';
+				$html .= '<div id="choice1-wrap"><label for="choice1">' . $felm[0]['valasz1'] . '</label><span class="color1" style="width: ' . 215 * $perc[1] . 'px;">' . $perc[1] * 100 . '</span></div>';
+				$html .= '<div id="choice2-wrap"><label for="choice2">' . $felm[0]['valasz2'] . '</label><span class="color2" style="width: ' . 215 * $perc[2] . 'px;">' . $perc[2] * 100 . '</span></div>';
+				$html .= '<div id="choice3-wrap"><label for="choice3">' . $felm[0]['valasz3'] . '</label><span class="color3" style="width: ' . 215 * $perc[3] . 'px;">' . $perc[3] * 100 . '</span></div>';
+				$html .= '</div>';
+				$html .= '</div>';
+			
+			}else{
+		
+				$html = '<div id="poll-container">';
+				$html .= '<h3>' . $felm[0]['kerdes'] . '</h3>';
+				$html .= '<div id="pollChoices">';
+				$html .= '<div id="choice1-wrap">';
+				$html .= '<label for="choice1">' . $felm[0]['valasz1'] . '</label><input type="radio" name="poll-choice" id="valasz1" />';
+				$html .= '</div>';
+				$html .= '<div id="choice2-wrap">';
+				$html .= '<label for="choice2">' . $felm[0]['valasz2'] . '</label><input type="radio" name="poll-choice" id="valasz2" />';
+				$html .= '</div>';
+				$html .= '<div id="choice3-wrap">';
+				$html .= '<label for="choice3">' . $felm[0]['valasz3'] . '</label><input type="radio" name="poll-choice" id="valasz3" />';
+				$html .= '</div>';
+				$html .= '</div>';
+				$html .= '<button class="yellow-button" id="vote">Szavazok</button>';
+				$html .= '</div>';
+				
+			}
 			
 			return $html;
 			
@@ -2590,10 +2772,15 @@ class mak extends db{
 		$val[1] = $poll[0]['valasz1_db'];
 		$val[2] = $poll[0]['valasz2_db'];
 		$val[3] = $poll[0]['valasz3_db'];
+		
+		$full = array_sum($val);
+		$perc[1] = substr($val[1] / $full, 0, 4);
+		$perc[2] = substr($val[2] / $full, 0, 4);
+		$perc[3] = 1 - ($perc[1] + $perc[2]);
 
-		$json = '[{"choice":"choice0","votes":"' . $val[1] . '"},';
-		$json .= '{"choice":"choice1","votes":"' . $val[2] . '"},';
-		$json .= '{"choice":"choice2","votes":"' . $val[3] . '"}]';
+		$json = '[{"choice":"choice1","votes":"' . $val[1] . '","percent":"' . $perc[1] . '"},';
+		$json .= '{"choice":"choice2","votes":"' . $val[2] . '","percent":"' . $perc[2] . '"},';
+		$json .= '{"choice":"choice3","votes":"' . $val[3] . '","percent":"' . $perc[3] . '"}]';
 		
 		return $json;
 	
