@@ -570,6 +570,16 @@ class mak extends db{
 	
 	}
 	
+	public function get_autoselet_utolso(){
+	
+		$utolso = $this->get_autoselet();
+		
+		$autoselet[0] = $utolso[0];
+		
+		return $autoselet;
+	
+	}
+	
 	public function get_szervizpont($cond=''){
 	
 		if(!is_array($cond) && $cond != ''){
@@ -1975,7 +1985,11 @@ class mak extends db{
 			$evfolyam = 1;
 		}
 		
-		$tartalom = $this->get_autoselet($evfolyam);
+		if(isset($_SESSION['user_id'])){
+			$tartalom = $this->get_autoselet($evfolyam);
+		}else{
+			$tartalom = $this->get_autoselet_utolso();
+		}
 		
 		if($tartalom === FALSE){
 			return FALSE;
@@ -1994,7 +2008,8 @@ class mak extends db{
 			$html .= '" id="' . $tartalom[$i]['evfolyam'] . '/' . $tartalom[$i]['lapszam'] . '">';
 			
 			$html .= '<div class="img">';
-			$html .= '<img src="' . $this->_autoseletDir . $tartalom[$i]['kep_filenev'] . '" alt="Autosélet - ' . $tartalom[$i]['evfolyam'] . '/' . $tartalom[$i]['lapszam'] . '" />';					
+			$html .= '<img src="' . $this->_autoseletDir . $tartalom[$i]['kep_filenev'] . '" alt="Autosélet - ' . $tartalom[$i]['evfolyam'] . '/' . $tartalom[$i]['lapszam'] . '" />';
+			$html .= '<div class="title">' . $tartalom[$i]['evfolyam'] . '. évfolyam ' . $tartalom[$i]['lapszam'] . '. szám</div>';					
 			$html .= '</div>';
 			
 			$html .= '</div>';
@@ -2138,7 +2153,9 @@ class mak extends db{
 				if($kategoria == 'szervizpontok'){
 					$html = $this->render_szervizpontok();
 				}elseif($kategoria == 'oldalterkep'){
-					 $html = $this->render_oldalterkep();
+					$html = $this->render_oldalterkep();
+				}elseif($kategoria == 'enautoklubom'){
+					$html = $this->render_enautoklubom();
 				}else{
 					$html =  $this->render_kategoria_section_default($kategoria);
 				}
@@ -2626,6 +2643,42 @@ class mak extends db{
 		
 		$html .= '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFrontline-m%25C3%25A9dia-Kft%2F134495689944678&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=black&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px; background:white; margin: 0 auto; display: block;" allowTransparency="true"></iframe>';
 	
+		/*
+		 * Twitter plugin
+		 */
+		
+		$html .= '<script src="http://widgets.twimg.com/j/2/widget.js"></script>';
+		$html .= "<script>
+				new TWTR.Widget({
+				  version: 2,
+				  type: 'profile',
+				  rpp: 3,
+				  interval: 30000,
+				  width: 200,
+				  height: 200,
+				  theme: {
+				    shell: {
+				      background: '#00A0D1',
+				      color: '#1c1c1c'
+				    },
+				    tweets: {
+				      background: '#ffffff',
+				      color: '#1c1c1c',
+				      links: '#0081b0'
+				    }
+				  },
+				  features: {
+				    scrollbar: false,
+				    loop: false,
+				    live: false,
+				    hashtags: true,
+				    timestamp: true,
+				    avatars: true,
+				    behavior: 'all'
+				  }
+				}).render().setUser('cultofmac').start();
+				</script>";
+		
 		return $html;
 		
 	}
