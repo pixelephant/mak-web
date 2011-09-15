@@ -8,6 +8,7 @@ class mak extends db{
 	private $_autoseletDir = 'media/autoselet/';
 	private $_hirekDir = 'img/hirek/';
 	private $_hirdetesDir = 'img/ad/';
+	private $_enautoklubomDir = 'my_landing/';
 
 	public function __construct($debug=false){
 		parent::__construct('','','','','',$debug);
@@ -2089,7 +2090,7 @@ class mak extends db{
 			//$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
 			
 			//$html .= '<h3>' . $idopont . ' - írta: ' . $tartalom[$i]['publikalta'] . '</h3>';
-			$html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
+			$html .= '<img src="' . $this->_enautoklubomDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
 			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
 			$html .=  '</div>';
 			
@@ -2213,8 +2214,6 @@ class mak extends db{
 					$html = $this->render_szervizpontok();
 				}elseif($kategoria == 'oldalterkep'){
 					$html = $this->render_oldalterkep();
-				}elseif($kategoria == 'enautoklub'){
-					$html = $this->render_enautoklubom();
 				}else{
 					$html =  $this->render_kategoria_section_default($kategoria);
 				}
