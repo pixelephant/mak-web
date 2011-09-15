@@ -458,10 +458,23 @@ header h1 a span{
 
 #login-error{
 	overflow:hidden;
+	padding-left: 120px;
+	margin-top: -20px;
 }
 
 #login-error label.error{
-	float:none;
+	float: none;
+	position: static;
+	font-style: italic;
+	font-size: 13px;
+}
+
+
+#login-error label.success{
+	float: none;
+	position: static;
+	font-style: italic;
+	font-size: 13px;
 }
 
 
