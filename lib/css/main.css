@@ -210,14 +210,6 @@ label.error,label.succes{
 	right:0;	
 }
 
-/* Hírlevél hiba*/
-#newsletter-form label.error,#newsletter-form label.succes{
-	top:157px;
-	left:22px;
-	display:table;
-}
-
-
 label.success{
 	color: green !important;
 }
@@ -696,9 +688,11 @@ aside{
 
 /*Hírlevél sáv*/
 
+#newsletter label{
+	position:static;
+}
+
 #newsletter{
-	font-size: 16px;
-	color: #1c1c1c;
 	text-align: center;
 	margin-bottom: 10px;
 	padding:0 20px;
@@ -711,8 +705,8 @@ aside{
 }
 
 #newsletter form div{
-	overflow: hidden;
-	height:25px;
+	overflow:hidde;
+	min-height:25px;
 }
 
 #newsletter form input{
@@ -982,10 +976,10 @@ footer{
 .footer-sep{
 	float: left;
 	width: 3px;
-	background: url(../../img/sep-footer.png) no-repeat;
-	background-position: 0 70px;
-	height: 136px;
-	margin-top: 1px;
+	background: url(../../img/footer-sep.png) repeat-y;
+	height: 93px;
+	margin-top: 65px;
+	margin-bottom: 15px;
 }
 #footerNav ul{
 	width: 171px;
