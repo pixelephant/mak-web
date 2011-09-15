@@ -1108,7 +1108,7 @@ li.heading.travel{
 .mak-table thead th{
 	font-size:16px;
 	font-weight: bold;
-	padding:15px;
+	padding:10px;
 	color:white;
 }
 
@@ -1128,6 +1128,11 @@ li.heading.travel{
 }
 .mak-table tbody tr{
 	border-top:1px solid #919598;
+}
+
+
+.mak-table tr.first td{
+	background:url(../../img/table-shadow-top.png) repeat-x;
 }
 
 .mak-table tfoot{
