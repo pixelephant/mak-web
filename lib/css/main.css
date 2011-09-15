@@ -1093,7 +1093,6 @@ li.heading.travel{
 }
 
 .mak-table thead tr{
-	border-bottom:2px solid #919598;	
 	background-color: #0080B0;
 }
 
@@ -1132,7 +1131,14 @@ li.heading.travel{
 
 
 .mak-table tr.first td{
-	background:url(../../img/table-shadow-top.png) repeat-x;
+	background-image:url(../../img/table-shadow-top.png);
+	background-repeat: repeat-x;
+}
+
+.mak-table tr.last td{
+	background-image:url(../../img/table-shadow-bottom.png);
+	background-repeat:repeat-x;
+	background-position:bottom;
 }
 
 .mak-table tfoot{
