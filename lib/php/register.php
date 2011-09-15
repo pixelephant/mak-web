@@ -87,8 +87,17 @@ if(!empty($form)){
 	}
 	
 	if($form['memberRadio'] == 'old'){
+	
 		$cond['tagsagi_szam'] = $form['cardNum'];
 		$cond['e_mail'] = $form['email'];
+		
+		$regelt = $main->get_felhasznalo($cond,'regisztracio_ideje');
+		
+		if($regelt[0]['regisztracio_ideje'] != '0000-00-00 00:00:00'){
+			echo 'regisztralt';
+			return FALSE;
+		}
+		
 		$valasz = $main->update_felhasznalo($adatok,$cond);
 	}
 	
