@@ -22,6 +22,67 @@ if(isset($_POST['logout'])){
 	
 	echo 'sikeres';
 
+}elseif(isset($_POST['forgotten'])){
+	if($_POST['forgotten'] != ''){
+	
+		$email = trim($_POST['forgotten']);
+		$felhasznalo = $main->get_login($email);
+		
+		if($felhasznalo['count'] == 0 || $felhasznalo === FALSE){
+			echo 'sikertelen';
+			return FALSE;
+		}else{
+			$cond['e_mail'] = $email;
+			
+			$jelszo = $main->randomString();
+			$adat['jelszo'] = sha1($jelszo);
+			
+			if($main->update_felhasznalo($adat,$cond) === TRUE){
+
+				/*
+				 * Név összeállítása a levélhez
+				 */
+			
+				if($felhasznalo[0]['nem'] == 'C'){
+					$nev = $felhasznalo[0]['kapcsolattarto_vezeteknev'] . ' ' . $felhasznalo[0]['kapcsolattarto_keresztnev'];
+				}else{
+					$nev = $felhasznalo[0]['elonev'] . ' ' . $felhasznalo[0]['vezeteknev'] . ' ' . $felhasznalo[0]['keresztnev'];
+				}
+			
+				/*
+				 * Siker esetén e-mail küldés
+				 */
+			
+				require_once("phpmailer/phpmailer.inc.php");
+				
+				$mail = new PHPMailer();
+				
+				//$mail->IsSMTP(); // SMTP használata
+				$mail->From = "regisztracio@autoklub.hu";
+				$mail->FromName = "Magyar Autóklub weboldala";
+				//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
+				$mail->AddAddress($adat['e_mail'], $nev);
+				$mail->AddReplyTo('elfelejtett@autoklub.hu', "Magyar Autóklub");
+				$mail->WordWrap = 50;
+				
+				$mail->IsHTML(true);    // HTML e-mail
+				$mail->Subject = "Magyar Autóklub - Elfelejtett jelszó";
+				$mail->Body = 'Új jelszava: ' . $jelszo;
+				
+				if($mail->Send() === FALSE){
+					echo 'sikertelen';
+					return FALSE;
+				}else{
+					echo 'sikeres';
+					return TRUE;
+				}
+			}else{
+				echo 'sikertelen';
+				return FALSE;
+			}
+			
+		}
+	}
 }else{
 
 	$time = $_POST['time'];
