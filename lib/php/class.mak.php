@@ -11,6 +11,12 @@ class mak extends db{
 
 	public function __construct($debug=false){
 		parent::__construct('','','','','',$debug);
+		
+		if(isset($_COOKIE['user_id']) && isset($_COOKIE['tagsag']) && isset($_COOKIE['keresztnev'])){
+			$_SESSION['user_id'] = $_COOKIE['user_id'];
+			$_SESSION['tagsag'] = $_COOKIE['tagsag'];
+			$_SESSION['keresztnev'] = $_COOKIE['keresztnev'];
+		}
 	}
 
 	//SELECT
@@ -2064,7 +2070,7 @@ class mak extends db{
 	
 	}
 	
-	public function render_hirek(){
+	public function render_enautoklubom(){
 	
 		$tartalom = $this->get_hirek();
 						
@@ -2105,27 +2111,19 @@ class mak extends db{
 		if($tartalom === FALSE){
 			return FALSE;
 		}
-		
-		$pos[0] = '';
-		$pos[1] = ' right';
 	
+		$html = '';
+		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
-			$html .= '<div class="block' . $pos[$i % 2] . '">';
+			$html .= '<section>';
 			$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
-			
-			//$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
-			
-			//$html .= '<h3>' . $idopont . ' - írta: ' . $tartalom[$i]['publikalta'] . '</h3>';
-			$html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
+			$html .= '<h3>' . $tartalom[$i]['modositas'] . ' - ' . $tartalom[$i]['kep'] . '</h3>';
 			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
-			$html .=  '</div>';
+			$html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['kep'] . '">';
+			$html .= '</section>';
+			$html .= '<div class="hr"></div>';
 			
-			/*
-			if($i != $tartalom['count'] - 1){
-				$html .= '<div class="hr"></div>';
-			}
-			*/
 		}
 		
 		return $html;
@@ -2215,6 +2213,8 @@ class mak extends db{
 					$html = $this->render_szervizpontok();
 				}elseif($kategoria == 'oldalterkep'){
 					$html = $this->render_oldalterkep();
+				}elseif($kategoria == 'enautoklub'){
+					$html = $this->render_enautoklubom();
 				}else{
 					$html =  $this->render_kategoria_section_default($kategoria);
 				}
@@ -2236,7 +2236,7 @@ class mak extends db{
 				if($tartalom == 'autoselet'){
 					$html = $this->render_autoselet();
 				}elseif($tartalom == 'hirek'){
-					$html = $this->render_hirek();
+					$html =  $this->render_hirek();
 				}else{
 					$html =  $this->render_tartalom_section_default($tartalom);
 				}

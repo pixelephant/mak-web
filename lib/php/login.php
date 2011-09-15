@@ -13,6 +13,13 @@ if(isset($_POST['logout'])){
 	session_destroy();
 	$_SESSION = array();
 	
+	if(isset($_COOKIE['user_id']) && isset($_COOKIE['keresztnev']) && isset($_COOKIE['tagsag'])){
+		$minuszEgyHonap = -60 * 60 * 24 * 30 + time();
+		setcookie('user_id','',$minuszEgyHonap);
+		setcookie('keresztnev','',$minuszEgyHonap);
+		setcookie('tagsag','',$minuszEgyHonap);
+	}
+	
 	echo 'sikeres';
 
 }else{
@@ -33,6 +40,14 @@ if(isset($_POST['logout'])){
 			$_SESSION['keresztnev'] = $adat[0]['keresztnev']; 
 		}
 		$_SESSION['tagsag'] = $adat[0]['tagtipus'];
+		
+		if(isset($_POST['remember']) && $_POST['remember'] == 'checked'){
+			$egyHonap = 60 * 60 * 24 * 30 + time();
+			setcookie('user_id',$_SESSION['user_id'],$egyHonap);
+			setcookie('keresztnev',$_SESSION['keresztev'],$egyHonap);
+			setcookie('tagsag',$_SESSION['tagsag'],$egyHonap);
+		}
+		
 		echo 'sikeres';
 	}else{
 		echo 'sikertelen';
