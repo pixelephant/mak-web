@@ -39,10 +39,12 @@ $kartya[2] = 'Standard';
 							<div id="login-error"></div>
 			        	</div>
 			        <div class="hr"></div>
-			        <input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
-			        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
-					<div>
-						<a href="regisztralok">Először jár nálunk? Regisztráljon!</a>
+					<div class="bottomrow">
+						<input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
+				        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
+						<div>
+							<a href="regisztralok">Először jár nálunk? Regisztráljon!</a>
+						</div>
 					</div>
 			</form>
 			<a class="close-reveal-modal">&#215;</a>
