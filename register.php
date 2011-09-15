@@ -269,18 +269,21 @@ $main = new mak(false);
 			</form>
 			<form id="paymentform" action="#" method="" class="step4">
 				<h2>4. lépés - Fizetési mód kiválasztása</h2>
-				<fieldset>
+				<fieldset id="modechoose">
 					<h3>Mód választása</h3>
 					<div class="row">
-						<label for="cheque">Csekk (utólagos)</label>
+						<label class="yellow-button" for="cheque">Csekk (utólagos)</label>
+						<br />
 						<input type="radio" name="paymentmethod" id="cheque" />
 					</div>
 					<div class="row">
-						<label for="transfer">Banki átutalás</label>
+						<label class="yellow-button" for="transfer">Banki átutalás</label>
+						<br />
 						<input type="radio" name="paymentmethod" id="transfer" />
 					</div>
-					<div class="row otp">
-						<label for="card">Bankkártyás fizetés</label>
+					<div class="row">
+						<label class="yellow-button" for="card">Bankkártyás fizetés</label>
+						<br />
 						<input type="radio" name="paymentmethod" id="card" />
 					</div>
 				</fieldset>

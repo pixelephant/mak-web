@@ -135,6 +135,34 @@ span.sum{
 	float:none;
 }
 
+#modechoose{
+	overflow:hidden;
+}
+
+#modechoose .row{
+	width:199px;
+	display:block;
+	float:left;	
+	text-align:center;
+	margin-top:15px;
+}
+
+#modechoose label{
+	font-weight:bold;
+	min-width:0 !important;
+	padding:10px;
+	display:inline !important;
+	float:none !important;
+}
+
+#modechoose input[type="radio"]{
+	display:inline !important;
+	float:none !important;
+	margin:15px 0 !important;
+	position:relative;
+	left:-4px;
+}
+
 #content form input[type='button'], #content form input[type='submit']{
 	-moz-box-shadow: inset 0px 1px 0px 0px #ffff00;
     -webkit-box-shadow: inset 0px 1px 0px 0px #ffff00;
