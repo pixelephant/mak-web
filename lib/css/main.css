@@ -163,9 +163,9 @@ strong{
 	font-size: 22px;
 	line-height: .5;
 	position: absolute;
-	top: 8px;
-	right: 11px;
-	color: #1c1c1c;
+	top: 12px;
+	right: 12px;
+	color: #AAAAAA;
 	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
 	font-weight: bold;
 	cursor: pointer;
@@ -399,20 +399,7 @@ header h1 a span{
 	float: left;
 	height: 20px;
 	line-height: 20px;
-}
-
-#loginform label.error{
-	font-size: 12px;
-	color: red;
-	width: auto;
-	margin: 0 !important;
-	min-width: 0 !important;
-	float: right;
-}
-
-#login-error label.error{
-	top: 145px;
-	left: 365px;
+	font-size:15px;
 }
 
 #loginform input[type='text'],#loginform input[type='password']{
@@ -439,18 +426,20 @@ header h1 a span{
 }
 
 #loginform .bottomrow{
-	margin-bottom:10px;
+	margin-top:10px;
 }
 
 #chl{
-	font-size: 12px !important;
+	font-size: 14px !important;
 	line-height: 20px;
 	margin-left: 10px;
 	margin-top: 10px;
+	font-style:italic;
 }
 
 #chl input[type="checkbox"]{
-	margin:4px 5px 0 0;
+	margin:4px 10px;
+	float:right;
 }
 
 #loginform a{
@@ -458,17 +447,21 @@ header h1 a span{
 	color: #0080B0;
 	float: right;
 	text-decoration: none;
-	margin:0;
-	margin-top: 3px !important;
 	float: right;
 }
 
 #forgotten{
-	clear: both;
-	font-size: 12px;
-	float: none !important;
+	font-size: 13px;
+	float: right;
 	display:block;
-	height:16px;
+}
+
+#login-error{
+	overflow:hidden;
+}
+
+#login-error label.error{
+	float:none;
 }
 
 
