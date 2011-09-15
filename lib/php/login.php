@@ -29,7 +29,7 @@ if(isset($_POST['logout'])){
 		$felhasznalo = $main->get_login($email);
 		
 		if($felhasznalo['count'] == 0 || $felhasznalo === FALSE){
-			echo 'sikertelen';
+			echo 'sikertelen1';
 			return FALSE;
 		}else{
 			$cond['e_mail'] = $email;
@@ -37,7 +37,7 @@ if(isset($_POST['logout'])){
 			$jelszo = $main->randomString();
 			$adat['jelszo'] = sha1($jelszo);
 			
-			if($main->update_felhasznalo($adat,$cond) === TRUE){
+			if($main->update_felhasznalo($adat,$cond) === 'Sikeres'){
 
 				/*
 				 * Név összeállítása a levélhez
@@ -58,10 +58,10 @@ if(isset($_POST['logout'])){
 				$mail = new PHPMailer();
 				
 				//$mail->IsSMTP(); // SMTP használata
-				$mail->From = "regisztracio@autoklub.hu";
+				$mail->From = "elfelejtett@autoklub.hu";
 				$mail->FromName = "Magyar Autóklub weboldala";
 				//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
-				$mail->AddAddress($adat['e_mail'], $nev);
+				$mail->AddAddress($email, $nev);
 				$mail->AddReplyTo('elfelejtett@autoklub.hu', "Magyar Autóklub");
 				$mail->WordWrap = 50;
 				
@@ -70,14 +70,14 @@ if(isset($_POST['logout'])){
 				$mail->Body = 'Új jelszava: ' . $jelszo;
 				
 				if($mail->Send() === FALSE){
-					echo 'sikertelen';
+					echo 'sikertelen3';
 					return FALSE;
 				}else{
 					echo 'sikeres';
 					return TRUE;
 				}
 			}else{
-				echo 'sikertelen';
+				echo 'sikertelen2';
 				return FALSE;
 			}
 			
