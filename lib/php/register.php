@@ -91,13 +91,6 @@ if(!empty($form)){
 		$cond['tagsagi_szam'] = $form['cardNum'];
 		$cond['e_mail'] = $form['email'];
 		
-		$regelt = $main->get_felhasznalo($cond,'regisztracio_ideje');
-		
-		if($regelt[0]['regisztracio_ideje'] != '0000-00-00 00:00:00'){
-			echo 'regisztralt';
-			return FALSE;
-		}
-		
 		$valasz = $main->update_felhasznalo($adatok,$cond);
 	}
 	
@@ -111,7 +104,7 @@ if(!empty($form)){
 		
 		$mail = new PHPMailer();
 		
-		$link = 'http://www.pixelephant.hu/projects/on-going/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . sha1($adatok['jelszo']));
+		$link = 'http://www.pixelephant.hu/projects/on-going/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 		
 		//$mail->IsSMTP(); // SMTP használata
 		$mail->From = "regisztracio@autoklub.hu";

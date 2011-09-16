@@ -1,0 +1,28 @@
+Ketszereplos fizetesi tranzakcio
+
+Inditas: 2011.07.26. 18:09:30
+
+Indito adatok
+  posId: #02299991
+  azonosito: 42351957006134400828150805024417
+  osszeg: 200
+  devizanem: HUF
+  nyelvkod: hu
+  regisztraltUgyfelId: 
+  vevoNev: John Customer
+  vevoPostaCim: Some street, Neverhood
+  vevoIPCim: 92.249.219.73
+  ertesitoMail: johnny@customers.com
+  ertesitoTel: 
+  ketlepcsos: 
+
+Befejezes: 2011.07.26. 18:09:31
+
+Valasz: SIKER
+
+Valasz adatok
+  posId: #02299991
+  azonosito: 42351957006134400828150805024417
+  posValaszkod: 000
+  authorizaciosKod: 485003
+  teljesites: 2011.07.26 18.09.31 639

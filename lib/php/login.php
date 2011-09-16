@@ -108,7 +108,6 @@ if(isset($_POST['logout'])){
 			setcookie('keresztnev',$_SESSION['keresztev'],$egyHonap);
 			setcookie('tagsag',$_SESSION['tagsag'],$egyHonap);
 		}
-		
 		echo 'sikeres';
 	}else{
 		echo 'sikertelen';

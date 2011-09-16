@@ -5,6 +5,8 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
+session_start();
+
 $main = new mak(false);
 
 ?>
@@ -267,7 +269,7 @@ $main = new mak(false);
 				</fieldset>
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
 			</form>
-			<form id="paymentform" action="#" method="" class="step4">
+			<form id="paymentform" action="lib/php/otpwebshop/web_demo/mak_otp_test_process.php" method="" class="step4">
 				<h2>4. lépés - Fizetési mód kiválasztása</h2>
 				<fieldset id="modechoose">
 					<h3>Mód választása</h3>
@@ -286,6 +288,11 @@ $main = new mak(false);
 						<br />
 						<input type="radio" name="paymentmethod" id="card" />
 					</div>
+					<!-- Bankkártyás fizetés -->
+					<input type="hidden" name="posId" value="#02299991" size="40" maxlength="15" class="text"/>
+					<input type="hidden" name="nyelvkod" value="hu" size="5" maxlength="2" class="text"/>
+					<input type="hidden" name="tranzakcioAzonosito" size="40" maxlength="32" class="text"/>
+					<input type="hidden" name="backURL" value="<?php echo 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) ?>/pdf/visszaigazolas.php" size="40"  class="text"/>
 				</fieldset>
 				<fieldset id="chequeDetails" class="detail">
 					<h3>Csekkes fizetés <span class="sum"></span></h3>

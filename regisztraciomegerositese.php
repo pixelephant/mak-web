@@ -4,6 +4,8 @@ require 'lib/php/Wixel/gump.class.php';
 require 'lib/php/class.db.php';
 require 'lib/php/class.mak.php';
 
+session_start();
+
 $main = new mak(false);
 
 /*
@@ -16,22 +18,22 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 
 	$adatok = $main->get_felhasznalo($cond);
 	
-	$hash = sha1(sha1($cond['felhasznalonev']) . $adatok['jelszo']);
+	$hash = sha1(sha1($cond['felhasznalonev']) . $adatok[0]['jelszo']);
 	
 	if($hash == $_GET['azonosito']){
 		
-		$felhasznalo_array['statusz'] = '99';
+		$felhasznalo_array['megerositve'] = '1';
 	
-		if($main->update_felhasznalo($felhasznalo_array, $cond) === FALSE){
+		if($main->update_felhasznalo($felhasznalo_array, $cond) !== FALSE){
 			$uzenet = 'Köszönjük, hogy sikeresen megerősítette a regisztrációt!';
 		}else{
-			$uzenet = 'Nem sikerült a megerősítés!';
+			$uzenet = 'Nem sikerült a megerősítés!1';
 		}
 	}else{
-		$uzenet = 'Nem sikerült a megerősítés!';
+		$uzenet = 'Nem sikerült a megerősítés!2';
 	}
 }else{
-	$uzenet = 'Not is set';
+	$uzenet = 'Nem sikerült!';
 }
 ?>
 <!DOCTYPE HTML>
@@ -67,7 +69,7 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 		</div>
 	<nav>
 		<?php
-			echo $main->render_felso_menu();
+			echo $main->render_felso_menu('');
 		?>
 	</nav>
 	<section id="main" class="wrapper">
