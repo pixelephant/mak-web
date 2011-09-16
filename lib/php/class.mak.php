@@ -2022,7 +2022,7 @@ class mak extends db{
 		$position[2] = 'right';
 	
 		if($evfolyam == ''){
-			$evfolyam = 1;
+			$evfolyam = 2010;
 		}
 		
 		$tartalom = $this->get_autoselet($evfolyam);
