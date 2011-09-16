@@ -391,7 +391,8 @@ header h1 a span{
 	float: left;
 	height: 20px;
 	line-height: 20px;
-	font-size:15px;
+	font-size:14px;
+	font-weight:bold;
 }
 
 #loginform input[type='text'],#loginform input[type='password']{
@@ -440,6 +441,8 @@ header h1 a span{
 	float: right;
 	text-decoration: none;
 	float: right;
+	font-weight:bold;
+	font-size:14px;
 }
 
 #forgotten{
@@ -1119,11 +1122,12 @@ li.heading.travel{
 	padding:10px;
 }
 .mak-table td{
-	padding:10px;	
+	padding:7px;	
 	background-color: #DBE5EF;
 }
 .mak-table td.odd{	
 	background-color: #E8E9EB;
+	font-style:italic;
 }
 .mak-table tbody tr{
 	border-top:1px solid #919598;
