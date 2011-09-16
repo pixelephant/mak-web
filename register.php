@@ -312,12 +312,14 @@ $main = new mak(false);
 	</section>
 	<?php include "cta.php" ?>
 	<footer>
-		<div class="wrapper">
-			<div id="footerNav">
-				<?php 
-					echo $main->render_also_menu();
-				?>
-			</div>			
+		<div class="footerIn">
+			<div class="wrapper">
+				<div id="footerNav">
+					<?php 
+						echo $main->render_also_menu();
+					?>
+				</div>			
+			</div>
 		</div>
 		<div id="fotterMiscWrap">
 			<div id="footerMisc">
