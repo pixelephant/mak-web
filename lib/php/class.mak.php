@@ -569,8 +569,12 @@ class mak extends db{
 		
 		$cond['orderby'] = ' evfolyam desc, lapszam asc';
 		
-		if($col == ''){
-			$col = 'id,kep_filenev,evfolyam,lapszam,embed_kod,modositas';
+		$col = 'id,kep_filenev,evfolyam,lapszam,modositas';
+		
+		if(isset($_SESSION['tagsag']) && $_SESSION['tagsag'] == 3){
+			$col .= ',embed_kod';
+		}else{
+			$col .= ',embed_kod_rovid AS embed_kod';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -2013,11 +2017,7 @@ class mak extends db{
 			$evfolyam = 1;
 		}
 		
-		if(isset($_SESSION['user_id'])){
-			$tartalom = $this->get_autoselet($evfolyam);
-		}else{
-			$tartalom = $this->get_autoselet_utolso();
-		}
+		$tartalom = $this->get_autoselet($evfolyam);
 		
 		if($tartalom === FALSE){
 			return FALSE;
