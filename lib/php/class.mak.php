@@ -2031,8 +2031,7 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		$html = '<div class="embed">';
-		$html .= '</div>';
+		$html = '';
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 			
@@ -2045,8 +2044,8 @@ class mak extends db{
 			
 			$html .= '<div class="img">';
 			$html .= '<img src="' . $this->_autoseletDir . $tartalom[$i]['kep_filenev'] . '" alt="Autosélet - ' . $tartalom[$i]['evfolyam'] . '/' . $tartalom[$i]['lapszam'] . '" />';
-			$html .= '<div class="title">' . $tartalom[$i]['evfolyam'] . '. évfolyam ' . $tartalom[$i]['lapszam'] . '. szám</div>';					
 			$html .= '</div>';
+			$html .= '<div class="title">' . $tartalom[$i]['evfolyam'] . '. évfolyam ' . $tartalom[$i]['lapszam'] . '. szám</div>';	
 			
 			$html .= '</div>';
 			
@@ -2056,6 +2055,9 @@ class mak extends db{
 			
 		
 		}
+		
+		$html .= '<div class="embed">';
+		$html .= '</div>';
 		
 		return $html;
 	
