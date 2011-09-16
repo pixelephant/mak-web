@@ -5,6 +5,8 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
+session_start();
+
 $main = new mak(false);
 
 ?>

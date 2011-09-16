@@ -104,7 +104,7 @@ if(!empty($form)){
 		
 		$mail = new PHPMailer();
 		
-		$link = 'http://www.pixelephant.hu/projects/on-going/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . sha1($adatok['jelszo']));
+		$link = 'http://www.pixelephant.hu/projects/on-going/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 		
 		//$mail->IsSMTP(); // SMTP használata
 		$mail->From = "regisztracio@autoklub.hu";
