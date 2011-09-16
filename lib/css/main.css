@@ -448,9 +448,12 @@ header h1 a span{
 }
 
 #forgotten{
-	font-size: 13px;
+	font-size: 13px !important;
 	float: right;
 	display:block;
+	position: relative;
+	left: -40px;
+	top: -5px;
 }
 
 #login-error{
