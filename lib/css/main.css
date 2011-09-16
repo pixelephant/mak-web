@@ -79,6 +79,7 @@ strong{
 	display: inline-block;
 	text-decoration: none;
 	text-shadow: 1px 1px 0px #E8E8E8;
+	cursor:pointer;
 }
 
 .gray-button:hover{ /*Szürke átmenetes gomb hover*/
@@ -112,6 +113,7 @@ strong{
 	display: inline-block;
 	text-decoration: none;
 	text-shadow: 1px 1px 0px yellow;
+	cursor:pointer;
 }
 
 .yellow-button:hover{ /*Sárga átmenetes gomb hover*/
@@ -682,6 +684,11 @@ aside{
 	padding-left:20px;
 }
 
+.ie7 #search input[type="submit"],.ie8 #search input[type="submit"]{
+	position:relative;
+	top:2px;
+}
+
 #search input[type="submit"]{
 	height:24px;
 	margin-left: 3px;
@@ -708,7 +715,7 @@ aside{
 }
 
 #newsletter form div{
-	overflow:hidde;
+	overflow:hidden;
 	min-height:25px;
 }
 
