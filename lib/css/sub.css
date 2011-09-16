@@ -274,6 +274,18 @@ h3#klubtagsag{
 /*Multilayerek*/
 
 
+.klubtagsag .head{
+	background: url(../../img/aloldal/klubtagsag/klubtagsag/klubtagsag.jpg);
+}
+
+.travel .head{
+	background: url(../../img/aloldal/travel/travel.jpg);
+}
+
+.kozlekedesbiztonsag .head{
+	background: url(../../img/aloldal/kozlekedesbiztonsag/kozlekedesbiztonsag.jpg);
+}
+
 .szervizpontok .head{
 	background: url(../../img/aloldal/szervizpontok/multilayer_bg.png);
 	background-position-x: 20px;
