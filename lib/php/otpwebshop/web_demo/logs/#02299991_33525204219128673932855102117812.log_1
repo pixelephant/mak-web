@@ -1,0 +1,44 @@
+Haromszereplos fizetesi tranzakcio
+
+Inditas: 2011.07.24. 18:33:28
+
+Indito adatok
+  posId: #02299991
+  azonosito: 33525204219128673932855102117812
+  osszeg: 
+  devizanem: HUF
+  nyelvkod: hu
+  nevKell: 
+  orszagKell: 
+  megyeKell: 
+  telepulesKell: 
+  iranyitoszamKell: 
+  utcaHazszamKell: 
+  mailCimKell: 
+  kozlemenyKell: 
+  vevoVisszaigazolasKell: 
+  ugyfelRegisztracioKell: 
+  regisztraltUgyfelId: 
+  shopMegjegyzes: 
+  backURL: 
+  ketlepcsosFizetes: 
+
+Befejezes: 2011.07.24. 18:33:29
+
+Valasz: HIANYZIKMENNYISEG
+
+Valasz adatok
+  posId: #02299991
+  azonosito: 33525204219128673932855102117812
+  posValaszkod: 
+  authorizaciosKod: 
+  statuszKod: 
+  teljesites: 
+  nev: 
+  orszag: 
+  megye: 
+  varos: 
+  iranyitoszam: 
+  utcaHazszam: 
+  mailCim: 
+  kozlemeny: 
