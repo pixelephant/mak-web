@@ -1754,8 +1754,15 @@ class mak extends db{
 	
 	public function render_kategoria_section_default($kat){
 		
-		$kategoria = $this->get_kategoria_tartalom($kat);
-	
+		if(!isset($_SESSION['user_id']) && $kat == 'enautoklubom'){
+			$kategoria[0]['szoveg'] = 'Amennyiben nem tagunk, <a href="regisztralas">regisztráljon</a>';
+			$kategoria[0]['cim'] = 'Kérjük jelentkezzen be!';
+			$kategoria['count'] = 1;
+			$kategoria[0]['id'] = 1;
+		}else{
+			$kategoria = $this->get_kategoria_tartalom($kat);
+		}
+		
 		if($kategoria == '' || !is_array($kategoria)){
 			return FALSE;
 		}
@@ -2074,35 +2081,37 @@ class mak extends db{
 	
 	public function render_enautoklubom(){
 	
-		$tartalom = $this->get_hirek();
-						
-		if($tartalom === FALSE){
-			return FALSE;
-		}
-		
-		$pos[0] = '';
-		$pos[1] = ' right';
-	
-		for($i = 0; $i < $tartalom['count']; $i++){
-		
-			$html .= '<div class="block' . $pos[$i % 2] . '">';
-			$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
-			
-			//$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
-			
-			//$html .= '<h3>' . $idopont . ' - írta: ' . $tartalom[$i]['publikalta'] . '</h3>';
-			$html .= '<img src="' . $this->_enautoklubomDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
-			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
-			$html .=  '</div>';
-			
-			/*
-			if($i != $tartalom['count'] - 1){
-				$html .= '<div class="hr"></div>';
+		if(isset($_SESSION['user_id'])){
+			$tartalom = $this->get_hirek();
+							
+			if($tartalom === FALSE){
+				return FALSE;
 			}
-			*/
-		}
+			
+			$pos[0] = '';
+			$pos[1] = ' right';
 		
-		return $html;
+			for($i = 0; $i < $tartalom['count']; $i++){
+			
+				$html .= '<div class="block' . $pos[$i % 2] . '">';
+				$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
+				
+				//$idopont = date("Y-m-d", strtotime($tartalom[$i]['modositas']));
+				
+				//$html .= '<h3>' . $idopont . ' - írta: ' . $tartalom[$i]['publikalta'] . '</h3>';
+				$html .= '<img src="' . $this->_enautoklubomDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" />';
+				$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
+				$html .=  '</div>';
+				
+				/*
+				if($i != $tartalom['count'] - 1){
+					$html .= '<div class="hr"></div>';
+				}
+				*/
+			}
+			
+			return $html;
+		}
 	
 	}
 
@@ -2365,7 +2374,13 @@ class mak extends db{
 				}
 				
 				$html .= '>';
-				$html .= '<span><a href="' . $kategoria . '">' . $tartalom[$i]['kategoria_nev'] . '</a></span>';
+				$html .= '<span><a href="' . $kategoria . '"';
+				
+				if($kategoria == 'enautoklubom' && !isset($_SESSION['user_id'])){
+					$html .= ' data-reveal-id="loginModal"';
+				}
+				
+				$html .= '>' . $tartalom[$i]['kategoria_nev'] . '</a></span>';
 				$html .= '<div class="ldd_submenu">';
 				$html .= '<div class="arrow"></div>';
 				$html .= '<div class="in">';

@@ -7,7 +7,7 @@ $kartya[2] = 'Komfort';
 ?>
 <h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>
 <div id="userBar">
-	<span>Üdvözöljük <strong id="logedInName"><?php echo $_SESSION['keresztnev']; ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo $kartya[$_SESSION['tagsag']]; ?></strong> klubtagunk.</span>
+	<span>Üdvözöljük <strong id="logedInName"><?php echo $_SESSION['keresztnev']; ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo (isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem'); ?></strong> klubtagunk.</span>
 </div>
 <div id="headerButtons">
 	<div id="loginContainer">
