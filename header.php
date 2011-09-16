@@ -1,7 +1,8 @@
 <?php
 
-$kartya[1] = 'Komfort';
+$kartya[1] = 'Diszkont';
 $kartya[2] = 'Standard';
+$kartya[2] = 'Komfort';
 
 ?>
 <h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>

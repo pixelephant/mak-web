@@ -20,7 +20,7 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 	
 	if($hash == $_GET['azonosito']){
 		
-		$felhasznalo_array['statusz'] = '99';
+		$felhasznalo_array['megerositve'] = '1';
 	
 		if($main->update_felhasznalo($felhasznalo_array, $cond) === FALSE){
 			$uzenet = 'Köszönjük, hogy sikeresen megerősítette a regisztrációt!';
@@ -31,7 +31,7 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 		$uzenet = 'Nem sikerült a megerősítés!';
 	}
 }else{
-	$uzenet = 'Not is set';
+	$uzenet = 'Nem sikerült!';
 }
 ?>
 <!DOCTYPE HTML>

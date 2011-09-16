@@ -147,6 +147,7 @@ class mak extends db{
 	public function get_login($felhasznalo_nev){
 	
 		$cond['felhasznalonev'] = $felhasznalo_nev;
+		$cond['megerositve'] = '1';
 		//$cond['jelszo'] = $jelszo;
 		
 		$table = 'mak_felhasznalo';
