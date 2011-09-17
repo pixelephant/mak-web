@@ -1,0 +1,24 @@
+/*GYIK*/
+
+#gyik{
+	margin-top:15px;
+}
+
+#gyik li{
+	list-style-type: decimal;
+	list-style-position: inside;
+	font-size:16px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+#gyik .answer{
+	padding-left: 10px;
+	font-size: 14px;
+	
+}
+
+#gyik .link{
+	color:#0080B0;
+	text-decoration: none;
+}

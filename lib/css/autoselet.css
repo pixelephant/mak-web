@@ -1,0 +1,93 @@
+/*autósélet*/
+
+.row{
+	overflow: hidden;
+	display: block;
+	margin: 30px 0;
+	height: 245px;
+}
+
+.autoselet{
+	height: 215px;
+	width: 168px;
+	float: left;
+	background: url(../../img/autoselet-shadow.png) no-repeat center bottom;
+	cursor: pointer;
+}
+
+.autoselet .title{
+	text-align: center;
+	font-weight: 700;
+	color:#0080B0;
+	margin-top: 30px;
+}
+
+.autoselet .img{
+	position: relative;
+	top: 10px;
+}
+
+.autoselet.left{
+	margin-right: 78px;
+}
+
+.autoselet.left .img{
+	background: url(../../img/autoselet-left.png) no-repeat center top;
+	width: 134px;
+	height: 185px;
+	margin: 0 auto;
+}
+
+.autoselet.left img{
+	top: 5px;
+	position: relative;
+	left: -4px;
+}
+
+.autoselet.center{
+	margin-right: 78px;
+}
+
+.autoselet.center .img{
+	background: url(../../img/autoselet-center.png) no-repeat center top;
+	width: 130px;
+	height: 185px;
+	margin: 0 auto;
+}
+
+.autoselet.center img{
+	top: 5px;
+	left: 2px;
+}
+
+
+.autoselet.right{
+
+}
+
+.autoselet.right .img{
+	background: url(../../img/autoselet-right.png) no-repeat center top;
+	width: 130px;
+	height: 185px;
+	margin: 0 auto;
+}
+
+.autoselet.right img{
+	top: 5px;
+	left: 2px;
+}
+
+.row .img img{
+	width: 127px;
+	height: 178px;
+	display: block;
+	position: relative; 
+}
+
+.embed{
+
+}
+
+.embed div div{
+	display: none;
+}

@@ -17,10 +17,12 @@ Autóklub platina: #797E82;
 
 .floatleft{
 	float:left;
+	padding:10px;
 }
 
 .floatright{
 	float:right;
+	padding:10px;
 }
 
 #skypedetectionswf { /*Skype swf eltüntetése*/
@@ -788,7 +790,7 @@ aside img.ad{
 	overflow: hidden;
 }
 
-/*Főoldal belső grid*/
+/*2-es belső grid*/
 
 .block{
 	width: 315px;
@@ -1072,21 +1074,8 @@ li.heading.travel{
 
 /*Táblázat design*/
 
-
 .mak-table td.pipa,.mak-table td.percentage{
 	text-align: center;
-}
-
-#compare-komfort{
-	background: url(../../img/komfort.png) no-repeat center bottom;
-}
-
-#compare-standard{
-	background: url(../../img/standard.png) no-repeat center bottom;
-}
-
-#compare-diszkont{
-	background: url(../../img/diszkont.png) no-repeat center bottom;
 }
 
 .mak-table{
@@ -1097,24 +1086,8 @@ li.heading.travel{
 	font-size: 14px;
 }
 
-#compare{
-	border:none;
-}
-
-#compare tbody{
-	border:1px solid #797E81;
-}
-
 .mak-table thead tr{
 	background-color: #0080B0;
-}
-
-#compare thead tr{
-	background: none;
-}
-
-#compare th{
-	line-height: 50px;
 }
 
 .mak-table thead th{
@@ -1143,7 +1116,6 @@ li.heading.travel{
 	border-top:1px solid #919598;
 }
 
-
 .mak-table tr.first td{
 	background-image:url(../../img/table-shadow-top.png);
 	background-repeat: repeat-x;
@@ -1156,49 +1128,10 @@ li.heading.travel{
 }
 
 .mak-table tfoot{
-/*	padding:5px;
-	background-color: #e1e1e1;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c6c6c6)); 
-	background-image: -webkit-linear-gradient(top, #e1e1e1, #c6c6c6); 
-	background-image:    -moz-linear-gradient(top, #e1e1e1, #c6c6c6); 
-	background-image:     -ms-linear-gradient(top, #e1e1e1, #c6c6c6); 
-	background-image:      -o-linear-gradient(top, #e1e1e1, #c6c6c6); 
-	background-image:         linear-gradient(top, #e1e1e1, #c6c6c6);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1e1e1', EndColorStr='#c6c6c6'); 
-	border-top:2px solid #919598;*/
 	display: none;
 }
 
-#compare tfoot{
-	background: none;
-}
-
-#compare tfoot td{
-	background: none;
-}
-
-#compare tfoot .gray-button{
-	color:black;
-	padding:5px;
-	font-weight: bold;
-}
-
-#seged p{
-	font-size: 16px;
-	text-align: center;
-	margin: 15px;
-}
-
-#seged strong{
-	padding-right: 10px;
-}
-
-#seged a img{
-	margin-top: 10px;
-	position: relative;
-	top: 8px;
-	left: 8px;
-}
+/* Kis táblázatok */
 
 #hours-table,#vizsga-table{
 	float:left;
@@ -1207,206 +1140,6 @@ li.heading.travel{
 
 #vizsga-table{
 	float: right;
-}
-
-
-/*GYIK*/
-
-#gyik{
-	margin-top:15px;
-}
-
-#gyik li{
-	list-style-type: decimal;
-	list-style-position: inside;
-	font-size:16px;
-	font-weight: bold;
-	margin-bottom: 15px;
-}
-
-#gyik .answer{
-	padding-left: 10px;
-	font-size: 14px;
-	
-}
-
-#gyik .link{
-	color:#0080B0;
-	text-decoration: none;
-}
-
-
-/* Összetett keresés */
-
-#advanced-search input[type="text"]{
-	width: 475px;
-	height: 20px;
-	float: left;
-}
-
-#advanced-search input[type='submit']{
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px 24px;
-    float:left;
-    margin-top:-1px;
-    height:25px;
-}
-
-#advanced-search label{
-	font-size:13px;
-	
-	margin-right: 5px;
-}
-
-#advanced-search input[type='checkbox'] {
-    float: none !important;
-}
-
-#advanced-search div{
-	clear:both;
-	padding-top: 10px;
-}
-
-#results{
-	margin-top:30px;
-}
-
-#results li{
-	margin:10px 0;
-}
-
-#results li.odd{
-	background: #DBDBDB;
-	padding: 10px 5px 5px 10px;
-}
-
-#results li.even{
-	padding: 10px 5px 5px 10px;
-}
-
-#results li h3{
-	color:black;
-	font-size:16px;
-	margin-bottom: 5px;
-	cursor:pointer;
-}
-
-#results li div{
-	font-size:14px;
-}
-
-#results .mark{
-	background: #FCF58D;
-}
-
-
-/*Szervízpontok*/
-
-#map{
-	height:388px;
-	width:648px;
-	padding:5px;
-	background: white;
-	border:1px solid #ccc;
-}
-
-#szervizpont-data{
-	font-size: 14px;
-	margin:15px 0;
-}
-
-#szervizpont-data p{
-	margin:5px 0;
-	font-size: 16px !important;
-}
-
-#szervizpont-data span{
-	font-style: italic;
-	font-weight: bold;
-}
-
-#szervizpont-data .link{
-	font-style: italic;
-}
-
-//játék
-
-#jatek{
-	height:300px;
-	width:660px;
-}
-
-#jatek-bg{
-	width:660px;
-	height:255px;
-	background: #ccc;
-	line-height: 255px;
-	text-align: center;
-	font-size: 16px;
-}
-
-#jatek-bar{
-	height:45px;
-	background:white;
-	line-height:40px;
-}
-
-#choices{
-	display:none;
-	float: left;
-	margin-left:10px;
-	padding-top:3px;
-}
-
-#choice-select{
-	margin-right:5px;
-}
-
-#tipp,#startgame{
-	color:#1c1c1c;
-	padding:5px;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-#startgame{
-	float:right;
-	margin-top: 9px;
-	margin-right: 10px;
-}
-
-#currentscore{
-	height: 45px;
-	line-height: 45px;
-	text-align: center;
-	float: left;
-	display: none;
-	margin:0 10px;
-}
-
-#currentscore span{
-	font-size: 18px;
-	font-weight: bold;
-}
-
-#endscore{
-	display:none;
-	float:left;
-	font-size: 13px;
-	padding: 3px 5px;
-}
-
-#endscore span{
-	font-weight: bold;
-}
-
-#score{
-	float:right;
-}
-
-#jatek-bg img{
-	display:none;
 }
 
 /*szavazás*/
@@ -1483,7 +1216,7 @@ li.heading.travel{
 	font-weight: bold;
 	margin:10px;
 	margin-left: 50px;
-//Poll
+}
 
 #poll-container{
 	float: left;	

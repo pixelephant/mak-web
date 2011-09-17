@@ -1,0 +1,63 @@
+/* Összetett keresés */
+
+#advanced-search input[type="text"]{
+	width: 475px;
+	height: 20px;
+	float: left;
+}
+
+#advanced-search input[type='submit']{
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 24px;
+    float:left;
+    margin-top:-1px;
+    height:25px;
+}
+
+#advanced-search label{
+	font-size:13px;
+	
+	margin-right: 5px;
+}
+
+#advanced-search input[type='checkbox'] {
+    float: none !important;
+}
+
+#advanced-search div{
+	clear:both;
+	padding-top: 10px;
+}
+
+#results{
+	margin-top:30px;
+}
+
+#results li{
+	margin:10px 0;
+}
+
+#results li.odd{
+	background: #DBDBDB;
+	padding: 10px 5px 5px 10px;
+}
+
+#results li.even{
+	padding: 10px 5px 5px 10px;
+}
+
+#results li h3{
+	color:black;
+	font-size:16px;
+	margin-bottom: 5px;
+	cursor:pointer;
+}
+
+#results li div{
+	font-size:14px;
+}
+
+#results .mark{
+	background: #FCF58D;
+}
