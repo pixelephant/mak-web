@@ -1,0 +1,60 @@
+/*Kártyaösszehasonlító*/
+
+#compare-komfort{
+	background: url(../../img/komfort.png) no-repeat center bottom;
+}
+
+#compare-standard{
+	background: url(../../img/standard.png) no-repeat center bottom;
+}
+
+#compare-diszkont{
+	background: url(../../img/diszkont.png) no-repeat center bottom;
+}
+
+#compare{
+	border:none;
+}
+
+#compare tbody{
+	border:1px solid #797E81;
+}
+
+#compare thead tr{
+	background: none;
+}
+
+#compare th{
+	line-height: 50px;
+}
+
+#compare tfoot{
+	background: none;
+}
+
+#compare tfoot td{
+	background: none;
+}
+
+#compare tfoot .gray-button{
+	color:black;
+	padding:5px;
+	font-weight: bold;
+}
+
+#seged p{
+	font-size: 16px;
+	text-align: center;
+	margin: 15px;
+}
+
+#seged strong{
+	padding-right: 10px;
+}
+
+#seged a img{
+	margin-top: 10px;
+	position: relative;
+	top: 8px;
+	left: 8px;
+}
