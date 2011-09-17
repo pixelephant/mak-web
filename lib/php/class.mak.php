@@ -2354,6 +2354,7 @@ class mak extends db{
 	public function render_felso_menu($aktualis_menu){
 	
 		$cond['mak_kategoria.menu_elem'] = '1';
+		$cond['mak_almenu.menu_elem'] = '1';
 	
 		$tartalom = $this->get_tartalom($cond);
 		$kategoria = '';
