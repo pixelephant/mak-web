@@ -1930,7 +1930,7 @@ class mak extends db{
 			if($tart != $tartalom[$i]['cim']){
 				
 				$html .= '<section id="' . $tartalom[$i]['cim'] . '">';
-				$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
+				//$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
 				
 				if($tartalom[$i]['kep'] != ''){
 					$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" /></div>';
