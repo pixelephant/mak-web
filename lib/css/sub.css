@@ -283,8 +283,12 @@ h3 a{
 	background: url(../../img/ikonok/medium/autoselet.png) no-repeat left center;
 }
 
-#klubtagsag{
+h3#klubtagsag{
 	background: url(../../img/ikonok/medium/klubtagsag.png) no-repeat left center;
+}
+
+h3#travel{
+	background: url(../../img/ikonok/medium/travel.png) no-repeat left center;
 }
 
 /*Multilayerek*/
