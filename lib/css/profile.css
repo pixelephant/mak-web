@@ -2,13 +2,6 @@
 	color:#0080B0;
 }
 
-#content{
-	width: 660px;
-	float: left;
-	padding: 55px 45px 55px 30px;
-	overflow: hidden;
-}
-
 #content form{
 	color: #1c1c1c;
 	padding-top: 20px;

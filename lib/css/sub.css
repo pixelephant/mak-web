@@ -223,6 +223,22 @@ h3 a{
 
 /*Aloldal specifikus oldalsáv képek*/
 
+#beallitasok{
+	background: url(../../img/ikonok/medium/beallitasok.png) no-repeat left center;
+}
+
+#betekinto{
+	background: url(../../img/ikonok/medium/betekinto.png) no-repeat left center;
+}
+
+#klubbiztositasok{
+	background: url(../../img/ikonok/medium/biztositas.png) no-repeat left center;
+}
+
+#erdekvedelem{
+	background: url(../../img/ikonok/medium/erdekvedelem.png) no-repeat left center;
+}
+
 #erdekkepviselet{
 	background: url(../../img/ikonok/medium/erdekkepviselet.png) no-repeat left center;
 }
@@ -267,7 +283,7 @@ h3 a{
 	background: url(../../img/ikonok/medium/autoselet.png) no-repeat left center;
 }
 
-h3#klubtagsag{
+#klubtagsag{
 	background: url(../../img/ikonok/medium/klubtagsag.png) no-repeat left center;
 }
 
