@@ -316,3 +316,9 @@ h3#klubtagsag{
 	background: url(../../img/aloldal/segelyszolgalat/multilayer_car.png) no-repeat center;
 	left: -250px;
 }
+
+
+/*Egyéb*/
+.enautoklubom .head{
+	display:none;
+}
