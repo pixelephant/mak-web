@@ -1907,11 +1907,11 @@ class mak extends db{
 	
 	}
 	
-	public function render_tartalom_section_default($tart){
+	public function render_tartalom_section_default($tar){
 	
 		//$cond['mak_tartalom.url'] = $tart;
 	
-		$tartalom = $this->get_oldal_tartalom($tart);
+		$tartalom = $this->get_oldal_tartalom($tar);
 					
 		if($tartalom == '' || !is_array($tartalom)){
 			return FALSE;
@@ -1934,6 +1934,10 @@ class mak extends db{
 				
 				if($tartalom[$i]['kep'] != ''){
 					$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" /></div>';
+				}
+				
+				if($tar == 'profilszerkesztes'){
+					$tartalom[$i]['szoveg'] = $this->adatmodosito_template($tartalom[$i]['szoveg']);
 				}
 				
 				$html .= '<p>'.$tartalom[$i]['szoveg'].'</p>';
@@ -2810,6 +2814,7 @@ class mak extends db{
 		}
 	
 	}
+
 	
 	//Kiegészítő függvények
 	
@@ -2943,6 +2948,71 @@ class mak extends db{
 		
 	}
 	
+	public function adatmodosito_template($form){
+	
+		$userid = $_SESSION['user_id'];
+		$cond['id'] = $userid;
+		$tags = array('%coSetStart%', '%coSetEnd%', '%natSetStart%', '%natSetEnd%');
+		
+		$adatok = $this->get_felhasznalo($cond);
+	
+		if($adatok[0]['nem'] != 'C'){
+			$form = $this->replaceTags('%coSetStart%', '%coSetEnd%', '', $form);
+		}else{
+			$form = $this->replaceTags('%natSetStart%', '%natSetEnd%', '', $form);
+		}
+		
+		$form = str_replace($tags,"",$form);
+		
+		foreach($adatok[0] as $key => $val){
+			$form = str_replace("%" . $key . "%", $val, $form);
+		}
+		
+		$form = str_replace("%allando_telepules%", $adatok[0]['allando_kozterulet'] . " " . $adatok[0]['allando_hazszam'] . ".", $form);
+		
+		$gyartmany = $this->get_gyartmany();
+		
+		$gy = '';
+		$t = '';
+
+		$gyart_opt = '';
+		$tip_opt = '';
+		
+		for($i=0;$i<$gyartmany['count'];$i++){
+		
+			if($gy != $gyartmany[$i]['marka']){
+				$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '"';
+				
+				if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap']){
+					$gyart_opt .= ' checked="checked"';
+				}
+				
+				$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
+				$gy = $gyartmany[$i]['marka'];
+			}
+			
+			if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_kod']){
+				$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';
+				
+				if($gyartmany[$i]['gyartmany_sap_kod'] == $adatok[0]['tipus_sap']){
+					$tip_opt .= ' checked="checked"';
+				}
+				
+				$tip_opt .= '>' . $gyartmany[$i]['tipus'] . '</option>';
+			}
+		
+		}
+		
+		$form = str_replace('%marka_options%', $gyart_opt,$form);
+		$form = str_replace('%tipus_options%', $tip_opt,$form);
+		
+		return $form;
+		
+	}
+	
+	public function replaceTags($startPoint, $endPoint, $newText, $source) {
+    	return preg_replace('#('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')#si', '$1'.$newText.'$3', $source);
+	}
 }
 
 ?>
