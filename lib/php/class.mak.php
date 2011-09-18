@@ -3006,6 +3006,8 @@ class mak extends db{
 		$form = str_replace('%marka_options%', $gyart_opt,$form);
 		$form = str_replace('%tipus_options%', $tip_opt,$form);
 		
+		$_SESSION['email'] = $adatok[0]['e_mail'];
+		
 		return $form;
 		
 	}
