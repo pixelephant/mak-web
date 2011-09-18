@@ -78,7 +78,7 @@ class mak extends db{
 		$table = 'mak_gyartmany';
 		$col = 'mak_gyartmany.id AS id,
 				mak_marka.marka AS marka,
-				tipus,mak_marka.sap_kod AS marka_sap_kod,
+				mak_gyartmany.tipus AS tipus,mak_marka.sap_kod AS marka_sap_kod,
 				mak_gyartmany.sap_kod AS gyartmany_sap_kod,
 				mak_gyartmany.display AS gyartmany_display,
 				mak_marka.display AS marka_display';
@@ -2960,6 +2960,17 @@ class mak extends db{
 			$form = $this->replaceTags('%coSetStart%', '%coSetEnd%', '', $form);
 		}else{
 			$form = $this->replaceTags('%natSetStart%', '%natSetEnd%', '', $form);
+		
+			if($adatok[0]['nem'] == 'N'){
+				$no = ' selected="selected"';
+				$ferfi = '';
+			}else{
+				$no = '';
+				$ferfi = ' selected="selected"';
+			}
+			
+			$nem_opt = '<option value="N"' . $no . '>Nő</option>';
+			$nem_opt .= '<option value="F"' . $ferfi . '>Férfi</option>';
 		}
 		
 		$form = str_replace($tags,"",$form);
@@ -2970,7 +2981,11 @@ class mak extends db{
 		
 		$form = str_replace("%allando_telepules%", $adatok[0]['allando_kozterulet'] . " " . $adatok[0]['allando_hazszam'] . ".", $form);
 		
-		$gyartmany = $this->get_gyartmany();
+		$cond = array();
+		$cond['mak_gyartmany.display'] = 1;
+		$cond['mak_marka.display'] = 1;
+		
+		$gyartmany = $this->get_gyartmany($cond);
 		
 		$gy = '';
 		$t = '';
@@ -2978,24 +2993,26 @@ class mak extends db{
 		$gyart_opt = '';
 		$tip_opt = '';
 		
+		//print_r($gyartmany);
+		
 		for($i=0;$i<$gyartmany['count'];$i++){
 		
 			if($gy != $gyartmany[$i]['marka']){
 				$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '"';
 				
 				if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap']){
-					$gyart_opt .= ' checked="checked"';
+					$gyart_opt .= ' selected="selected"';
 				}
 				
 				$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
 				$gy = $gyartmany[$i]['marka'];
 			}
 			
-			if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_kod']){
+			if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap']){
 				$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';
 				
 				if($gyartmany[$i]['gyartmany_sap_kod'] == $adatok[0]['tipus_sap']){
-					$tip_opt .= ' checked="checked"';
+					$tip_opt .= ' selected="selected"';
 				}
 				
 				$tip_opt .= '>' . $gyartmany[$i]['tipus'] . '</option>';
@@ -3005,6 +3022,7 @@ class mak extends db{
 		
 		$form = str_replace('%marka_options%', $gyart_opt,$form);
 		$form = str_replace('%tipus_options%', $tip_opt,$form);
+		$form = str_replace('%nem_options%', $nem_opt,$form);
 		
 		$_SESSION['email'] = $adatok[0]['e_mail'];
 		
