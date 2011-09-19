@@ -3065,26 +3065,47 @@ class mak extends db{
 
 	public function upgrade_extend_template($form){
 	
-		if($_SESSION['tagsag'] < 2){
+		$kartya[1] = 'Kék (régi)';
+		$kartya[2] = 'Diszkont';
+		$kartya[3] = 'Standard';
+		$kartya[4] = 'Komfort';
+		$kartya[5] = 'Diszkont plusz';
+	
+		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
+		
+		if($_SESSION['tagsag'] > 1){
 			$form = $this->replaceTags('%diszkontRadioStart%', '%diszkontRadioEnd%', '', $form);
 		}
 		
-		if($_SESSION['tagsag'] < 3){
+		if($_SESSION['tagsag'] > 2){
 			$form = $this->replaceTags('%standardRadioStart%', '%standardRadioEnd%', '', $form);
+		}
+		
+		if($_SESSION['tagsag'] > 3){
+			$form = $this->replaceTags('%komfortRadioStart%', '%komfortRadioEnd%', '', $form);
 		}
 		
 		if($_SESSION['tagsag'] == 4){
 			$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		}
-		
+	
 		$form = str_replace("%diszkontRadioStart%","",$form);
 		$form = str_replace("%diszkontRadioEnd%","",$form);
 		
 		$form = str_replace("%standardRadioStart%","",$form);
 		$form = str_replace("%standardRadioEnd%","",$form);
 		
+		$form = str_replace("%komfortRadioStart%","",$form);
+		$form = str_replace("%komfortRadioEnd%","",$form);
+		
 		$form = str_replace("%szintvaltasStart%","",$form);
 		$form = str_replace("%szintvaltasEnd%","",$form);
+		
+		$form = str_replace("%standardMemberStart%","",$form);
+		$form = str_replace("%standardMemberEnd%","",$form); 
+		
+		$form = str_replace("%komfortMemberStart%","",$form);
+		$form = str_replace("%komfortMemberEnd%","",$form);
 		
 		return $form;
 	}
