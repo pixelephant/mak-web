@@ -101,7 +101,7 @@ if(isset($_POST['logout']) && $_POST['logout'] == 'logout'){
 		}else{
 			$_SESSION['keresztnev'] = $adat[0]['keresztnev']; 
 		}
-		$_SESSION['tagsag'] = $adat[0]['tagtipus'];
+		$_SESSION['tagsag'] = $adat[0]['dijkategoria'];
 		
 		if(isset($_POST['remember']) && $_POST['remember'] == 'checked'){
 			$egyHonap = 60 * 60 * 24 * 30 + time();

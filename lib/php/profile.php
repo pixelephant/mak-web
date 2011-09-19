@@ -14,7 +14,7 @@ if($_POST['action'] == 'brandType'){
 
 	$cond['mak_marka.sap_kod'] = $brand;
 
-	if($brand != ''){	
+	if($brand != ''){
 		$tipus = $main->get_gyartmany($cond);
 	}
 	

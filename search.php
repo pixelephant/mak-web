@@ -86,12 +86,14 @@ if(isset($_POST['advanced-search-input'])){
 	</section>
 	<?php include "cta.php" ?>
 	<footer>
-		<div class="wrapper">
-			<div id="footerNav">
-				<?php 
-					echo $main->render_also_menu();
-				?>
+		<div class="footerIn">
+			<div class="wrapper">
+				<div id="footerNav">
+					<?php echo $main->render_also_menu();?>
+				</div>
 			</div>
+		</div>
+		<div id="fotterMiscWrap">
 			<div id="footerMisc">
 				<?php include 'footer.php';?>
 			</div>

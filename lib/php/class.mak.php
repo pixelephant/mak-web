@@ -76,12 +76,7 @@ class mak extends db{
 		 */
 	
 		$table = 'mak_gyartmany';
-		$col = 'mak_gyartmany.id AS id,
-				mak_marka.marka AS marka,
-				mak_gyartmany.tipus AS tipus,mak_marka.sap_kod AS marka_sap_kod,
-				mak_gyartmany.sap_kod AS gyartmany_sap_kod,
-				mak_gyartmany.display AS gyartmany_display,
-				mak_marka.display AS marka_display';
+		$col = 'mak_gyartmany.id AS id,mak_marka.marka AS marka,mak_gyartmany.tipus AS tipus,mak_marka.sap_kod AS marka_sap_kod,mak_gyartmany.sap_kod AS gyartmany_sap_kod,mak_gyartmany.display AS gyartmany_display,mak_marka.display AS marka_display';
 		
 		$join[0]['type'] = 'INNER JOIN';
 		$join[0]['table'] = 'mak_marka';
@@ -94,10 +89,9 @@ class mak extends db{
 			$join = GUMP::sanitize($join);
 		}
 		
-	
-		$cond['mak_gyartmany.sap_kod']['val'] = '%'.$keres['kereses'].'%';
-		$cond['mak_gyartmany.sap_kod']['rel'] = "LIKE";
-		$cond['mak_gyartmany.sap_kod']['and_or'] = "OR";
+		$cond['mak_gyartmany.sap_kod']['val'] = '';
+		$cond['mak_gyartmany.sap_kod']['rel'] = "<>";
+		$cond['mak_gyartmany.sap_kod']['and_or'] = "AND";
 		
 		return $this->sql_select($table,$col,$cond,$join);
 		
@@ -2984,9 +2978,7 @@ class mak extends db{
 		
 		if($adatok[0]['nem'] != 'C'){
 			$form = $this->replaceTags('%coSetStart%', '%coSetEnd%', '', $form);
-		}else{
-			$form = $this->replaceTags('%natSetStart%', '%natSetEnd%', '', $form);
-		
+			
 			if($adatok[0]['nem'] == 'N'){
 				$no = ' selected="selected"';
 				$ferfi = '';
@@ -2997,6 +2989,10 @@ class mak extends db{
 			
 			$nem_opt = '<option value="N"' . $no . '>Nő</option>';
 			$nem_opt .= '<option value="F"' . $ferfi . '>Férfi</option>';
+			
+			$form = str_replace('%nem_options%', $nem_opt,$form);
+		}else{
+			$form = $this->replaceTags('%natSetStart%', '%natSetEnd%', '', $form);
 		}
 		
 		$form = str_replace($tags,"",$form);
@@ -3050,7 +3046,6 @@ class mak extends db{
 		
 		$form = str_replace('%marka_options%', $gyart_opt,$form);
 		$form = str_replace('%tipus_options%', $tip_opt,$form);
-		$form = str_replace('%nem_options%', $nem_opt,$form);
 		
 		$_SESSION['email'] = $adatok[0]['e_mail'];
 		
@@ -3061,6 +3056,23 @@ class mak extends db{
 	public function replaceTags($startPoint, $endPoint, $newText, $source) {
     	return preg_replace('#('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')#si', '$1'.$newText.'$3', $source);
 	}
+
+	public function upgrade_extend_template($form){
+	
+		if($_SESSION['tagsag'] < 2){
+			$form = $this->replaceTags('%diszkontRadioStart%', '%diszkontRadioEnd%', '', $form);
+		}
+		
+		if($_SESSION['tagsag'] < 3){
+			$form = $this->replaceTags('%standardRadioStart%', '%standardRadioEnd%', '', $form);
+		}
+		
+		if($_SESSION['tagsag'] == 4){
+			$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
+		}
+	
+	}
+	
 }
 
 ?>

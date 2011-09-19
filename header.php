@@ -1,8 +1,10 @@
 <?php
 
-$kartya[1] = 'Diszkont';
-$kartya[2] = 'Standard';
-$kartya[3] = 'Komfort';
+$kartya[1] = 'Kék (régi)';
+$kartya[2] = 'Diszkont';
+$kartya[3] = 'Standard';
+$kartya[4] = 'Komfort';
+$kartya[5] = 'Diszkont plusz';
 
 ?>
 <h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>
