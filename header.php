@@ -2,13 +2,20 @@
 
 $kartya[1] = 'Diszkont';
 $kartya[2] = 'Standard';
-$kartya[2] = 'Komfort';
+$kartya[3] = 'Komfort';
 
 ?>
 <h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>
-<div id="userBar">
-	<span>Üdvözöljük <strong id="logedInName"><?php echo $_SESSION['keresztnev']; ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo (isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem'); ?></strong> klubtagunk.</span>
-</div>
+
+<?php 
+if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+?>
+	<div id="userBar">
+		<span>Üdvözöljük <strong id="logedInName"><?php echo $_SESSION['keresztnev']; ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo (isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem'); ?></strong> klubtagunk.</span>
+	</div>
+<?php 
+}
+?>
 <div id="headerButtons">
 	<div id="loginContainer">
 		<a href="segelyszolgalat" id="segelyButton" class="gray-button"><img src="img/pictogram-01.png" alt="Segélyszolgálat" /></a>
@@ -16,7 +23,7 @@ $kartya[2] = 'Komfort';
 		<a href="kozlekedesbiztonsag" id="kozlekButton" class="gray-button"><img src="img/pictogram-04.png" alt="Közlekedésbiztonság" /></a>
 		<a href="travel" id="travelButton" class="gray-button"><img src="img/pictogram-02.png" alt="Travel" /></a>
 <?php 
-	if(isset($_SESSION['user_id'])){
+	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 ?>
 		<a href="#" id="logoutButton" class="gray-button"><span>Kijelentkezés</span><em></em></a>
 <?php

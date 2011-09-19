@@ -78,7 +78,7 @@ class mak extends db{
 		$table = 'mak_gyartmany';
 		$col = 'mak_gyartmany.id AS id,
 				mak_marka.marka AS marka,
-				tipus,mak_marka.sap_kod AS marka_sap_kod,
+				mak_gyartmany.tipus AS tipus,mak_marka.sap_kod AS marka_sap_kod,
 				mak_gyartmany.sap_kod AS gyartmany_sap_kod,
 				mak_gyartmany.display AS gyartmany_display,
 				mak_marka.display AS marka_display';
@@ -93,6 +93,11 @@ class mak extends db{
 		if($join != ''){
 			$join = GUMP::sanitize($join);
 		}
+		
+	
+		$cond['mak_gyartmany.sap_kod']['val'] = '%'.$keres['kereses'].'%';
+		$cond['mak_gyartmany.sap_kod']['rel'] = "LIKE";
+		$cond['mak_gyartmany.sap_kod']['and_or'] = "OR";
 		
 		return $this->sql_select($table,$col,$cond,$join);
 		
@@ -190,6 +195,10 @@ class mak extends db{
 		
 		if(!isset($cond['orderby'])){
 			$cond['orderby'] = 'mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC';
+		}
+		
+		if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == ''){
+			$cond['mak_tartalom.regisztralt_tagnak'] = '0';
 		}
 		
 		$join[0]['table'] = 'mak_almenu';
@@ -397,13 +406,26 @@ class mak extends db{
 		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,';
 		$col .= 'mak_altartalom.id AS altartalom_id,mak_altartalom.tartalom_id AS tartalom_id,mak_altartalom.cim AS altartalom_cim,mak_altartalom.szoveg AS altartalom_szoveg,mak_altartalom.kep AS altartalom_kep,mak_altartalom.alt AS altartalom_alt,mak_altartalom.publikalta AS altartalom_publikalta,mak_altartalom.url AS altartalom_url,';
 		$col .= 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_tartalom.url AS tartalom_url';
+		$col .= ',mak_tartalom.regisztralt_tagnak';
 		
 		$join[0]['table'] = 'mak_almenu';		
-		$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
+		
+		
+		if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == ''){
+			$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id AND mak_almenu.regisztralt_tagnak=0';
+		}else{
+			$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
+		}
+		
 		$join[0]['type'] = 'LEFT JOIN';
 		
-		$join[1]['table'] = 'mak_tartalom';		
-		$join[1]['value'] = 'mak_tartalom.almenu_id=mak_almenu.id';
+		$join[1]['table'] = 'mak_tartalom';
+		
+		if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == ''){
+			$join[1]['value'] = 'mak_tartalom.almenu_id=mak_almenu.id AND mak_tartalom.regisztralt_tagnak=0';
+		}else{
+			$join[1]['value'] = 'mak_tartalom.almenu_id=mak_almenu.id';
+		}
 		$join[1]['type'] = 'LEFT JOIN';
 		
 		$join[2]['table'] = 'mak_altartalom';		
@@ -2956,21 +2978,42 @@ class mak extends db{
 		
 		$adatok = $this->get_felhasznalo($cond);
 	
+		if($adatok[0]['rendszam'] != ''){
+			$adatok[0]['rendszam'] = substr($adatok[0]['rendszam'], 0, 3) . '-' . substr($adatok[0]['rendszam'], 3);
+		}
+		
 		if($adatok[0]['nem'] != 'C'){
 			$form = $this->replaceTags('%coSetStart%', '%coSetEnd%', '', $form);
 		}else{
 			$form = $this->replaceTags('%natSetStart%', '%natSetEnd%', '', $form);
+		
+			if($adatok[0]['nem'] == 'N'){
+				$no = ' selected="selected"';
+				$ferfi = '';
+			}else{
+				$no = '';
+				$ferfi = ' selected="selected"';
+			}
+			
+			$nem_opt = '<option value="N"' . $no . '>Nő</option>';
+			$nem_opt .= '<option value="F"' . $ferfi . '>Férfi</option>';
 		}
 		
 		$form = str_replace($tags,"",$form);
+		
+		//print_r($adatok);
 		
 		foreach($adatok[0] as $key => $val){
 			$form = str_replace("%" . $key . "%", $val, $form);
 		}
 		
-		$form = str_replace("%allando_telepules%", $adatok[0]['allando_kozterulet'] . " " . $adatok[0]['allando_hazszam'] . ".", $form);
+		//$form = str_replace("%allando_telepules%", $adatok[0]['allando_kozterulet'] . " " . $adatok[0]['allando_hazszam'] . ".", $form);
 		
-		$gyartmany = $this->get_gyartmany();
+		$cond = array();
+		$cond['mak_gyartmany.display'] = 1;
+		$cond['mak_marka.display'] = 1;
+		
+		$gyartmany = $this->get_gyartmany($cond);
 		
 		$gy = '';
 		$t = '';
@@ -2978,24 +3021,26 @@ class mak extends db{
 		$gyart_opt = '';
 		$tip_opt = '';
 		
+		//print_r($gyartmany);
+		
 		for($i=0;$i<$gyartmany['count'];$i++){
 		
 			if($gy != $gyartmany[$i]['marka']){
 				$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '"';
 				
 				if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap']){
-					$gyart_opt .= ' checked="checked"';
+					$gyart_opt .= ' selected="selected"';
 				}
 				
 				$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
 				$gy = $gyartmany[$i]['marka'];
 			}
 			
-			if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_kod']){
+			if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap']){
 				$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';
 				
 				if($gyartmany[$i]['gyartmany_sap_kod'] == $adatok[0]['tipus_sap']){
-					$tip_opt .= ' checked="checked"';
+					$tip_opt .= ' selected="selected"';
 				}
 				
 				$tip_opt .= '>' . $gyartmany[$i]['tipus'] . '</option>';
@@ -3005,6 +3050,7 @@ class mak extends db{
 		
 		$form = str_replace('%marka_options%', $gyart_opt,$form);
 		$form = str_replace('%tipus_options%', $tip_opt,$form);
+		$form = str_replace('%nem_options%', $nem_opt,$form);
 		
 		$_SESSION['email'] = $adatok[0]['e_mail'];
 		

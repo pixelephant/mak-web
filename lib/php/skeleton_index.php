@@ -25,7 +25,7 @@ session_start();
 		<?php startblock('additional-css') ?><?php endblock() ?>
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="fooldal">
+	<body id="fooldal" class="<?php startblock('body-class') ?><?php endblock() ?>">
 	<div id="wrap">
 	<div class="header-wrap">
 		<div class="header-outer">

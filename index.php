@@ -33,6 +33,14 @@ autoklub,mak
 <?php include 'header.php';?>
 <?php endblock() ?>
 
+<?php startblock('body-class') ?>
+<?php 
+	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+		echo 'logined';
+	}
+?>
+<?php endblock() ?>
+
 <?php startblock('promo-slider') ?>
 <div id="leftSlider">
 <h2>Segélyszolgálat</h2>

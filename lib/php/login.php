@@ -7,7 +7,7 @@ require 'class.mak.php';
 
 $main = new mak(false);
 
-if(isset($_POST['logout'])){
+if(isset($_POST['logout']) && $_POST['logout'] == 'logout'){
 
 	session_unset();
 	session_destroy();
@@ -21,6 +21,7 @@ if(isset($_POST['logout'])){
 	}
 	
 	echo 'sikeres';
+	return true;
 
 }elseif(isset($_POST['forgotten'])){
 	if($_POST['forgotten'] != ''){
