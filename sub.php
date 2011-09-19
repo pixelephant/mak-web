@@ -64,6 +64,10 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 	if($page == 'szervizpont'){
 		$page .= 'ok';
 	}
+	
+	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+		$page .= ' logined';
+	}
 	echo $page;
 ?>
 <?php endblock() ?>
