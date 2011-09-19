@@ -153,7 +153,7 @@ class mak extends db{
 		
 		$cond = GUMP::sanitize($cond);
 		
-		$col = 'id,jelszo,nem,keresztnev,kapcsolattarto_keresztnev,tagtipus';
+		$col = 'id,jelszo,nem,keresztnev,kapcsolattarto_keresztnev,dijkategoria';
 		
 		$filters = array(
 			'felhasznalonev' => 'trim',
@@ -1956,6 +1956,12 @@ class mak extends db{
 					$tartalom[$i]['szoveg'] = $this->adatmodosito_template($tartalom[$i]['szoveg']);
 				}
 				
+				if($tar == 'tagsag'){
+					$tartalom[$i]['szoveg'] = $this->upgrade_extend_template($tartalom[$i]['szoveg']);
+				}
+				
+				
+				
 				$html .= '<p>'.$tartalom[$i]['szoveg'].'</p>';
 			
 				$galeria = $this->get_galeria_tartalomhoz($tartalom[$i]['id']);
@@ -3070,7 +3076,17 @@ class mak extends db{
 		if($_SESSION['tagsag'] == 4){
 			$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		}
-	
+		
+		$form = str_replace("%diszkontRadioStart%","",$form);
+		$form = str_replace("%diszkontRadioEnd%","",$form);
+		
+		$form = str_replace("%standardRadioStart%","",$form);
+		$form = str_replace("%standardRadioEnd%","",$form);
+		
+		$form = str_replace("%szintvaltasStart%","",$form);
+		$form = str_replace("%szintvaltasEnd%","",$form);
+		
+		return $form;
 	}
 	
 }
