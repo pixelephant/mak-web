@@ -62,13 +62,12 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 <?php startblock('body-class') ?>
 <?php 
 	if($page == 'szervizpont'){
-		$page .= 'ok';
+		$class = $page . 'ok';
 	}
-	
 	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
-		$page .= ' logined';
+		$class .= ' logined';
 	}
-	echo $page;
+	echo $class;
 ?>
 <?php endblock() ?>
 

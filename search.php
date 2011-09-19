@@ -36,6 +36,7 @@ if(isset($_POST['advanced-search-input'])){
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
 		<link rel="stylesheet" href="lib/css/sub.css" />
+		<link rel="stylesheet" href="lib/css/advanced.css" />
 		<link rel="stylesheet" href="lib/smoothness/style.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
