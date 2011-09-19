@@ -308,15 +308,19 @@ header h1 a span{
 	color:white;
 	padding:0 4px;
 	font-size:12px;
-	width:292px;
+	width:277px;
 	text-align:center;
 }
 
 #skypeButton{
 	float: right;
-	top: 45px;  
+	top: 30px;  
 	position: relative;
 	margin-right: 10px;	
+}
+
+.logined #skypeButton{
+	top:45px;
 }
 
 #headerButtons{
@@ -329,9 +333,13 @@ header h1 a span{
 	border-bottom: 1px solid #fee54b;
 	background: #e4b53b;
 	padding: 5px;
-	margin-top: 30px;
+	margin-top: 17.5px;
 	height:35px;
 	line-height:35px;
+}
+
+.logined #headerButtons{
+	margin-top:30px;
 }
 
 #headerButtons a{
@@ -454,7 +462,7 @@ header h1 a span{
 	float: right;
 	display:block;
 	position: relative;
-	left: -40px;
+	left: 12px;
 	top: -5px;
 }
 
@@ -699,6 +707,12 @@ aside{
 	margin-left: 3px;
 	width:64px;
 	font-weight: bold;
+	position:relative;
+	top:-1px;
+}
+
+#search input[type="submit"]:hover{
+	top:0px;
 }
 
 /*Hírlevél sáv*/
@@ -745,15 +759,15 @@ aside{
 	margin: 9px auto 10px auto;
 	font-size: 14px;
 	font-weight: bold;
-	padding: 12px 14px;
+	padding: 10px 14px;
 	position: relative;
-	top: 9px;
+	top: 6px;
 	left: 2px;
 	color:black;
 }
 
 #newsletterbutton:hover {
-	 top:10px;
+	 top:7px;
 }
 
 #newsletterbutton span{
@@ -768,6 +782,11 @@ aside{
 	background: url(../../img/hirlevel.png) no-repeat;
 	width: 20px;
 	height: 14px;
+}
+
+#newsletter a img:hover{
+	position:relative;
+	top:1px;
 }
 
 /*Hírdetések*/
@@ -891,7 +910,7 @@ aside img.ad{
 #ctaWrap a span{
 	float: left;
 	line-height:1.2;
-	margin-right: 3px;
+	margin-right: 10px;
 }
 
 #ctaWrap a em{
