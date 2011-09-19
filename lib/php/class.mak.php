@@ -192,6 +192,10 @@ class mak extends db{
 			$cond['orderby'] = 'mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC';
 		}
 		
+		if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == ''){
+			$cond['mak_tartalom.regisztralt_tagnak'] = '0';
+		}
+		
 		$join[0]['table'] = 'mak_almenu';
 		$join[0]['value'] = 'mak_almenu.id=mak_tartalom.almenu_id';
 		$join[0]['type'] = 'LEFT JOIN';
@@ -397,13 +401,26 @@ class mak extends db{
 		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,';
 		$col .= 'mak_altartalom.id AS altartalom_id,mak_altartalom.tartalom_id AS tartalom_id,mak_altartalom.cim AS altartalom_cim,mak_altartalom.szoveg AS altartalom_szoveg,mak_altartalom.kep AS altartalom_kep,mak_altartalom.alt AS altartalom_alt,mak_altartalom.publikalta AS altartalom_publikalta,mak_altartalom.url AS altartalom_url,';
 		$col .= 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_tartalom.url AS tartalom_url';
+		$col .= ',mak_tartalom.regisztralt_tagnak';
 		
 		$join[0]['table'] = 'mak_almenu';		
-		$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
+		
+		
+		if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == ''){
+			$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id AND mak_almenu.regisztralt_tagnak=0';
+		}else{
+			$join[0]['value'] = 'mak_almenu.kategoria_id=mak_kategoria.id';
+		}
+		
 		$join[0]['type'] = 'LEFT JOIN';
 		
-		$join[1]['table'] = 'mak_tartalom';		
-		$join[1]['value'] = 'mak_tartalom.almenu_id=mak_almenu.id';
+		$join[1]['table'] = 'mak_tartalom';
+		
+		if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == ''){
+			$join[1]['value'] = 'mak_tartalom.almenu_id=mak_almenu.id AND mak_tartalom.regisztralt_tagnak=0';
+		}else{
+			$join[1]['value'] = 'mak_tartalom.almenu_id=mak_almenu.id';
+		}
 		$join[1]['type'] = 'LEFT JOIN';
 		
 		$join[2]['table'] = 'mak_altartalom';		

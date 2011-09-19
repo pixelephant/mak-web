@@ -159,21 +159,29 @@ class db{
 			}
 		}
 		
+		$c = '';
+		
 		if($cond != ''){
 			foreach($cond as $key => $val){
 				if(is_array($cond[$key])){
-					$sql .= ' '.(isset($cond[$key]['and_or']) ? $cond[$key]['and_or'] : 'AND').' '.$key." ".$cond[$key]['rel']." '".$cond[$key]['val']."'";
+					$c .= ' '.(isset($cond[$key]['and_or']) ? $cond[$key]['and_or'] : 'AND').' '.$key." ".$cond[$key]['rel']." '".$cond[$key]['val']."'";
 				}else{
 					if($val != ''){
-						$sql .= " AND ".$key."='".$val."'";
+						$c .= " AND ".$key."='".$val."'";
 					}
 				}
 			}
 		}
 		
+		$rep = 0;
 		
-		$sql = preg_replace('/ AND /',' WHERE ',$sql,1);
-		$sql = preg_replace('/ OR /',' WHERE ',$sql,1);
+		$c = preg_replace('/ AND /',' WHERE ',$c,1,$rep);
+		
+		if($rep == 0){
+			$c = preg_replace('/ OR /',' WHERE ',$c,1);
+		}
+		
+		$sql .= $c;
 		
 		if(isset($order)){
 			$sql .= " ORDER BY ".$order;
