@@ -2996,7 +2996,7 @@ class mak extends db{
 			$form = str_replace("%" . $key . "%", $val, $form);
 		}
 		
-		$form = str_replace("%allando_telepules%", $adatok[0]['allando_kozterulet'] . " " . $adatok[0]['allando_hazszam'] . ".", $form);
+		//$form = str_replace("%allando_telepules%", $adatok[0]['allando_kozterulet'] . " " . $adatok[0]['allando_hazszam'] . ".", $form);
 		
 		$cond = array();
 		$cond['mak_gyartmany.display'] = 1;

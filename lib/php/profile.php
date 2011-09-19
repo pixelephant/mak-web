@@ -28,8 +28,6 @@ if(!empty($form)){
 	
 		$adatok['vezeteknev'] = $form['natFName'];
 		$adatok['keresztnev'] = $form['natLName'];
-		$adatok['nem'] = $form['natGender'];
-		$adatok['szuletesi_datum'] = $form['natDate'];
 		$adatok['allando_irsz'] = $form['natZip'];
 		$adatok['allando_helyseg'] = $form['natCity'];	
 		
@@ -48,7 +46,6 @@ if(!empty($form)){
 	if($form['registerRadio'] == 'co'){
 	
 		$adatok['cegnev'] = $form['coName'];
-		$adatok['alapitas_eve'] = $form['coDate'];
 		$adatok['allando_irsz'] = $form['coZip'];
 		$adatok['allando_helyseg'] = $form['coCity'];	
 		
@@ -64,9 +61,30 @@ if(!empty($form)){
 	
 	}
 	
-	$adatok['e_mail'] = $form['email'];
-	$adatok['jelszo'] = sha1($form['pass']);
-	$adatok['felhasznalonev'] = $form['email'];
+	$adatok['elso_forgalom'] = $form['firstDate'];
+	$adatok['gyartasi_ev'] = $form['manufYear'];
+	$adatok['rendszam'] = $form['licensePlate'];
+	$adatok['gyartmany_sap'] = $form['brand'];
+	$adatok['tipus_sap'] = $form['type'];
+	
+	if($form['email'] != ''){
+		$adatok['e_mail'] = $form['email'];
+	}
+	
+	if($form['pass'] != ''){
+		$adatok['jelszo'] = sha1($form['pass']);
+	}
+	
+	
+	if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == ''){
+		return FALSE;
+	}else{
+		$cond['id'] = $_SESSION['user_id'];
+	}
+	
+	$cond['e_mail'] = $form['id_mail'];
+	
+	$valasz = $main->updateFelhasznalo($adatok, $cond);
 	
 	if($valasz == 'Sikeres'){
 	
@@ -81,7 +99,7 @@ if(!empty($form)){
 		$link = 'http://www.pixelephant.hu/projects/on-going/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 		
 		//$mail->IsSMTP(); // SMTP használata
-		$mail->From = "regisztracio@autoklub.hu";
+		$mail->From = "adatvaltoztatas@autoklub.hu";
 		$mail->FromName = "Magyar Autóklub weboldala";
 		//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
 		$mail->AddAddress($adatok['e_mail'], $nev);
@@ -89,8 +107,8 @@ if(!empty($form)){
 		$mail->WordWrap = 50;
 		
 		$mail->IsHTML(true);    // HTML e-mail
-		$mail->Subject = "Magyar Autóklub - sikeres regisztráció a weboldalra";
-		$mail->Body = 'Köszönjük, hogy regisztrált weboldalunkra! <br />Kérjük, az alábbi <a href="' . $link . '">linkre kattintva</a> erősítse meg a regisztrációt!';
+		$mail->Subject = "Magyar Autóklub - sikeres adatváltoztatás";
+		$mail->Body = 'Sikeresen megváltoztatta adatait weboldalunkon.';
 		
 		if($mail->Send() === FALSE){
 			$valasz = 'Sikertelen e-mail küldés!';
