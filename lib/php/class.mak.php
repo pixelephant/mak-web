@@ -2973,6 +2973,10 @@ class mak extends db{
 		
 		$adatok = $this->get_felhasznalo($cond);
 	
+		if($adatok[0]['rendszam'] != ''){
+			$adatok[0]['rendszam'] = substr($adatok[0]['rendszam'], 0, 3) . '-' . substr($adatok[0]['rendszam'], 3);
+		}
+		
 		if($adatok[0]['nem'] != 'C'){
 			$form = $this->replaceTags('%coSetStart%', '%coSetEnd%', '', $form);
 		}else{
@@ -2991,6 +2995,8 @@ class mak extends db{
 		}
 		
 		$form = str_replace($tags,"",$form);
+		
+		//print_r($adatok);
 		
 		foreach($adatok[0] as $key => $val){
 			$form = str_replace("%" . $key . "%", $val, $form);

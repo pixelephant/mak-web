@@ -5,9 +5,11 @@ include 'Wixel/gump.class.php';
 include 'class.db.php';
 include 'class.mak.php';
 
+session_start();
+
 $autoklub_email = 'info@autoklub.hu';
 
-$main = new mak(false);
+$main = new mak(true);
 
 $form = array();
 $member = array();
@@ -63,9 +65,12 @@ if(!empty($form)){
 	
 	$adatok['elso_forgalom'] = $form['firstDate'];
 	$adatok['gyartasi_ev'] = $form['manufYear'];
-	$adatok['rendszam'] = $form['licensePlate'];
 	$adatok['gyartmany_sap'] = $form['brand'];
 	$adatok['tipus_sap'] = $form['type'];
+	
+	if($form['licensePlate'] != ''){
+		$adatok['rendszam'] = str_replace("-","",$form['licensePlate']);
+	}
 	
 	if($form['email'] != ''){
 		$adatok['e_mail'] = $form['email'];
@@ -84,14 +89,14 @@ if(!empty($form)){
 	
 	$cond['e_mail'] = $form['id_mail'];
 	
-	$valasz = $main->updateFelhasznalo($adatok, $cond);
-	
+	$valasz = $main->update_felhasznalo($adatok, $cond);
+
 	if($valasz == 'Sikeres'){
 	
 		/*
 		 * Siker esetén e-mail küldés
 		 */
-		
+/*		
 		require_once("phpmailer/phpmailer.inc.php");
 		
 		$mail = new PHPMailer();
@@ -114,6 +119,8 @@ if(!empty($form)){
 			$valasz = 'Sikertelen e-mail küldés!';
 		}
 	
+	}else{
+		$valasz = 'Sikertelen frissítés!';*/
 	}
 
 }
