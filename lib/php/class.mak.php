@@ -94,6 +94,11 @@ class mak extends db{
 			$join = GUMP::sanitize($join);
 		}
 		
+	
+		$cond['mak_gyartmany.sap_kod']['val'] = '%'.$keres['kereses'].'%';
+		$cond['mak_gyartmany.sap_kod']['rel'] = "LIKE";
+		$cond['mak_gyartmany.sap_kod']['and_or'] = "OR";
+		
 		return $this->sql_select($table,$col,$cond,$join);
 		
 	}
