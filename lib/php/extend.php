@@ -4,6 +4,8 @@ require 'Wixel/gump.class.php';
 require 'class.db.php';
 require 'class.mak.php';
 
+session_start();
+
 $main = new mak(false);
 
 $tagsag['diszkontMember'] = 2;
@@ -25,7 +27,7 @@ $data['befizetes_datuma'] = '0000-00-00';
 
 if(isset($_POST['paymentData']) && !isset($_POST['memberData'])){
 
-	return $main->update_felhasznalo($data,$cond);
+	$main->update_felhasznalo($data,$cond);
 
 }
 
@@ -39,9 +41,9 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData'])){
 
 	$member = GUMP::sanitize($member);
 	
-	$data['dijkategoria'] = $tagsag[$membershipRadio];
+	$data['dijkategoria'] = $tagsag[$member['membershipRadio']];
 
-	return $main->update_felhasznalo($data,$cond);
+	echo $main->update_felhasznalo($data,$cond);
 
 }
 
