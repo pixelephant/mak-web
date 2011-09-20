@@ -180,7 +180,7 @@ function process() {
      	$response = $service->fizetesiTranzakcio(
         $posId,
         $tranzAzon,
-        $kartya[$_REQUEST['kartya']],
+        $_REQUEST['osszeg'],
         RequestUtils::safeParam($_REQUEST, 'devizanem'),
         $nyelvkod,
         RequestUtils::safeParam($_REQUEST, 'nevKell'),
@@ -194,7 +194,7 @@ function process() {
         RequestUtils::safeParam($_REQUEST, 'vevoVisszaigazolasKell'),
         RequestUtils::safeParam($_REQUEST, 'ugyfelRegisztracioKell'),
         RequestUtils::safeParam($_REQUEST, 'regisztraltUgyfelId'),
-        'Fizetés: '.$_REQUEST['kartya'],
+        'Fizetés: '.$_REQUEST['uzenet'],
         $backUrl,
         RequestUtils::safeParam($_REQUEST, "ketlepcsosFizetes"));   
         

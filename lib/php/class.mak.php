@@ -2191,22 +2191,22 @@ class mak extends db{
 		
 			if($kat != $oldalterkep[$i]['kategoria_url']){
 				$kat = $oldalterkep[$i]['kategoria_url'];
-				$k[$kat] = '<li class="kategoria"><a href="' . $oldalterkep[$i]['kategoria_url'] . '">' . $oldalterkep[$i]['kategoria'] . '</a></li>';
+				$k[$kat] = '<li class="kategoria"><a href="' . $oldalterkep[$i]['kategoria_url'] . '">' . $oldalterkep[$i]['kategoria'] . '</a>';
 			}
 			
 			if($alm != $oldalterkep[$i]['almenu_url'] && $oldalterkep[$i]['almenu_url'] != ''){
 				$alm = $oldalterkep[$i]['almenu_url'];	
-				$a[$kat][$alm] = '<li class="almenu"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '">' . $oldalterkep[$i]['almenu'] . '</a></li>';
+				$a[$kat][$alm] = '<li class="almenu"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '">' . $oldalterkep[$i]['almenu'] . '</a>';
 			}
 			
 			if($tart != $oldalterkep[$i]['tartalom_url'] && $oldalterkep[$i]['tartalom_url'] != ''){
 				$tart = $oldalterkep[$i]['tartalom_url'];
-				$t[$kat][$alm][$tart] = '<li class="tartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '">' . $oldalterkep[$i]['tartalom'] . '</a></li>';
+				$t[$kat][$alm][$tart] = '<li class="tartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '">' . $oldalterkep[$i]['tartalom'] . '</a>';
 			}
 			
 			if($altart != $oldalterkep[$i]['altartalom_url'] && $oldalterkep[$i]['altartalom_url'] != ''){
 				$altart = $oldalterkep[$i]['altartalom_url'];
-				$at[$kat][$alm][$tart][$altart] = '<li class="altartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '/' . $oldalterkep[$i]['altartalom_url'] . '">' . $oldalterkep[$i]['altartalom'] . '</a></li>';
+				$at[$kat][$alm][$tart][$altart] = '<li class="altartalom"><a href="' . $oldalterkep[$i]['kategoria_url'] . '/' . $oldalterkep[$i]['almenu_url'] . '/' . $oldalterkep[$i]['tartalom_url'] . '/' . $oldalterkep[$i]['altartalom_url'] . '">' . $oldalterkep[$i]['altartalom'] . '</a>';
 			}
 		
 		}
@@ -2226,13 +2226,13 @@ class mak extends db{
 								foreach($at[$kategoria][$almenu][$tartalom] as $altartalom => $altart_text){
 									$html .= $altart_text;
 								}
-								$html .= '</ul>';
+								$html .= '</ul></li>';
 							}
 						}
-						$html .= '</ul>';
+						$html .= '</ul></li>';
 					}
 				}
-				$html .= '</ul>';
+				$html .= '</ul></li>';
 			}
 		}
 		
@@ -3114,6 +3114,7 @@ class mak extends db{
 		
 		$form = str_replace("%rendszam%",substr($adat[0]['rendszam'],0,3) . "-" . substr($adat[0]['rendszam'],3),$form);
 		$form = str_replace("%gepjarmu_kora%",date("Y") - $adat[0]['gyartasi_ev'],$form);
+		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . 'lib/php/otpwebshop/web_demo/pdf/visszaigazolas.php',$form);
 		
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
 		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);

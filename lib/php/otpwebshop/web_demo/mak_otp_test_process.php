@@ -6,7 +6,7 @@ $successPosResponseCodes = array(
                     "000", "00", "001", "002", "003", "004",
                     "005", "006", "007", "008", "009", "010");
 
-if($_GET['fizetesi_mod'] == 'bank_kartya'){
+if($_GET['paymentmethod'] == 'on'){
 	if (array_key_exists("fizetesValasz", $_REQUEST)) {
 		//echo '1';
 	    $a = processDirectedToBackUrl(true);
