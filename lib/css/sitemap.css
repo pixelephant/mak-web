@@ -1,0 +1,19 @@
+li.kategoria a{
+	text-decoration:none;
+	color:#1c1c1c;
+}
+
+li.kategoria a:hover{
+	color:#0080B0;
+}
+
+li.kategoria{
+	font-size:24px;
+	margin-bottom:15px;
+}
+
+li.kategoria ul{
+	display:block;
+	float:left;
+	width:220px;
+}
