@@ -3071,7 +3071,14 @@ class mak extends db{
 		$kartya[4] = 'Komfort';
 		$kartya[5] = 'Diszkont plusz';
 	
+		$ar[1] = '0';
+		$ar[2] = '1000';
+		$ar[3] = '10000';
+		$ar[4] = '100000';
+		$ar[5] = '1500';
+		
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
+		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);
 		
 		if($_SESSION['tagsag'] > 1){
 			$form = $this->replaceTags('%diszkontRadioStart%', '%diszkontRadioEnd%', '', $form);
