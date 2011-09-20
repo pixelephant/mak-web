@@ -27,7 +27,7 @@ $data['befizetes_datuma'] = '0000-00-00';
 
 if(isset($_POST['paymentData']) && !isset($_POST['memberData'])){
 
-	$main->update_felhasznalo($data,$cond);
+	echo $main->update_felhasznalo($data,$cond);
 
 }
 

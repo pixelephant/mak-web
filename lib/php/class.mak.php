@@ -3112,9 +3112,19 @@ class mak extends db{
 		
 		$adat = $this->get_felhasznalo($cond,$col);
 		
-		$form = str_replace("%rendszam%",substr($adat[0]['rendszam'],0,3) . "-" . substr($adat[0]['rendszam'],3),$form);
-		$form = str_replace("%gepjarmu_kora%",date("Y") - $adat[0]['gyartasi_ev'],$form);
-		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . 'lib/php/otpwebshop/web_demo/pdf/visszaigazolas.php',$form);
+		if($adat[0]['rendszam'] != ''){
+			$form = str_replace("%rendszam%",substr($adat[0]['rendszam'],0,3) . "-" . substr($adat[0]['rendszam'],3),$form);
+		}else{
+			$form = str_replace("%rendszam%",'',$form);
+		}
+		
+		if($adat[0]['gyartasi_ev'] != ''){
+			$form = str_replace("%gepjarmu_kora%",date("Y") - $adat[0]['gyartasi_ev'],$form);
+		}else{
+			$form = str_replace("%gepjarmu_kora%",'',$form);
+		}
+		
+		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/lib/php/otpwebshop/web_demo/pdf/visszaigazolas.php',$form);
 		
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
 		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);

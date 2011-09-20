@@ -194,7 +194,7 @@ function process() {
         RequestUtils::safeParam($_REQUEST, 'vevoVisszaigazolasKell'),
         RequestUtils::safeParam($_REQUEST, 'ugyfelRegisztracioKell'),
         RequestUtils::safeParam($_REQUEST, 'regisztraltUgyfelId'),
-        'Fizetés: '.$_REQUEST['uzenet'],
+        'Fizetés: '.utf8_decode($_REQUEST['uzenet']),
         $backUrl,
         RequestUtils::safeParam($_REQUEST, "ketlepcsosFizetes"));   
         
