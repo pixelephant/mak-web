@@ -4,6 +4,7 @@
 	width: 475px;
 	height: 20px;
 	float: left;
+	margin-right:3px;
 }
 
 #advanced-search input[type='submit']{
