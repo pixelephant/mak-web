@@ -19,12 +19,15 @@
 	</head>
 	<body>
 	
-	<div id="headerwrap">
-		<header>
-			<h1>MAK - adminisztráció</h1>
-			<a href="#">kijelentkezés</a>
-		</header>
-	</div>
+		<div class="header-wrap">
+			<div class="header-outer">
+			<header class="wrapper">
+				<h1>
+					<a href="#">Magyar Autóklub <span>Adminisztráció</span></a>
+				</h1>
+			</header>
+			</div>
+		</div>
 	<nav>
 		<ul>
 			<li><a href="#">Hírlevél kezelés</a></li>

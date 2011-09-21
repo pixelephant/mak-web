@@ -187,6 +187,7 @@ span.sum{
     text-decoration: none;
     text-shadow: 1px 1px 0px yellow;
     float:right;
+	border:1px solid black;
 }
 
 

@@ -43,9 +43,9 @@ autoklub,mak
 
 <?php startblock('promo-slider') ?>
 <div id="leftSlider">
-<h2>Segélyszolgálat</h2>
-<p>Ingyenesen hívható telefonszám. <br /> A nap 24 órájában rendelkezésre állunk!</p>
-<img src="img/188.png" alt="Segélyhívószámunk: 188" />
+	<h2>Segélyszolgálat</h2>
+	<p>Ingyenesen hívható telefonszám. <br /> A nap 24 órájában rendelkezésre állunk!</p>
+	<div id="hivoszam" class="white"></div>
 </div>
 <div id="rightSlider">
 <div class="glow">
@@ -59,7 +59,7 @@ autoklub,mak
 				<a href="kozlekedesbiztonsag"><img src="img/pikto-04.jpg" alt="" />Közlekedésbiztonság</a>
 				<a href="travel"><img src="img/pikto-03.jpg" alt="" />Travel</a>
 			</div>
-			<img id="makauto" src="img/slider/makauto.png" alt="" />
+			<img id="makauto" src="img/slider/makauto.png" alt="Magyar Autóklub" />
 		</div>
 		<div class="slide">
 			<div class="text">
@@ -71,7 +71,7 @@ autoklub,mak
 					<li><a class="link" href="klubtagsag/klubtagsag#Kedvezm%C3%A9nyek%20%C3%A9s%20jogosults%C3%A1gok">Kedvezmények</a></li>
 				</ul>
 			</div>
-			<img src="img/slider/audi.png" alt="Audio" width="200" />
+			<img src="img/slider/audi.png" alt="Audio" />
 		</div>
 		<div class="slide">
 			<div class="text">
@@ -82,7 +82,7 @@ autoklub,mak
 					<li><a class="link" href="#">Kapcsolat</a></li>
 				</ul>
 			</div>
-			<img src="img/slider/szervizpont.png" alt="Hűsítő hétvége" width="200" />
+			<img src="img/slider/szervizpont.png" alt="Hűsítő hétvége" />
 		</div>
 		<div class="slide">
 			<div class="text">
@@ -93,7 +93,7 @@ autoklub,mak
 					<li><a class="link" href="#">Segélyhívószámunk - 188</a></li>
 				</ul>
 			</div>
-			<img src="img/slider/szerviz.png" alt="Szervíz" width="200" />
+			<img src="img/slider/szerviz.png" alt="Szervíz" />
 		</div>
 
 	<div class="slide">
@@ -105,7 +105,7 @@ autoklub,mak
 					<li><a class="link" href="#">A szálloda honlapja</a></li>	
 				</ul>
 			</div>
-			<img src="img/slider/travel.png" alt="Travel" width="200" />
+			<img src="img/slider/travel.png" alt="Travel" />
 		</div>
 
 	<div class="slide">
@@ -118,7 +118,7 @@ autoklub,mak
 					<li><a class="link" href="#">Jelentkezés</a></li>
 				</ul>
 			</div>
-			<img src="img/slider/kozlbizt.png" alt="Közlekedésbiztonság" width="200" />
+			<img src="img/slider/kozlbizt.png" alt="Közlekedésbiztonság" />
 		</div>
 
 	<div class="slide">
@@ -130,7 +130,7 @@ autoklub,mak
 					<li><a class="link" href="regisztralas">Légy te is klubtag</a></li>
 				</ul>
 			</div>
-			<img src="img/slider/young.png" alt="Sziget fesztivál" width="200" />
+			<img src="img/slider/young.png" alt="Sziget fesztivál" />
 		</div>
 	</div>
 	

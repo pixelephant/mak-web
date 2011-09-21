@@ -190,3 +190,13 @@
 	margin-right: 5px;
 	right:0;
 }
+
+#hivoszam{
+	width:130px;
+	height:62px;
+	background: url(../../img/188.png) no-repeat;
+}
+
+#hivoszam.white{
+	background: url(../../img/188-w.png) no-repeat;
+}
