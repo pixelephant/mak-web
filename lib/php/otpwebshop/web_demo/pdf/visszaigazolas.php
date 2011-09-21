@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+print_r($_REQUEST);
+/*
 require_once('tcpdf/config/lang/eng.php');
 require_once('tcpdf/tcpdf.php');
 
@@ -81,5 +84,5 @@ $pdf->writeHTMLCell(0,0,140,266,$html);
 $pdf->Output('example_002.pdf', 'D');
 //echo $_REQUEST['nev'];
 //print_r($_REQUEST);
-
+*/
 ?>

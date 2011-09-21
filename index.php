@@ -54,10 +54,10 @@ autoklub,mak
 			<h2>Magyar Autóklub</h2>
 			<h3>A hűséges Partner</h3>
 			<div id="picto">
-				<a href=""><img src="img/pikto-02.jpg" alt="" />Segélyszolgálat</a>
-				<a href=""><img src="img/pikto-01.jpg" alt="" />Szerviz Pontok</a>
-				<a href=""><img src="img/pikto-04.jpg" alt="" />Közlekedésbiztonság</a>
-				<a href=""><img src="img/pikto-03.jpg" alt="" />Travel</a>
+				<a href="segelyszolgalat"><img src="img/pikto-02.jpg" alt="" />Segélyszolgálat</a>
+				<a href="szervizpontok"><img src="img/pikto-01.jpg" alt="" />Szerviz Pontok</a>
+				<a href="kozlekedesbiztonsag"><img src="img/pikto-04.jpg" alt="" />Közlekedésbiztonság</a>
+				<a href="travel"><img src="img/pikto-03.jpg" alt="" />Travel</a>
 			</div>
 			<img id="makauto" src="img/slider/makauto.png" alt="" />
 		</div>
