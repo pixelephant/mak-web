@@ -16,8 +16,10 @@ if($_GET['status'] == 'success'){
 	
 	$cond['id'] = $_SESSION['user_id'];
 	
-	echo $main->update_felhasznalo($adat,$cond);
+	$a = $main->update_felhasznalo($adat,$cond);
 
+	
+	
 }
 
 $main->close();
