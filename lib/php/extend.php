@@ -25,7 +25,7 @@ $data['befizetes_datuma'] = '0000-00-00';
  * Hosszabbítás
  */
 
-if(isset($_POST['paymentData']) && !isset($_POST['memberData'])){
+if(isset($_POST['paymentData']) && !isset($_POST['memberData']) && $_POST['action'] == 'extend'){
 
 	echo $main->update_felhasznalo($data,$cond);
 
@@ -35,7 +35,7 @@ if(isset($_POST['paymentData']) && !isset($_POST['memberData'])){
  * Upgrade
  */
 
-if(isset($_POST['paymentData']) && isset($_POST['memberData'])){
+if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action'] == 'level'){
 
 	parse_str($_POST['memberData'], $member);
 

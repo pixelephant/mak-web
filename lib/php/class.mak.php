@@ -3124,6 +3124,16 @@ class mak extends db{
 			$form = str_replace("%gepjarmu_kora%",'',$form);
 		}
 		
+		$form = str_replace("%osszeg%",$ar[$_SESSION['tagsag']],$form);
+		
+		if($adat[0]['nem'] == 'C'){
+			$nev = $adat[0]['cegnev'];
+		}else{
+			$nev = $adat[0]['vezeteknev'] . ' ' . $adat[0]['keresztnev']; 
+		}
+		
+		$form = str_replace("%nev%",$nev,$form);
+		
 		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/lib/php/otpwebshop/web_demo/pdf/visszaigazolas.php',$form);
 		
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
