@@ -67,8 +67,8 @@ autoklub,mak
 				<p>Mert ez az egyetlen "Klub" az országban, amely már 111 éve kínálja az autósok százezreinek a népszerű és széles körű szolgáltatásait, piaci verseny közepette.</p>
 				<ul>
 					<li><a class="link" href="regisztralas">Regisztráció</a></li>
-					<li><a class="link" href="klubtagsag/klubtagsag#K%C3%A1rtyat%C3%ADpusok">Tagság típsuok</a></li>
-					<li><a class="link" href="klubtagsag/klubtagsag#Kedvezm%C3%A9nyek%20%C3%A9s%20jogosults%C3%A1gok">Kedvezmények</a></li>
+					<li><a class="link" href="klubtagsag/kartyatipusok">Tagság típsuok</a></li>
+					<li><a class="link" href="klubtagsag/kedvezmenyek">Kedvezmények</a></li>
 				</ul>
 			</div>
 			<img src="img/slider/audi.png" alt="Audio" />
