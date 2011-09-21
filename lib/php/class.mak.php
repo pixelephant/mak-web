@@ -2605,7 +2605,7 @@ class mak extends db{
 		$sql .= " OR mak_altartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_altartalom.szoveg LIKE '%" . $kereses[0] . "%'";
 		$sql .= ")";
 		
-		$sql .= " ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC, mak_altartalom.sorrend";
+		$sql .= "AND mak_tartalom.regisztralt_tagnak = 0 ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC, mak_altartalom.sorrend";
 		
 		if($advanced == '' || !isset($advanced['advanced-search-input'])){
 			$sql = preg_replace('/ AND /',' WHERE ',$sql,1);
@@ -2627,7 +2627,7 @@ class mak extends db{
 		
 		for($i = 0;$i<$eredmenyek['count'];$i++){
 
-			if($kat != $eredmenyek[$i]['azonosito'] || $sub != $eredmenyek[$i]['url']){
+			if(($kat != $eredmenyek[$i]['azonosito'] || $sub != $eredmenyek[$i]['url']) && ((strpos($eredmenyek[$i]['szoveg'],$kereses[0]) !== FALSE) || (strpos($eredmenyek[$i]['cim'],$kereses[0]) !== FALSE))){
 				
 			//|| $tart != $eredmenyek[$i]['cim'] || $subsub != $eredmenyek[$i]['altartalom_url']
 			
@@ -2753,13 +2753,13 @@ class mak extends db{
 			/*
 			 * Default hírdetés
 			 */
-		
+		/*
 			$html .= '<a target="_blank" href="http://www.arceurope.com/EN/memberservices.aspx"><img class="ad" src="img/ad/arc.gif" alt="ARC europe - Show your card!" /></a>';
 			$html .= '<a target="_blank" href="http://www.erscharter.eu/"><img class="ad" src="img/ad/ersc.gif" alt="European road safety charter" /></a>';
 			$html .= '<a target="_blank" href="https://www.generali.hu/GeneraliBiztosito.aspx"><img class="ad" src="img/ad/generali.gif" alt="Generali biztosító" /></a>';
-		
+		*/
 		}else{
-		
+		/*
 			for($i = 0; $i < $hirdetes['count']; $i++){
 			
 				$html .= '<a target="_blank" href="' . $hirdetes[$i]['cel_url'] . '"><img class="ad" src="' . $this->_hirdetesDir . $hirdetes[$i]['kep'] . '" alt="' . $hirdetes[$i]['alt'] . '" /></a>';
@@ -2767,19 +2767,19 @@ class mak extends db{
 				$this->update_hirdetes_utolso_mutatas($hirdetes[$i]['id']);
 			
 			}
-		
+		*/
 		}
 
 		/*
 		 * Facebook social plugin
 		 */
 		
-		$html .= '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFrontline-m%25C3%25A9dia-Kft%2F134495689944678&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=black&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px; background:white; margin: 0 auto; display: block;" allowTransparency="true"></iframe>';
+		//$html .= '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFrontline-m%25C3%25A9dia-Kft%2F134495689944678&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=black&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px; background:white; margin: 0 auto; display: block;" allowTransparency="true"></iframe>';
 	
 		/*
 		 * Twitter plugin
 		 */
-		
+		/*
 		$html .= '<script src="http://widgets.twimg.com/j/2/widget.js"></script>';
 		$html .= "<script>
 				new TWTR.Widget({
@@ -2811,7 +2811,7 @@ class mak extends db{
 				  }
 				}).render().setUser('cultofmac').start();
 				</script>";
-		
+		*/
 		return $html;
 		
 	}
@@ -3134,7 +3134,8 @@ class mak extends db{
 		
 		$form = str_replace("%nev%",$nev,$form);
 		
-		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/lib/php/otpwebshop/web_demo/pdf/visszaigazolas.php',$form);
+		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/lib/php/otpwebshop/web_demo/mak_otp_test_process.php',$form);
+		//$form = str_replace("%backUrl%",'http://sfvm104.serverfarm.hu/webprjkt/otpwebshop/web_demo/mak_otp_test_process.php',$form);
 		
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
 		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);
