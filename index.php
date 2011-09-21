@@ -43,11 +43,9 @@ autoklub,mak
 
 <?php startblock('promo-slider') ?>
 <div id="leftSlider">
-<h2>Segélyszolgálat</h2>
-<p>Ingyenesen hívható telefonszám. <br /> A nap 24 órájában rendelkezésre állunk!</p>
-<div id="hivoszam" class="white">
-	
-</div>
+	<h2>Segélyszolgálat</h2>
+	<p>Ingyenesen hívható telefonszám. <br /> A nap 24 órájában rendelkezésre állunk!</p>
+	<div id="hivoszam" class="white"></div>
 </div>
 <div id="rightSlider">
 <div class="glow">
