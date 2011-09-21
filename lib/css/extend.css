@@ -2,13 +2,6 @@
 	color:#0080B0;
 }
 
-#content{
-	width: 660px;
-	float: left;
-	padding: 55px 45px 55px 30px;
-	overflow: hidden;
-}
-
 #content form{
 	color: #1c1c1c;
 	padding-top: 20px;
@@ -104,7 +97,7 @@
 	padding: 10px;
 	overflow: hidden;
 	position:relative;
-	height:50px;
+	height:24px;
 }
 
 #content form .info{
@@ -147,6 +140,8 @@ span.sum{
 	float:left;	
 	text-align:center;
 	margin-top:15px;
+	overflow: visible !important;
+	height: 50px !important;
 }
 
 #modechoose label{
@@ -240,4 +235,14 @@ span.sum{
 .timeleft{
 	float:none;
 	width:auto;
+}
+
+#modechoose{
+	position:relative;
+}
+
+#modechoose label.error{
+	position:absolute;
+	top:50px;
+	right:5px;
 }
