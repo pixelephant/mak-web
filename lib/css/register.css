@@ -147,6 +147,8 @@ span.sum{
 	float:left;	
 	text-align:center;
 	margin-top:15px;
+	overflow: visible !important;
+	height: 50px !important;
 }
 
 #modechoose label{
