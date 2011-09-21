@@ -14,7 +14,6 @@ Autóklub platina: #797E82;
 	margin:20px;
 }
 
-
 .floatleft{
 	float:left;
 	padding:10px;
@@ -534,7 +533,7 @@ li.active_menu > span a{
 	color:#FFD400 !important;
 }
 
-ul.ldd_menu{
+.ldd_menu{
 	width: 975px;
 	height:45px;
 	list-style:none;
@@ -543,19 +542,19 @@ ul.ldd_menu{
 	z-index: 5;
 	position: relative;
 }
-ul.ldd_menu a{
+.ldd_menu a{
 	text-decoration:none;
 }
-ul.ldd_menu > li{
+.ldd_menu > li{
 	float:left;
 	position: relative;
 }
 
-ul.ldd_menu > li.active > span a{
+.ldd_menu > li.active > span a{
 	color:#FFD400;
 }
 
-ul.ldd_menu > li > span{
+.ldd_menu > li > span{
 	float:left;
 	color: #DAE0D4;
 	height:45px;
@@ -565,22 +564,23 @@ ul.ldd_menu > li > span{
 	padding-left: 37px;
 	padding-right: 10px;
 }
-ul.ldd_menu > li:hover{
+.ldd_menu > li:hover{
 	background:#2E2E2E;
 }
 
-ul.ldd_menu > li:hover >span a{
+.ldd_menu > li:hover >span a{
 	color:#FFD400;
 }
 
-ul.ldd_menu > li > span a{
+.ldd_menu > li > span a{
 	color: #DAE0D4;
 }
-ul.ldd_menu .ldd_submenu .arrow{
+
+.ldd_menu .ldd_submenu .arrow{
 	background: url(../../img/menu-arrow.png) 13px 0 no-repeat;
 	height: 7px;
 }
-ul.ldd_menu .ldd_submenu{
+.ldd_menu .ldd_submenu{
 	height: auto;
 	position:absolute;
 	top:38px;
@@ -591,7 +591,7 @@ ul.ldd_menu .ldd_submenu{
 	z-index: 5;
 	width: 540px;
 }
-ul.ldd_menu .ldd_submenu .in{
+.ldd_submenu .in{
 	background-color: #20201E;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#20201E), to(#797E82)); 
 	background-image: -webkit-linear-gradient(top, #20201E, #797E82); 
@@ -606,14 +606,14 @@ ul.ldd_menu .ldd_submenu .in{
 	border: 1px solid #797E82;
 	border-top:none;
 }
-ul.ldd_menu ul{
+.ldd_menu ul{
 	list-style:none;
 	float:left;
 	width: 170px;
 	background: url(../../img/menu-sep.png) repeat-y right; 
 	padding-bottom:15px;
 }
-ul.ldd_menu ul:last-child{
+.ldd_menu ul:last-child{
 	background:none;
 }
 li.ldd_heading{
@@ -639,27 +639,30 @@ li.ldd_heading{
 .ldd_submenu li{
 	padding:0 15px;
 }
-ul.ldd_menu ul li a{
+
+.ldd_menu ul li a{
 	font-size:12px;
 	line-height:20px;
 	color:#0080B0;
 	padding:1px 3px;
 	color:white;
 }
-ul.ldd_menu ul li a:before{
+
+.ldd_menu ul li a:before{
 	content : "‣ ";
 	color: white;
 	font-size: 12px;
 }
-ul.ldd_menu ul li a:hover{
+
+.ldd_menu ul li a:hover{
 	
 }
 
-li.ldd_heading a{
+.ldd_heading a{
 	color:black !important;
 }
 
-li.ldd_heading a:before{
+.ldd_heading a:before{
 	content : " " !important;
 	color: black !important;
 }
