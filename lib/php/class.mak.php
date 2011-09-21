@@ -3112,6 +3112,12 @@ class mak extends db{
 		
 		$adat = $this->get_felhasznalo($cond,$col);
 		
+		$fizuz = '';
+		if(isset($_GET['status']) && $_GET['status'] == 'failed'){
+			$fizuz = 'A banki felület hibát jelzett a fizetés során!';
+		}
+		$form = str_replace("%fizetesUzenet%",$fizuz,$form);
+		
 		if($adat[0]['rendszam'] != ''){
 			$form = str_replace("%rendszam%",substr($adat[0]['rendszam'],0,3) . "-" . substr($adat[0]['rendszam'],3),$form);
 		}else{
