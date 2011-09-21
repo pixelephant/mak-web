@@ -119,6 +119,7 @@ section .full p{
     text-decoration: none;
     text-shadow: 1px 1px 0px yellow;
     margin: 0 15px;
+	border:1px solid black;
 }
 
 

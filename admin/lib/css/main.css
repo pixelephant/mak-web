@@ -2,30 +2,56 @@ body{
 	font-family: "Myriad Pro",Arial,sans-serif;
 }
 
-#headerwrap{
-	height: 130px;
-	background: #FED205;
+.header-outer{
+	  background-color: #FFD400;
+	  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd400), to(#F2BE00)); 
+	  background-image: -webkit-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:    -moz-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:     -ms-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:      -o-linear-gradient(top, #ffd400, #F2BE00); 
+	  background-image:         linear-gradient(top, #ffd400, #F2BE00);
+	  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffd400', EndColorStr='#F2BE00'); 
+}
+
+.header-wrap .hr{
+	clear: both;
+	width: 100%;
+	background: url(../../img/header-loop.png) repeat-x center;
+	height: 17px;
+}
+
+.wrapper{
+	width:980px;
+	margin:0 auto;
 }
 
 header{
-	overflow: hidden;
-	width: 980px;
-	margin: 0 auto;
-	padding: 10px;
-	height: 130px;
+	height: 80px;
+	padding: 15px;
+	width: 945px;
+	position: relative;
 }
 
-header h1{
-	height: 120px;
-	line-height: 120px;
-	font-size: 30px;
-	color: #1c1c1c;
+header h1 a{
+	font-size: 20px;
+	font-weight: bold;
+	height: 80px;
+	padding-left: 90px;
+	background: url(../../img/logo.png) no-repeat left center;
+	line-height: 80px;
 	float: left;
+	text-decoration: none;
+	color: #1c1c1c;
 }
 
-header a{
-	float: right;
-	color: #1c1c1c;
+header h1 a span{
+	display: block;
+	position: relative;
+	top: -56px;
+	left: 92px;
+	font-style: italic;
+	font-size: 15px;
+	font-weight: normal;
 }
 
 nav{

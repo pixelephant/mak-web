@@ -1240,39 +1240,3 @@ li.heading.travel{
 #poll-container{
 	float: left;	
 }
-
-
-/*oldaltérkép*/
-
-li.kategoria a{
-	text-decoration:none;
-	color:#1c1c1c;
-}
-
-li.kategoria a:hover{
-	color:#0080B0;
-}
-
-li.kategoria{
-	font-size:24px;
-	margin-bottom:30px;
-}
-
-li.kategoria ul{
-	font-size:12px;
-	overflow:hidden;
-}
-
-li.kategoria ul li.almenu{
-	float:left;
-	width:330px;
-	margin-bottom:30px;
-}
-
-li.kategoria ul li.almenu a{
-	font-size:16px;
-}
-
-li.kategoria ul li.almenu ul li.tartalom a{
-	font-size:12px;
-}
