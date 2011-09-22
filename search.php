@@ -72,7 +72,7 @@ if(isset($_POST['advanced-search-input'])){
 					<input type="text" name="advanced-search-input" id="advanced-search-input" value="<?php echo $search; ?>" />
 					<input class="yellow-button" type="submit" value="Keresés" />
 					<div>
-						Válasszon ki egy vagy több kategóriát, ahol keresni szeretne!<br />
+						<p class="choose">Válasszon ki egy vagy több kategóriát, ahol keresni szeretne!</p>
 						<?php echo $main->render_search_checkbox(); ?>
 					</div>
 				</form>

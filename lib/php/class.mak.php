@@ -1960,7 +1960,7 @@ class mak extends db{
 					$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" /></div>';
 				}
 				
-				if($tar == 'profilszerkesztes'){
+				if($tar == 'profil'){
 					$tartalom[$i]['szoveg'] = $this->adatmodosito_template($tartalom[$i]['szoveg']);
 				}
 				
@@ -2065,7 +2065,7 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		$html = '';
+		$html = '<div class="fullside"><p>Az Autósélet a Magyar Autóklub színes autós magazinja, amely a klubtagok rendszeres, autózással és utazással kapcsolatos tájékoztatását szolgálja. A lap folyamatosan foglalkozik a klub szolgáltatásaival, rendezvényeivel, a klubtagok érdekvédelmével, a hazai autósélet aktuális témáival - egyebek között a biztosítás, a vám, az autóimport, az alkatrészellátás kérdéseivel. Mindezek mellett rendszeres autótesztekkel igyekszik segítséget adni a klubtagok autóvásárlásaihoz.</p></div>';
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 			
@@ -2680,11 +2680,11 @@ class mak extends db{
 			$html .= '<li class="first"><a href="">Főoldal</a></li>';
 			
 			if($kategoria != ''){
-				$html .= '<li><a href="szervizpontok">Szervízpontok</a></li>';
+				$html .= '<li><a href="szervizpontok">Szervíz Pontok</a></li>';
 			}
 			
 			if($almenu != ''){
-				$html .= '<li><a>Szervízpont</a></li>';
+				$html .= '<li><a>Szervíz Pont</a></li>';
 			}
 			
 			$html .= '</ul>';
@@ -2761,13 +2761,13 @@ class mak extends db{
 			/*
 			 * Default hírdetés
 			 */
-		/*
+		
 			$html .= '<a target="_blank" href="http://www.arceurope.com/EN/memberservices.aspx"><img class="ad" src="img/ad/arc.gif" alt="ARC europe - Show your card!" /></a>';
 			$html .= '<a target="_blank" href="http://www.erscharter.eu/"><img class="ad" src="img/ad/ersc.gif" alt="European road safety charter" /></a>';
 			$html .= '<a target="_blank" href="https://www.generali.hu/GeneraliBiztosito.aspx"><img class="ad" src="img/ad/generali.gif" alt="Generali biztosító" /></a>';
-		*/
+		
 		}else{
-		/*
+		
 			for($i = 0; $i < $hirdetes['count']; $i++){
 			
 				$html .= '<a target="_blank" href="' . $hirdetes[$i]['cel_url'] . '"><img class="ad" src="' . $this->_hirdetesDir . $hirdetes[$i]['kep'] . '" alt="' . $hirdetes[$i]['alt'] . '" /></a>';
@@ -2775,25 +2775,25 @@ class mak extends db{
 				$this->update_hirdetes_utolso_mutatas($hirdetes[$i]['id']);
 			
 			}
-		*/
+		
 		}
 
 		/*
 		 * Facebook social plugin
 		 */
 		
-		//$html .= '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFrontline-m%25C3%25A9dia-Kft%2F134495689944678&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=black&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px; background:white; margin: 0 auto; display: block;" allowTransparency="true"></iframe>';
+		$html .= '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFrontline-m%25C3%25A9dia-Kft%2F134495689944678&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=black&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px; background:white; margin: 0 auto; display: block;" allowTransparency="true"></iframe>';
 	
 		/*
 		 * Twitter plugin
 		 */
-		/*
+		
 		$html .= '<script src="http://widgets.twimg.com/j/2/widget.js"></script>';
 		$html .= "<script>
 				new TWTR.Widget({
 				  version: 2,
 				  type: 'profile',
-				  rpp: 3,
+				  rpp: 1,
 				  interval: 30000,
 				  width: 200,
 				  height: 200,
@@ -2819,7 +2819,7 @@ class mak extends db{
 				  }
 				}).render().setUser('cultofmac').start();
 				</script>";
-		*/
+		
 		return $html;
 		
 	}

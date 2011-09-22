@@ -114,7 +114,8 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('ad') ?>
 <?php 
-	//echo $main->render_hirdetes($page,$subpage,$tartalom,$subsubpage);
+	echo $main->render_hirdetes($page,$subpage,$tartalom,$subsubpage);
+	echo $main->render_poll();
 ?>
 <?php endblock() ?>
 
