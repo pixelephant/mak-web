@@ -56,6 +56,8 @@ article section .leftside{
 
 .fullside p{
 	margin:5px 0;
+	float:none;
+	width:100%;
 }
 
 .fullside .mak-table{
