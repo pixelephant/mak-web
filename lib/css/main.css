@@ -286,7 +286,7 @@ header h1 a span{
 	left: 92px;
 	font-style: italic;
 	font-size: 15px;
-	font-weight: normal;
+	font-weight: bold;
 }
 
 
@@ -1133,10 +1133,18 @@ li.heading.travel{
 	background-color: #0080B0;
 }
 
+.mak-table.yellow thead tr{
+	background-color: #FFD400;
+}
+
 .mak-table thead th{
 	font-size:16px;
 	padding:8px;
 	color:white;
+}
+
+.mak-table.yellow thead th{
+	color:#1c1c1c;
 }
 
 #compare thead th{
@@ -1150,6 +1158,11 @@ li.heading.travel{
 	padding:7px;	
 	background-color: #D3E1F0;
 }
+
+.mak-table.yellow td{
+	background-color: #F8DE91;
+}
+
 .mak-table td.odd{	
 	background-color: #E4E9F0;
 	font-style:italic;   
