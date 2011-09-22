@@ -15,10 +15,8 @@ $main = new mak(false);
 if(isset($_GET['status']) && $_GET['status'] == 'success'){
 
 	$adat['befizetes_datuma'] = date("Y-m-d");
-	$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
+	//$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
 	$adat['statusz'] = '01';
-	
-	$cond['id'] = $_SESSION['user_id'];
 	
 	$a = $main->update_felhasznalo($adat,$cond);
 

@@ -1538,6 +1538,14 @@ class mak extends db{
 		
 		//Validálás vége
 		
+		if(isset($felhasznalo_array['ervenyesseg_datuma'])){
+			$felhasznalo_array['ervenyesseg_datuma'] = $this->date_dash($felhasznalo_array['ervenyesseg_datuma']);
+		}
+		
+		if(isset($felhasznalo_array['befizetes_datuma'])){
+			$felhasznalo_array['befizetes_datuma'] = $this->date_dash($felhasznalo_array['befizetes_datuma']);
+		}
+		
 		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
 		
 		if($validate === TRUE && $validate2){

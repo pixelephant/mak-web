@@ -18,3 +18,7 @@ Require valid-user
     RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ sub.php?page=$1&subpage=$2&tartalom=$3
     RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ sub.php?page=$1&subpage=$2
 	RewriteRule ^([a-zA-Z0-9_-]+)$ sub.php?page=$1
+	
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+		Header set Expires "Thu, 15 Apr 2012 20:00:00 GMT"
+	</FilesMatch>

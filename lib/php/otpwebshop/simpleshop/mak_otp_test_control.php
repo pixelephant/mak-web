@@ -298,7 +298,7 @@ function processDirectedToBackUrl($doRedirect = true) {
                         array("0" => urlencode($posId),
                               "1" => urlencode($tranzAzon),
                               "2" => urlencode($tranzAdatok->getAuthorizaciosKod()),
-                        		"3" => urlencode($nev)));
+                        		"3" => urlencode($osszeg)));
                     if ($doRedirect) RequestUtils::includeOrRedirect($successAnswerPage);
                 }
                 else if ("VISSZAUTASITOTTFIZETES" == $responseCode) {
