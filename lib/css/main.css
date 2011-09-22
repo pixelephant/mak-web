@@ -1293,3 +1293,13 @@ li.heading.travel{
 #szervizpont-data .link{
 	font-style: italic;
 }
+
+/*Rejtegetés*/
+
+.oldalterkep .head,.kapcsolat .head,.magunkrol .head,.mediaajanlat .head,.impresszum .head{
+	display:none;
+}
+
+.oldalterkep aside h2,.kapcsolat aside h2,.magunkrol aside h2,.mediaajanlat aside h2,.impresszum aside h2{
+	display:none;
+}
