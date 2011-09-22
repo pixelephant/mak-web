@@ -64,7 +64,7 @@ article section .leftside{
 
 .fullside h3{
 	font-size: 18px;
-	margin: 15px 0;
+	margin: 30px 0 15px 0;
 }
 
 .fullside ul{
@@ -116,14 +116,22 @@ aside h3{
 
 
 aside .links{
-	margin-left: 28px;
+	margin-left: 30px;
 	margin-bottom: 25px;
 	font-size: 14px;
-	color: #5A4A42;
+	color: #5A4A42;     
+}
+
+aside .links a{
+	padding-left:13px;  
 }
 
 .subsub{
 	padding-left:10px;
+}
+
+aside .links li{
+	padding-right:10px;
 }
 
 aside .links li:before{
@@ -132,30 +140,26 @@ aside .links li:before{
 	font-size: 14px;
 }
 
-
-
-aside .links a,aside h3 a{
+aside .links a, aside h3 a{
 	text-decoration: none;
 	line-height: 1.5;
 	color: #1c1c1c;
 }
 
 aside .links li.active a{
-	color:#0080B0;
-	margin-left:-2px;
+	color:#AF3A1E;     
 }
 
 aside .links li.active li a{
 	color:#1c1c1c;
-	margin-left:0px;
 }
 
 aside .links li li a:hover{
-	margin-left:-2px;
+	color:#AF3A1E;
 }
 
 aside .links a:hover{
-	margin-left:-2px;
+	color:#AF3A1E;
 }
 
 #subcontact{
@@ -165,9 +169,9 @@ aside .links a:hover{
 }
 
 #subcontact h3{
-	padding: 0;
-	margin: 0;
-font-weight: bold;
+	padding: 0 !important;
+	margin: 0 !important;
+	font-weight: bold;
 	font-size: 18px;
 }
 

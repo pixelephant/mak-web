@@ -12,8 +12,7 @@
     font-weight: bold;
     padding: 4px 24px;
     float:left;
-    margin-top:-1px;
-    height:25px;
+    height:24px;
 }
 
 #advanced-search label{
@@ -53,6 +52,7 @@
 	font-size:16px;
 	margin-bottom: 5px;
 	cursor:pointer;
+	font-weight:bold;
 }
 
 #results li div{
@@ -61,4 +61,9 @@
 
 #results .mark{
 	background: #FCF58D;
+}
+
+.choose{
+	font-size:16px;
+	margin:10px 0;
 }
