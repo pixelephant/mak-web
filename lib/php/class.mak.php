@@ -1538,6 +1538,14 @@ class mak extends db{
 		
 		//Validálás vége
 		
+		if(isset($felhasznalo_array['ervenyesseg_datuma'])){
+			$felhasznalo_array['ervenyesseg_datuma'] = $this->date_dash($felhasznalo_array['ervenyesseg_datuma']);
+		}
+		
+		if(isset($felhasznalo_array['befizetes_datuma'])){
+			$felhasznalo_array['befizetes_datuma'] = $this->date_dash($felhasznalo_array['befizetes_datuma']);
+		}
+		
 		$felhasznalo_array['ip_cim'] = sprintf("%u", ip2long($_SERVER['REMOTE_ADDR']));
 		
 		if($validate === TRUE && $validate2){
@@ -1952,7 +1960,7 @@ class mak extends db{
 					$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['alt'] . '" /></div>';
 				}
 				
-				if($tar == 'profilszerkesztes'){
+				if($tar == 'profil'){
 					$tartalom[$i]['szoveg'] = $this->adatmodosito_template($tartalom[$i]['szoveg']);
 				}
 				
@@ -2057,7 +2065,7 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		$html = '';
+		$html = '<div class="fullside"><p>Az Autósélet a Magyar Autóklub színes autós magazinja, amely a klubtagok rendszeres, autózással és utazással kapcsolatos tájékoztatását szolgálja. A lap folyamatosan foglalkozik a klub szolgáltatásaival, rendezvényeivel, a klubtagok érdekvédelmével, a hazai autósélet aktuális témáival - egyebek között a biztosítás, a vám, az autóimport, az alkatrészellátás kérdéseivel. Mindezek mellett rendszeres autótesztekkel igyekszik segítséget adni a klubtagok autóvásárlásaihoz.</p></div>';
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 			
@@ -2605,7 +2613,7 @@ class mak extends db{
 		$sql .= " OR mak_altartalom.cim LIKE '%" . $kereses[0] . "%' OR mak_altartalom.szoveg LIKE '%" . $kereses[0] . "%'";
 		$sql .= ")";
 		
-		$sql .= " ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC, mak_altartalom.sorrend";
+		$sql .= "AND mak_tartalom.regisztralt_tagnak = 0 ORDER BY mak_kategoria.sorrend ASC, mak_almenu.sorrend ASC, mak_tartalom.sorrend ASC, mak_altartalom.sorrend";
 		
 		if($advanced == '' || !isset($advanced['advanced-search-input'])){
 			$sql = preg_replace('/ AND /',' WHERE ',$sql,1);
@@ -2627,7 +2635,7 @@ class mak extends db{
 		
 		for($i = 0;$i<$eredmenyek['count'];$i++){
 
-			if($kat != $eredmenyek[$i]['azonosito'] || $sub != $eredmenyek[$i]['url']){
+			if(($kat != $eredmenyek[$i]['azonosito'] || $sub != $eredmenyek[$i]['url']) && ((strpos($eredmenyek[$i]['szoveg'],$kereses[0]) !== FALSE) || (strpos($eredmenyek[$i]['cim'],$kereses[0]) !== FALSE))){
 				
 			//|| $tart != $eredmenyek[$i]['cim'] || $subsub != $eredmenyek[$i]['altartalom_url']
 			
@@ -2672,11 +2680,11 @@ class mak extends db{
 			$html .= '<li class="first"><a href="">Főoldal</a></li>';
 			
 			if($kategoria != ''){
-				$html .= '<li><a href="szervizpontok">Szervízpontok</a></li>';
+				$html .= '<li><a href="szervizpontok">Szervíz Pontok</a></li>';
 			}
 			
 			if($almenu != ''){
-				$html .= '<li><a>Szervízpont</a></li>';
+				$html .= '<li><a>Szervíz Pont</a></li>';
 			}
 			
 			$html .= '</ul>';
@@ -2785,7 +2793,7 @@ class mak extends db{
 				new TWTR.Widget({
 				  version: 2,
 				  type: 'profile',
-				  rpp: 3,
+				  rpp: 1,
 				  interval: 30000,
 				  width: 200,
 				  height: 200,
@@ -3112,6 +3120,12 @@ class mak extends db{
 		
 		$adat = $this->get_felhasznalo($cond,$col);
 		
+		$fizuz = '';
+		if(isset($_GET['status']) && $_GET['status'] == 'failed'){
+			$fizuz = 'A banki felület hibát jelzett a fizetés során!';
+		}
+		$form = str_replace("%fizetesUzenet%",$fizuz,$form);
+		
 		if($adat[0]['rendszam'] != ''){
 			$form = str_replace("%rendszam%",substr($adat[0]['rendszam'],0,3) . "-" . substr($adat[0]['rendszam'],3),$form);
 		}else{
@@ -3124,7 +3138,18 @@ class mak extends db{
 			$form = str_replace("%gepjarmu_kora%",'',$form);
 		}
 		
-		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/lib/php/otpwebshop/web_demo/pdf/visszaigazolas.php',$form);
+		$form = str_replace("%osszeg%",$ar[$_SESSION['tagsag']],$form);
+		
+		if($adat[0]['nem'] == 'C'){
+			$nev = $adat[0]['cegnev'];
+		}else{
+			$nev = $adat[0]['vezeteknev'] . ' ' . $adat[0]['keresztnev']; 
+		}
+		
+		$form = str_replace("%nev%",$nev,$form);
+		
+		$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/lib/php/otpwebshop/web_demo/mak_otp_test_process.php',$form);
+		//$form = str_replace("%backUrl%",'http://sfvm104.serverfarm.hu/webprjkt/otpwebshop/web_demo/mak_otp_test_process.php',$form);
 		
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
 		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);

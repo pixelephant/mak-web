@@ -292,7 +292,7 @@ $main = new mak(false);
 					<input type="hidden" name="posId" value="#02299991" size="40" maxlength="15" class="text"/>
 					<input type="hidden" name="nyelvkod" value="hu" size="5" maxlength="2" class="text"/>
 					<input type="hidden" name="tranzakcioAzonosito" size="40" maxlength="32" class="text"/>
-					<input type="hidden" name="backURL" value="<?php echo 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']); ?>/lib/php/otpwebshop/web_demo/pdf/visszaigazolas.php" size="200"  class="text"/>
+					<input type="hidden" name="backURL" value="http://www.pixelephant.hu:80/projects/on-going/mak/lib/php/otpwebshop/web_demo/mak_otp_test_process.php" size="200"  class="text"/>
 					<input type="hidden" name="osszeg" id="osszeg" value="" size="40" maxlength="15" class="text"/>
 					<input type="hidden" name="uzenet" id="uzenet" value="üzenet_otphez" size="40" maxlength="15" class="text"/>
 					

@@ -1,22 +1,28 @@
 <?php 
 
-include 'lib/php/Wixel/gump.class.php';
+require 'lib/php/Wixel/gump.class.php';
+require 'lib/php/class.db.php';
+require 'lib/php/class.mak.php';
 
-include 'lib/php/class.db.php';
-include 'lib/php/class.mak.php';
-
-error_reporting(0);
+session_start();
 
 $main = new mak(false);
 
-if(isset($_POST['search'])){
-	$search = trim($_POST['search']);
-}
+/*
+ * Sikeres fizetés
+ */
 
-if(isset($_POST['advanced-search-input'])){
-	$search = trim($_POST['advanced-search-input']);
-}
+if(isset($_GET['status']) && $_GET['status'] == 'success'){
 
+	$adat['befizetes_datuma'] = date("Y-m-d");
+	//$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
+	$adat['statusz'] = '01';
+	
+	$a = $main->update_felhasznalo($adat,$cond);
+
+	$uzenet = 'Sikeres bankkártyás fizetés!';
+
+}
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
@@ -31,13 +37,13 @@ if(isset($_POST['advanced-search-input'])){
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
-		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
-		<title>Keresés - Magyar Autóklub</title>		
+		
+		<title>Bank kártyás fizetés - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
 		<link rel="stylesheet" href="lib/css/sub.css" />
-		<link rel="stylesheet" href="lib/css/advanced.css" />
 		<link rel="stylesheet" href="lib/smoothness/style.css" />
+		<link rel="stylesheet" href="lib/css/register.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
 	<body id="register">
@@ -51,12 +57,13 @@ if(isset($_POST['advanced-search-input'])){
 		</div>
 	<nav>
 		<?php
-			echo $main->render_felso_menu();
+			echo $main->render_felso_menu('');
 		?>
 	</nav>
 	<section id="main" class="wrapper">
 		<aside>
 			<?php include "newsletter.php" ?>
+			<h2 id="">Bankkártyás fizetés</h2>
 			<div id="subcontact">
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
@@ -64,36 +71,18 @@ if(isset($_POST['advanced-search-input'])){
 			<?php include "ad.php" ?>
 		</aside>
 		<section id="content">
-		<article>
-			<h1>Keresési találatok</h1>
-			<article>
-				<div id="advanced-search">
-				<form id="advanced-search-form" action="" method="POST">
-					<input type="text" name="advanced-search-input" id="advanced-search-input" value="<?php echo $search; ?>" />
-					<input class="yellow-button" type="submit" value="Keresés" />
-					<div>
-						<p class="choose">Válasszon ki egy vagy több kategóriát, ahol keresni szeretne!</p>
-						<?php echo $main->render_search_checkbox(); ?>
-					</div>
-				</form>
-			</div>
-			<ul id="results">
-				<?php echo $main->render_search_results($search,$_POST); ?>
-			</ul>
-			</article>
-		</article>					
+			<h1>Bankkártyás fizetés</h1>
+			<p><?php echo $uzenet;?></p>
 		</section>
 	</section>
 	<?php include "cta.php" ?>
 	<footer>
-		<div class="footerIn">
-			<div class="wrapper">
-				<div id="footerNav">
-					<?php echo $main->render_also_menu();?>
-				</div>
+		<div class="wrapper">
+			<div id="footerNav">
+				<?php 
+					echo $main->render_also_menu();
+				?>
 			</div>
-		</div>
-		<div id="fotterMiscWrap">
 			<div id="footerMisc">
 				<?php include 'footer.php';?>
 			</div>
@@ -117,3 +106,6 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 		</script>
 	</body>
 </html>
+<?php 
+$main->close();
+?>
