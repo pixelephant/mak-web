@@ -7,13 +7,11 @@ Autóklub platina: #797E82;
 
 */
 
-
 /* Egyéb apróságok, segédosztályok */
 
 .twtr-widget{
 	margin:20px;
 }
-
 
 .floatleft{
 	float:left;
@@ -34,9 +32,18 @@ Autóklub platina: #797E82;
 	color:#0080B0;
 }
 
+.link:hover{
+	color:#32AFC4;
+}
+
 #results .link{
 	left: 500px;
     position: relative;	
+}
+
+#results .link:before{
+	content : "> ";
+	color:#0080B0;
 }
 
 .link.hasarrow:before{
@@ -404,7 +411,6 @@ header h1 a span{
 	height: 20px;
 	line-height: 20px;
 	font-size:14px;
-	font-weight:bold;
 }
 
 #loginform input[type='text'],#loginform input[type='password']{
@@ -439,7 +445,6 @@ header h1 a span{
 	line-height: 20px;
 	margin-left: 10px;
 	margin-top: 10px;
-	font-style:italic;
 }
 
 #chl input[type="checkbox"]{
@@ -448,12 +453,10 @@ header h1 a span{
 }
 
 #loginform a{
-	font-style: italic;
 	color: #0080B0;
 	float: right;
 	text-decoration: none;
 	float: right;
-	font-weight:bold;
 	font-size:14px;
 }
 
@@ -474,8 +477,8 @@ header h1 a span{
 
 #login-error label.error{
 	float: none;
+	font-weight:bold;
 	position: static;
-	font-style: italic;
 	font-size: 13px;
 }
 
@@ -534,7 +537,7 @@ li.active_menu > span a{
 	color:#FFD400 !important;
 }
 
-ul.ldd_menu{
+.ldd_menu{
 	width: 975px;
 	height:45px;
 	list-style:none;
@@ -543,19 +546,19 @@ ul.ldd_menu{
 	z-index: 5;
 	position: relative;
 }
-ul.ldd_menu a{
+.ldd_menu a{
 	text-decoration:none;
 }
-ul.ldd_menu > li{
+.ldd_menu > li{
 	float:left;
 	position: relative;
 }
 
-ul.ldd_menu > li.active > span a{
+.ldd_menu > li.active > span a{
 	color:#FFD400;
 }
 
-ul.ldd_menu > li > span{
+.ldd_menu > li > span{
 	float:left;
 	color: #DAE0D4;
 	height:45px;
@@ -565,22 +568,23 @@ ul.ldd_menu > li > span{
 	padding-left: 37px;
 	padding-right: 10px;
 }
-ul.ldd_menu > li:hover{
+.ldd_menu > li:hover{
 	background:#2E2E2E;
 }
 
-ul.ldd_menu > li:hover >span a{
+.ldd_menu > li:hover >span a{
 	color:#FFD400;
 }
 
-ul.ldd_menu > li > span a{
+.ldd_menu > li > span a{
 	color: #DAE0D4;
 }
-ul.ldd_menu .ldd_submenu .arrow{
+
+.ldd_menu .ldd_submenu .arrow{
 	background: url(../../img/menu-arrow.png) 13px 0 no-repeat;
 	height: 7px;
 }
-ul.ldd_menu .ldd_submenu{
+.ldd_menu .ldd_submenu{
 	height: auto;
 	position:absolute;
 	top:38px;
@@ -591,7 +595,7 @@ ul.ldd_menu .ldd_submenu{
 	z-index: 5;
 	width: 540px;
 }
-ul.ldd_menu .ldd_submenu .in{
+.ldd_submenu .in{
 	background-color: #20201E;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#20201E), to(#797E82)); 
 	background-image: -webkit-linear-gradient(top, #20201E, #797E82); 
@@ -606,14 +610,14 @@ ul.ldd_menu .ldd_submenu .in{
 	border: 1px solid #797E82;
 	border-top:none;
 }
-ul.ldd_menu ul{
+.ldd_menu ul{
 	list-style:none;
 	float:left;
 	width: 170px;
 	background: url(../../img/menu-sep.png) repeat-y right; 
 	padding-bottom:15px;
 }
-ul.ldd_menu ul:last-child{
+.ldd_menu ul:last-child{
 	background:none;
 }
 li.ldd_heading{
@@ -634,32 +638,33 @@ li.ldd_heading{
 	margin-bottom: 15px;
 }
 
-
-
 .ldd_submenu li{
 	padding:0 15px;
 }
-ul.ldd_menu ul li a{
+
+.ldd_menu ul li a{
 	font-size:12px;
 	line-height:20px;
 	color:#0080B0;
 	padding:1px 3px;
 	color:white;
 }
-ul.ldd_menu ul li a:before{
+
+.ldd_menu ul li a:before{
 	content : "‣ ";
 	color: white;
 	font-size: 12px;
 }
-ul.ldd_menu ul li a:hover{
-	
+
+.ldd_menu ul li a:hover{
+	color:#ffd400;
 }
 
-li.ldd_heading a{
+.ldd_heading a{
 	color:black !important;
 }
 
-li.ldd_heading a:before{
+.ldd_heading a:before{
 	content : " " !important;
 	color: black !important;
 }
@@ -672,8 +677,8 @@ li.ldd_heading a:before{
 	-moz-box-shadow: 0 1px 9px #4D4D4D; 
 	-webkit-box-shadow: 0 1px 9px #4D4D4D; 
 	box-shadow: 0 1px 9px #4D4D4D; 
-	margin-top: 40px;
-	position: relative;
+	margin-top: 10px;
+	position: relative;        
 }
 
 aside{
@@ -977,11 +982,9 @@ aside img.ad{
 #breadcrumb li{
 	float: left;
 	list-style: none;
-	margin: 0 3px;
-	padding: 0 3px;
 }
 #breadcrumb li:before{
-	content : "‣ ";
+	content : "‣";
 }
 #breadcrumb li.first:before{
 	content: "";
@@ -990,6 +993,11 @@ aside img.ad{
 	text-decoration: none;
 	color: #1c1c1c;
 	font-size: 12px;
+	padding:0 10px;    
+}
+
+#breadcrumb li a:hover{
+	color:#0080B0;
 }
 
 /*Lábléc*/
@@ -1024,12 +1032,25 @@ footer{
 #footerNav ul li.heading{
 	font-size: 14px;
 	margin-bottom: 30px;
+	padding-left:0px;
 }
+
+#footerNav ul li.heading a{
+	padding-left: 2px;
+	position: relative;
+	top: 2px;
+}
+
 #footerNav ul li{
 	margin: 6px 0;
 	list-style-position: inside;
-	padding-left: 6px;
+	padding-left: 8px;
 }
+
+#footerNav ul li a{
+	padding-left:10px;
+}
+
 #footerNav ul li:before{
 	content : "‣ ";
 	color: #1c1c1c;
@@ -1042,7 +1063,7 @@ footer{
 	color: #3B2314;
 }
 #footerNav a:hover{
-	color: black;
+	color: #AF3A1E;  
 }
 li.heading{
 	height: 22px;
@@ -1090,6 +1111,9 @@ li.heading.travel{
 	font-size: 12px;
 }
 
+#footerMisc a:hover{
+	color:black;
+}
 
 /*Táblázat design*/
 
@@ -1111,8 +1135,7 @@ li.heading.travel{
 
 .mak-table thead th{
 	font-size:16px;
-	font-weight: bold;
-	padding:10px;
+	padding:8px;
 	color:white;
 }
 
@@ -1125,11 +1148,11 @@ li.heading.travel{
 }
 .mak-table td{
 	padding:7px;	
-	background-color: #DBE5EF;
+	background-color: #D3E1F0;
 }
 .mak-table td.odd{	
-	background-color: #E8E9EB;
-	font-style:italic;
+	background-color: #E4E9F0;
+	font-style:italic;   
 }
 .mak-table tbody tr{
 	border-top:1px solid #919598;
@@ -1229,6 +1252,7 @@ li.heading.travel{
 #pollChoices span.color3{
 	background:blue;
 }
+
 #poll-container .yellow-button{
 	color:#1c1c1c;
 	padding:10px;
@@ -1239,4 +1263,43 @@ li.heading.travel{
 
 #poll-container{
 	float: left;	
+}
+
+/*Szervízpontok*/
+
+#map{
+	height:388px;
+	width:648px;
+	padding:5px;
+	background: white;
+	border:1px solid #ccc;
+}
+
+#szervizpont-data{
+	font-size: 14px;
+	margin:15px 0;
+}
+
+#szervizpont-data p{
+	margin:5px 0;
+	font-size: 16px !important;
+}
+
+#szervizpont-data span{
+	font-style: italic;
+	font-weight: bold;
+}
+
+#szervizpont-data .link{
+	font-style: italic;
+}
+
+/*Rejtegetés*/
+
+.oldalterkep .head,.kapcsolat .head,.magunkrol .head,.mediaajanlat .head,.impresszum .head{
+	display:none;
+}
+
+.oldalterkep aside h2,.kapcsolat aside h2,.magunkrol aside h2,.mediaajanlat aside h2,.impresszum aside h2{
+	display:none;
 }

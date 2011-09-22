@@ -234,35 +234,7 @@ if(isset($_POST['advanced-search-input'])){
 			</div>
 			
 			
-			<div id="jatek">
-				<div id="jatek-bg">
-					A játék indításához kattintson a start gombra.
-					<img src="img/jatek/1.png" data-correct="1" alt="" />
-					<img src="img/jatek/2.png" data-correct="2" alt="" />
-					<img src="img/jatek/3.png" data-correct="3" alt="" />
-					<img src="img/jatek/4.png" data-correct="4" alt="" />
-					<img src="img/jatek/5.png" data-correct="5" alt="" />
-				</div>
-				<div id="jatek-bar">
-					<div id="endscore">
-						Játék vége. A játék során <span></span> helyes választ adott.
-					</div>
-					<div id="choices">
-						<select name="choice-select" id="choice-select">
-							<option value="1">Egyes szám</option>
-							<option value="2">Kettes szám</option>
-							<option value="3">Hármas szám</option>
-							<option value="4">Négyes szám</option>
-							<option value="5">Ötös szám</option>
-						</select>
-						<button id="tipp" class="yellow-button">Ok</button>
-					</div>
-					<div id="score">
-						<button class="yellow-button" id="startgame">Start</button>
-						<span id="currentscore">Helyes válaszok : <span>0</span></span>
-					</div>
-				</div>
-			</div>
+			
 			
 			
 			<div id="poll-container">

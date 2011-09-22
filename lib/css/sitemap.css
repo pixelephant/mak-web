@@ -10,19 +10,24 @@ li.kategoria a:hover{
 }
 
 li.kategoria{
-	font-size:24px;
+	font-size:20px;
 	margin-bottom:30px;
 }
 
 li.kategoria ul{
 	font-size:12px;
 	overflow:hidden;
+	padding-left:18px;
+}
+
+li.kategoria ul li ul{
+	padding-left:0;
 }
 
 li.kategoria ul li.almenu{
 	float:left;
-	width:330px;
-	margin-bottom:30px;
+	width:255px;
+	margin-bottom:10px;    
 }
 
 li.kategoria ul li.almenu a{
