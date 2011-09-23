@@ -255,3 +255,16 @@ span.sum{
 	float:none;
 	width:auto;
 }
+
+.resp{
+    height: 35px;
+    line-height: 35px;
+	float:right;
+}
+
+.resp .error{
+	position:static;
+	line-height:35px;
+	display: inline !important;
+	float: none !important;
+}
