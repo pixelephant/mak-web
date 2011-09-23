@@ -1,8 +1,10 @@
 #register aside h3{
-	padding:5px 5px 5px 52px;
+	padding:5px 5px 5px 42px;
 	margin-left:0px;
 	font-size:16px;          
 }
+
+    
 
 #register aside h3.active{
 	color:#1c1c1c;

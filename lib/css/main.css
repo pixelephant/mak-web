@@ -1211,10 +1211,8 @@ li.heading.travel{
 /*szavazás*/
 
 #poll-container{
-	margin-top: 40px;
-	margin-left: 20px;
-	width: 200px;
 	background:white;
+	width:340px;
 }
 
 #poll-container h3{
@@ -1227,14 +1225,12 @@ li.heading.travel{
 
 #pollChoices{
 	background: white;
-	padding:10px;
 	padding-right: 0;
 	border-bottom:1px solid #0080B0;
 }
 
 #pollChoices div{
 	padding: 5px;
-	padding-right: 0;
 	overflow: hidden;
 }
 
@@ -1242,7 +1238,7 @@ li.heading.travel{
 	font-size:16px;
 	width: 100px;
 	display:block;
-	float: left;
+	float: left;      
 }
 
 #pollChoices.result label{
