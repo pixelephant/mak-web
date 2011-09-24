@@ -1316,7 +1316,7 @@ li.heading.travel{
 
 /*Rejtegetés*/
 
-.oldalterkep .head,.kapcsolat .head,.magunkrol .head,.mediaajanlat .head,.impresszum .head{
+.kapcsolat .head,.magunkrol .head,.mediaajanlat .head,.impresszum .head{
 	display:none;
 }
 
