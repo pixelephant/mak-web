@@ -9,6 +9,16 @@ Autóklub platina: #797E82;
 
 /* Egyéb apróságok, segédosztályok */
 
+span.error{
+	color:red;
+	font-size:11px;
+}
+
+span.success{
+	color:green;
+	font-size:11px;
+}
+
 .twtr-widget{
 	margin:20px;
 }
@@ -713,11 +723,11 @@ aside{
 	width:64px;
 	font-weight: bold;
 	position:relative;
-	top:-1px;
+	top:1px;
 }
 
 #search input[type="submit"]:hover{
-	top:0px;
+	top:2px;
 }
 
 /*Hírlevél sáv*/
@@ -1138,9 +1148,10 @@ li.heading.travel{
 }
 
 .mak-table thead th{
-	font-size:16px;
-	padding:8px;
-	color:white;
+	color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;     
 }
 
 .mak-table.yellow thead th{
@@ -1200,10 +1211,8 @@ li.heading.travel{
 /*szavazás*/
 
 #poll-container{
-	margin-top: 40px;
-	margin-left: 20px;
-	width: 200px;
 	background:white;
+	width:340px;
 }
 
 #poll-container h3{
@@ -1216,14 +1225,12 @@ li.heading.travel{
 
 #pollChoices{
 	background: white;
-	padding:10px;
 	padding-right: 0;
 	border-bottom:1px solid #0080B0;
 }
 
 #pollChoices div{
 	padding: 5px;
-	padding-right: 0;
 	overflow: hidden;
 }
 
@@ -1231,7 +1238,7 @@ li.heading.travel{
 	font-size:16px;
 	width: 100px;
 	display:block;
-	float: left;
+	float: left;      
 }
 
 #pollChoices.result label{

@@ -1,7 +1,7 @@
 /* Összetett keresés */
 
 #advanced-search input[type="text"]{
-	width: 475px;
+	width: 455px;
 	height: 20px;
 	float: left;
 	margin-right:3px;
@@ -66,4 +66,5 @@
 .choose{
 	font-size:16px;
 	margin:10px 0;
+	font-weight:bold;
 }

@@ -148,8 +148,12 @@ aside .links a, aside h3 a{
 	color: #1c1c1c;
 }
 
+aside h3 a:hover,aside h3 a.active{
+	font-weight:bold;  
+}
+
 aside .links li.active a{
-	color:#AF3A1E;     
+	font-weight:bold;
 }
 
 aside .links li.active li a{
@@ -157,11 +161,11 @@ aside .links li.active li a{
 }
 
 aside .links li li a:hover{
-	color:#AF3A1E;
+	font-weight:bold;
 }
 
 aside .links a:hover{
-	color:#AF3A1E;
+	font-weight:bold;
 }
 
 #subcontact{
