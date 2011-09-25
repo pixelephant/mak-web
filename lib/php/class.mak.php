@@ -466,11 +466,28 @@ class mak extends db{
 		 * más esetben nem használunk kizárólag numerikus karaktereket
 		 * az aloldal meghatározására
 		 */		
+	
+		$table = 'mak_almenu';
+		$col = 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.keywords AS keywords,mak_almenu.description AS description,mak_almenu.css AS css,mak_almenu.javascript AS javascript';
+		$cond['mak_almenu.url'] = $url;
+	
+		$a = $this->sql_select($table,$col,$cond);
 		
+		$parameterek = $a[0];
+				
+		return $parameterek;
 		
-		if(is_numeric($url)){
+	}
+
+	public function get_altartalom_parameterek_urlbol($aloldal_url){
+	
+		if($aloldal_url == ''){
+			return FALSE;
+		}
 		
-			$a = $this->get_szervizpont_idbol($url);
+		if(is_numeric($aloldal_url)){
+		
+			$a = $this->get_traveliroda_idbol($aloldal_url);
 
 			$parameterek = $a[0];
 			
@@ -484,34 +501,16 @@ class mak extends db{
 			
 		}else{
 		
-			$table = 'mak_almenu';
-			$col = 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.keywords AS keywords,mak_almenu.description AS description,mak_almenu.css AS css,mak_almenu.javascript AS javascript';
-			$cond['mak_almenu.url'] = $url;
-		
+			$table = 'mak_altartalom';
+			$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
+			$cond['mak_altartalom.url'] = $aloldal_url;
+			
 			$a = $this->sql_select($table,$col,$cond);
 			
-			$parameterek = $a[0];
-			
-		}
-		
-		return $parameterek;
-		
-	}
-
-	public function get_altartalom_parameterek_urlbol($aloldal_url){
-	
-		if($aloldal_url == ''){
-			return FALSE;
-		}
-		
-		$table = 'mak_altartalom';
-		$col = 'mak_altartalom.title AS title,mak_altartalom.keywords AS keywords,mak_altartalom.description AS description,mak_altartalom.css AS css,mak_altartalom.javascript AS javascript';
-		$cond['mak_altartalom.url'] = $aloldal_url;
-		
-		$a = $this->sql_select($table,$col,$cond);
-		
 		$parameterek = $a[0];
 	
+		}
+		
 		return $parameterek;
 	
 	}
@@ -522,13 +521,30 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		$table = 'mak_tartalom';
-		$col = 'mak_tartalom.cim AS title,mak_tartalom.keywords AS keywords,mak_tartalom.description AS description,mak_tartalom.css AS css,mak_tartalom.javascript AS javascript';
-		$cond['mak_tartalom.url'] = $aloldal_url;
+		if(is_numeric($url)){
 		
-		$a = $this->sql_select($table,$col,$cond);
+			$a = $this->get_szervizpont_idbol($url);
+
+			$parameterek = $a[0];
+			
+			$parameterek['h1'] = 'Travel iroda - ' . $a[0]['cim'];
+			
+			$kw = explode(" ",$a[0]['cim']);
+			$kws = implode(",",$kw);
+			
+			$parameterek['keywords'] = 'szervizpont,' . $kws;
+			$parameterek['description'] = 'Részletes információk az alábbi címen található Travel irodáról: ' . $a[0]['cim'];
+		}else{
 		
-		$parameterek = $a[0];
+			$table = 'mak_tartalom';
+			$col = 'mak_tartalom.cim AS title,mak_tartalom.keywords AS keywords,mak_tartalom.description AS description,mak_tartalom.css AS css,mak_tartalom.javascript AS javascript';
+			$cond['mak_tartalom.url'] = $aloldal_url;
+			
+			$a = $this->sql_select($table,$col,$cond);
+			
+			$parameterek = $a[0];
+			
+		}
 		
 		return $parameterek;
 	
@@ -2105,20 +2121,20 @@ class mak extends db{
 		$html = '<div id="map"></div>';
 		$html .= '<br />';
 		$html .= '<table class="mak-table"><thead><tr><th colspan="3">Travel irodák</th></tr></thead><tfoot colspan="2"><tr><td></td></tr></tfoot><tbody>
-		<tr><td>Travel iroda 1.</td><td><a class="link" href="travel/travel/irodak/1">1132 Budapest, Visegrádi u. 17.</a></td><td>1/237-1940</td></tr>
-		<tr><td>Travel iroda 2.</td><td><a class="link" href="travel/travel/irodak/2">1024 Budapest, Rómer Flóris u. 8.</a></td><td>1/345-1700</td></tr>
-		<tr><td>Travel iroda 3.</td><td><a class="link" href="travel/travel/irodak/3">1119 Budapest, Etele út 69. /a</a></td><td>1/464-7560</td></tr>
-		<tr><td>Travel iroda 4.</td><td><a class="link" href="travel/travel/irodak/4">6722 Szeged, Bartók Béla tér 6.</a></td><td>62/420-133</td></tr>
-		<tr><td>Travel iroda 5.</td><td><a class="link" href="travel/travel/irodak/5">5600 Békéscsaba, Szarvasi út 82.</a></td><td>66/325-653</td></tr>
-		<tr><td>Travel iroda 6.</td><td><a class="link" href="travel/travel/irodak/6">4400 Nyíregyháza, Dózsa Gy. u. 9. fsz. 2.</a></td><td>42/504-330</td></tr>
-		<tr><td>Travel iroda 7.</td><td><a class="link" href="travel/travel/irodak/7">4024 Debrecen, Simonffy u. 4. Halköz üzletház 29/1</a></td><td>52/530-324</td></tr>
-		<tr><td>Travel iroda 8.</td><td><a class="link" href="travel/travel/irodak/8">3530 Miskolc, Győri kapu 32.</a></td><td>46/412-942</td></tr>
-		<tr><td>Travel iroda 9.</td><td><a class="link" href="travel/travel/irodak/9">3300 Eger, Jókai u. 5.</a></td><td>36/516-231</td></tr>
-		<tr><td>Travel iroda 10.</td><td><a class="link" href="travel/travel/irodak/10">7624 Pécs, Ferencesek u. 22.</a></td><td>72/324-729</td></tr>
-		<tr><td>Travel iroda 11.</td><td><a class="link" href="travel/travel/irodak/11">8000 Székesfehérvár, József A. u. 2/a.</a></td><td>22/312-787</td></tr>
-		<tr><td>Travel iroda 12.</td><td><a class="link" href="travel/travel/irodak/12">8900 Zalaegerszeg, Alsóerdei u. 3/a</a></td><td>92/511-830</td></tr>
-		<tr><td>Travel iroda 13.</td><td><a class="link" href="travel/travel/irodak/13">9027 Győr, Tompa u. 2.</a></td><td>96/517-275</td></tr>
-		<tr><td>Travel iroda 14.</td><td><a class="link" href="travel/travel/irodak/14">1043 Budapest, Berda József u. 15.</a></td><td>1/389-0640</td></tr></table>';
+		<tr><td>Travel iroda 1.</td><td><a class="link" href="travel/travel/iroda/1">1132 Budapest, Visegrádi u. 17.</a></td><td>1/237-1940</td></tr>
+		<tr><td>Travel iroda 2.</td><td><a class="link" href="travel/travel/iroda/2">1024 Budapest, Rómer Flóris u. 8.</a></td><td>1/345-1700</td></tr>
+		<tr><td>Travel iroda 3.</td><td><a class="link" href="travel/travel/iroda/3">1119 Budapest, Etele út 69. /a</a></td><td>1/464-7560</td></tr>
+		<tr><td>Travel iroda 4.</td><td><a class="link" href="travel/travel/iroda/4">6722 Szeged, Bartók Béla tér 6.</a></td><td>62/420-133</td></tr>
+		<tr><td>Travel iroda 5.</td><td><a class="link" href="travel/travel/iroda/5">5600 Békéscsaba, Szarvasi út 82.</a></td><td>66/325-653</td></tr>
+		<tr><td>Travel iroda 6.</td><td><a class="link" href="travel/travel/iroda/6">4400 Nyíregyháza, Dózsa Gy. u. 9. fsz. 2.</a></td><td>42/504-330</td></tr>
+		<tr><td>Travel iroda 7.</td><td><a class="link" href="travel/travel/iroda/7">4024 Debrecen, Simonffy u. 4. Halköz üzletház 29/1</a></td><td>52/530-324</td></tr>
+		<tr><td>Travel iroda 8.</td><td><a class="link" href="travel/travel/iroda/8">3530 Miskolc, Győri kapu 32.</a></td><td>46/412-942</td></tr>
+		<tr><td>Travel iroda 9.</td><td><a class="link" href="travel/travel/iroda/9">3300 Eger, Jókai u. 5.</a></td><td>36/516-231</td></tr>
+		<tr><td>Travel iroda 10.</td><td><a class="link" href="travel/travel/iroda/10">7624 Pécs, Ferencesek u. 22.</a></td><td>72/324-729</td></tr>
+		<tr><td>Travel iroda 11.</td><td><a class="link" href="travel/travel/iroda/11">8000 Székesfehérvár, József A. u. 2/a.</a></td><td>22/312-787</td></tr>
+		<tr><td>Travel iroda 12.</td><td><a class="link" href="travel/travel/iroda/12">8900 Zalaegerszeg, Alsóerdei u. 3/a</a></td><td>92/511-830</td></tr>
+		<tr><td>Travel iroda 13.</td><td><a class="link" href="travel/travel/iroda/13">9027 Győr, Tompa u. 2.</a></td><td>96/517-275</td></tr>
+		<tr><td>Travel iroda 14.</td><td><a class="link" href="travel/travel/iroda/14">1043 Budapest, Berda József u. 15.</a></td><td>1/389-0640</td></tr></table>';
 	
 		return $html;
 	
@@ -2778,6 +2794,25 @@ class mak extends db{
 			
 			if($almenu != ''){
 				$html .= '<li><a>Szerviz Pont</a></li>';
+			}
+			
+			$html .= '</ul>';
+		
+		}elseif($tartalom == 'iroda'){
+		
+			$html = '<ul id="breadcrumb">';
+			$html .= '<li class="first"><a href="">Főoldal</a></li>';
+			
+			if($kategoria != ''){
+				$html .= '<li><a href="travel">Travel</a></li>';
+			}
+			
+			if($almenu != ''){
+				$html .= '<li><a href="travel/travel">Travel</a></li>';
+			}
+			
+			if($tartalom != ''){
+				$html .= '<li><a href="travel/travel/irodak">Travel irodák</a></li>';
 			}
 			
 			$html .= '</ul>';
