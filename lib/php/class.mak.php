@@ -467,14 +467,35 @@ class mak extends db{
 		 * az aloldal meghatározására
 		 */		
 	
-		$table = 'mak_almenu';
-		$col = 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.keywords AS keywords,mak_almenu.description AS description,mak_almenu.css AS css,mak_almenu.javascript AS javascript';
-		$cond['mak_almenu.url'] = $url;
-	
-		$a = $this->sql_select($table,$col,$cond);
+		if(is_numeric($url)){
 		
-		$parameterek = $a[0];
-				
+			$a = $this->get_szervizpont_idbol($url);
+
+			$parameterek = $a[0];
+			
+			$parameterek['h1'] = 'Szerviz Pont - ' . $a[0]['cim'];
+			
+			$kw = explode(" ",$a[0]['cim']);
+			$kws = implode(",",$kw);
+			
+			$parameterek['keywords'] = 'Szerviz Pont,' . $kws;
+			$parameterek['description'] = 'Részletes információk az alábbi címen található Szerviz Pontról: ' . $a[0]['cim'];
+			
+			$parameterek['lat'] = $a[0]['lat'];
+			$parameterek['lng'] = $a[0]['lng'];
+			
+		}else{
+			
+			$table = 'mak_almenu';
+			$col = 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.keywords AS keywords,mak_almenu.description AS description,mak_almenu.css AS css,mak_almenu.javascript AS javascript';
+			$cond['mak_almenu.url'] = $url;
+		
+			$a = $this->sql_select($table,$col,$cond);
+			
+			$parameterek = $a[0];
+
+		}
+		
 		return $parameterek;
 		
 	}
@@ -491,13 +512,17 @@ class mak extends db{
 
 			$parameterek = $a[0];
 			
-			$parameterek['h1'] = 'Szervízpont - ' . $a[0]['cim'];
+			$parameterek['h1'] = 'Autoclub Travel - ' . $a[0]['cim'];
+			$parameterek['title'] = 'Autoclub Travel - ' . $a[0]['cim'];
 			
 			$kw = explode(" ",$a[0]['cim']);
 			$kws = implode(",",$kw);
 			
-			$parameterek['keywords'] = 'szervizpont,' . $kws;
-			$parameterek['description'] = 'Részletes információk az alábbi címen található Szervizpontunkról: ' . $a[0]['cim'];
+			$parameterek['keywords'] = 'travel iroda,' . $kws;
+			$parameterek['description'] = 'Részletes információk az alábbi címen található Autoclub Travel irodáról: ' . $a[0]['cim'];
+			
+			$parameterek['lat'] = $a[0]['lat'];
+			$parameterek['lng'] = $a[0]['lng'];
 			
 		}else{
 		
@@ -507,8 +532,8 @@ class mak extends db{
 			
 			$a = $this->sql_select($table,$col,$cond);
 			
-		$parameterek = $a[0];
-	
+			$parameterek = $a[0];
+		
 		}
 		
 		return $parameterek;
@@ -521,30 +546,13 @@ class mak extends db{
 			return FALSE;
 		}
 		
-		if(is_numeric($url)){
+		$table = 'mak_tartalom';
+		$col = 'mak_tartalom.cim AS title,mak_tartalom.keywords AS keywords,mak_tartalom.description AS description,mak_tartalom.css AS css,mak_tartalom.javascript AS javascript';
+		$cond['mak_tartalom.url'] = $aloldal_url;
 		
-			$a = $this->get_szervizpont_idbol($url);
-
-			$parameterek = $a[0];
-			
-			$parameterek['h1'] = 'Travel iroda - ' . $a[0]['cim'];
-			
-			$kw = explode(" ",$a[0]['cim']);
-			$kws = implode(",",$kw);
-			
-			$parameterek['keywords'] = 'szervizpont,' . $kws;
-			$parameterek['description'] = 'Részletes információk az alábbi címen található Travel irodáról: ' . $a[0]['cim'];
-		}else{
+		$a = $this->sql_select($table,$col,$cond);
 		
-			$table = 'mak_tartalom';
-			$col = 'mak_tartalom.cim AS title,mak_tartalom.keywords AS keywords,mak_tartalom.description AS description,mak_tartalom.css AS css,mak_tartalom.javascript AS javascript';
-			$cond['mak_tartalom.url'] = $aloldal_url;
-			
-			$a = $this->sql_select($table,$col,$cond);
-			
-			$parameterek = $a[0];
-			
-		}
+		$parameterek = $a[0];
 		
 		return $parameterek;
 	
