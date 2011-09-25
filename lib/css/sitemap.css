@@ -1,5 +1,9 @@
 /*oldaltérkép*/
 
+#oldalterkep-body .head{
+	background:url(../../img/aloldal/oldalterkep.jpg);
+}
+
 .kategoria{
 	font-size:20px;
 	margin-bottom:30px;
