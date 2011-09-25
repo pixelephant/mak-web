@@ -1073,7 +1073,7 @@ footer{
 	color: #3B2314;
 }
 #footerNav a:hover{
-	color: #AF3A1E;  
+	font-weight:bold;
 }
 li.heading{
 	height: 22px;
