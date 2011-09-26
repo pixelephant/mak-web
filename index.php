@@ -90,7 +90,7 @@ autoklub,mak
 				<h2>Utazzon velünk Spanyolországba!</h2>
 				<p>Madrid Spanyolország fővárosa, 3,3 millió lakosával (a külvárosokkal együtt 6,5 millió fő a lakossága) az ország legnagyobb városa, és egyben az Európai Unió harmadik legnépesebb városa (London és Berlin után).</p>
 				<ul>
-					<li><a class="link" href="http://www.autoclubtravel.hu">Ajánlat megtekintése</a></li>
+					<li><a class="link" href="http://www.autoclubtravel.hu" target="_blank">Ajánlat megtekintése</a></li>
 				</ul>
 			</div>
 			<img src="img/slider/travel.png" alt="Travel" />
@@ -106,10 +106,11 @@ autoklub,mak
 			</div>
 			<img src="img/slider/kozlbizt.png" alt="Közlekedésbiztonság" />
 		</div>
+	</div>
 	<div id="sliderNav">
 		
 	</div>
-	</div>
+</div>
 </div>
 <?php endblock() ?>
 
@@ -126,7 +127,7 @@ autoklub,mak
 <?php startblock('ad') ?>
 <?php 
 	echo $main->render_hirdetes($page,$subpage,$tartalom,$subsubpage);
-	echo $main->render_poll();
+	//echo $main->render_poll();
 ?>
 <?php endblock() ?>
 
@@ -196,7 +197,7 @@ autoklub,mak
 
 <?php startblock('breadcrumb')?>
 <?php 
-	echo $main->render_breadcrumb($page);
+	//echo $main->render_breadcrumb($page);
 ?>
 <?php endblock() ?>
 
