@@ -45,12 +45,17 @@ if($_POST['oper'] == 'add'){
 
 }
 
+/*
+ * Törlés
+ */
+
 if($_POST['oper'] == 'del'){
 
 	$adat['id'] = $_POST['id'];
 
-	echo $main->delete_felhasznalo($adat);
+	echo $main->delete_felmeres($adat);
 
 }
+
 
 ?>

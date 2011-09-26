@@ -1755,9 +1755,9 @@ class mak extends db{
 			return FALSE;
 		}
 	
-		$felhasznalo_array = GUMP::sanitize($felhasznalo_array);
+		$cond = GUMP::sanitize($cond);
 		
-		if($this->sql_delete('mak_felhaszanlo',$cond)){
+		if($this->sql_delete('mak_felhasznalo',$cond)){
 			return 'Sikeres';
 		}else{
 			return 'Sikertelen';
@@ -1771,7 +1771,7 @@ class mak extends db{
 			return FALSE;
 		}
 	
-		$felhasznalo_array = GUMP::sanitize($felhasznalo_array);
+		$cond = GUMP::sanitize($cond);
 		
 		if($this->sql_delete('mak_felmeres',$cond)){
 			return 'Sikeres';
@@ -1787,7 +1787,7 @@ class mak extends db{
 			return FALSE;
 		}
 	
-		$felhasznalo_array = GUMP::sanitize($felhasznalo_array);
+		$cond = GUMP::sanitize($cond);
 		
 		if($this->sql_delete('mak_hirdetes',$cond)){
 			return 'Sikeres';
