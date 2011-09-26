@@ -45,4 +45,12 @@ if($_POST['oper'] == 'add'){
 
 }
 
+if($_POST['oper'] == 'del'){
+
+	$adat['id'] = $_POST['id'];
+
+	echo $main->delete_felhasznalo($adat);
+
+}
+
 ?>

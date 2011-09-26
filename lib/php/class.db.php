@@ -3,9 +3,9 @@
 class db{
 
 	protected $dbhost = 'localhost';
-	protected $dbuser = 'pixeleph_pumukli';
-	protected $dbpass = 'pumukli';
-	protected $db = 'pixeleph_database';
+	protected $dbuser = 'mak';
+	protected $dbpass = '8Xs7@D7d3#83qzBR';
+	protected $db = 'mak';
 
 	public $lastInsert;
 	
@@ -261,6 +261,26 @@ class db{
 	
 	}
 	
+	protected function delete($table,$cond=''){
+	
+		$sql = "DELETE FROM " . $table;
+	
+		if($cond != ''){
+			foreach($cond as $k => $v){
+				$sql .= " AND ".$k."='".$v."'";
+			}
+		}
+		
+		$sql = preg_replace('/ AND /',' WHERE ',$sql,1);
+		
+		if($this->debug){
+			echo __CLASS__ . " -> " . __FUNCTION__ . " : " . $sql . "<br />";
+		}
+		
+		return $sql;
+	
+	}
+	
 	protected function commit(){
 		
 		$this->mysql->query('COMMIT');
@@ -324,6 +344,18 @@ class db{
 	public function sql_update($table,$col_val,$cond=''){
 	
 		$sql = $this->update($table,$col_val,$cond);
+		
+		$q = $this->query($sql);
+				
+		$a = $this->success();
+		
+		return $a;
+	
+	}
+	
+	public function sql_delete($table,$cond=''){
+	
+		$sql = $this->delete($table,$cond);
 		
 		$q = $this->query($sql);
 				
