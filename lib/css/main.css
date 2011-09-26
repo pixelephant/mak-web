@@ -457,6 +457,11 @@ header h1 a span{
 	margin-top: 10px;
 }
 
+.ie7 #chl{
+	width:126px;
+	margin-top:0px;
+}
+
 #chl input[type="checkbox"]{
 	margin:4px 10px;
 	float:right;
