@@ -51,7 +51,6 @@
 	background-image:     -ms-linear-gradient(top, #4691B0, #04739E); 
 	background-image:      -o-linear-gradient(top, #4691B0, #04739E); 
 	background-image:         linear-gradient(top, #4691B0, #04739E);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4691B0', EndColorStr='#04739E'); 
 	border-bottom:1px solid #B4B4B4;
 	margin-bottom:8px;
 }

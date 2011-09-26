@@ -79,7 +79,7 @@ article section .leftside{
 }
 
 .fullside li:before{
-	content : "‣ ";
+	content : "▸ ";
 	color:#1c1c1c;
 }
 
@@ -137,7 +137,7 @@ aside .links li{
 }
 
 aside .links li:before{
-	content : "‣  ";
+	content : "▸  ";
 	color: #1c1c1c;
 	font-size: 14px;
 }

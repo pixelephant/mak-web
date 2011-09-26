@@ -99,7 +99,7 @@
 	position:relative;
 }
 
-#content form .info{
+#content form .info,#content form .editable{
 	margin-top: 3px;
 	margin-left: 5px;
 }
@@ -189,6 +189,13 @@ span.sum{
 #content form input[type='button']:hover, #content form input[type='submit']:hover{
      position:relative;
      top:1px;
+}
+
+select{
+	    float: left;
+	    height: 24px;
+	    line-height: 24px;
+	    padding-top: 3px;
 }
 
 /*Tooltip*/

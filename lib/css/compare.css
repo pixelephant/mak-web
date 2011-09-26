@@ -13,8 +13,13 @@
 }
 
 #compare{
-	border:none;
+ 	border: 1px solid transparent;
 	width:659px;
+}
+
+.ie7 #compare{
+	border-left:none;
+	border-right:none;
 }
 
 #compare tbody{
@@ -26,7 +31,7 @@
 }
 
 #compare th{
-	line-height: 66px;     
+	line-height: 76px;     
 }
 
 #compare tfoot{
@@ -43,13 +48,11 @@
 	font-weight: bold;
 }
 
-#compare tbody td.odd{
-	background:;
+.ie7 #compare tbody td{
+	border-left:1px solid #919598;
+	border-right:1px solid #919598;
 }
 
-#compare tbody td.even{
-	background:;
-}
 
 #seged p{
 	font-size: 16px;
