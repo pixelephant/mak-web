@@ -17,6 +17,11 @@
 	width:659px;
 }
 
+.ie7 #compare{
+	border-left:none;
+	border-right:none;
+}
+
 #compare tbody{
 	border:1px solid #797E81;
 }
@@ -43,13 +48,11 @@
 	font-weight: bold;
 }
 
-#compare tbody td.odd{
-	background:;
+.ie7 #compare tbody td{
+	border-left:1px solid #919598;
+	border-right:1px solid #919598;
 }
 
-#compare tbody td.even{
-	background:;
-}
 
 #seged p{
 	font-size: 16px;

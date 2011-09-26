@@ -1194,6 +1194,12 @@ li.heading.travel{
 .mak-table tr{
 	padding:10px;
 }
+
+.ie7 .mak-table tbody td{
+	border-collapse: collapse;
+	border-top:1px solid #919598;
+}
+
 .mak-table td{
 	padding:7px;	
 	background-color: #D3E1F0;
