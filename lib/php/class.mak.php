@@ -2625,9 +2625,14 @@ class mak extends db{
 			
 				$html .= '<ul>';
 				$html .= '<li class="ldd_heading"><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				
 			}
 			
-			$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
+			if($tartalom[$i]['tartalom_url'] == 'utazasiajanlatok'){
+				$html .= '<li><a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlatok</a></li>';
+			}else{
+				$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
+			}
 			
 			if($almenu != $tartalom[$i+1]['url']){
 				$html .= '</ul>';
