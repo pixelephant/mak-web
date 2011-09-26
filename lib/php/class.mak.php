@@ -2314,7 +2314,7 @@ class mak extends db{
 		
 			$html .= '<section>';
 			$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
-			$html .= '<h3>' . $tartalom[$i]['modositas'] . ' - ' . $tartalom[$i]['kep'] . '</h3>';
+			$html .= '<h3>' . $tartalom[$i]['modositas'] . ' - ' . $tartalom[$i]['publikalta'] . '</h3>';
 			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
 			$html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['kep'] . '">';
 			$html .= '</section>';
@@ -2528,7 +2528,13 @@ class mak extends db{
 					$html .= '</ul>';
 				}
 				$almenu = $aloldalak[$i]['url'];
-				$html .= '<h3 id="' . $aloldalak[$i]['url'] . '"><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</a></h3>';
+				
+				if($aloldalak[$i]['url'] == 'assistrent'){
+					$html .= '<h3 id="assistrent"><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></h3>';
+				}else{
+					$html .= '<h3 id="' . $aloldalak[$i]['url'] . '"><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</a></h3>';					
+				}
+				
 				$html .= '<ul class="links">';	
 			}
 			
@@ -2544,7 +2550,12 @@ class mak extends db{
 				}
 				
 				$html .= '>';
-				$html .= '<a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '">' . $aloldalak[$i]['cim'] . '</a>';
+				
+				if($aloldalak[$i]['tartalom_url'] == 'assistrent'){
+					$html .= '<a href="http://www.assistrent.hu" target="_blank">Assistrent</a>';
+				}else{
+					$html .= '<a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '">' . $aloldalak[$i]['cim'] . '</a>';
+				}
 				$aloldal_azonosito = $aloldalak[$i]['id'];
 			}
 			
@@ -2624,10 +2635,22 @@ class mak extends db{
 				$almenu = $tartalom[$i]['url'];
 			
 				$html .= '<ul>';
-				$html .= '<li class="ldd_heading"><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				
+				if($tartalom[$i]['url'] == 'assistrent'){
+					$html .= '<li class="ldd_heading"><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></li>';
+				}else{
+					$html .= '<li class="ldd_heading"><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				}
+				
 			}
 			
-			$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
+			if($tartalom[$i]['tartalom_url'] == 'utazasiajanlatok'){
+				$html .= '<li><a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlatok</a></li>';
+			}elseif($tartalom[$i]['tartalom_url'] == 'assistrent'){
+				$html .= '<li><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></li>';
+			}else{
+				$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
+			}
 			
 			if($almenu != $tartalom[$i+1]['url']){
 				$html .= '</ul>';
@@ -2682,7 +2705,11 @@ class mak extends db{
 				
 				$almenu = $tartalom[$i]['url'];
 				
-				$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				if($tartalom[$i]['url'] == 'assistrent'){
+					$html .= '<li><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></li>';
+				}else{
+					$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				}
 			
 			}
 			
