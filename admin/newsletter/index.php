@@ -37,7 +37,8 @@
 
 // SCRIPT URL
 
-	$script_url = 'http://pixelephant.hu/projects/on-going/mak/newsletter/index.php';
+	$script_url = 'http://sfvm104.serverfarm.hu/mak/admin/newsletter/index.php';
+	$unsubscribe_url = 'http://sfvm104.serverfarm.hu/mak/hirlevelleiratkozas';
 
 // PASSWORD PROTECTION
 	
@@ -72,9 +73,9 @@
 // DATABASE
 	
 	$host = "localhost";
-	$user = "pixeleph_pumukli";
-	$password = "pumukli";
-	$database = "pixeleph_database";
+	$user = "mak";
+	$password = "8Xs7@D7d3#83qzBR";
+	$database = "mak";
 	
 // TABLES
 	
@@ -105,7 +106,7 @@
 
 	// Name of a template as found in folder Templates
 	// thanks to Meagan Fisher for free email template
-	$template_name = 'default';
+	$template_name = 'mak';
 
 // ***********************************************************************************************
 // HOW TO CONFIGURE OR CREATE NEW EMAIL TEMPLATE ?
@@ -321,7 +322,7 @@
 if (isset($_GET['unsubscribe']) && sql_getfield($table_emails,'id','WHERE email = '.sql_quote($_GET['unsubscribe']))) {
 		$q = "DELETE from $table_emails WHERE email = ".sql_quote($_GET['unsubscribe']);
 		mysql_query($q);
-		echo 'Your e-mail has been removed !<br />Thank You.';
+		echo 'Sikeresen leiratkozott !<br />Köszönjük.';
 		exit();
 }
 
@@ -335,6 +336,8 @@ if (is_numeric($_GET['view']))
     $newsletter_id  = $_GET['view'];
     $subject  = sql_getfield($table_sent,'subject','WHERE id = '.sql_quote($newsletter_id));
     $body  = sql_getfield($table_sent,'body','WHERE id = '.sql_quote($newsletter_id));
+    $title  = sql_getfield($table_sent,'title','WHERE id = '.sql_quote($newsletter_id));
+    $subtitle  = sql_getfield($table_sent,'subtitle','WHERE id = '.sql_quote($newsletter_id));
     
     //Template
     $template = file_get_contents('templates/'.$template_name.'/template.html');
@@ -344,6 +347,10 @@ if (is_numeric($_GET['view']))
     $template = str_replace('{{WEBVERSION}}',$script_url."?view=".$newsletter_id,$template);
     // subject 
     $template = str_replace('{{SUBJECT}}',$subject,$template);
+    // title
+    $template = str_replace('{{TITLE}}',$title,$template);
+    // subtitle
+    $template = str_replace('{{SUBTITLE}}',$subtitle,$template);
     // newsletter name
     $template = str_replace('{{NEWSLETTER_NAME}}',$your_name,$template);
     // newsletter contact
@@ -355,8 +362,8 @@ if (is_numeric($_GET['view']))
     // body
     $template = str_replace('{{MESSAGE}}',str_replace("\n",'<br />',$body),$template);
     // fix img sources to absolute path 
-    $template = str_replace('src="images','src="'.str_replace('index.php','',$script_url).'templates/'.$template_name.'/images',$template);
-    $template = str_replace("src=images'","src=".str_replace('index.php','',$script_url)."templates/".$template_name."/images",$template);
+    //$template = str_replace('src="images','src="'.str_replace('index.php','',$script_url).'templates/'.$template_name.'/images',$template);
+    //$template = str_replace("src=images'","src=".str_replace('index.php','',$script_url)."templates/".$template_name."/images",$template);
         
     echo $template;
     exit();
@@ -450,7 +457,7 @@ if ($password_protection == true) {
 			  }
 		  }
 		  else {
-			$error = 'No emails are selected !';
+			$error = 'Nincs e-mail cím kiválasztva !';
 		  }
 	
 		  echo "{";
@@ -484,14 +491,14 @@ if ($password_protection == true) {
 						}
 						else {
 							
-							$error = 'This category is protected';
+							$error = 'Védett kategória';
 							
 						}	
 				  }
 			  }
 		  }
 		  else {
-			$error = 'Nie sú označené žiadne kategórie !';
+			$error = 'Nincs kiválasztott kategória !';
 		  }
 	
 		  echo "{";
@@ -573,7 +580,7 @@ if ($password_protection == true) {
 			}
 			}
 			else {
-			  $error = 'Zadajte emailové adresy';
+			  $error = 'Írjon be e-mail címet!';
 			}
 	
 		  echo "{";
@@ -696,7 +703,11 @@ if ($password_protection == true) {
 
 		$emails = $_POST['adresses'];
 		$body = str_replace("\n","<br />",$_POST['ebody']);
+		$title = $_POST['title'];
+		$subtitle = $_POST['subtitle'];
 		$subject = $_POST['subject'];
+		
+		$template_name = $_POST['template'];
 		  
 		/* ERRORS */
 		if ($body == '')    {$error = 'Nincs üzenet !';}
@@ -707,9 +718,11 @@ if ($password_protection == true) {
 	
 			/* Save to sent newsletters */
 	
-				$q = "INSERT INTO $table_sent (time, subject, body, attachment) VALUES (
+				$q = "INSERT INTO $table_sent (time, subject, title, subtitle, body, attachment) VALUES (
 				".sql_quote(time()).",
 				".sql_quote($subject).",
+				".sql_quote($title).",
+				".sql_quote($subtitle).",
 				".sql_quote($_POST['ebody']).",
 				".sql_quote($_POST["attachment"]).")";
 				mysql_query($q);
@@ -730,6 +743,10 @@ if ($password_protection == true) {
         $template = str_replace('{{WEBVERSION}}',$script_url."?view=".$newsletter_id,$template);
         // subject 
         $template = str_replace('{{SUBJECT}}',$subject,$template);
+        // title 
+        $template = str_replace('{{TITLE}}',$title,$template);
+        // subtitle 
+        $template = str_replace('{{SUBTITLE}}',$subtitle,$template);
         // newsletter name
         $template = str_replace('{{NEWSLETTER_NAME}}',$your_name,$template);
         // newsletter contact
@@ -741,8 +758,8 @@ if ($password_protection == true) {
         // body
         $template = str_replace('{{MESSAGE}}',$body,$template);
         // fix img sources to absolute path 
-        $template = str_replace('src="images','src="'.str_replace('index.php','',$script_url).'templates/'.$template_name.'/images',$template);
-        $template = str_replace("src=images'","src=".str_replace('index.php','',$script_url)."templates/".$template_name."/images",$template);
+        //$template = str_replace('src="images','src="'.str_replace('index.php','',$script_url).'templates/'.$template_name.'/images',$template);
+        //$template = str_replace("src=images'","src=".str_replace('index.php','',$script_url)."templates/".$template_name."/images",$template);
         
         $message = $template;
         
@@ -848,7 +865,7 @@ if ($password_protection == true) {
 				$emailaddress = sql_getfield($table_emails,'email','WHERE id = '.sql_quote($value));
 
         // unsubscribe link !!!
-        $message = str_replace('{{UNSUBSCRIBE}}',$script_url."?unsubscribe=".$emailaddress,$message);
+        $message = str_replace('{{UNSUBSCRIBE}}',$unsubscribe_url."?unsubscribe=".$emailaddress,$message);
         
 				if ($use_smtp == false) 
 				{
@@ -1139,7 +1156,7 @@ if ($password_protection == true) {
 						}
 					?>
 					</select>
-					<a id="href" target="_blank" href="http://www.pixelephant.hu/projects/on-going/newsletter/templates/default/template.html">Előnézet</a>
+					<a id="href" target="_blank" href="http://sfvm104.serverfarm.hu/mak/admin/newsletter/templates/default/template.html">Előnézet</a>
 					<br />
 				</div>
 				<h2>
@@ -1155,10 +1172,22 @@ if ($password_protection == true) {
 						<input type="text" id="subject" style="width:400px;" /><br />
 						<br />
 						<h3>
+							CÍM
+						</h3><br />
+						<br />
+						<input type="text" id="title" style="width:400px;" /><br />
+						<br />
+						<h3>
+							ALCÍM
+						</h3><br />
+						<br />
+						<input type="text" id="subtitle" style="width:400px;" /><br />
+						<br />
+						<h3>
 							ÜZENET
 						</h3><br />
 						<br />
-						<textarea id="emailbody" name="emailbody" cols="40" onfocus="if (this.value=='Write your message here ...') this.value='';" rows="8" style="width:400px;">Üzenet szövege</textarea><br />
+						<textarea id="emailbody" name="emailbody" cols="40" onfocus="if (this.value=='Üzenet szövege') this.value='';" rows="8" style="width:400px;">Üzenet szövege</textarea><br />
 						<br />
 						<!-- input type="file" name="fileToUpload" id="fileToUpload" onchange="return ajaxFileUpload();" /> <input type="text" readonly="readonly" id="filename" style="color:#83B440;font-weight:bold;" value="" /><br /-->
 						<br />
@@ -1185,7 +1214,7 @@ if ($password_protection == true) {
 											echo '<h3>'.$value['subject'].'</h3><br />';
 											echo '<small>'.$value['body'].'</small><br />';
 											echo '<small style="color:#ccc;">'.date('d.m.Y',$value['time']).'</small>';
-											if(isset($value['attachment'])) {
+											if(isset($value['attachment']) && $value['attachment'] != 'undefined') {
 												
 												echo '&nbsp;&nbsp;<a style="color:#f30;text-decoration:none;" href="'.$dir.$value['attachment'].'" target="_blank"><small style="color:#f30;text-decoration:none;">'.$value['attachment'].'</small><br /></a>';
 												
@@ -1573,11 +1602,11 @@ if ($password_protection == true) {
 		});
 	
 		// CHECK IF ANY MAILS ARE SELECTED AND CONSTRUT THE QUESTION
-		if (count == 0) { alert('No emails are selected'); return false;}
-		if (count == 1) { word = 'selected e-mail ?'; count = ''}
-		if (count > 1) { word = 'selected e-mails ?';}
+		if (count == 0) { alert('Nincs e-mail cím kiválasztva'); return false;}
+		if (count == 1) { word = 'kiválasztott e-mail címet ?'; count = ''}
+		if (count > 1) { word = 'kiválasztott e-mail címet ?';}
 	
-		if (confirm('Do your really want to remove '+count+' '+word) ) {
+		if (confirm('Tényleg kitörli a(z) '+count+' '+word) ) {
 	
 			// show processing dialog
 			$('#processing').fadeIn(500);
@@ -1658,11 +1687,11 @@ if ($password_protection == true) {
 		});
 	
 		// construct a question
-		if (count == 0) { alert('Select desired category');return false;}
-		if (count == 1) { word = 'selected category ?'; count = ''}
-		if (count > 1 ) { word = 'selected categories ?';}
+		if (count == 0) { alert('Válasszon kategóriát');return false;}
+		if (count == 1) { word = 'kiválasztott kategóriát ?'; count = ''}
+		if (count > 1 ) { word = 'kiválasztott kategóriát ?';}
 	
-		if (confirm('Do you really want to delete '+word) ) {
+		if (confirm('Tényleg kitörli a '+word) ) {
 	
 			$.post("index.php", {
 	
@@ -1684,7 +1713,7 @@ if ($password_protection == true) {
 	function sendmail() {
 	  $('#processing').fadeIn(500);
 	  $.post("index.php", {
-			  action: 'sendmail', sendto: sendto, attachment: $('#filename').val(), subject: $('#subject').val(), ebody: $('#emailbody').val(), adresses: adresses }, function(response){
+			  action: 'sendmail', sendto: sendto, template: $("option:selected").attr("value"), attachment: $('#filename').val(), subject: $('#subject').val(), title: $('#title').val(), subtitle: $('#subtitle').val(), ebody: $('#emailbody').val(), adresses: adresses }, function(response){
 
 				var response = eval('(' + response + ')');
 				if (response.error != '') {alert(response.error);}
@@ -1709,7 +1738,7 @@ if ($password_protection == true) {
 		// template preview
 			$("#template_selector").click(function() {
 				var a = $("option:selected").attr("value");
-				var url = "http://www.pixelephant.hu/projects/on-going/newsletter/templates/";
+				var url = "http://sfvm104.serverfarm.hu/mak/admin/newsletter/templates/";
 				var finalUrl = url + a + "/" + "template.html";
 				  $("#href").attr("href", finalUrl);
 			});
