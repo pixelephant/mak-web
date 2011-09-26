@@ -1747,6 +1747,56 @@ class mak extends db{
 	
 	}
 	
+	//DELETE
+	
+	public function delete_felhasznalo($cond=''){
+	
+		if(!is_array($cond) && $cond != ''){
+			return FALSE;
+		}
+	
+		$cond = GUMP::sanitize($cond);
+		
+		if($this->sql_delete('mak_felhasznalo',$cond)){
+			return 'Sikeres';
+		}else{
+			return 'Sikertelen';
+		}	
+		
+	}
+
+	public function delete_felmeres($cond=''){
+	
+		if(!is_array($cond) && $cond != ''){
+			return FALSE;
+		}
+	
+		$cond = GUMP::sanitize($cond);
+		
+		if($this->sql_delete('mak_felmeres',$cond)){
+			return 'Sikeres';
+		}else{
+			return 'Sikertelen';
+		}	
+		
+	}
+	
+	public function delete_hirdetes($cond=''){
+	
+		if(!is_array($cond) && $cond != ''){
+			return FALSE;
+		}
+	
+		$cond = GUMP::sanitize($cond);
+		
+		if($this->sql_delete('mak_hirdetes',$cond)){
+			return 'Sikeres';
+		}else{
+			return 'Sikertelen';
+		}	
+		
+	}
+	
 	//RENDER
 
 	public function render_aloldal_section_default($tart){
