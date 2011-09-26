@@ -2314,7 +2314,7 @@ class mak extends db{
 		
 			$html .= '<section>';
 			$html .= '<h2>' . $tartalom[$i]['cim'] . '</h2>';
-			$html .= '<h3>' . $tartalom[$i]['modositas'] . ' - ' . $tartalom[$i]['kep'] . '</h3>';
+			$html .= '<h3>' . $tartalom[$i]['modositas'] . ' - ' . $tartalom[$i]['publikalta'] . '</h3>';
 			$html .= '<p>' . $tartalom[$i]['szoveg'] . '</p>';
 			$html .= '<img src="' . $this->_hirekDir . $tartalom[$i]['kep'] . '" alt="' . $tartalom[$i]['kep'] . '">';
 			$html .= '</section>';
@@ -2624,12 +2624,19 @@ class mak extends db{
 				$almenu = $tartalom[$i]['url'];
 			
 				$html .= '<ul>';
-				$html .= '<li class="ldd_heading"><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				
+				if($tartalom[$i]['almenu'] == 'assistrent'){
+					$html .= '<li class="ldd_heading"><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></li>';
+				}else{
+					$html .= '<li class="ldd_heading"><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				}
 				
 			}
 			
 			if($tartalom[$i]['tartalom_url'] == 'utazasiajanlatok'){
 				$html .= '<li><a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlatok</a></li>';
+			}elseif($tartalom[$i]['tartalom_url'] == 'assistrent'){
+				$html .= '<li><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></li>';
 			}else{
 				$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['tartalom_url'] . '">' . $tartalom[$i]['cim'] . '</a></li>';
 			}
@@ -2687,7 +2694,11 @@ class mak extends db{
 				
 				$almenu = $tartalom[$i]['url'];
 				
-				$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				if($tartalom[$i]['almenu'] == 'assistrent'){
+					$html .= '<li><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></li>';
+				}else{
+					$html .= '<li><a href="' . $kategoria . '/' . $tartalom[$i]['url'] . '">' . $tartalom[$i]['almenu'] . '</a></li>';
+				}
 			
 			}
 			
