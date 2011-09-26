@@ -472,17 +472,15 @@ header h1 a span{
 
 #forgotten{
 	font-size: 13px !important;
-	float: right;
 	display:block;
 	position: relative;
-	left: 12px;
-	top: -5px;
+	top: 4px;
 }
 
 #login-error{
 	overflow:hidden;
 	padding-left: 120px;
-	margin-top: -20px;
+	margin-top: -10px;
 }
 
 #login-error label.error{
@@ -500,6 +498,10 @@ header h1 a span{
 	font-size: 13px;
 }
 
+#firsttime{
+	overflow: hidden;
+	padding-top: 10px;
+}
 
 /*Menüsor*/
 
@@ -654,14 +656,13 @@ li.ldd_heading{
 
 .ldd_menu ul li a{
 	font-size:12px;
-	line-height:20px;
 	color:#0080B0;
 	padding:1px 3px;
 	color:white;
 }
 
 .ldd_menu ul li a:before{
-	content : "‣ ";
+	content : "▸ ";
 	color: white;
 	font-size: 12px;
 }
@@ -712,11 +713,6 @@ aside{
 	padding-left:20px;
 }
 
-.ie7 #search input[type="submit"],.ie8 #search input[type="submit"]{
-	position:relative;
-	top:2px;
-}
-
 #search input[type="submit"]{
 	height:24px;
 	margin-left: 3px;
@@ -729,6 +725,17 @@ aside{
 #search input[type="submit"]:hover{
 	top:2px;
 }
+
+.ie7 #search input[type="submit"],.ie8 #search input[type="submit"]{
+	position:relative;
+	top:0px;
+}
+
+.ie7 #search input[type="submit"]:hover,.ie8 #search input[type="submit"]:hover;{
+	position:relative;
+	top:1px;
+}
+
 
 /*Hírlevél sáv*/
 
@@ -908,6 +915,16 @@ aside img.ad{
 	margin: 6px 0;
 }
 
+.ie7 #ctaWrap ul{
+	padding-top:30px;
+	padding-bottom:0;
+}
+
+.ie7 #ctaWrap ul li{
+	line-height:1.1;
+	margin:15px;
+}
+
 #ctaWrap div.a{
 	float: left;
 	width: 305px;
@@ -924,7 +941,6 @@ aside img.ad{
 
 #ctaWrap a span{
 	float: left;
-	line-height:1.2;
 	margin-right: 10px;
 }
 
@@ -934,6 +950,8 @@ aside img.ad{
 	background: url(../../img/right_02.png) no-repeat;
 	display: block;
 	float: left;
+	position:relative;
+	top:3px;
 }
 
 /*Lapozgató*/
@@ -994,7 +1012,7 @@ aside img.ad{
 	list-style: none;
 }
 #breadcrumb li:before{
-	content : "‣";
+	content : "▸";
 }
 #breadcrumb li.first:before{
 	content: "";
@@ -1033,6 +1051,12 @@ footer{
 	margin-top: 65px;
 	margin-bottom: 15px;
 }
+
+.ie7 .footer-sep{
+	margin-top:57px;
+	margin-bottom:0px;
+}
+
 #footerNav ul{
 	width: 171px;
 	float: left;
@@ -1062,7 +1086,7 @@ footer{
 }
 
 #footerNav ul li:before{
-	content : "‣ ";
+	content : "▸ ";
 	color: #1c1c1c;
 }
 #footerNav ul li.heading:before{

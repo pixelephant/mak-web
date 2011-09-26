@@ -17,7 +17,7 @@
 #jatek-bar{
 	height:45px;
 	background:white;
-	line-height:40px;
+	padding-top:5px;
 	border-top:1px solid;
 }
 
@@ -41,13 +41,12 @@
 
 #startgame{
 	float:right;
-	margin-top: 9px;
 	margin-right: 10px;
 }
 
 #currentscore{
 	height: 45px;
-	line-height: 45px;
+	padding-top:5px;
 	text-align: center;
 	float: left;
 	display: none;

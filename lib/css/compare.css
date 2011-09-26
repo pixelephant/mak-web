@@ -13,7 +13,7 @@
 }
 
 #compare{
-	border:none;
+ 	border: 1px solid transparent;
 	width:659px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 #compare th{
-	line-height: 66px;     
+	line-height: 76px;     
 }
 
 #compare tfoot{

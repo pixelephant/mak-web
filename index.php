@@ -109,7 +109,8 @@ autoklub,mak
 	<div id="sliderNav">
 		
 	</div>
-	</div>
+</div>
+</div>
 </div>
 <?php endblock() ?>
 
@@ -195,9 +196,6 @@ autoklub,mak
 <?php endblock() ?>
 
 <?php startblock('breadcrumb')?>
-<?php 
-	echo $main->render_breadcrumb($page);
-?>
 <?php endblock() ?>
 
 <?php startblock('cta')?>
