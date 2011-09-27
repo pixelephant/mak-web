@@ -23,7 +23,7 @@ $main = new mak(false);
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
-		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
+		<base href="http://sfvm104.serverfarm.hu/mak/" />
 		<title>Regisztráció - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
@@ -203,7 +203,7 @@ $main = new mak(false);
 					<div class="row">
 						<label for="email">Email cím</label>
 						<input class="required email" type="text" name="email" id="email" />
-						<img src="img/info.png" alt="" class="info" title="Ezen a címen fogjuk a kapcsolatot tartani Önnel, valamint ezzel tud majd a Saját Autóklubomba belépni." />
+						<img src="img/info.png" alt="" class="info" title="Ezen a címen fogjuk a kapcsolatot tartani Önnel, valamint ezzel tud majd az Én Autóklubomba belépni." />
 					</div>
 					<!-- >div class="row">
 						<label for="phone">Telefonszám</label>
@@ -240,15 +240,15 @@ $main = new mak(false);
 					<h3>Tagsági szint <span class="sum"></span></h3>
 					<div class="row">
 						<label for="diszkontMember">Diszkont tagság</label>
-						<input data-price="1 000 Ft/év" type="radio" name="membership" id="diszkontMember" />
+						<input data-price="1000" type="radio" name="membership" id="diszkontMember" />
 					</div>
 					<div class="row">
 						<label for="standardMember">Standard tagság</label>
-						<input data-price="10 000 Ft/év" type="radio" name="membership" id="standardMember" />
+						<input data-price="10000" type="radio" name="membership" id="standardMember" />
 					</div>
 					<div class="row">
 						<label for="komfortMember">Komfort tagság</label>
-						<input data-price="100 000 Ft/év" type="radio" name="membership" id="komfortMember" />
+						<input data-price="100000" type="radio" name="membership" id="komfortMember" />
 					</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>
@@ -319,9 +319,10 @@ $main = new mak(false);
 					<input type="hidden" name="posId" value="#02299991" size="40" maxlength="15" class="text"/>
 					<input type="hidden" name="nyelvkod" value="hu" size="5" maxlength="2" class="text"/>
 					<input type="hidden" name="tranzakcioAzonosito" size="40" maxlength="32" class="text"/>
-					<input type="hidden" name="backURL" value="http://www.pixelephant.hu:80/projects/on-going/mak/lib/php/otpwebshop/web_demo/mak_otp_test_process.php" size="200"  class="text"/>
+					<input type="hidden" name="backURL" value="http://sfvm104.serverfarm.hu/mak/lib/php/otp/web_demo/mak_otp_test_process.php" class="text"/>
 					<input type="hidden" name="osszeg" id="osszeg" value="" size="40" maxlength="15" class="text"/>
 					<input type="hidden" name="uzenet" id="uzenet" value="üzenet_otphez" size="40" maxlength="15" class="text"/>
+					<input type="hidden" name="name" id="name" value=" " size="40" class="text"/>
 					
 				</fieldset>
 				<fieldset id="chequeDetails" class="detail">
