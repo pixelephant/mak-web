@@ -296,7 +296,7 @@ $main = new mak(false);
 				</fieldset>
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
 			</form>
-			<form id="paymentform" action="http://sfvm104.serverfarm.hu/webprjkt/otpwebshop/web_demo/mak_otp_test_process.php" method="get" class="step4">
+			<form id="paymentform" action="http://sfvm104.serverfarm.hu/mak/lib/php/otp/web_demo/mak_otp_test_process.php" method="get" class="step4">
 				<h2>4. lépés - Fizetési mód kiválasztása</h2>
 				<fieldset id="modechoose">
 					<h3>Mód választása</h3>
