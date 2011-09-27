@@ -12,12 +12,12 @@ class mak extends db{
 
 	public function __construct($debug=false){
 		parent::__construct('','','','','',$debug);
-		
+		/*
 		if(isset($_COOKIE['user_id']) && isset($_COOKIE['tagsag']) && isset($_COOKIE['keresztnev'])){
 			$_SESSION['user_id'] = $_COOKIE['user_id'];
 			$_SESSION['tagsag'] = $_COOKIE['tagsag'];
 			$_SESSION['keresztnev'] = $_COOKIE['keresztnev'];
-		}
+		}*/
 	}
 
 	//SELECT
@@ -898,6 +898,20 @@ class mak extends db{
 		
 		if($col == ''){
 			$col = 'id,cim,szoveg,kep,alt,publikalta,modositas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+	
+	public function get_hirlevel_email($email){
+	
+		$table = 'mak_hirlevel';
+		
+		$cond['email'] = $email;
+		
+		if($col == ''){
+			$col = 'id';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
