@@ -10,7 +10,7 @@ session_start();
 <html class="no-js" lang="en">
 	<!--<![endif]-->
 	<head>
-		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
+		<base href="http://sfvm104.serverfarm.hu/mak/" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -27,33 +27,36 @@ session_start();
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
 	<body class="<?php startblock('body-class') ?><?php endblock() ?>" id="<?php startblock('body-id') ?><?php endblock() ?>-body" <?php startblock('body-data') ?><?php endblock() ?>>
-		<div id="loginModal" class="reveal-modal">
-			<form id="loginform" action="#">
-					<h2>Bejelentkezés</h2>
-					<div class="hr"></div>
-			        	<div id="login-form-inner">
-			        		<div class="row">
-			        		<label for="loginEmail">Email cím</label>
-				            <input type="text" name="loginEmail" class="required email" id="loginEmail" />
-							</div>
-							<div class="row">
-								<label for="loginPassword">Jelszó</label>
-								<input class="required" type="password" name="loginPassword" id="loginPassword" />
-								<a id="forgotten" href="#">Elfelejtett a jelszavát?</a>
-							</div>
-							<div id="login-error"></div>
-			        	</div>
-			        <div class="hr"></div>
-					<div class="bottomrow">
-						<input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
-				        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
-						<div id="firsttime">
-							<a href="regisztralok">Először jár nálunk? Regisztráljon!</a>
+	<div id="loginModal" class="reveal-modal">
+		<form id="loginform" action="#">
+				<h2>Bejelentkezés</h2>
+				<div class="hr"></div>
+		        	<div id="login-form-inner">
+		        		<div class="row">
+
+		        		<label for="loginEmail">Email cím</label>
+			            <input type="text" name="loginEmail" class="required email" id="loginEmail" />
 						</div>
+						<div class="row">
+							<label for="loginPassword">Jelszó</label>
+							<input class="required" type="password" name="loginPassword" id="loginPassword" />
+							<a id="forgotten" href="#">Elfelejtett a jelszavát?</a>
+
+						</div>
+						<div id="login-error"></div>
+		        	</div>
+		        <div class="hr"></div>
+				<div class="bottomrow">
+					<input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
+			        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
+					<div id="firsttime">
+
+						<a href="regisztralas">Először jár nálunk? Regisztráljon!</a>
 					</div>
-			</form>
-			<a class="close-reveal-modal">&#215;</a>
-		</div>
+				</div>
+		</form>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">

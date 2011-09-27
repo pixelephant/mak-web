@@ -12,7 +12,13 @@ if($email == ''){
 	return false;
 }
 
-echo $main->insert_hirlevel($email);
+$a = $main->insert_hirlevel($email);
+
+if($a == 'Sikeres'){
+	echo '<span class="success">Sikeres feliratkozás!</span>';
+}else{
+	echo '<span class="error">Sikertelen feliratkozás!</span>';
+}
 
 $main->close();
 

@@ -47,7 +47,7 @@ session_start();
 						<input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
 				        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 						<div id="firsttime">
-							<a href="regisztralok">Először jár nálunk? Regisztráljon!</a>
+							<a href="regisztralas">Először jár nálunk? Regisztráljon!</a>
 						</div>
 					</div>
 			</form>
