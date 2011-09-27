@@ -241,7 +241,7 @@ class mak extends db{
 		
 		
 		$col = 'mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,';
-		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_almenu.szoveg AS almenu_szoveg,';
+		$col .= 'mak_almenu.url AS almenu_url,mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_almenu.szoveg AS almenu_szoveg,';
 		$col .= 'mak_altartalom.id AS altartalom_id,mak_altartalom.cim AS altartalom_cim,mak_altartalom.szoveg AS altartalom_szoveg,mak_altartalom.kep AS altartalom_kep,mak_altartalom.alt AS altartalom_alt,mak_altartalom.publikalta AS altartalom_publikalta,';
 		$col .= 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_tartalom.url AS tartalom_url,mak_altartalom.url AS altartalom_url,';
 		$col .= 'mak_tartalom.publikalta AS publikalta';
@@ -1812,6 +1812,7 @@ class mak extends db{
 		$galeria = '';
 		$html = '';
 		$tartalom_url = '';
+		$asd = '';
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
@@ -1821,7 +1822,7 @@ class mak extends db{
 		
 			if($tartalom_url != $tartalom[$i]['url'] && $tartalom[$i]['almenu_szoveg'] != ''){
 				$html .= '<section id="' . $tartalom[$i]['azonosito'] . '">';
-				$html .= '<h2>'.$tartalom[$i]['almenu'].'</h2>';
+				//$html .= '<h2>'.$tartalom[$i]['almenu'].'</h2>';
 				
 				if($tartalom[$i]['almenu_kep'] != ''){
 					$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['almenu_kep'] . '" alt="' . $tartalom[$i]['almenu_alt'] . '" /></div>';
@@ -1853,8 +1854,13 @@ class mak extends db{
 				 */
 				
 			}
-			if($tartalom[$i]['szoveg'] != ''){
+			
+			
+			
+			if($tartalom[$i]['szoveg'] != '' && $tartalom[$i]['tartalom_url'] != $asd){
 
+				$asd = $tartalom[$i]['tartalom_url'];
+			
 				$html .= '<section id="' . $tartalom[$i]['id'] . '">';
 				$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
 				
@@ -2118,7 +2124,7 @@ class mak extends db{
 				
 				$html .= '<p>'.$this->betekinto($tartalom[$i]['altartalom_szoveg']).'</p>';
 				
-				$html .= '<a class="link hasarrow" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['almenu'] . '/' . $tartalom[$i]['tartalom_url'] . '/' . $tartalom[$i]['altartalom_url'] . '">Bővebben</a>';
+				$html .= '<a class="link hasarrow" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['almenu_url'] . '/' . $tartalom[$i]['tartalom_url'] . '/' . $tartalom[$i]['altartalom_url'] . '">Bővebben</a>';
 				
 				$html .= '</section>';
 			

@@ -54,7 +54,7 @@ $main = new mak(false);
 						<input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
 				        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
 						<div id="firsttime">
-							<a href="regisztralok">Először jár nálunk? Regisztráljon!</a>
+							<a href="regisztralas">Először jár nálunk? Regisztráljon!</a>
 						</div>
 					</div>
 			</form>
@@ -134,7 +134,7 @@ $main = new mak(false);
 					<div class="row">
 						<label for="coZip">Székhely irányítószáma</label>
 						<input class="zip digits" size="4" minlength="4" maxlength="4" type="text" name="coZip" id="coZip" />
-						<label id="coZipError" class="error" style="display: none;">Nem valós irányítószám!</label>>
+						<label id="coZipError" class="error" style="display: none;">Nem valós irányítószám!</label>
 					</div>
 					<div class="row">
 						<label for="coCity">Székhely települése</label>
@@ -145,12 +145,16 @@ $main = new mak(false);
 						<input type="text" name="coAddress" id="coAddress" />
 					</div>
 					<div class="row">
-						<label for="coCoFName">Kapcsolattartó vezetékneve</label>
+						<label for="coCoFName">Kapcsolattartó neve</label>
 						<input type="text" name="coCoFName" id="coCoFName" />
 					</div>
-					<div class="row">
+					<!-- >div class="row">
 						<label for="coCoLName">Kapcsolattartó keresztneve</label>
 						<input type="text" name="coCoLName" id="coCoLName" />
+					</div-->
+					<div class="row">
+						<label for="coCoFName">Kapcsolattartó elérhetősége</label>
+						<input type="text" name="coCoContact" id="coCoContact" />
 					</div>
 				</fieldset>
 				
@@ -217,7 +221,7 @@ $main = new mak(false);
 					<div class="row">
 						<label for="pass">Jelszó</label>
 						<input class="required" minlength="5" type="password" name="pass" id="pass" />
-						<img src="img/info.png" alt="" class="info" title="Ezzel a jelszóval tud majd a Saját Autóklubomba belépni." />
+						<img src="img/info.png" alt="" class="info" title="Ezzel a jelszóval tud majd az Én Autóklubomba belépni." />
 					</div>
 					<div class="row">
 						<label for="passRe">Jelszó újra</label>
@@ -337,6 +341,7 @@ $main = new mak(false);
 					<h3>Bankkártyás fizetés <span class="sum"></span></h3>
 					<div class="row">Átirányítjuk...</div>
 				</fieldset>
+				<span id="message"></span>
 				<input type="submit" value="Véglegesítés" />
 			</form>		
 		</section>
