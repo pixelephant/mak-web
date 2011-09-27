@@ -56,4 +56,30 @@ if($_POST['oper'] == 'del'){
 	echo $main->delete_felhasznalo($adat);
 
 }
+
+/*
+ * Nem szerkeszthető listázás
+ */
+
+if($_POST['action'] == 'getuser'){
+	
+	$cond['id'] = $_POST['id'];
+	
+	$a = $main->get_felhasznalo($cond);
+	
+	if($a === FALSE){
+		echo 'Sikertelen';
+	}else{
+	
+		$valasz = '';
+		foreach($a[0] as $nev => $ertek){
+			$html .= $nev . ": " . $ertek;
+		}
+		
+		echo $html;
+	
+	}
+
+}
+
 ?>

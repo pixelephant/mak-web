@@ -5,7 +5,7 @@ $(function(){
     mtype: 'POST',
     colNames:['Id','Tagsági szám','Nem', 'Születési dátum','Anyja neve','Előnév','Vezetéknév','Keresztnév',
               'Állandó irányítószám','Állandó helység','Állandó közterület','Állandó házszám',
-              'Levelezési irányítószám','Levelezési helység','Levelezési küzterület','Levelezési házszám',
+              'Levelezési irányítószám','Levelezési helység','Levelezési közterület','Levelezési házszám',
               'Vezetékes telefon','Mobil telefon','E-mail','Rendszám','Tagtípus','Díjkategória','Státusz',
               'Belépés dátuma','Érvényesség dátuma','Befizetés dátuma','Befizetett összeg','Tranzakció kódja'],
     colModel :[ 
@@ -84,7 +84,19 @@ $(function(){
         jQuery("#usermanagement").jqGrid('columnChooser');
     }
    });
- 
+
+  $("#usermanagement").jqGrid('navButtonAdd','#pager',{
+      caption: "Információ",
+      title: "Információ",
+      onClickButton : function (){
+	  $.post("edit.php",{
+			"id" : jQuery('#usermanagement').jqGrid('getGridParam','selarrrow'),
+			"action" : 'getuser'
+			},function(resp){
+				alert(resp);
+			});
+      }
+   });
   
   function processAddEdit(response, postdata){
 	  
