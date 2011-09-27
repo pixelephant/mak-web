@@ -40,7 +40,8 @@ if(isset($_POST['advanced-search-input'])){
 		<link rel="stylesheet" href="lib/smoothness/style.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="register">
+	<body id="search">
+	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
@@ -61,7 +62,10 @@ if(isset($_POST['advanced-search-input'])){
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
 			</div>
-			<?php include "ad.php" ?>
+			<?php 
+				echo $main->render_hirdetes('kereses','','','');
+				echo $main->render_poll();
+			?>
 		</aside>
 		<section id="content">
 		<article>

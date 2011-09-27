@@ -59,6 +59,7 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
 	<body id="register">
+	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
@@ -80,7 +81,10 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
 			</div>
-			<?php include "ad.php" ?>
+			<?php 
+				echo $main->render_hirdetes('regisztraciomegerositese','','','');
+				echo $main->render_poll();
+			?>
 		</aside>
 		<section id="content">
 			<h1>Regisztráció megerősítése</h1>

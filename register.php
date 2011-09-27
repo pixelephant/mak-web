@@ -33,33 +33,7 @@ $main = new mak(false);
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
 	<body id="register">
-		<div id="loginModal" class="reveal-modal">
-			<form id="loginform" action="#">
-					<h2>Bejelentkezés</h2>
-					<div class="hr"></div>
-			        	<div id="login-form-inner">
-			        		<div class="row">
-			        		<label for="loginEmail">Email cím</label>
-				            <input type="text" name="loginEmail" class="required email" id="loginEmail" />
-							</div>
-							<div class="row">
-								<label for="loginPassword">Jelszó</label>
-								<input class="required" type="password" name="loginPassword" id="loginPassword" />
-								<a id="forgotten" href="#">Elfelejtett a jelszavát?</a>
-							</div>
-							<div id="login-error"></div>
-			        	</div>
-			        <div class="hr"></div>
-					<div class="bottomrow">
-						<input class="yellow-button" type="submit" id="loginSubmit" value="Bejelentkezem" />
-				        <label id="chl" for="rememberme"><input type="checkbox" id="rememberme" />Emlékezz rám</label>
-						<div id="firsttime">
-							<a href="regisztralas">Először jár nálunk? Regisztráljon!</a>
-						</div>
-					</div>
-			</form>
-			<a class="close-reveal-modal">&#215;</a>
-		</div>
+	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
@@ -85,7 +59,10 @@ $main = new mak(false);
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
 			</div>
-			<?php include "ad.php" ?>
+			<?php 
+				echo $main->render_hirdetes('regisztralas','','','');
+				echo $main->render_poll();
+			?>
 		</aside>
 		<section id="content">
 			<h1>Regisztráció</h1>

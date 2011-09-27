@@ -48,6 +48,7 @@ if(isset($_GET['unsubscribe'])){
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
 	<body id="register">
+	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">

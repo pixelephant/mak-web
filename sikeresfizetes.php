@@ -46,7 +46,8 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 		<link rel="stylesheet" href="lib/css/register.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="register">
+	<body id="sikeresfizetes">
+	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
@@ -68,7 +69,10 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
 			</div>
-			<?php include "ad.php" ?>
+			<?php 
+				echo $main->render_hirdetes('sikeresfizetes','','','');
+				echo $main->render_poll();
+			?>
 		</aside>
 		<section id="content">
 			<h1>Bankkártyás fizetés</h1>
