@@ -67,13 +67,14 @@ if($_POST['action'] == 'getuser'){
 	
 	$a = $main->get_felhasznalo($cond);
 	
-	if($a === FALSE){
+	if($a === FALSE || $a['count'] == 0){
 		echo 'Sikertelen';
 	}else{
-	
-		$valasz = '';
+		$html = '';
 		foreach($a[0] as $nev => $ertek){
-			$html .= $nev . ": " . $ertek;
+			if($nev != 'jelszo'){
+				$html .= ucfirst(str_replace("_"," ",$nev)) . ": " . $ertek . '<br />';
+			}
 		}
 		
 		echo $html;

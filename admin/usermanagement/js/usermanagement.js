@@ -89,11 +89,15 @@ $(function(){
       caption: "Információ",
       title: "Információ",
       onClickButton : function (){
-	  $.post("edit.php",{
-			"id" : jQuery('#usermanagement').jqGrid('getGridParam','selarrrow'),
+    	 
+    	  var id = $('#usermanagement').jqGrid('getGridParam','selrow');
+    	  
+	  $.post("php/edit.php",{
+			"id" : id,
 			"action" : 'getuser'
 			},function(resp){
-				alert(resp);
+				//alert(resp);
+				$("#modal").html(resp).dialog();
 			});
       }
    });
