@@ -10,10 +10,13 @@ $target_path = '';
 
 if(isset($_FILES)){
 	$target_path = "img/";
-	$target_path = $target_path . basename( $_FILES['kep']['name']);
-	move_uploaded_file($_FILES['kep']['tmp_name'], $target_path);
-
-	$target_path = 'admin/elonezet/' . $target_path;
+	$target_path = $target_path . basename($_FILES['kep']['name']);
+	if(move_uploaded_file($_FILES['kep']['tmp_name'], $target_path)){
+		$target_path = 'admin/elonezet/' . $target_path;
+	}else{
+		$target_path = $_FILES['error'];
+	}
+	
 }
 
 ?>
