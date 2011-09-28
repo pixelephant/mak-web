@@ -12,12 +12,12 @@ class mak extends db{
 
 	public function __construct($debug=false){
 		parent::__construct('','','','','',$debug);
-		/*
-		if(isset($_COOKIE['user_id']) && isset($_COOKIE['tagsag']) && isset($_COOKIE['keresztnev'])){
+		
+		if((isset($_COOKIE['user_id']) && isset($_COOKIE['tagsag']) && isset($_COOKIE['keresztnev'])) && ($_COOKIE['user_id'] != '' && $_COOKIE['tagsag'] != '' && $_COOKIE['keresztnev'] != '')){
 			$_SESSION['user_id'] = $_COOKIE['user_id'];
 			$_SESSION['tagsag'] = $_COOKIE['tagsag'];
 			$_SESSION['keresztnev'] = $_COOKIE['keresztnev'];
-		}*/
+		}
 	}
 
 	//SELECT
