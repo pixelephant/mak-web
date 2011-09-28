@@ -103,10 +103,6 @@
 	width: 90px !important;
 }
 
-#cardNum{
-	width: 100px !important;
-}
-
 #content form input[type='radio']{
 	margin-left: 5px;
 }
@@ -268,4 +264,31 @@ span.sum{
 	line-height:35px;
 	display: inline !important;
 	float: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#cardNum1{
+	margin-right:10px;
+	width:50px !important;
+}
+
+#cardNum2{
+	margin-left:10px;
+	width:50px !important;
+}
+
+.dash{
+	float:left;
 }
