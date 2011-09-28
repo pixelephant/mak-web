@@ -65,7 +65,7 @@ $main = new mak(false);
 			?>
 		</aside>
 		<section id="content">
-			<h1>Regisztráció</h1>
+			<h1></h1>
 			<form class="step1" id="registerform" action="#">
 				<h2>1. lépés - Alapadatok megadása</h2>
 				<fieldset id="membership">
