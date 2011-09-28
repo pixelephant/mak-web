@@ -61,10 +61,14 @@ if(!empty($form)){
 		$adatok['allando_kozterulet'] = substr($form['coAddress'],0,$space);
 		$adatok['allando_hazszam'] = substr($form['coAddress'],$space);
 		
-		$adatok['kapcsolattarto_vezeteknev'] = $form['coCoFName'];
-		$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
+		$adatok['kapcsolattarto_vezeteknev'] = $form['coCoName'];
+		//$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
 		
-		$nev = $adatok['kapcsolattarto_vezeteknev'] . " " . $adatok['kapcsolattarto_keresztnev'] . " - " . $adatok['cegnev'];
+		$adatok['kapcsolattarto_email'] = $form['coCoMail'];
+		$adatok['kapcsolattarto_telefon'] = $form['coCoPhone'];
+		
+		//$nev = $adatok['kapcsolattarto_vezeteknev'] . " " . $adatok['kapcsolattarto_keresztnev'] . " - " . $adatok['cegnev'];
+		$nev = $adatok['kapcsolattarto_vezeteknev'] . " - " . $adatok['cegnev'];
 	
 	}
 	
@@ -141,6 +145,10 @@ if(!empty($form)){
 	$fizetesimetodus['transfer']  = '07';
 	$fizetesimetodus['card']  = '01';
 	
+	$fizetesNev['cheque'] = 'Csekk';
+	$fizetesNev['transfer'] = 'Átutalás';
+	$fizetesNev['card'] = 'Bankkártya';
+	
 	$cond['e_mail'] = $_POST['email'];
 
 	$adatok['belepes_datuma'] = date("Y-m-d");
@@ -149,6 +157,32 @@ if(!empty($form)){
 	$adatok['tagtipus'] = 1;
 	
 	$valasz = $main->update_felhasznalo($adatok,$cond);
+
+	/*
+	 * Fizetési mód értesítő
+	 */
+	
+	require_once("phpmailer/phpmailer.inc.php");
+		
+	$mail = new PHPMailer();
+	
+	$link = 'http://sfvm104.serverfarm.hu/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
+	
+	//$mail->IsSMTP(); // SMTP használata
+	$mail->From = "regisztracio@autoklub.hu";
+	$mail->FromName = "Magyar Autóklub weboldala";
+	//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
+	$mail->AddAddress('0antalbalazs0@gmail.com','Infó');
+	$mail->AddReplyTo($autoklub_email, "Magyar Autóklub");
+	$mail->WordWrap = 50;
+	
+	$mail->IsHTML(true);    // HTML e-mail
+	$mail->Subject = "Magyar Autóklub - fizetési igény";
+	$mail->Body = 'Az alábbi azonosítóval rendelkező felhasználó: ' . $cond['e_mail'] . '<br />' . ucfirst(str_replace("Member","",$member['membershipRadio'])) . ' tagságának kiegyenlítésére az alábbi fizetési módot választotta: ' . $fizetesNev[$fizetes['paymentmethodRadio']];
+	
+	if($mail->Send() === FALSE){
+		$valasz = 'Sikertelen e-mail küldés!';
+	}
 
 }
 
