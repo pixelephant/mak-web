@@ -37,7 +37,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
-		
+		<base href="http://sfvm104.serverfarm.hu/mak/" />
 		<title>Bank kártyás fizetés - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />

@@ -31,7 +31,7 @@ if(isset($_POST['advanced-search-input'])){
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
-		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
+		<base href="http://sfvm104.serverfarm.hu/mak/" />
 		<title>Keresés - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
@@ -40,7 +40,7 @@ if(isset($_POST['advanced-search-input'])){
 		<link rel="stylesheet" href="lib/smoothness/style.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="search"
+	<body id="kereses"
 	<?php 
 	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 		echo ' class="logined"';
