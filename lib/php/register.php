@@ -7,6 +7,8 @@ include 'class.mak.php';
 
 $autoklub_email = 'info@autoklub.hu';
 
+session_start();
+
 $main = new mak(false);
 
 $form = array();
@@ -158,6 +160,8 @@ if(!empty($form)){
 	
 	$valasz = $main->update_felhasznalo($adatok,$cond);
 
+	$_SESSION['lastEmail'] = $cond['e_mail'];
+	
 	/*
 	 * Fizetési mód értesítő
 	 */

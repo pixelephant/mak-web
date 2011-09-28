@@ -17,11 +17,20 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	$adat['befizetes_datuma'] = date("Y-m-d");
 	//$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
 	$adat['statusz'] = '01';
+	$adat['megerositve'] = '1';
+	
+	$cond['e_mail'] = $_SESSION['lastEmail'];
 	
 	$a = $main->update_felhasznalo($adat,$cond);
 
 	$uzenet = 'Sikeres bankkártyás fizetés!';
 
+	$felh = $main->get_felhasznalo($cond);
+	
+	$_SESSION['user_id'] = $felh[0]['id'];
+	$_SESSION['keresztnev'] = $felh[0]['keresztnev'] . $felh[0]['kapcsolattarto_keresztnev'];
+	$_SESSION['tagtipus'] = $felh[0]['tagtipus'];
+	
 }
 ?>
 <!DOCTYPE HTML>
