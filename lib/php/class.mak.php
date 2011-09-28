@@ -2236,6 +2236,9 @@ class mak extends db{
 		
 		$html = '<div>Az Autósélet a Magyar Autóklub színes autós magazinja, amely a klubtagok rendszeres, autózással és utazással kapcsolatos tájékoztatását szolgálja. A lap folyamatosan foglalkozik a klub szolgáltatásaival, rendezvényeivel, a klubtagok érdekvédelmével, a hazai autósélet aktuális témáival - egyebek között a biztosítás, a vám, az autóimport, az alkatrészellátás kérdéseivel. Mindezek mellett rendszeres autótesztekkel igyekszik segítséget adni a klubtagok autóvásárlásaihoz.</div>';
 		
+		$html .= '<div class="embed">';
+		$html .= '</div>';
+		
 		for($i = 0; $i < $tartalom['count']; $i++){
 			
 			if($i % 3 == 0){
@@ -2258,9 +2261,6 @@ class mak extends db{
 			
 		
 		}
-		
-		$html .= '<div class="embed">';
-		$html .= '</div>';
 		
 		return $html;
 	
