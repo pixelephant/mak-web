@@ -16,3 +16,5 @@
 	<div id="newsletter-response"></div>
 </div>
 <div class="hr"></div>
+<a href="regisztralas" id="side-cta" class="black-button"><span>Tagbelépés</span><em></em></a>
+<div class="hr"></div>

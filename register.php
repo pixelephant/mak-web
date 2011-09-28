@@ -73,13 +73,15 @@ $main = new mak(false);
 					<div class="row">
 						<label for="old">Igen<input autofocus="autofocus" class="required" type="radio" name="group1" id="old" />
 						</label>
-						<label for="new">Nem<input type="radio" name="group1" id="new" /></label>
+						<label for="new">Nem<input type="radio" name="group1" id="new" checked="checked" /></label>
 					</div>
 					<div id="oldMember">
 						<div class="row">
-							<label for="cardNum">Kártyaszám</label>
-							<input type="text" name="cardNum" id="cardNum"  size="11" minlength="11" maxlength="11" />
-							<img src="img/info.png" alt="" class="info" title="A kártyáján szereplő 11 jegyű azonosító szám" />
+							<label for="cardNum1">Kártyaszám</label>
+							<input type="text" name="cardNum1" id="cardNum1" size="5" minlength="5" maxlength="5" />
+							<strong class="dash"> - </strong>
+							<input type="text" name="cardNum2" id="cardNum2" size="5" minlength="5" maxlength="5" />
+							<img src="img/info.png" alt="" class="info" title="A kártyáján szereplő 10 jegyű azonosító szám" />
 						</div>
 						<div class="row">
 							<label for="oldEmail">Email cím</label>
@@ -105,10 +107,6 @@ $main = new mak(false);
 						<input class="required" type="text" name="coName" id="coName" />
 					</div>
 					<div class="row">
-						<label for="coDate">Alapítás dátuma</label>
-						<input type="text" id="coDate" name="coDate" class="datepicker dateISO required" />
-					</div>
-					<div class="row">
 						<label for="coZip">Székhely irányítószáma</label>
 						<input class="zip digits" size="4" minlength="4" maxlength="4" type="text" name="coZip" id="coZip" />
 						<label id="coZipError" class="error" style="display: none;">Nem valós irányítószám!</label>
@@ -122,16 +120,20 @@ $main = new mak(false);
 						<input type="text" name="coAddress" id="coAddress" />
 					</div>
 					<div class="row">
-						<label for="coCoFName">Kapcsolattartó neve</label>
-						<input type="text" name="coCoFName" id="coCoFName" />
+						<label for="coCoName">Kapcsolattartó neve</label>
+						<input type="text" name="coCoName" id="coCoName" />
+						<img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
-					<!-- >div class="row">
-						<label for="coCoLName">Kapcsolattartó keresztneve</label>
-						<input type="text" name="coCoLName" id="coCoLName" />
-					</div-->
+					
 					<div class="row">
-						<label for="coCoFName">Kapcsolattartó elérhetősége</label>
-						<input type="text" name="coCoContact" id="coCoContact" />
+						<label for="coCoMail">Kapcsolattartó email címe</label>
+						<input type="text" class="email" name="coCoMail" id="coCoMail" />
+						<img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+					</div>
+					<div class="row">
+						<label for="coCoPhone">Kapcsolattartó telefonszáma</label>
+						<input type="text" class="digits" name="coCoPhone" id="coCoPhone" />
+						<img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 				</fieldset>
 				
@@ -252,7 +254,7 @@ $main = new mak(false);
 					<div class="row" id="standardPlateHuInputRow">
 						<label for="standardPlateHuInput">Rendszám</label>
 						<input type="text" name="standardPlateHuInput" id="standardPlateHuInput" />
-						<img src="img/info.png" alt="" class="info" title="Formátum : AAA-111" />
+						<img src="img/info.png" alt="" class="info" title="Formátum : AAA111" />
 					</div>
 					<div class="row" id="standardPlateFoInputRow">
 						<label for="standardPlateFoInput">Rendszám</label>
@@ -282,9 +284,9 @@ $main = new mak(false);
 				<fieldset id="modechoose">
 					<h3>Mód választása</h3>
 					<div class="row">
-						<label class="yellow-button" for="cheque">Csekk (utólagos)</label>
+						<label class="yellow-button" for="card">Bankkártya</label>
 						<br />
-						<input type="radio" name="paymentmethod" id="cheque" />
+						<input type="radio" name="paymentmethod" id="card" />
 					</div>
 					<div class="row">
 						<label class="yellow-button" for="transfer">Banki átutalás</label>
@@ -292,9 +294,9 @@ $main = new mak(false);
 						<input type="radio" name="paymentmethod" id="transfer" />
 					</div>
 					<div class="row">
-						<label class="yellow-button" for="card">Bankkártyás fizetés</label>
+						<label class="yellow-button" for="cheque">Csekk</label>
 						<br />
-						<input type="radio" name="paymentmethod" id="card" />
+						<input type="radio" name="paymentmethod" id="cheque" />
 					</div>
 					<!-- Bankkártyás fizetés -->
 					<input type="hidden" name="posId" value="#02299991" size="40" maxlength="15" class="text"/>

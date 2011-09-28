@@ -147,6 +147,70 @@ strong{
 	background-color:#fcb614;
 }
 
+.black-button{ /*fekete átmenetes gomb*/
+	-moz-box-shadow: inset 0px 1px 0px 0px #ffff00;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffff00;
+	box-shadow: inset 0px 1px 0px 0px #4d4d4d;
+	background-color: #4d4d4d;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), to(#313131)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #4d4d4d, #313131); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(top, #4d4d4d, #313131); /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, #4d4d4d, #313131); /* IE10 */
+	background-image:      -o-linear-gradient(top, #4d4d4d, #313131); /* Opera 11.10+ */
+	background-image:         linear-gradient(top, #4d4d4d, #313131);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d4d4d', EndColorStr='#313131'); /* IE6–IE9 */
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #000000;
+	display: inline-block;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #4d4d4d;
+	cursor:pointer;
+}
+
+.black-button:hover{ /*fekete átmenetes gomb hover*/
+	position:relative;
+	top:1px;
+}
+
+.black-button:active{ /*fekete átmenetes gomb active*/
+	background-color: #313131;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#313131), to(#4D4D4D)); 
+	background-image: -webkit-linear-gradient(top, #313131, #4D4D4D); 
+	background-image:    -moz-linear-gradient(top, #313131, #4D4D4D); 
+	background-image:     -ms-linear-gradient(top, #313131, #4D4D4D); 
+	background-image:      -o-linear-gradient(top, #313131, #4D4D4D); 
+	background-image:         linear-gradient(top, #313131, #4D4D4D);     
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#313131', EndColorStr='#4D4D4D');
+}
+
+#side-cta{
+ 	color: #FFD400;
+    display: block;
+    font-size: 17px;
+    margin: 12px auto;
+    overflow: hidden;
+    padding: 10px;
+    width: 134px;
+}
+
+#side-cta span{
+	float: left;
+	margin-right: 10px;
+	margin-left:4px;
+}
+
+#side-cta em{
+	width: 28px;
+	height: 28px;
+	background: url(../../img/right_01.png) no-repeat;
+	display: block;
+	float: left;
+	position:relative;
+	top:-1px;
+}
+
 
 /*Felugró ablak*/
 		
@@ -620,7 +684,7 @@ li.active_menu > span a{
 	background-image:     -ms-linear-gradient(top, #20201E, #797E82); 
 	background-image:      -o-linear-gradient(top, #20201E, #797E82); 
 	background-image:         linear-gradient(top, #20201E, #797E82);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#20201E', EndColorStr='#797E82'); 
+/*	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#20201E', EndColorStr='#797E82'); */
 	opacity: 0.99;
 	height: auto;
 	overflow: hidden;
@@ -656,20 +720,21 @@ li.ldd_heading{
 }
 
 .ldd_submenu li{
-	padding:0 15px;
+
 }
 
 .ldd_menu ul li a{
 	font-size:12px;
-	color:#0080B0;
 	padding:1px 3px;
 	color:white;
+	display:block;
 }
 
-.ldd_menu ul li a:before{
-	content : "▸ ";
-	color: white;
-	font-size: 12px;
+.ldd_menu ul li{
+	color:white;
+	list-style-image: url(../../img/arrow.png);
+	list-style-position:outside;
+	margin-left:35px;
 }
 
 .ldd_menu ul li a:hover{
@@ -680,9 +745,17 @@ li.ldd_heading{
 	color:black !important;
 }
 
-.ldd_heading a:before{
-	content : " " !important;
-	color: black !important;
+.ldd_heading{
+	margin-left:0 !important;
+	list-style:none !important;
+}
+
+#enautoklubom-menu .ldd_submenu{
+	left:-195px;
+}
+
+#enautoklubom-menu .arrow{
+	background: url("../../img/menu-arrow.png") no-repeat scroll 210px 0 transparent;
 }
 
 /*Belső rész*/
@@ -1082,20 +1155,19 @@ footer{
 
 #footerNav ul li{
 	margin: 6px 0;
-	list-style-position: inside;
-	padding-left: 8px;
+	padding-left: 4px;
 }
 
 #footerNav ul li a{
-	padding-left:10px;
+
 }
 
-#footerNav ul li:before{
-	content : "▸ ";
-	color: #1c1c1c;
+#footerNav ul li{
+	list-style-image: url(../../img/arrow.png);
+	list-style-position: inside;
 }
-#footerNav ul li.heading:before{
-	content : "";
+#footerNav ul li.heading{
+	list-style:none;
 }
 #footerNav a{
 	text-decoration: none;
