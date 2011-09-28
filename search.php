@@ -5,6 +5,8 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
+session_start();
+
 error_reporting(0);
 
 $main = new mak(false);
@@ -70,7 +72,6 @@ if(isset($_POST['advanced-search-input'])){
 			</div>
 			<?php 
 				echo $main->render_hirdetes('kereses','','','');
-				echo $main->render_poll();
 			?>
 		</aside>
 		<section id="content">

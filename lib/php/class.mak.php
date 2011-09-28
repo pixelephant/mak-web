@@ -3050,7 +3050,7 @@ class mak extends db{
 		/*
 		 * Twitter plugin
 		 */
-		
+		/*
 		$html .= '<script src="http://widgets.twimg.com/j/2/widget.js"></script>';
 		$html .= "<script>
 				new TWTR.Widget({
@@ -3082,7 +3082,7 @@ class mak extends db{
 				  }
 				}).render().setUser('cultofmac').start();
 				</script>";
-		
+		*/
 		return $html;
 		
 	}

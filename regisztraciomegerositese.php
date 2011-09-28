@@ -89,7 +89,6 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 			</div>
 			<?php 
 				echo $main->render_hirdetes('regisztraciomegerositese','','','');
-				echo $main->render_poll();
 			?>
 		</aside>
 		<section id="content">

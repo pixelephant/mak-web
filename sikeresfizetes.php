@@ -77,7 +77,6 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 			</div>
 			<?php 
 				echo $main->render_hirdetes('sikeresfizetes','','','');
-				echo $main->render_poll();
 			?>
 		</aside>
 		<section id="content">
