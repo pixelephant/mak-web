@@ -237,27 +237,27 @@ $main = new mak(false);
 				<input type="submit" value="Tovább" id="toStep3"/>
 			</form>
 			<form id="standardform" action="#" method="#" class="step3">
-				<h2>3. lépés - Gépjármú adatok megadása</h2>
+				<h2>3. lépés - Gépjármű adatok megadása</h2>
 				<fieldset>
-					<h3>Rendszám típusa</h3>
+					<h3>Forgalmi rendszám</h3>
 					<div class="row">
-						<label for="standardPlateHu">Magyar rendszám</label>
+						<label for="standardPlateHu">Magyar</label>
 						<input type="radio" name="platetype" id="standardPlateHu" />
 					</div>
 					<div class="row">
-						<label for="standardPlateFo">Külföldi rendszám</label>
+						<label for="standardPlateFo">Külföldi</label>
 						<input type="radio" name="platetype" id="standardPlateFo" />
 					</div>
 				</fieldset>
 				<fieldset>
-					<h3>Rendszám megadása</h3>
+					<h3>Forgalmi rendszám megadása</h3>
 					<div class="row" id="standardPlateHuInputRow">
-						<label for="standardPlateHuInput">Rendszám</label>
+						<label for="standardPlateHuInput">Forgalmi rendszám</label>
 						<input type="text" name="standardPlateHuInput" id="standardPlateHuInput" />
 						<img src="img/info.png" alt="" class="info" title="Formátum : AAA111" />
 					</div>
 					<div class="row" id="standardPlateFoInputRow">
-						<label for="standardPlateFoInput">Rendszám</label>
+						<label for="standardPlateFoInput">Forgalmi rendszám</label>
 						<input type="text" name="standardPlateFoInput" id="standardPlateFoInput" />
 					</div>
 				</fieldset>
