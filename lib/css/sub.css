@@ -118,14 +118,10 @@ aside h3{
 
 
 aside .links{
-	margin-left: 30px;
+	margin-left: 45px;
 	margin-bottom: 25px;
 	font-size: 14px;
 	color: #5A4A42;     
-}
-
-aside .links a{
-	padding-left:13px;  
 }
 
 .subsub{
@@ -136,10 +132,13 @@ aside .links li{
 	padding-right:10px;
 }
 
-aside .links li:before{
-	content : "▸  ";
-	color: #1c1c1c;
-	font-size: 14px;
+aside .links li{
+	list-style-image: url(../../img/arrow.png);
+	list-style-position:outside;
+}
+
+aside .links li a{
+	display:block;
 }
 
 aside .links a, aside h3 a{
