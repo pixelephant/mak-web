@@ -2902,6 +2902,31 @@ class mak extends db{
 		
 		}
 		
+		if(($advanced != '' && isset($advanced['advanced-search-input']) && $advanced['only-szervizpontok'] == 'on') || !isset($advanced) || $advanced == '' || !isset($advanced['advanced-search-input'])){
+				
+			$cond = array();
+			$cond['cim']['and_or'] = 'AND';
+			$cond['cim']['rel'] = 'LIKE';
+			$cond['cim']['val'] = '%' . $kereses[0] . '%';
+			
+			$szervizpont = $this->get_szervizpont($cond);
+			
+			if($szervizpont !== FALSE && $szervizpont['count'] > 0){
+				
+				for($i = 0;$i<$szervizpont['count']; $i++){
+					$html .= '<li class="' . $class[$c % 2] . '">';
+					$html .= '<h3>Szerviz Pont</h3>';
+					$html .= '<div>' . $this->mark_search_result($kereses[0],$szervizpont[$i]['cim']);
+				
+					$html .= '<div><a class="link" href="szervizpont/' . $szervizpont[$i]['id'] . '">Bővebben</a></div>';
+					
+					$html .= '</div>';
+					$c++;
+				}
+			}
+		
+		}
+		
 		return $html;
 	
 	}
