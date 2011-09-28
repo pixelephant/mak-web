@@ -1,28 +1,21 @@
 <?php 
 
-require 'lib/php/Wixel/gump.class.php';
-require 'lib/php/class.db.php';
-require 'lib/php/class.mak.php';
-
-session_start();
+require '../../lib/php/Wixel/gump.class.php';
+require '../../lib/php/class.db.php';
+require '../../lib/php/class.mak.php';
 
 $main = new mak(false);
 
+$target_path = '';
 
-if(isset($_GET['unsubscribe'])){
+if(isset($_FILES)){
+	$target_path = "img/";
+	$target_path = $target_path . basename( $_FILES['kep']['name']);
+	move_uploaded_file($_FILES['kep']['tmp_name'], $target_path);
 
-	$email = $_GET['unsubscribe'];
-
-	$sql = "DELETE FROM mak_hirlevel WHERE email='" . $email . "'";
-
-	$a = $main->query($sql);
-		
-	if($a === TRUE){
-		$uzenet = 'Sikeres';
-	}else{
-		$uzenet = 'Sikertelen';
-	}	
+	$target_path = 'admin/elonezet/' . $target_path;
 }
+
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
@@ -38,28 +31,20 @@ if(isset($_GET['unsubscribe'])){
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
 		<base href="http://sfvm104.serverfarm.hu/mak/" />
-		
-		<title>Hírlevél leiratkozás - Magyar Autóklub</title>		
+		<title>Regisztráció - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
 		<link rel="stylesheet" href="lib/css/sub.css" />
 		<link rel="stylesheet" href="lib/smoothness/style.css" />
-		<link rel="stylesheet" href="lib/css/register.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="register"
-	<?php 
-	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
-		echo ' class="logined"';
-	}
-	?>
-	>
-	<?php include 'modal.php';?>
+	<body id="elonezet">
+	
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
 				<header class="wrapper">
-					<?php include "header.php" ?> 
+					<?php include "../../header.php" ?> 
 				</header>
 			</div>
 		</div>
@@ -70,20 +55,41 @@ if(isset($_GET['unsubscribe'])){
 	</nav>
 	<section id="main" class="wrapper">
 		<aside>
-			<?php include "newsletter.php" ?>
-			<h2 id="">Hírlevél leiratkozás</h2>
+			<?php include "../../newsletter.php" ?>
+			<h2 id="">Tartalom előnézet</h2>
 			<div id="subcontact">
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
 			</div>
-			<?php include "ad.php" ?>
+			<?php 
+				echo $main->render_hirdetes('regisztraciomegerositese','','','');
+			?>
 		</aside>
 		<section id="content">
-			<h1>Hírlevél leiratkozás</h1>
-			<p><?php echo $uzenet;?></p>
+			<div class="head">
+				<div id="inputs">
+					<form action="" enctype="multipart/form-data" method="POST">
+						Cím: <input type="text" name="h1" id="h1" /><br />
+						Szöveg: <textarea name="szoveg" id="szoveg"></textarea><br />
+						Kép: <input type="file" name="kep" id="kep" /><br />
+						<input type="submit" value="Előnézet" />
+					</form>
+				</div>
+			</div>
+			<article>
+				<h1><?php echo $_POST['h1']; ?></h1>
+				<section id="elonezet">
+					<div class="rightside">
+						<img alt="kép_előnézet" src="<?php echo $target_path; ?>">
+					</div>
+					<div class="leftside">
+						<?php echo $_POST['szoveg']; ?>
+					</div>
+				</section>
+			</article>
 		</section>
 	</section>
-	<?php include "cta.php" ?>
+	<?php include "../../cta.php" ?>
 	<footer>
 		<div class="footerIn">
 			<div class="wrapper">
@@ -94,9 +100,9 @@ if(isset($_GET['unsubscribe'])){
 				</div>
 			</div>
 		</div>
-		<div id="fotterMiscWrap">	
+		<div id="fotterMiscWrap">
 			<div id="footerMisc">
-				<?php include 'footer.php';?>
+				<?php include '../../footer.php';?>
 			</div>
 		</div>
 	</footer>

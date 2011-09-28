@@ -39,8 +39,8 @@
 		</ul>
 	</nav>
 	<div id="content">
-		<div id="analytics">
-			<iframe src="analytics/index.php" width="100%" height="495px"></iframe>
+		<div id="newsletter">
+			<iframe src="elonezet/index.php" width="100%" height="495px"></iframe>
 		</div>
 	</div>
 	

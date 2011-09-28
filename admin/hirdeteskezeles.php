@@ -35,6 +35,7 @@
 			<li><a href="statisztikak.php">Statisztikák</a></li>
 			<li><a href="hirdeteskezeles.php">Hirdetés kezelése</a></li>
 			<li><a href="felmereskezeles.php">Felmérések kezelése</a></li>
+			<li><a href="elonezet.php">Előnézet</a></li>
 		</ul>
 	</nav>
 	<div id="content">
