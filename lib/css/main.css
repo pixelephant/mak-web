@@ -1089,17 +1089,18 @@ aside img.ad{
 	float: left;
 	list-style: none;
 }
-#breadcrumb li:before{
-	content : "▸";
+#breadcrumb li{
+	list-style-image: url(../../img/arrow.png);
+	list-style-position:inside;
 }
-#breadcrumb li.first:before{
-	content: "";
+#breadcrumb li.first{
+	list-style:none;
 }
 #breadcrumb li a{
 	text-decoration: none;
 	color: #1c1c1c;
 	font-size: 12px;
-	padding:0 10px;    
+    padding-right: 10px; 
 }
 
 #breadcrumb li a:hover{
