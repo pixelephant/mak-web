@@ -264,7 +264,7 @@ $main = new mak(false);
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
 			</form>
 			<form id="komfortform" action="#" method="#" class="step3">
-				<h2>3. lépés - Gépjármú adatok megadása</h2>
+				<h2>3. lépés - Gépjármű adatok megadása</h2>
 				<fieldset>
 					<h3>Géjármű adatai</h3>
 					<div class="row">
