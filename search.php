@@ -5,6 +5,8 @@ include 'lib/php/Wixel/gump.class.php';
 include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
+session_start();
+
 error_reporting(0);
 
 $main = new mak(false);
@@ -31,7 +33,7 @@ if(isset($_POST['advanced-search-input'])){
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
-		<base href="http://www.pixelephant.hu/projects/on-going/mak/" />
+		<base href="http://sfvm104.serverfarm.hu/mak/" />
 		<title>Keresés - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
@@ -40,7 +42,14 @@ if(isset($_POST['advanced-search-input'])){
 		<link rel="stylesheet" href="lib/smoothness/style.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="register">
+	<body id="kereses"
+	<?php 
+	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+		echo ' class="logined"';
+	}
+	?>
+	>
+	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
@@ -61,7 +70,9 @@ if(isset($_POST['advanced-search-input'])){
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
 			</div>
-			<?php include "ad.php" ?>
+			<?php 
+				echo $main->render_hirdetes('kereses','','','');
+			?>
 		</aside>
 		<section id="content">
 		<article>
@@ -108,6 +119,8 @@ window.jQuery || document.write('<script src="lib/js/jquery-1.6.2.js">\x3C/scrip
 		<script type="text/javascript" src="lib/js/ui-1.8.15.js">
 		</script>
 		<script type="text/javascript" src="lib/js/main.js">
+		</script>
+		<script type="text/javascript" src="lib/js/sub.js">
 		</script>
 		<script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

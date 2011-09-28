@@ -49,7 +49,7 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
-		
+		<base href="http://sfvm104.serverfarm.hu/mak/" />
 		<title>Regisztráció - Magyar Autóklub</title>		
 		<link rel="stylesheet" href="lib/css/reset.css" />
 		<link rel="stylesheet" href="lib/css/main.css" />
@@ -58,7 +58,14 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 		<link rel="stylesheet" href="lib/css/register.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="register">
+	<body id="register"
+	<?php 
+	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+		echo ' class="logined"';
+	}
+	?>
+	>
+	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
 			<div class="header-outer">
@@ -80,7 +87,9 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 				<h3>1/111-111</h3>
 				<h4>web@autoklub.hu</h4>
 			</div>
-			<?php include "ad.php" ?>
+			<?php 
+				echo $main->render_hirdetes('regisztraciomegerositese','','','');
+			?>
 		</aside>
 		<section id="content">
 			<h1>Regisztráció megerősítése</h1>
@@ -109,6 +118,8 @@ window.jQuery || document.write('<script src="lib/js/jquery-1.6.2.js">\x3C/scrip
 		<script type="text/javascript" src="lib/js/ui-1.8.15.js">
 		</script>
 		<script type="text/javascript" src="lib/js/main.js">
+		</script>
+		<script type="text/javascript" src="lib/js/sub.js">
 		</script>
 		<script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

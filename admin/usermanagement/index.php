@@ -16,6 +16,7 @@
     <div id="content">
 		<table id="usermanagement"></table>
 		<div id="pager"></div>
+		<div id="modal"></div>
     </div>
   </body>
 </html>

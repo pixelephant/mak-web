@@ -13,7 +13,7 @@ class mak extends db{
 	public function __construct($debug=false){
 		parent::__construct('','','','','',$debug);
 		
-		if(isset($_COOKIE['user_id']) && isset($_COOKIE['tagsag']) && isset($_COOKIE['keresztnev'])){
+		if((isset($_COOKIE['user_id']) && isset($_COOKIE['tagsag']) && isset($_COOKIE['keresztnev'])) && ($_COOKIE['user_id'] != '' && $_COOKIE['tagsag'] != '' && $_COOKIE['keresztnev'] != '')){
 			$_SESSION['user_id'] = $_COOKIE['user_id'];
 			$_SESSION['tagsag'] = $_COOKIE['tagsag'];
 			$_SESSION['keresztnev'] = $_COOKIE['keresztnev'];
@@ -241,7 +241,7 @@ class mak extends db{
 		
 		
 		$col = 'mak_kategoria.email AS email,mak_kategoria.telefon AS telefon,mak_kategoria.kategoria_nev AS kategoria_nev,mak_kategoria.azonosito AS azonosito,mak_almenu.url AS url,';
-		$col .= 'mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_almenu.szoveg AS almenu_szoveg,';
+		$col .= 'mak_almenu.url AS almenu_url,mak_almenu.almenu AS almenu,mak_almenu.title AS title,mak_almenu.description AS description,mak_almenu.keywords AS keywords,mak_almenu.szoveg AS almenu_szoveg,';
 		$col .= 'mak_altartalom.id AS altartalom_id,mak_altartalom.cim AS altartalom_cim,mak_altartalom.szoveg AS altartalom_szoveg,mak_altartalom.kep AS altartalom_kep,mak_altartalom.alt AS altartalom_alt,mak_altartalom.publikalta AS altartalom_publikalta,';
 		$col .= 'mak_tartalom.id AS id,mak_tartalom.almenu_id AS almenu_id,mak_tartalom.cim AS cim,mak_tartalom.szoveg AS szoveg,mak_tartalom.kep AS kep,mak_tartalom.alt AS alt,mak_tartalom.url AS tartalom_url,mak_altartalom.url AS altartalom_url,';
 		$col .= 'mak_tartalom.publikalta AS publikalta';
@@ -898,6 +898,20 @@ class mak extends db{
 		
 		if($col == ''){
 			$col = 'id,cim,szoveg,kep,alt,publikalta,modositas';
+		}
+		
+		return $this->sql_select($table,$col,$cond);
+	
+	}
+	
+	public function get_hirlevel_email($email){
+	
+		$table = 'mak_hirlevel';
+		
+		$cond['email'] = $email;
+		
+		if($col == ''){
+			$col = 'id';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -1812,6 +1826,7 @@ class mak extends db{
 		$galeria = '';
 		$html = '';
 		$tartalom_url = '';
+		$asd = '';
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
@@ -1821,7 +1836,7 @@ class mak extends db{
 		
 			if($tartalom_url != $tartalom[$i]['url'] && $tartalom[$i]['almenu_szoveg'] != ''){
 				$html .= '<section id="' . $tartalom[$i]['azonosito'] . '">';
-				$html .= '<h2>'.$tartalom[$i]['almenu'].'</h2>';
+				//$html .= '<h2>'.$tartalom[$i]['almenu'].'</h2>';
 				
 				if($tartalom[$i]['almenu_kep'] != ''){
 					$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['url'] . '/' . $tartalom[$i]['almenu_kep'] . '" alt="' . $tartalom[$i]['almenu_alt'] . '" /></div>';
@@ -1853,8 +1868,13 @@ class mak extends db{
 				 */
 				
 			}
-			if($tartalom[$i]['szoveg'] != ''){
+			
+			
+			
+			if($tartalom[$i]['szoveg'] != '' && $tartalom[$i]['tartalom_url'] != $asd){
 
+				$asd = $tartalom[$i]['tartalom_url'];
+			
 				$html .= '<section id="' . $tartalom[$i]['id'] . '">';
 				$html .= '<h2>'.$tartalom[$i]['cim'].'</h2>';
 				
@@ -2118,7 +2138,7 @@ class mak extends db{
 				
 				$html .= '<p>'.$this->betekinto($tartalom[$i]['altartalom_szoveg']).'</p>';
 				
-				$html .= '<a class="link hasarrow" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['almenu'] . '/' . $tartalom[$i]['tartalom_url'] . '/' . $tartalom[$i]['altartalom_url'] . '">Bővebben</a>';
+				$html .= '<a class="link hasarrow" href="' . $tartalom[$i]['azonosito'] . '/' . $tartalom[$i]['almenu_url'] . '/' . $tartalom[$i]['tartalom_url'] . '/' . $tartalom[$i]['altartalom_url'] . '">Bővebben</a>';
 				
 				$html .= '</section>';
 			
@@ -2882,6 +2902,31 @@ class mak extends db{
 		
 		}
 		
+		if(($advanced != '' && isset($advanced['advanced-search-input']) && $advanced['only-szervizpontok'] == 'on') || !isset($advanced) || $advanced == '' || !isset($advanced['advanced-search-input'])){
+				
+			$cond = array();
+			$cond['cim']['and_or'] = 'AND';
+			$cond['cim']['rel'] = 'LIKE';
+			$cond['cim']['val'] = '%' . $kereses[0] . '%';
+			
+			$szervizpont = $this->get_szervizpont($cond);
+			
+			if($szervizpont !== FALSE && $szervizpont['count'] > 0){
+				
+				for($i = 0;$i<$szervizpont['count']; $i++){
+					$html .= '<li class="' . $class[$c % 2] . '">';
+					$html .= '<h3>Szerviz Pont</h3>';
+					$html .= '<div>' . $this->mark_search_result($kereses[0],$szervizpont[$i]['cim']);
+				
+					$html .= '<div><a class="link" href="szervizpont/' . $szervizpont[$i]['id'] . '">Bővebben</a></div>';
+					
+					$html .= '</div>';
+					$c++;
+				}
+			}
+		
+		}
+		
 		return $html;
 	
 	}
@@ -3030,7 +3075,7 @@ class mak extends db{
 		/*
 		 * Twitter plugin
 		 */
-		
+		/*
 		$html .= '<script src="http://widgets.twimg.com/j/2/widget.js"></script>';
 		$html .= "<script>
 				new TWTR.Widget({
@@ -3062,7 +3107,7 @@ class mak extends db{
 				  }
 				}).render().setUser('cultofmac').start();
 				</script>";
-		
+		*/
 		return $html;
 		
 	}
