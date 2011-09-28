@@ -58,7 +58,13 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 		<link rel="stylesheet" href="lib/css/register.css" />
 		<script src="lib/js/modernizr-2.min.js"></script>
 	</head>
-	<body id="register">
+	<body id="register"
+	<?php 
+	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+		echo ' class="logined"';
+	}
+	?>
+	>
 	<?php include 'modal.php';?>
 	<div id="wrap">
 		<div class="header-wrap">
@@ -113,6 +119,8 @@ window.jQuery || document.write('<script src="lib/js/jquery-1.6.2.js">\x3C/scrip
 		<script type="text/javascript" src="lib/js/ui-1.8.15.js">
 		</script>
 		<script type="text/javascript" src="lib/js/main.js">
+		</script>
+		<script type="text/javascript" src="lib/js/sub.js">
 		</script>
 		<script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
