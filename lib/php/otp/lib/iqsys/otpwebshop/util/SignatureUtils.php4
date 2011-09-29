@@ -1,0 +1,126 @@
+<?php
+
+if (!defined('WEBSHOP_LIB_DIR')) define('WEBSHOP_LIB_DIR', dirname(__FILE__) . '/../../..');
+
+require_once(WEBSHOP_LIB_DIR . '/iqsys/otpwebshop/util/DefineConst.php');
+require_once(WEBSHOP_LIB_DIR . '/iqsys/otpwebshop/util/ConfigUtils.php');
+
+/**
+* A WebShop PHP kliens által használt utility osztály
+* digitális aláírás generálására PHP4 környezetben.
+* 
+* @version 3.3.1
+* @author Bodnár Imre / IQSYS
+*/
+class SignatureUtils {
+
+    /**
+    * Privát kulcs fájlrendszerbõl történõ betöltése és értelmezése.
+    * A kulcs állománynak PEM formában kell lennie!
+    * Az eljárás PHP4 alatt jelenleg nem csinál semmit,
+    * a visszaadott érték maga az állomány elérés
+    * 
+    * @param string $privKeyFileName a privát kulcs állomány elérési címe
+    * @return string a privát kulcs állomány elérési címe
+    */
+    function loadPrivateKey($privKeyFileName) {
+        return $privKeyFileName;
+    }
+
+    /**
+    * Aláírandó szöveg elõállítása az aláírandó szöveg értékek listájából:
+    * [s1, s2, s3, s4]  ->  's1|s2|s3|s4'
+    * 
+    * @param array aláírandó mezõk 
+    * @return string aláírandó szöveg
+    */
+    function getSignatureText($signatureFields) {
+        $signatureText = '';
+        foreach ($signatureFields as $data) {
+            $signatureText = $signatureText.$data.'|';
+        }
+
+        if (strlen($signatureText) > 0) {
+            $signatureText = substr($signatureText, 0, strlen($signatureText) - 1);
+        }
+
+        return $signatureText;
+    }
+
+    /**
+    * @desc Stream beolvasása. 
+    * Az fopen és fclose hívásokat nem tartalmazza az eljárás.
+    * 
+    * @param resource handle
+    * @return string a stream tartalma
+    */
+    function streamGetContents($source) {
+        $result = "";
+        if ($source) {
+            while (!feof($source)) {
+                $result .= fgets($source, 4096);
+            }
+        }
+        return $result;
+    }
+    
+    /**
+    * Digitális aláírás generálása a Bank által elvárt formában.
+    * Az aláírás során az MD5 hash algoritmust használjuk.
+    * 
+    * @param string $data az aláírandó szöveg
+    * @param string $pkcs8PrivateKey a privát kulcs állomány elérési címe    
+    * @param array $properties a WebShop PHP kliens konfigurációja
+    * @param LogCategory $logger log4php naplózó objektum
+    * 
+    * @return string digitális aláírás, hexadecimális formában (ahogy a banki felület elvárja). 
+    */
+    function generateSignature($data, $pkcs8PrivateKey, $properties, $logger) {
+        $openSslExecPath = ConfigUtils::safeConfigParam($properties, PROPERTY_OPENSSL_EXECUTIONPATH);
+        $openSslExecParams = ConfigUtils::safeConfigParam($properties, PROPERTY_OPENSSL_EXECUTIONPARAMS);
+        $substedExecParams = ConfigUtils::substConfigValue($openSslExecParams, array("0" => $pkcs8PrivateKey));
+
+        if (is_null($openSslExecPath) || $openSslExecPath == "" ) {
+            $logger->fatal("Hiba az alairas generalasanal, " . PROPERTY_OPENSSL_EXECUTIONPATH . " parameter erteke ures!");
+        }
+
+        // szóközt tartalmazó elérési útvonal kezelése
+        $openSslExecPath = trim($openSslExecPath);
+        if (strpos($openSslExecPath, " ") !== false && $openSslExecPath{0} != '"' && $openSslExecPath{0} != "'") {
+            $openSslExecPath = '"' . $openSslExecPath . '"';
+        } 
+        
+        $cmdOut = null;
+
+        $descriptorspec = array(
+            0 => array("pipe", "r"),    // stdin pipe
+            1 => array("pipe", "w"),    // stdout pipe 
+            2 => array("pipe", "r"));   // stderr pipe
+        $process = proc_open($openSslExecPath . ' ' . $substedExecParams, $descriptorspec, $pipes);
+
+        if (is_resource($process)) {
+            fwrite($pipes[0], $data);
+            fclose($pipes[0]);
+
+            $cmdOut = trim(SignatureUtils::streamGetContents($pipes[1]));
+            fclose($pipes[1]);
+
+            $cmdErr = trim(SignatureUtils::streamGetContents($pipes[2]));
+            fclose($pipes[2]);
+            
+            $retVal = proc_close($process);
+
+            if ($retVal !== 0) {
+                $logger->fatal("Hiba az openssl futtatasanal (" . $openSslExecPath . "): " . $cmdErr);
+            } 
+            else if (is_null($cmdOut) || $cmdOut == "") {
+                $logger->fatal("Hiba az alairas generalasanal (" . $openSslExecPath . ' ' . $substedExecParams . "): " . $cmdErr);
+            }
+        }
+        
+        return $cmdOut;
+    }
+   
+}
+
+?>

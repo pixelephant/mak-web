@@ -1,0 +1,44 @@
+Haromszereplos fizetesi tranzakcio
+
+Inditas: 2011.07.26. 18:02:06
+
+Indito adatok
+  posId: #02299991
+  azonosito: 45684539218051107161324701883273
+  osszeg: 5000
+  devizanem: HUF
+  nyelvkod: hu
+  nevKell: 
+  orszagKell: 
+  megyeKell: 
+  telepulesKell: 
+  iranyitoszamKell: 
+  utcaHazszamKell: 
+  mailCimKell: 
+  kozlemenyKell: 
+  vevoVisszaigazolasKell: 
+  ugyfelRegisztracioKell: 
+  regisztraltUgyfelId: 
+  shopMegjegyzes: Fizetés: bronz
+  backURL: http://www.pixelephant.hu:80/otpwebshop2/web_demo/mak_otp_test_process.php?fizetesValasz=true&posId=%2302299991&tranzakcioAzonosito=45684539218051107161324701883273
+  ketlepcsosFizetes: 
+
+Befejezes: 2011.07.26. 18:10:09
+
+Valasz: FIZETESTIMEOUT
+
+Valasz adatok
+  posId: #02299991
+  azonosito: 45684539218051107161324701883273
+  posValaszkod: 
+  authorizaciosKod: 
+  statuszKod: 
+  teljesites: 2011.07.26 18.10.10 000
+  nev: 
+  orszag: 
+  megye: 
+  varos: 
+  iranyitoszam: 
+  utcaHazszam: 
+  mailCim: 
+  kozlemeny: 
