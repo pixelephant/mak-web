@@ -3443,6 +3443,11 @@ class mak extends db{
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
 		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);
 		
+		
+		if($_SESSION['tagsag'] < 1 || $_SESSION['tagsag'] == '' || !isset($_SESSION['tagsag'])){
+			$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', '', $form);
+		}
+		
 		if($_SESSION['tagsag'] > 1){
 			$form = $this->replaceTags('%diszkontRadioStart%', '%diszkontRadioEnd%', '', $form);
 		}
@@ -3459,6 +3464,9 @@ class mak extends db{
 			$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		}
 	
+		$form = str_replace("%hosszabbitasStart%","",$form);
+		$form = str_replace("%hosszabbitasEnd%","",$form);
+		
 		$form = str_replace("%diszkontRadioStart%","",$form);
 		$form = str_replace("%diszkontRadioEnd%","",$form);
 		

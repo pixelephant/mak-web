@@ -108,6 +108,10 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 		 * Siker esetén e-mail küldés
 		 */
 		
+		$fizetesNev['cheque'] = 'Csekk';
+		$fizetesNev['transfer'] = 'Átutalás';
+		$fizetesNev['card'] = 'Bankkártya';
+	
 		if($felh[0]['nem'] == 'C'){
 			$nev = $felh[0]['cegnev'];
 		}else{
@@ -136,7 +140,7 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 		
 		$mail->IsHTML(true);    // HTML e-mail
 		$mail->Subject = "Szintváltás a weboldalon";
-		$mail->Body = $nev . " ,címe: " . $cim . ". Új tagsági szint: " . $tagtipus;
+		$mail->Body = $nev . ", címe: " . $cim . ". Új tagsági szint: " . $tagtipus . ", tagságának kiegyenlítésére az alábbi fizetési módot választotta: " . $fizetesNev[$fizetes['paymentmethodRadio']];
 		
 		if($mail->Send() === FALSE){
 			$valasz = 'Sikertelen e-mail küldés!';
