@@ -49,7 +49,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	
 	        $this->SetAutoPageBreak(false, 0);
 	        
-	        $img_file = 'visszaigazolas.jpg';
+	        $img_file = 'lib/php/pdf/visszaigazolas.jpg';
 	
 	        $this->Image($img_file, 0, 0, 210, 297, '', '', '', false, 150, '', false, false, 0);
 	        
