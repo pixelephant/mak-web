@@ -95,6 +95,15 @@
 
 /*Input méret igazítások */
 
+#standardPlateHuInput{
+	width: 55px !important;
+}
+
+#standardPlateFoInput{
+	width: 80px !important;
+}
+
+
 #content form .zip{
 	width: 40px !important;
 }
@@ -278,17 +287,12 @@ span.sum{
 
 
 
-
-#cardNum1{
-	margin-right:10px;
-	width:50px !important;
-}
-
-#cardNum2{
-	margin-left:10px;
-	width:50px !important;
+.cardnum{
+	width:14px !important;
+	margin:0 2px;
 }
 
 .dash{
 	float:left;
+	margin:0 10px;
 }
