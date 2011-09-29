@@ -12,6 +12,10 @@ $tagsag['diszkontMember'] = 2;
 $tagsag['standardMember'] = 3;
 $tagsag['komfortMember'] = 4;
 
+$fizetesNev['cheque'] = 'Csekk';
+$fizetesNev['transfer'] = 'Átutalás';
+$fizetesNev['card'] = 'Bankkártya';
+
 $mak_email = '0antalbalazs0@gmail.com';
 
 parse_str($_POST['paymentData'], $fizetes);
@@ -80,7 +84,7 @@ if(isset($_POST['paymentData']) && !isset($_POST['memberData']) && $_POST['actio
 		
 		$mail->IsHTML(true);    // HTML e-mail
 		$mail->Subject = "Taghosszabbítás a weboldalon";
-		$mail->Body = $nev . " ,címe: " . $cim;
+		$mail->Body = $nev . " ,címe: " . $cim . ", tagságának kiegyenlítésére az alábbi fizetési módot választotta: " . $fizetesNev[$fizetes['paymentmethodRadio']];
 		
 		if($mail->Send() === FALSE){
 			$valasz = 'Sikertelen e-mail küldés!';
@@ -107,10 +111,6 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 		/*
 		 * Siker esetén e-mail küldés
 		 */
-		
-		$fizetesNev['cheque'] = 'Csekk';
-		$fizetesNev['transfer'] = 'Átutalás';
-		$fizetesNev['card'] = 'Bankkártya';
 	
 		if($felh[0]['nem'] == 'C'){
 			$nev = $felh[0]['cegnev'];
