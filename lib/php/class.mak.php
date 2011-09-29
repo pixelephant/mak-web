@@ -2573,7 +2573,10 @@ class mak extends db{
 				
 				if($aloldalak[$i]['tartalom_url'] == 'assistrent'){
 					$html .= '<a href="http://www.assistrent.hu" target="_blank">Assistrent</a>';
-				}else{
+				}elseif($aloldalak[$i]['tartalom_url'] == 'utazasiajanlatok'){
+					$html .= '<a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlatok</a>';
+				}
+				else{
 					$html .= '<a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '">' . $aloldalak[$i]['cim'] . '</a>';
 				}
 				$aloldal_azonosito = $aloldalak[$i]['id'];
