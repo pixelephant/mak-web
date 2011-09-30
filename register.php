@@ -281,15 +281,15 @@ $main = new mak(false);
 					<h3>Tagsági szint <span class="sum"></span></h3>
 					<div class="row">
 						<label for="diszkontMember">Diszkont tagság</label>
-						<input data-price="1000" type="radio" name="membership" id="diszkontMember" />
+						<input data-price="3900" type="radio" name="membership" id="diszkontMember" />
 					</div>
 					<div class="row">
 						<label for="standardMember">Standard tagság</label>
-						<input data-price="10000" type="radio" name="membership" id="standardMember" />
+						<input data-price="12600" type="radio" name="membership" id="standardMember" />
 					</div>
 					<div class="row">
 						<label for="komfortMember">Komfort tagság</label>
-						<input data-price="100000" type="radio" name="membership" id="komfortMember" />
+						<input data-price="16300" type="radio" name="membership" id="komfortMember" />
 					</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>

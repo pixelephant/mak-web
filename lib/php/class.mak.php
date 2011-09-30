@@ -3469,10 +3469,10 @@ class mak extends db{
 		$kartya[5] = 'Diszkont plusz';
 	
 		$ar[1] = '0';
-		$ar[2] = '1000';
-		$ar[3] = '10000';
-		$ar[4] = '100000';
-		$ar[5] = '1500';
+		$ar[2] = '2800';
+		$ar[3] = '10600';
+		$ar[4] = '13800';
+		$ar[5] = '0';
 		
 		$col = 'gyartasi_ev,rendszam';
 		$cond['id'] = $_SESSION['user_id'];

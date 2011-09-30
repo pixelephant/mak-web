@@ -121,7 +121,7 @@
 	
 	$main->close();
 	
-	$pdf->Output($nev . '.pdf', 'D');
+	$pdf->Output($nev . '.pdf', 'FD');
 	
 	/*
 	 * PDF VÉGE

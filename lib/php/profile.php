@@ -65,11 +65,11 @@ if($_POST['action'] == 'brandType'){
 			
 			$adatok['levelezesi_kozterulet'] = $form['natAddressMailing'];
 			$adatok['levelezesi_kozterulet_jellege'] = $form['natAddressTypeMailing'];
-			$adatok['levelezesi_hazszam'] = $form['natAddressMailingNumber'];
-			$adatok['levelezesi_epulet'] = $form['natAddressMailingBuilding'];
-			$adatok['levelezesi_lepcsohaz'] = $form['natAddressMailingStairs'];
-			$adatok['levelezesi_emelet'] = $form['natAddressMailingLevel'];
-			$adatok['levelezesi_ajto'] = $form['natAddressMailingDoor'];
+			$adatok['levelezesi_hazszam'] = $form['natAddressNumberMailing'];
+			$adatok['levelezesi_epulet'] = $form['natAddressBuildingMailing'];
+			$adatok['levelezesi_lepcsohaz'] = $form['natAddressStairsMailing'];
+			$adatok['levelezesi_emelet'] = $form['natAddressLevelMailing'];
+			$adatok['levelezesi_ajto'] = $form['natAddressDoorMailing'];
 				
 			$nev = $adatok['vezeteknev'] . " " . $adatok['keresztnev'];
 		}
