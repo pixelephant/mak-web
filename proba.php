@@ -6,7 +6,37 @@
 	require_once('lib/php/pdf/tcpdf/config/lang/eng.php');
 	require_once('lib/php/pdf/tcpdf/tcpdf.php');
 	
+	require 'lib/php/Wixel/gump.class.php';
+	require 'lib/php/class.db.php';
+	require 'lib/php/class.mak.php';
+	
 	session_start();
+	
+	$main = new mak();
+	
+	$cond['e_mail'] = $_SESSION['lastEmail'];
+	
+	$felh = $main->get_felhasznalo();
+	
+	/*
+	 * Tagsági szám generálása
+	 */
+	
+	if($felh[0]['tagsagi_szam'] == ''){
+		$sql = "SELECT MAX(tagsagi_szam)+1 AS tagsagi_szam FROM mak_felhasznalo WHERE tagsagi_szam LIKE '5%'";
+		
+		$q = $this->query($sql);
+		$a = $this->results($q,$col);
+		
+		if(is_null($a[0]['tagsagi_szam'])){
+			$szam = "5000000001";
+		}
+		
+		$szam = $a[0]['tagsagi_szam'];
+		
+	}else{
+		$szam = $felh[0]['tagsagi_szam'];
+	}
 	
 	class MYPDF extends TCPDF {
 	    public function Header() {
@@ -40,16 +70,17 @@
 	}
 	
 	
+	
 	//$nev = utf8_encode("Árvíztűrő tükörfúrógép");
 	//$nev = iconv("iso-8859-2","utf-8","Árvíztűrő tükörfúrógép");
 	//$nev = "Árvíztűrő tükörfúrógép";
-	
+	/*
 	$szam = '';
 	
 	for($i=0;$i<12;$i++){
 		$szam .= rand(0,9);
 	}
-	
+	*/
 	$pdf = new MYPDF(PDF_PAGE_ORIENTATION, 'mm', PDF_PAGE_FORMAT, true, 'UTF-8', false);
 	//$pdf = new MYPDF(PDF_PAGE_ORIENTATION, 'mm', PDF_PAGE_FORMAT, true, 'ISO-8859-2', false);
 	
@@ -88,7 +119,7 @@
 	$pdf->writeHTMLCell(0,0,140,266,$html);
 	//AZONOSITO
 	
-	
+	$main->close();
 	
 	$pdf->Output($nev . '.pdf', 'D');
 	

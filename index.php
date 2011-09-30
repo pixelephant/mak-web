@@ -126,7 +126,7 @@ autoklub,mak
 
 <?php startblock('ad') ?>
 <?php 
-	echo $main->render_hirdetes($page,$subpage,$tartalom,$subsubpage);
+	echo $main->render_hirdetes('fooldal');
 	echo $main->render_poll();
 ?>
 <?php endblock() ?>

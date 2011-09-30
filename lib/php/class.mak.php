@@ -109,7 +109,8 @@ class mak extends db{
 		
 		if($col == ''){
 			$col = 'id,nem,jelszo,tagsagi_szam,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,kapcsolattarto_email,kapcsolattarto_telefon,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas,';
-			$col .= 'e_mail_2,muszaki_vizsga,forgalmi_engedely,muszaki_vizsga_2,forgalmi_engedely_2,rendszam_2,gyartmany_sap_2,tipus_sap_2,gyartasi_ev_2,elso_forgalom_2,rendszam_valtas';
+			$col .= 'e_mail_2,muszaki_vizsga,forgalmi_engedely,muszaki_vizsga_2,forgalmi_engedely_2,rendszam_2,gyartmany_sap_2,tipus_sap_2,gyartasi_ev_2,elso_forgalom_2,rendszam_valtas,';
+			$col .= 'allando_kozterulet_jellege,allando_epulet,allando_lepcsohaz,allando_emelet,allando_ajto,levelezesi_kozterulet_jellege,levelezesi_epulet,levelezesi_lepcsohaz,levelezesi_emelet,levelezesi_ajto';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -3404,44 +3405,46 @@ class mak extends db{
 		 * Második autó
 		 */
 		
-		$gyart_opt = '';
-		$tip_opt = '';
-		
-		for($i=0;$i<$gyartmany['count'];$i++){
-		
-			if($gy != $gyartmany[$i]['marka']){
-				$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '"';
-				
-				if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_2']){
-					$gyart_opt .= ' selected="selected"';
-				}
-				
-				$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
-				$gy = $gyartmany[$i]['marka'];
-			}
-			
-			if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_2']){
-				$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';
-				
-				if($gyartmany[$i]['gyartmany_sap_kod'] == $adatok[0]['tipus_sap_2']){
-					$tip_opt .= ' selected="selected"';
-				}
-				
-				$tip_opt .= '>' . $gyartmany[$i]['tipus'] . '</option>';
-			}
-		
-		}
-		
-		$form = str_replace('%marka_options_2%', $gyart_opt,$form);
-		$form = str_replace('%tipus_options_2%', $tip_opt,$form);
-		
 		if($_SESSION['tagsag'] == 4){
-			$form = $this->replaceTags('%komfortAutoStart% ', '%komfortAutoEnd%', '', $form);
+			$form = $this->replaceTags('%komfortAutoStart%', '%komfortAutoEnd%', '', $form);
 			if(date("Y-m-d",strtotime("-1 year")) < $adatok[0]['rendszam_valtas']){
 				$form = str_replace("%komfortRendszamCsere%",' disabled="disabled"',$form);
 			}else{
 				$form = str_replace("%komfortRendszamCsere%",'',$form);
 			}
+		}else{
+		
+			$gyart_opt = '';
+			$tip_opt = '';
+			
+			for($i=0;$i<$gyartmany['count'];$i++){
+			
+				if($gy != $gyartmany[$i]['marka']){
+					$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '"';
+					
+					if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_2']){
+						$gyart_opt .= ' selected="selected"';
+					}
+					
+					$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
+					$gy = $gyartmany[$i]['marka'];
+				}
+				
+				if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_2']){
+					$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';
+					
+					if($gyartmany[$i]['gyartmany_sap_kod'] == $adatok[0]['tipus_sap_2']){
+						$tip_opt .= ' selected="selected"';
+					}
+					
+					$tip_opt .= '>' . $gyartmany[$i]['tipus'] . '</option>';
+				}
+			
+			}
+			
+			$form = str_replace('%marka_options_2%', $gyart_opt,$form);
+			$form = str_replace('%tipus_options_2%', $tip_opt,$form);
+		
 		}
 		
 		$form = str_replace("%komfortAutoStart%","",$form);
