@@ -150,9 +150,11 @@ $main = new mak(false);
 					<div class="row">
 						<label for="natPrefix">Prefix</label>
 						<select name="natPrefix" id="natPrefix">
-							<option value="0">-</option>
-							<option value="1">Dr.</option>
-							<option value="2">Phd</option>
+							<option value="">-</option>
+							<option value="Ifj.">Ifj.</option>
+							<option value="Id.">Id</option>
+							<option value="Dr.">Dr.</option>
+							<option value="Özv.">Özv</option>
 						</select>
 					</div>
 					<div class="row">

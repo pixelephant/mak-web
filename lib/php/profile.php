@@ -56,7 +56,15 @@ if($_POST['action'] == 'brandType'){
 			
 			$adatok['allando_kozterulet'] = substr($form['natAddress'],0,$space);
 			$adatok['allando_hazszam'] = substr($form['natAddress'],$space);
-					
+
+			$adatok['levelezesi_irsz'] = $form['natZipMailing'];
+			$adatok['levelezesi_helyseg'] = $form['natCityMailing'];	
+			
+			$space = strrpos($form['natAddressMailing']," ");
+			
+			$adatok['levelezesi_kozterulet'] = substr($form['natAddressMailing'],0,$space);
+			$adatok['levelezesi_hazszam'] = substr($form['natAddressMailing'],$space);
+			
 			$nev = $adatok['vezeteknev'] . " " . $adatok['keresztnev'];
 		}
 		
@@ -75,8 +83,17 @@ if($_POST['action'] == 'brandType'){
 			$adatok['allando_kozterulet'] = substr($form['coAddress'],0,$space);
 			$adatok['allando_hazszam'] = substr($form['coAddress'],$space);
 			
+			$adatok['levelezesi_irsz'] = $form['coZipMailing'];
+			$adatok['levelezesi_helyseg'] = $form['coCityMailing'];	
+			
+			$space = strrpos($form['coAddressMailing']," ");
+			
+			$adatok['levelezesi_kozterulet'] = substr($form['coAddressMailing'],0,$space);
+			$adatok['levelezesi_hazszam'] = substr($form['coAddressMailing'],$space);
+			
+			
 			$adatok['kapcsolattarto_vezeteknev'] = $form['coCoFName'];
-			$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
+			//$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
 			
 			$nev = $adatok['kapcsolattarto_vezeteknev'] . " " . $adatok['kapcsolattarto_keresztnev'] . " - " . $adatok['cegnev'];
 		
@@ -91,6 +108,7 @@ if($_POST['action'] == 'brandType'){
 		
 		if($form['licensePlate'] != ''){
 			$adatok['rendszam'] = str_replace("-","",$form['licensePlate']);
+			$adatok['rendszam_valtas'] = date("Y-m-d");
 		}
 		
 		$adatok['elso_forgalom_2'] = $form['firstDate2'];
@@ -106,10 +124,13 @@ if($_POST['action'] == 'brandType'){
 		
 		if($form['email'] != ''){
 			$adatok['e_mail'] = $form['email'];
-			$adatok['azonosito'] = $form['email'];
+			$adatok['felhasznalonev'] = $form['email'];
 		}
 		
 		$adatok['e_mail_2'] = $form['email2'];
+		
+		$adatok['vezetekes_telefon'] = $form['phone'];
+		$adatok['mobil_telefon'] = $form['mobile'];
 		
 		if($form['pass'] != ''){
 			$adatok['jelszo'] = sha1($form['pass']);

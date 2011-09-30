@@ -16,5 +16,13 @@
 	<div id="newsletter-response"></div>
 </div>
 <div class="hr"></div>
-<a href="regisztralas" id="side-cta" class="black-button"><span>Tagbelépés</span><em></em></a>
-<div class="hr"></div>
+<?php 
+	if(isset($_SESSION['tagsag']) && $_SESSION['tagsag'] == 0){
+		echo '<a href="enautoklubom/beallitasok/tagsag" id="side-cta" class="black-button"><span>Tagbelépés</span><em></em></a><div class="hr"></div>';
+	}elseif(isset($_SESSION['user_id'])){
+		
+	}else{
+		echo '<a href="regisztralas" id="side-cta" class="black-button"><span>Tagbelépés</span><em></em></a><div class="hr"></div>';
+	}
+?>
+

@@ -109,7 +109,7 @@ class mak extends db{
 		
 		if($col == ''){
 			$col = 'id,nem,jelszo,tagsagi_szam,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,kapcsolattarto_email,kapcsolattarto_telefon,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas,';
-			$col .= 'e_mail_2,muszaki_vizsga,forgalmi_engedely,muszaki_vizsga_2,forgalmi_engedely_2,rendszam_2,gyartmany_sap_2,tipus_sap_2,gyartasi_ev_2,elso_forgalom_2';
+			$col .= 'e_mail_2,muszaki_vizsga,forgalmi_engedely,muszaki_vizsga_2,forgalmi_engedely_2,rendszam_2,gyartmany_sap_2,tipus_sap_2,gyartasi_ev_2,elso_forgalom_2,rendszam_valtas';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -3321,6 +3321,10 @@ class mak extends db{
 			$adatok[0]['rendszam'] = substr($adatok[0]['rendszam'], 0, 3) . '-' . substr($adatok[0]['rendszam'], 3);
 		}
 		
+		if($adatok[0]['rendszam_2'] != ''){
+			$adatok[0]['rendszam_2'] = substr($adatok[0]['rendszam_2'], 0, 3) . '-' . substr($adatok[0]['rendszam_2'], 3);
+		}
+		
 		if($adatok[0]['nem'] != 'C'){
 			$form = $this->replaceTags('%coSetStart%', '%coSetEnd%', '', $form);
 			
@@ -3433,6 +3437,11 @@ class mak extends db{
 		
 		if($_SESSION['tagsag'] == 4){
 			$form = $this->replaceTags('%komfortAutoStart% ', '%komfortAutoEnd%', '', $form);
+			if(date("Y-m-d",strtotime("-1 year")) < $adatok[0]['rendszam_valtas']){
+				$form = str_replace("%komfortRendszamCsere%",' disabled="disabled"',$form);
+			}else{
+				$form = str_replace("%komfortRendszamCsere%",'',$form);
+			}
 		}
 		
 		$form = str_replace("%komfortAutoStart%","",$form);
