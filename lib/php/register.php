@@ -39,10 +39,13 @@ if(!empty($form)){
 		$adatok['allando_irsz'] = $form['natZip'];
 		$adatok['allando_helyseg'] = $form['natCity'];	
 		
-		$space = strrpos($form['natAddress']," ");
-		
-		$adatok['allando_kozterulet'] = substr($form['natAddress'],0,$space);
-		$adatok['allando_hazszam'] = substr($form['natAddress'],$space);
+		$adatok['allando_kozterulet'] = $form['natAddress'];
+		$adatok['allando_kozterulet_jellege'] = $form['natAddressType'];
+		$adatok['allando_hazszam'] = $form['natAddressNumber'];
+		$adatok['allando_epulet'] = $form['natAddressBuilding'];
+		$adatok['allando_lepcsohaz'] = $form['natAddressStairs'];
+		$adatok['allando_emelet'] = $form['natAddressLevel'];
+		$adatok['allando_ajto'] = $form['natAddressDoor'];
 				
 		$nev = $adatok['vezeteknev'] . " " . $adatok['keresztnev'];
 	}
@@ -58,10 +61,13 @@ if(!empty($form)){
 		$adatok['allando_irsz'] = $form['coZip'];
 		$adatok['allando_helyseg'] = $form['coCity'];	
 		
-		$space = strrpos($form['coAddress']," ");
-		
-		$adatok['allando_kozterulet'] = substr($form['coAddress'],0,$space);
-		$adatok['allando_hazszam'] = substr($form['coAddress'],$space);
+		$adatok['allando_kozterulet'] = $form['coAddress'];
+		$adatok['allando_kozterulet_jellege'] = $form['coAddressType'];
+		$adatok['allando_hazszam'] = $form['coAddressNumber'];
+		$adatok['allando_epulet'] = $form['coAddressBuilding'];
+		$adatok['allando_lepcsohaz'] = $form['coAddressStairs'];
+		$adatok['allando_emelet'] = $form['coAddressLevel'];
+		$adatok['allando_ajto'] = $form['coAddressDoor'];
 		
 		$adatok['kapcsolattarto_vezeteknev'] = $form['coCoName'];
 		//$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];

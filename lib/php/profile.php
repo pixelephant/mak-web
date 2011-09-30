@@ -52,19 +52,25 @@ if($_POST['action'] == 'brandType'){
 			$adatok['allando_irsz'] = $form['natZip'];
 			$adatok['allando_helyseg'] = $form['natCity'];	
 			
-			$space = strrpos($form['natAddress']," ");
-			
-			$adatok['allando_kozterulet'] = substr($form['natAddress'],0,$space);
-			$adatok['allando_hazszam'] = substr($form['natAddress'],$space);
+			$adatok['allando_kozterulet'] = $form['natAddress'];
+			$adatok['allando_kozterulet_jellege'] = $form['natAddressType'];
+			$adatok['allando_hazszam'] = $form['natAddressNumber'];
+			$adatok['allando_epulet'] = $form['natAddressBuilding'];
+			$adatok['allando_lepcsohaz'] = $form['natAddressStairs'];
+			$adatok['allando_emelet'] = $form['natAddressLevel'];
+			$adatok['allando_ajto'] = $form['natAddressDoor'];
 
 			$adatok['levelezesi_irsz'] = $form['natZipMailing'];
 			$adatok['levelezesi_helyseg'] = $form['natCityMailing'];	
 			
-			$space = strrpos($form['natAddressMailing']," ");
-			
-			$adatok['levelezesi_kozterulet'] = substr($form['natAddressMailing'],0,$space);
-			$adatok['levelezesi_hazszam'] = substr($form['natAddressMailing'],$space);
-			
+			$adatok['levelezesi_kozterulet'] = $form['natAddressMailing'];
+			$adatok['levelezesi_kozterulet_jellege'] = $form['natAddressTypeMailing'];
+			$adatok['levelezesi_hazszam'] = $form['natAddressMailingNumber'];
+			$adatok['levelezesi_epulet'] = $form['natAddressMailingBuilding'];
+			$adatok['levelezesi_lepcsohaz'] = $form['natAddressMailingStairs'];
+			$adatok['levelezesi_emelet'] = $form['natAddressMailingLevel'];
+			$adatok['levelezesi_ajto'] = $form['natAddressMailingDoor'];
+				
 			$nev = $adatok['vezeteknev'] . " " . $adatok['keresztnev'];
 		}
 		
@@ -80,18 +86,25 @@ if($_POST['action'] == 'brandType'){
 			
 			$space = strrpos($form['coAddress']," ");
 			
-			$adatok['allando_kozterulet'] = substr($form['coAddress'],0,$space);
-			$adatok['allando_hazszam'] = substr($form['coAddress'],$space);
+			$adatok['allando_kozterulet'] = $form['coAddress'];
+			$adatok['allando_kozterulet_jellege'] = $form['coAddressType'];
+			$adatok['allando_hazszam'] = $form['coAddressNumber'];
+			$adatok['allando_epulet'] = $form['coAddressBuilding'];
+			$adatok['allando_lepcsohaz'] = $form['coAddressStairs'];
+			$adatok['allando_emelet'] = $form['coAddressLevel'];
+			$adatok['allando_ajto'] = $form['coAddressDoor'];
 			
 			$adatok['levelezesi_irsz'] = $form['coZipMailing'];
 			$adatok['levelezesi_helyseg'] = $form['coCityMailing'];	
 			
-			$space = strrpos($form['coAddressMailing']," ");
-			
-			$adatok['levelezesi_kozterulet'] = substr($form['coAddressMailing'],0,$space);
-			$adatok['levelezesi_hazszam'] = substr($form['coAddressMailing'],$space);
-			
-			
+			$adatok['levelezesi_kozterulet'] = $form['coAddressMailing'];
+			$adatok['levelezesi_kozterulet_jellege'] = $form['coAddressTypeMailing'];
+			$adatok['levelezesi_hazszam'] = $form['coAddressMailingNumber'];
+			$adatok['levelezesi_epulet'] = $form['coAddressMailingBuilding'];
+			$adatok['levelezesi_lepcsohaz'] = $form['coAddressMailingStairs'];
+			$adatok['levelezesi_emelet'] = $form['coAddressMailingLevel'];
+			$adatok['levelezesi_ajto'] = $form['coAddressMailingDoor'];
+				
 			$adatok['kapcsolattarto_vezeteknev'] = $form['coCoFName'];
 			//$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
 			
