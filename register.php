@@ -128,6 +128,30 @@ $main = new mak(false);
 						<input type="text" name="coAddress" id="coAddress" />
 					</div>
 					<div class="row">
+						<label for="coAddressType">Székhely közterület jellege</label>
+						<input value="" type="text" name="coAddressType" id="coAddressType" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressNumber">Székhely házszáma</label>
+						<input value="" type="text" name="coAddressNumber" id="coAddressNumber" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressBuilding">Székhely épület</label>
+						<input value="" type="text" name="coAddressBuilding" id="coAddressBuilding" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressStairs">Székhely lépcsőház</label>
+						<input value="" type="text" name="coAddressStairs" id="coAddressStairs" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressLevel">Székhely emelet</label>
+						<input value="" type="text" name="coAddressLevel" id="coAddressLevel" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressDoor">Székhely ajtó</label>
+						<input value="" type="text" name="coAddressDoor" id="coAddressDoor" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
 						<label for="coCoName">Kapcsolattartó neve</label>
 						<input type="text" name="coCoName" id="coCoName" />
 						<img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
@@ -188,6 +212,30 @@ $main = new mak(false);
 					<div class="row">
 						<label for="natAddress">Cím</label>
 						<input class="required" type="text" name="natAddress" id="natAddress" />
+					</div>
+					<div class="row">
+						<label for="natAddressType">Székhely közterület jellege</label>
+						<input class="required" value="" type="text" name="natAddressType" id="natAddressType" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressNumber">Székhely házszáma</label>
+						<input class="required" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressBuilding">Székhely épület</label>
+						<input class="required" value="" type="text" name="natAddressBuilding" id="natAddressBuilding" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressStairs">Székhely lépcsőház</label>
+						<input class="required" value="" type="text" name="natAddressStairs" id="natAddressStairs" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressLevel">Székhely emelet</label>
+						<input class="required" value="" type="text" name="natAddressLevel" id="natAddressLevel" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressDoor">Székhely ajtó</label>
+						<input class="required" value="" type="text" name="natAddressDoor" id="natAddressDoor" /><img class="editable" src="img/editable.png" />
 					</div>
 				</fieldset>
 				
