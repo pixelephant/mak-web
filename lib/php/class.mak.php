@@ -2552,7 +2552,13 @@ class mak extends db{
 				if($aloldalak[$i]['url'] == 'assistrent'){
 					$html .= '<h3 id="assistrent"><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></h3>';
 				}else{
-					$html .= '<h3 id="' . $aloldalak[$i]['url'] . '"><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</a></h3>';					
+					$html .= '<h3 id="' . $aloldalak[$i]['url'] . '"><a'; 
+					
+					if($aloldalak[$i]['url'] == $subpage && $tartalom == '' && $altartalom == ''){
+						$html .= ' class="active"';
+					}
+					
+					$html .= ' href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</a></h3>';					
 				}
 				
 				$html .= '<ul class="links">';	
@@ -2574,7 +2580,7 @@ class mak extends db{
 				if($aloldalak[$i]['tartalom_url'] == 'assistrent'){
 					$html .= '<a href="http://www.assistrent.hu" target="_blank">Assistrent</a>';
 				}elseif($aloldalak[$i]['tartalom_url'] == 'utazasiajanlatok'){
-					$html .= '<a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlatok</a>';
+					$html .= '<a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlat</a>';
 				}
 				else{
 					$html .= '<a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '">' . $aloldalak[$i]['cim'] . '</a>';
@@ -2590,7 +2596,7 @@ class mak extends db{
 				
 				$html .= '<li';
 				
-				if($aloldalak[$i]['altartalom_url'] == $subsubpage){
+				if($aloldalak[$i]['altartalom_url'] == $subsubpage && $altartalom == ''){
 					$html = str_replace('class="active"','',$html);
 					$html .= ' class="active"';
 				}
@@ -2751,6 +2757,8 @@ class mak extends db{
 		$html .= '</ul><div class="footer-sep"></div>';
 		*/
 		
+		$html .= '<div class="footer-sep"></div>';
+		
 		return $html;
 	
 	}
@@ -2763,7 +2771,7 @@ class mak extends db{
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
-			if($kategoria != $tartalom[$i]['azonosito'] && $tartalom[$i]['azonosito'] != 'travel'){
+			if($kategoria != $tartalom[$i]['azonosito'] && $tartalom[$i]['azonosito'] != 'travel' && $tartalom[$i]['azonosito'] != 'magunkrol'){
 				$kategoria = $tartalom[$i]['azonosito'];
 					
 				$html .= '<label for="only-' . $tartalom[$i]['azonosito'] . '">' . $tartalom[$i]['kategoria_nev'] . '</label><input type="checkbox" name="only-' . $tartalom[$i]['azonosito'] . '" id="only-' . $tartalom[$i]['azonosito'] . '" checked="checked" />';

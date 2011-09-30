@@ -88,6 +88,8 @@ if(!empty($form)){
 	$adatok['jelszo'] = sha1($form['pass']);
 	$adatok['felhasznalonev'] = $form['email'];
 	
+	$adatok['dijkategoria'] = 0;
+	
 	if($form['memberRadio'] == 'new'){
 		$valasz = $main->insert_felhasznalo($adatok);
 	}
