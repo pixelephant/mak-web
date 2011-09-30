@@ -192,13 +192,13 @@ strong{
     margin: 12px auto;
     overflow: hidden;
     padding: 10px;
-    width: 134px;
+    width: 172px;
 }
 
 #side-cta span{
 	float: left;
 	margin-right: 10px;
-	margin-left:4px;
+	margin-left:24px;
 }
 
 #side-cta em{
@@ -428,6 +428,10 @@ header h1 a span{
 	margin: 0 3px;
 }
 
+.ie7 #headerButtons a:hover{
+	position:static;
+}
+
 #loginContainer img{
 	display:block;
 }
@@ -523,6 +527,9 @@ header h1 a span{
 
 .ie7 #chl{
 	width:126px;
+}
+
+.ie7 #chl input[type="checkbox"]{
 	margin-top:0px;
 }
 
@@ -804,16 +811,25 @@ aside{
 	top:2px;
 }
 
-.ie7 #search input[type="submit"],.ie8 #search input[type="submit"]{
+.ie7 #search input[type="submit"]{
 	position:relative;
 	top:0px;
 }
 
-.ie7 #search input[type="submit"]:hover,.ie8 #search input[type="submit"]:hover;{
+.ie8 #search input[type="submit"]{
+	position:relative;
+	top:2px;
+}
+
+.ie7 #search input[type="submit"]:hover{
 	position:relative;
 	top:1px;
 }
 
+.ie8 #search input[type="submit"]:hover{
+	position:relative;
+	top:3px;
+}
 
 /*Hírlevél sáv*/
 
@@ -1169,6 +1185,7 @@ footer{
 }
 #footerNav ul li.heading{
 	list-style:none;
+	list-style-image:none;
 }
 #footerNav a{
 	text-decoration: none;

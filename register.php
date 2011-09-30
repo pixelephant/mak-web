@@ -78,9 +78,17 @@ $main = new mak(false);
 					<div id="oldMember">
 						<div class="row">
 							<label for="cardNum1">Kártyaszám</label>
-							<input type="text" name="cardNum1" id="cardNum1" size="5" minlength="5" maxlength="5" />
+							<input class="cardnum" type="text" name="cardNum1" id="cardNum1" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum2" id="cardNum2" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum3" id="cardNum3" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum4" id="cardNum4" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum5" id="cardNum5" size="1" minlength="1" maxlength="1" />
 							<strong class="dash"> - </strong>
-							<input type="text" name="cardNum2" id="cardNum2" size="5" minlength="5" maxlength="5" />
+							<input class="cardnum" type="text" name="cardNum6" id="cardNum6" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum7" id="cardNum7" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum8" id="cardNum8" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum9" id="cardNum9" size="1" minlength="1" maxlength="1" />
+							<input class="cardnum" type="text" name="cardNum10" id="cardNum10" size="1" minlength="1" maxlength="1" />
 							<img src="img/info.png" alt="" class="info" title="A kártyáján szereplő 10 jegyű azonosító szám" />
 						</div>
 						<div class="row">
@@ -253,12 +261,13 @@ $main = new mak(false);
 					<h3>Forgalmi rendszám megadása</h3>
 					<div class="row" id="standardPlateHuInputRow">
 						<label for="standardPlateHuInput">Forgalmi rendszám</label>
-						<input type="text" name="standardPlateHuInput" id="standardPlateHuInput" />
-						<img src="img/info.png" alt="" class="info" title="Formátum : AAA111" />
+						<input type="text" name="standardPlateHuInput" id="standardPlateHuInput" size="6" />
+						<img src="img/info.png" alt="" class="info" title="6 karakterből kell állnia." />
 					</div>
 					<div class="row" id="standardPlateFoInputRow">
 						<label for="standardPlateFoInput">Forgalmi rendszám</label>
-						<input type="text" name="standardPlateFoInput" id="standardPlateFoInput" />
+						<input type="text" name="standardPlateFoInput" id="standardPlateFoInput" size="10" />
+						<img src="img/info.png" alt="" class="info" title="Maximálisan 10 karakterből állhat." />
 					</div>
 				</fieldset>
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />

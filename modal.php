@@ -11,7 +11,7 @@
 					<div class="row">
 						<label for="loginPassword">Jelszó</label>
 						<input class="required" type="password" name="loginPassword" id="loginPassword" />
-						<a id="forgotten" href="#">Elfelejtett a jelszavát?</a>
+						<a id="forgotten" tabindex="-1" href="#">Elfelejtett a jelszavát?</a>
 
 					</div>
 					<div id="login-error"></div>

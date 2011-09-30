@@ -1,5 +1,9 @@
 /* Összetett keresés */
 
+#advanced-search{
+	width:660px;
+}
+
 #advanced-search input[type="text"]{
 	width: 455px;
 	height: 20px;

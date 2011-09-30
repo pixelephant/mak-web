@@ -118,7 +118,7 @@ aside h3{
 
 
 aside .links{
-	margin-left: 45px;
+	margin-left: 47px;
 	margin-bottom: 25px;
 	font-size: 14px;
 	color: #5A4A42;     
@@ -227,6 +227,10 @@ font-weight: bold;
 h3 a{
 	text-decoration: none;
 	color: #1C1C1C;
+}
+
+h3 a.active{
+	font-weight:bold;
 }
 
 
