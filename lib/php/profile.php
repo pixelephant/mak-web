@@ -86,14 +86,30 @@ if($_POST['action'] == 'brandType'){
 		$adatok['gyartasi_ev'] = $form['manufYear'];
 		$adatok['gyartmany_sap'] = $form['brand'];
 		$adatok['tipus_sap'] = $form['type'];
+		$adatok['forgalmi_engedely'] = $form['regCert'];
+		$adatok['muszaki_vizsga'] = $form['techExp'];
 		
 		if($form['licensePlate'] != ''){
 			$adatok['rendszam'] = str_replace("-","",$form['licensePlate']);
 		}
 		
+		$adatok['elso_forgalom_2'] = $form['firstDate2'];
+		$adatok['gyartasi_ev_2'] = $form['manufYear2'];
+		$adatok['gyartmany_sap_2'] = $form['brand2'];
+		$adatok['tipus_sap_2'] = $form['type2'];
+		$adatok['forgalmi_engedely_2'] = $form['regCert2'];
+		$adatok['muszaki_vizsga_2'] = $form['techExp2'];
+		
+		if($form['licensePlate2'] != ''){
+			$adatok['rendszam_2'] = str_replace("-","",$form['licensePlate2']);
+		}
+		
 		if($form['email'] != ''){
 			$adatok['e_mail'] = $form['email'];
+			$adatok['azonosito'] = $form['email'];
 		}
+		
+		$adatok['e_mail_2'] = $form['email2'];
 		
 		if($form['pass'] != ''){
 			$adatok['jelszo'] = sha1($form['pass']);
