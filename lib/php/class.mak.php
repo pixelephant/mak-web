@@ -3315,6 +3315,20 @@ class mak extends db{
 		$userid = $_SESSION['user_id'];
 		$cond['id'] = $userid;
 		$tags = array('%coSetStart%', '%coSetEnd%', '%natSetStart%', '%natSetEnd%');
+
+		/*
+		 * Profil kép
+		 */
+		
+		$kep = sha1($userid);
+		
+		if(!is_file('img/profilkepek/' . $kep . '.jpg')){
+			$profilkep = 'img/profil.jpg';
+		}else{
+			
+		}
+		
+		$form = str_replace("%profilkep%", $profilkep, $form);
 		
 		$adatok = $this->get_felhasznalo($cond);
 	
