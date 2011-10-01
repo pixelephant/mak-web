@@ -525,7 +525,7 @@ if ($password_protection == true) {
 		  }
 		  else {
 	
-			  $error = 'Chyba pri premenovaní !';
+			  $error = 'Hiba az átnevezéskorx!';
 	
 		  }
 	
@@ -1658,9 +1658,9 @@ if ($password_protection == true) {
 			count+=1;
 		});
 	
-		if (count >= 2 ) {alert('Select one category only !'); return false;}
-		if (count == 0 ) {alert('Select desired category !'); return false;}
-		var newname = prompt('Zadajte nové meno:');
+		if (count >= 2 ) {alert('Csak egy kategóriát válasszon!'); return false;}
+		if (count == 0 ) {alert('Válasszon kategóriát!'); return false;}
+		var newname = prompt('Kategória új neve:');
 		
 		if (newname) {
 	
