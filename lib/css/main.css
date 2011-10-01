@@ -231,7 +231,7 @@ strong{
 	visibility: hidden;
 	top: 100px; 
 	left: 50%;
-	margin-left: -300px;
+	margin-left: -225px;
 	width: 520px;
 	position: absolute;
 	z-index: 101;
@@ -263,7 +263,7 @@ strong{
 
 /*Űrlap elemek*/
 
-input[type='text'],input[type='password']{ 
+input[type='text'],input[type='password'],input[type='file']{ 
 	border: 1px solid #797e82;	
 	background-color: #E0E0E0;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#E0E0E0), to(#F5F5F5)); 
@@ -473,13 +473,13 @@ header h1 a span{
 
 /*Bejelentkezés*/
 
-#loginform .hr{
+.reveal-modal .hr{
 	background: url(../../img/sep-login.png) no-repeat center center;
 	width:520px;
 	height:12px;
 }
 		
-#loginform label{
+.reveal-modal label{
 	min-width: 105px;
 	text-align: left;
 	margin-right: 5px;
@@ -498,7 +498,7 @@ header h1 a span{
 	 
 }
 
-#loginform .row{
+.reveal-modal .row{
 	padding: 10px;
 	padding-top: 15px;
 	overflow: hidden;
@@ -507,7 +507,7 @@ header h1 a span{
 	position: relative;
 }
 
-#loginform input[type='submit']{
+.reveal-modal input[type='submit']{
     font-size: 12px;
     font-weight: bold;
     padding: 8px 10px;
