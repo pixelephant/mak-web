@@ -3325,7 +3325,7 @@ class mak extends db{
 		if(!is_file('img/profilkepek/' . $kep . '.jpg')){
 			$profilkep = 'img/profil.jpg';
 		}else{
-			
+			$profilkep = 'img/profilkepek/' . $kep . '.jpg';
 		}
 		
 		$form = str_replace("%profilkep%", $profilkep, $form);
