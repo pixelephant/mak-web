@@ -211,6 +211,7 @@ select{
 	height:260px;
 }
 #profile-image a{
+	display:none;
 	position:absolute;
 	top:0;
 	right:0;
@@ -226,7 +227,10 @@ select{
   background-color: rgba(0, 0, 0, 0.5);  
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000,endColorstr=#7F000000); 
             zoom: 1;
+}
 
+#profile-image:hover a{
+	display:block;
 }
 
 #upload-image{
@@ -235,6 +239,18 @@ select{
 	padding:6px 8px;
 }
 
+
+#profileform{
+	padding-top:0 !important;
+}
+
+#profileform h2{
+	margin-bottom:10px !important;
+}
+
+#profileform .hr{
+	height:28px !important;
+}
 
 /*Tooltip*/
 #tooltip {
