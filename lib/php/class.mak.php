@@ -108,7 +108,9 @@ class mak extends db{
 		$col = trim($col);
 		
 		if($col == ''){
-			$col = 'id,nem,jelszo,tagsagi_szam,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,kapcsolattarto_email,kapcsolattarto_telefon,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas';
+			$col = 'id,nem,jelszo,tagsagi_szam,szuletesi_datum,anyja_neve,elonev,vezeteknev,cegnev,alapitas_eve,kapcsolattarto_keresztnev,kapcsolattarto_vezeteknev,kapcsolattarto_email,kapcsolattarto_telefon,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,gyartmany_sap,tipus_sap,gyartasi_ev,elso_forgalom,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja,modositas,';
+			$col .= 'e_mail_2,muszaki_vizsga,forgalmi_engedely,muszaki_vizsga_2,forgalmi_engedely_2,rendszam_2,gyartmany_sap_2,tipus_sap_2,gyartasi_ev_2,elso_forgalom_2,rendszam_valtas,';
+			$col .= 'allando_kozterulet_jellege,allando_epulet,allando_lepcsohaz,allando_emelet,allando_ajto,levelezesi_kozterulet_jellege,levelezesi_epulet,levelezesi_lepcsohaz,levelezesi_emelet,levelezesi_ajto';
 		}
 		
 		return $this->sql_select($table,$col,$cond);
@@ -2552,7 +2554,13 @@ class mak extends db{
 				if($aloldalak[$i]['url'] == 'assistrent'){
 					$html .= '<h3 id="assistrent"><a href="http://www.assistrent.hu" target="_blank">Assistrent</a></h3>';
 				}else{
-					$html .= '<h3 id="' . $aloldalak[$i]['url'] . '"><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</a></h3>';					
+					$html .= '<h3 id="' . $aloldalak[$i]['url'] . '"><a'; 
+					
+					if($aloldalak[$i]['url'] == $subpage && $tartalom == '' && $altartalom == ''){
+						$html .= ' class="active"';
+					}
+					
+					$html .= ' href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '">' . $aloldalak[$i]['almenu'] . '</a></h3>';					
 				}
 				
 				$html .= '<ul class="links">';	
@@ -2574,7 +2582,7 @@ class mak extends db{
 				if($aloldalak[$i]['tartalom_url'] == 'assistrent'){
 					$html .= '<a href="http://www.assistrent.hu" target="_blank">Assistrent</a>';
 				}elseif($aloldalak[$i]['tartalom_url'] == 'utazasiajanlatok'){
-					$html .= '<a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlatok</a>';
+					$html .= '<a href="http://www.autoclubtravel.hu" target="_blank">Utazási ajánlat</a>';
 				}
 				else{
 					$html .= '<a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '">' . $aloldalak[$i]['cim'] . '</a>';
@@ -2590,7 +2598,7 @@ class mak extends db{
 				
 				$html .= '<li';
 				
-				if($aloldalak[$i]['altartalom_url'] == $subsubpage){
+				if($aloldalak[$i]['altartalom_url'] == $subsubpage && $altartalom == ''){
 					$html = str_replace('class="active"','',$html);
 					$html .= ' class="active"';
 				}
@@ -2751,6 +2759,8 @@ class mak extends db{
 		$html .= '</ul><div class="footer-sep"></div>';
 		*/
 		
+		$html .= '<div class="footer-sep"></div>';
+		
 		return $html;
 	
 	}
@@ -2763,7 +2773,7 @@ class mak extends db{
 		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
-			if($kategoria != $tartalom[$i]['azonosito'] && $tartalom[$i]['azonosito'] != 'travel'){
+			if($kategoria != $tartalom[$i]['azonosito'] && $tartalom[$i]['azonosito'] != 'travel' && $tartalom[$i]['azonosito'] != 'magunkrol'){
 				$kategoria = $tartalom[$i]['azonosito'];
 					
 				$html .= '<label for="only-' . $tartalom[$i]['azonosito'] . '">' . $tartalom[$i]['kategoria_nev'] . '</label><input type="checkbox" name="only-' . $tartalom[$i]['azonosito'] . '" id="only-' . $tartalom[$i]['azonosito'] . '" checked="checked" />';
@@ -3312,6 +3322,10 @@ class mak extends db{
 			$adatok[0]['rendszam'] = substr($adatok[0]['rendszam'], 0, 3) . '-' . substr($adatok[0]['rendszam'], 3);
 		}
 		
+		if($adatok[0]['rendszam_2'] != ''){
+			$adatok[0]['rendszam_2'] = substr($adatok[0]['rendszam_2'], 0, 3) . '-' . substr($adatok[0]['rendszam_2'], 3);
+		}
+		
 		if($adatok[0]['nem'] != 'C'){
 			$form = $this->replaceTags('%coSetStart%', '%coSetEnd%', '', $form);
 			
@@ -3355,6 +3369,10 @@ class mak extends db{
 		
 		//print_r($gyartmany);
 		
+		/*
+		 * Első autó 
+		 */
+		
 		for($i=0;$i<$gyartmany['count'];$i++){
 		
 			if($gy != $gyartmany[$i]['marka']){
@@ -3383,6 +3401,55 @@ class mak extends db{
 		$form = str_replace('%marka_options%', $gyart_opt,$form);
 		$form = str_replace('%tipus_options%', $tip_opt,$form);
 		
+		/*
+		 * Második autó
+		 */
+		
+		if($_SESSION['tagsag'] == 4){
+			$form = $this->replaceTags('%komfortAutoStart%', '%komfortAutoEnd%', '', $form);
+			if(date("Y-m-d",strtotime("-1 year")) < $adatok[0]['rendszam_valtas']){
+				$form = str_replace("%komfortRendszamCsere%",' disabled="disabled"',$form);
+			}else{
+				$form = str_replace("%komfortRendszamCsere%",'',$form);
+			}
+		}else{
+		
+			$gyart_opt = '';
+			$tip_opt = '';
+			
+			for($i=0;$i<$gyartmany['count'];$i++){
+			
+				if($gy != $gyartmany[$i]['marka']){
+					$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '"';
+					
+					if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_2']){
+						$gyart_opt .= ' selected="selected"';
+					}
+					
+					$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
+					$gy = $gyartmany[$i]['marka'];
+				}
+				
+				if($gyartmany[$i]['marka_sap_kod'] == $adatok[0]['gyartmany_sap_2']){
+					$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';
+					
+					if($gyartmany[$i]['gyartmany_sap_kod'] == $adatok[0]['tipus_sap_2']){
+						$tip_opt .= ' selected="selected"';
+					}
+					
+					$tip_opt .= '>' . $gyartmany[$i]['tipus'] . '</option>';
+				}
+			
+			}
+			
+			$form = str_replace('%marka_options_2%', $gyart_opt,$form);
+			$form = str_replace('%tipus_options_2%', $tip_opt,$form);
+		
+		}
+		
+		$form = str_replace("%komfortAutoStart%","",$form);
+		$form = str_replace("%komfortAutoEnd%","",$form);
+		
 		$_SESSION['email'] = $adatok[0]['e_mail'];
 		
 		return $form;
@@ -3402,21 +3469,23 @@ class mak extends db{
 		$kartya[5] = 'Diszkont plusz';
 	
 		$ar[1] = '0';
-		$ar[2] = '1000';
-		$ar[3] = '10000';
-		$ar[4] = '100000';
-		$ar[5] = '1500';
+		$ar[2] = '2800';
+		$ar[3] = '10600';
+		$ar[4] = '13800';
+		$ar[5] = '0';
 		
 		$col = 'gyartasi_ev,rendszam';
 		$cond['id'] = $_SESSION['user_id'];
 		
 		$adat = $this->get_felhasznalo($cond,$col);
 		
+		/*
 		$fizuz = '';
 		if(isset($_GET['status']) && $_GET['status'] == 'failed'){
 			$fizuz = 'A banki felület hibát jelzett a fizetés során!';
 		}
 		$form = str_replace("%fizetesUzenet%",$fizuz,$form);
+		*/
 		
 		if($adat[0]['rendszam'] != ''){
 			$form = str_replace("%rendszam%",substr($adat[0]['rendszam'],0,3) . "-" . substr($adat[0]['rendszam'],3),$form);

@@ -35,6 +35,24 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	$_SESSION['cegnev'] = $felh[0]['cegnev'];
 	$_SESSION['nem'] = $felh[0]['nem'];
 	
+	if($_SESSION['nem'] == 'C'){
+		$pdf = $_SESSION['cegnev'];
+	}else{
+		$pdf = $_SESSION['vezeteknev'] . $_SESSION['keresztnev'];
+	}
+	
+	$link = '<a href="' . $pdf . '.pdf">Ideiglenes tagsági kártya letöltése</a>';
+	
+	/*
+	 * Komfort tagoknak biztosítási kötvény generálása
+	 */
+	
+	if($_SESSION['tagsag'] == 4){
+	
+		$link .= '<br /><a href="' . $pdf . '.pdf">Biztosítási kötvény letöltése</a>';
+	
+	}
+	
 	//include 'proba.php';
 }
 ?>
@@ -96,6 +114,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 		<section id="content">
 			<h1>Bankkártyás fizetés</h1>
 			<p><?php echo $uzenet;?></p>
+			<p><?php echo $link; ?></p>
 		</section>
 	</section>
 	<?php include "cta.php" ?>

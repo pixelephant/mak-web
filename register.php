@@ -128,6 +128,30 @@ $main = new mak(false);
 						<input type="text" name="coAddress" id="coAddress" />
 					</div>
 					<div class="row">
+						<label for="coAddressType">Székhely közterület jellege</label>
+						<input value="" type="text" name="coAddressType" id="coAddressType" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressNumber">Székhely házszáma</label>
+						<input value="" type="text" name="coAddressNumber" id="coAddressNumber" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressBuilding">Székhely épület</label>
+						<input value="" type="text" name="coAddressBuilding" id="coAddressBuilding" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressStairs">Székhely lépcsőház</label>
+						<input value="" type="text" name="coAddressStairs" id="coAddressStairs" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressLevel">Székhely emelet</label>
+						<input value="" type="text" name="coAddressLevel" id="coAddressLevel" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="coAddressDoor">Székhely ajtó</label>
+						<input value="" type="text" name="coAddressDoor" id="coAddressDoor" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
 						<label for="coCoName">Kapcsolattartó neve</label>
 						<input type="text" name="coCoName" id="coCoName" />
 						<img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
@@ -150,9 +174,11 @@ $main = new mak(false);
 					<div class="row">
 						<label for="natPrefix">Prefix</label>
 						<select name="natPrefix" id="natPrefix">
-							<option value="0">-</option>
-							<option value="1">Dr.</option>
-							<option value="2">Phd</option>
+							<option value="">-</option>
+							<option value="Ifj.">Ifj.</option>
+							<option value="Id.">Id</option>
+							<option value="Dr.">Dr.</option>
+							<option value="Özv.">Özv</option>
 						</select>
 					</div>
 					<div class="row">
@@ -186,6 +212,30 @@ $main = new mak(false);
 					<div class="row">
 						<label for="natAddress">Cím</label>
 						<input class="required" type="text" name="natAddress" id="natAddress" />
+					</div>
+					<div class="row">
+						<label for="natAddressType">Székhely közterület jellege</label>
+						<input class="required" value="" type="text" name="natAddressType" id="natAddressType" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressNumber">Székhely házszáma</label>
+						<input class="required" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressBuilding">Székhely épület</label>
+						<input class="required" value="" type="text" name="natAddressBuilding" id="natAddressBuilding" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressStairs">Székhely lépcsőház</label>
+						<input class="required" value="" type="text" name="natAddressStairs" id="natAddressStairs" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressLevel">Székhely emelet</label>
+						<input class="required" value="" type="text" name="natAddressLevel" id="natAddressLevel" /><img class="editable" src="img/editable.png" />
+					</div>
+					<div class="row">
+						<label for="natAddressDoor">Székhely ajtó</label>
+						<input class="required" value="" type="text" name="natAddressDoor" id="natAddressDoor" /><img class="editable" src="img/editable.png" />
 					</div>
 				</fieldset>
 				
@@ -231,15 +281,15 @@ $main = new mak(false);
 					<h3>Tagsági szint <span class="sum"></span></h3>
 					<div class="row">
 						<label for="diszkontMember">Diszkont tagság</label>
-						<input data-price="1000" type="radio" name="membership" id="diszkontMember" />
+						<input data-price="3900" type="radio" name="membership" id="diszkontMember" />
 					</div>
 					<div class="row">
 						<label for="standardMember">Standard tagság</label>
-						<input data-price="10000" type="radio" name="membership" id="standardMember" />
+						<input data-price="12600" type="radio" name="membership" id="standardMember" />
 					</div>
 					<div class="row">
 						<label for="komfortMember">Komfort tagság</label>
-						<input data-price="100000" type="radio" name="membership" id="komfortMember" />
+						<input data-price="16300" type="radio" name="membership" id="komfortMember" />
 					</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>
