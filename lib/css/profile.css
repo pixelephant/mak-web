@@ -198,6 +198,44 @@ select{
 	    padding-top: 3px;
 }
 
+
+#profile-image{
+	width:210px;
+	height:260px;
+	float:right;	
+	position:relative;
+}
+
+#profile-image img{
+	width:210px;
+	height:260px;
+}
+#profile-image a{
+	position:absolute;
+	top:0;
+	right:0;
+	width:105px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	text-decoration:none;
+	color:white;
+	font-size:10px;				
+ 
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);  
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000,endColorstr=#7F000000); 
+            zoom: 1;
+
+}
+
+#upload-image{
+	margin-top:15px;
+	font-weight:bold;
+	padding:6px 8px;
+}
+
+
 /*Tooltip*/
 #tooltip {
 	position: absolute;
