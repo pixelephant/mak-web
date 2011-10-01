@@ -739,10 +739,10 @@ li.ldd_heading{
 
 .ldd_menu ul li{
 	color:white;
-	list-style-image: url(../../img/arrow.png);
+	list-style-image: url(../../img/arrow_white.png);
 	list-style-position:outside;
 	margin-left:35px;
-}
+}    
 
 .ldd_menu ul li a:hover{
 	color:#ffd400;
@@ -774,6 +774,7 @@ li.ldd_heading{
 	-webkit-box-shadow: 0 1px 9px #4D4D4D; 
 	box-shadow: 0 1px 9px #4D4D4D; 
 	margin-top: 10px;
+	margin-bottom: 30px;	
 	position: relative;        
 }
 
@@ -974,7 +975,6 @@ aside img.ad{
 /*Call-to-action sáv*/
 
 #ctaWrap{
-	margin-top: 30px;	
 	background: url(../../img/pattern.jpg) repeat-x;
 	height: 120px;
 }

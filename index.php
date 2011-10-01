@@ -106,6 +106,7 @@ autoklub,mak
 			</div>
 			<img src="img/slider/kozlbizt.png" alt="Közlekedésbiztonság" />
 		</div>
+		</div>
 	<div id="sliderNav">
 		
 	</div>
