@@ -75,8 +75,10 @@ $(function(){
 	  
   }
   
-  $("#sorsolas").click(function(){
-		
+  $("#sorsolas").click(function(e){
+	
+	  e.preventDefault();
+	  
 	  var valasz = $("#valasz").val();
 	  var darab = $("#darab").val();
 	  var kerdes = $("#kerdes").val();
