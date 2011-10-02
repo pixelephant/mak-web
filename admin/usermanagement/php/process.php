@@ -29,7 +29,14 @@ $sidx = $_POST['sidx'];
 $sord = $_POST['sord'];
 
 $cond['orderby'] = $sidx . ' ' . $sord;
-$col = 'id,tagsagi_szam,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,keresztnev,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,vezetekes_telefon,mobil_telefon,e_mail,rendszam,tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja';
+
+$col = 'id,tagsagi_szam,nem,szuletesi_datum,anyja_neve,elonev,vezeteknev,keresztnev,cegnev,kapcsolattarto_vezeteknev,';
+$col .= 'kapcsolattarto_telefon,kapcsolattarto_email,allando_irsz,allando_helyseg,allando_kozterulet,allando_kozterulet_jellege,allando_hazszam,';
+$col .= 'allando_epulet,allando_lepcsohaz,allando_emelet,allando_ajto,levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,';
+$col .= 'levelezesi_kozterulet_jellege,levelezesi_hazszam,levelezesi_epulet,levelezesi_lepcsohaz,levelezesi_emelet,levelezesi_ajto,';
+$col .= 'vezetekes_telefon,mobil_telefon,e_mail,e_mail_2,rendszam,gyartasi_ev,elso_forgalom,muszaki_vizsga,forgalmi_engedely,';
+$col .= 'rendszam_2,gyartasi_ev_2,elso_forgalom_2,muszaki_vizsga_2,forgalmi_engedely_2,';
+$col .= 'tagtipus,dijkategoria,statusz,belepes_datuma,ervenyesseg_datuma,befizetes_datuma,befizetett_osszeg,tranzakcio_kodja';
 
 if($search == 'true'){
 

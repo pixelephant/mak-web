@@ -1,3 +1,11 @@
+<?php 
+session_start();
+ob_start();
+
+if(!isset($_SESSION['admin_user']) || $_SESSION['admin_user'] == ''){
+	header("Location: login.php");
+}
+?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
@@ -36,6 +44,7 @@
 			<li><a href="hirdeteskezeles.php">Hirdetés kezelése</a></li>
 			<li><a href="felmereskezeles.php">Felmérések kezelése</a></li>
 			<li><a href="elonezet.php">Előnézet</a></li>
+			<li><a href="login/login.php">Kilépés</a></li>
 		</ul>
 	</nav>
 	<div id="content">
@@ -53,3 +62,6 @@ window.jQuery || document.write('<script src="lib/js/jquery-1.6.2.js">\x3C/scrip
 		</script>
 	</body>
 </html>
+<?php 
+ob_end_flush();
+?>

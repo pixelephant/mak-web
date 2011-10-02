@@ -1,7 +1,0 @@
-[13-Sep-2011 14:40:15] PHP Warning:  Invalid argument supplied for foreach() in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.mak.php on line 730
-[13-Sep-2011 14:41:02] PHP Warning:  Invalid argument supplied for foreach() in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.mak.php on line 730
-[13-Sep-2011 14:42:13] PHP Warning:  Invalid argument supplied for foreach() in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.mak.php on line 732
-[13-Sep-2011 14:43:45] PHP Warning:  Invalid argument supplied for foreach() in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.mak.php on line 732
-[13-Sep-2011 14:44:19] PHP Warning:  Invalid argument supplied for foreach() in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.mak.php on line 730
-[13-Sep-2011 14:46:32] PHP Warning:  Invalid argument supplied for foreach() in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.mak.php on line 730
-[13-Sep-2011 14:50:02] PHP Fatal error:  Call to a member function fetch_object() on a non-object in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.db.php on line 86

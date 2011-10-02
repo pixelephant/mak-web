@@ -1,2 +1,0 @@
-[12-Sep-2011 21:32:42] PHP Fatal error:  Call to a member function fetch_object() on a non-object in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.db.php on line 86
-[12-Sep-2011 21:36:49] PHP Fatal error:  Call to a member function fetch_object() on a non-object in /home/pixeleph/public_html/projects/on-going/mak/lib/php/class.db.php on line 86

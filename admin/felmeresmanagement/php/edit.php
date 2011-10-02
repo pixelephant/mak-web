@@ -4,6 +4,11 @@ include '../../../lib/php/Wixel/gump.class.php';
 include '../../../lib/php/class.db.php';
 include '../../../lib/php/class.mak.php';
 
+if($_SESSION['admin_edit'] != 'true'){
+	echo 'Nincs joga szerkeszteni!';
+	return false;
+}
+
 /*
  * Melyik mező azonosítja a rekordot
  */
