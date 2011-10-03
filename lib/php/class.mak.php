@@ -920,6 +920,16 @@ class mak extends db{
 	
 	}
 	
+	public function get_magunkrol($aloldal){
+	
+		$cond['url'] = $aloldal;
+	
+		$col = 'id,url,almenu,title,szoveg,kep,alt';
+		
+		return $this->sql_select('mak_almenu',$col,$cond);
+	
+	}
+	
 	//INSERT
 	
 	public function insert_hirlevel($email){
@@ -2431,6 +2441,25 @@ class mak extends db{
 	
 	}
 	
+	public function render_magunkrol($magunkrol){
+		
+		$tartalom = $this->get_magunkrol($magunkrol);
+	
+		$html = '';
+		
+		$html .= '<section id="' . $tartalom[0]['url'] . '">';
+		
+		if($tartalom[0]['kep'] != ''){
+			$html .= '<div class="rightside"><img src="' . $this->_imageDir . 'aloldal/magunkrol/' . $tartalom[0]['url'] . '/' . $tartalom[0]['kep'] . '" alt="' . $tartalom[0]['alt'] . '" /></div>';
+		}
+		
+		$html .= '<p>'.$tartalom[0]['szoveg'].'</p>';
+		
+		$html .= '</section>';
+		
+		return $html;	
+	}
+	
 	public function render_section($kategoria,$almenu='',$tartalom='',$altartalom=''){
 
 		/*
@@ -2484,6 +2513,8 @@ class mak extends db{
 				
 				if(is_numeric($almenu)){
 					$html = $this->render_szervizpont($almenu);
+				}elseif($almenu == 'filozofiank' || $almenu == 'alapszabaly'){
+					$html =  $this->render_magunkrol($almenu);
 				}else{
 					$html =  $this->render_aloldal_section_default($almenu);
 				}
@@ -2539,6 +2570,11 @@ class mak extends db{
 			return FALSE;
 		}
 		
+		if($aloldal == 'magunkrol'){
+			$aloldalak[0]['azonosito'] = 'magunkrol';
+			$aloldalak[0]['kategoria_nev'] = 'Magunkról';
+		}
+		
 		$html .= '<h2 id="'. $aloldalak[0]['azonosito'] .'">';
 		$html .= '<img src="' . $this->_imageDirLeft . $aloldalak[0]['azonosito'] . '.png" alt="' . $aloldalak[0]['kategoria_nev'] . '" />';
 		$html .= $aloldalak[0]['kategoria_nev'] . '</h2>';
@@ -2573,7 +2609,8 @@ class mak extends db{
 				 * Aktuális almenü kijelölése
 				 */
 				
-				if($aloldalak[$i]['tartalom_url'] == $tartalom){
+				if($aloldalak[$i]['tartalom_url'] == $tartalom && $subsubpage == ''){
+					$html = str_replace('class="active"','',$html);
 					$html .= ' class="active"';
 				}
 				
