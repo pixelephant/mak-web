@@ -1445,6 +1445,10 @@ li.heading.travel{
 	display:none;
 }
 
-.oldalterkep aside h2,.kapcsolat aside h2,.magunkrol aside h2,.mediaajanlat aside h2,.impresszum aside h2{
+.oldalterkep aside h2,.kapcsolat aside h2,.mediaajanlat aside h2,.impresszum aside h2{
 	display:none;
 }
+
+.magunkrol aside h2 img{
+	display:none;	
+} 
