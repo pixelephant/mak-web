@@ -16,26 +16,32 @@
 	
 	$cond['e_mail'] = $_SESSION['lastEmail'];
 	
-	$felh = $main->get_felhasznalo();
+	$felh = $main->get_felhasznalo($cond);
 	
 	/*
 	 * Tagsági szám generálása
 	 */
 	
-	if($felh[0]['tagsagi_szam'] == ''){
-		$sql = "SELECT MAX(tagsagi_szam)+1 AS tagsagi_szam FROM mak_felhasznalo WHERE tagsagi_szam LIKE '5%'";
+	if($felh[0]['tagsagi_szam'] != '' && !is_null($felh[0]['tagsagi_szam']) && strlen($felh[0]['tagsagi_szam']) == 10){
+		$szam = $felh[0]['tagsagi_szam'];
+	}else{
+
+		$col[0] = 'MAX(tagsagi_szam)+1 AS tagsagi_szam';
+	
+		$sql = "SELECT " . $col[0] . " FROM mak_felhasznalo WHERE tagsagi_szam LIKE '5%'";
 		
-		$q = $this->query($sql);
-		$a = $this->results($q,$col);
+		$q = $main->query($sql);
 		
-		if(is_null($a[0]['tagsagi_szam'])){
+		$a = $main->results($q,$col);
+		
+		//print_r($a);
+		
+		if(is_null($a[0]['tagsagi_szam']) || $a[0]['tagsagi_szam'] == 'NULL'){
 			$szam = "5000000001";
+		}else{
+			$szam = $a[0]['tagsagi_szam'];
 		}
 		
-		$szam = $a[0]['tagsagi_szam'];
-		
-	}else{
-		$szam = $felh[0]['tagsagi_szam'];
 	}
 	
 	class MYPDF extends TCPDF {
@@ -121,7 +127,7 @@
 	
 	$main->close();
 	
-	$pdf->Output($nev . '.pdf', 'FD');
+	$pdf->Output(str_replace(" ","",$nev) . '.pdf', 'FD');
 	
 	/*
 	 * PDF VÉGE
