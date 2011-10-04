@@ -3222,6 +3222,7 @@ class mak extends db{
 		$mark_end = '</span>';
 		$max_hossz = '200';
 		
+		$result_string = nl2br($result_string);
 		$result_string = strip_tags($result_string,'<h3>');
 		
 		$pozicio = stripos($result_string,$query_string);
@@ -3245,7 +3246,8 @@ class mak extends db{
 			$a = substr($b,$utolso);
 		}
 		
-		$string = substr($a, 0, strrpos($a,' '));
+		$string = $a;
+		//$string = substr($a, 0, strrpos($a,' '));
 		
 		return $string;
 	}

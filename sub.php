@@ -10,13 +10,13 @@ error_reporting(0);
 
 $main = new mak(false);
 
+
+
+$parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpage);
 $page = trim($_GET['page']);
 $subpage = trim($_GET['subpage']);
 $tartalom = trim($_GET['tartalom']);
 $subsubpage = trim($_GET['subsubpage']);
-
-$parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpage);
-
 ?>
 
 <?php startblock('title') ?>
@@ -55,7 +55,18 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 
 <?php startblock('body-id') ?>
 <?php 
-	echo $page;
+	$id = $page;
+	if($subpage != ''){
+		$id = $subpage; 
+	}
+	if($tartalom != ''){
+		$id = $tartalom; 
+	}
+	if($subsubpage != ''){
+		$id = $subsubpage;
+	}
+	
+	echo $id;
 ?>
 <?php endblock() ?>
 
@@ -115,7 +126,7 @@ $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpag
 <?php startblock('ad') ?>
 <?php 
 	echo $main->render_hirdetes($page,$subpage,$tartalom,$subsubpage);
-	echo $main->render_poll();
+	//echo $main->render_poll();
 ?>
 <?php endblock() ?>
 

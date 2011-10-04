@@ -32,8 +32,8 @@ if(!empty($form)){
 
 	if($form['registerRadio'] == 'nat'){
 	
-		$adatok['vezeteknev'] = $form['natFName'];
-		$adatok['keresztnev'] = $form['natLName'];
+		$adatok['vezeteknev'] = ucwords($form['natFName']);
+		$adatok['keresztnev'] = ucwords($form['natLName']);
 		$adatok['nem'] = $form['natGender'];
 		$adatok['szuletesi_datum'] = $form['natDate'];
 		$adatok['allando_irsz'] = $form['natZip'];
@@ -69,7 +69,7 @@ if(!empty($form)){
 		$adatok['allando_emelet'] = $form['coAddressLevel'];
 		$adatok['allando_ajto'] = $form['coAddressDoor'];
 		
-		$adatok['kapcsolattarto_vezeteknev'] = $form['coCoName'];
+		$adatok['kapcsolattarto_vezeteknev'] = ucwords($form['coCoName']);
 		//$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
 		
 		$adatok['kapcsolattarto_email'] = $form['coCoMail'];
@@ -121,7 +121,8 @@ if(!empty($form)){
 		$link = 'http://sfvm104.serverfarm.hu/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 		
 		//$mail->IsSMTP(); // SMTP használata
-		$mail->From = "regisztracio@autoklub.hu";
+		$mail->CharSet = 'UTF-8';
+		$mail->From = "nevalaszolj@autoklub.hu";
 		$mail->FromName = "Magyar Autóklub weboldala";
 		//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
 		$mail->AddAddress($adatok['e_mail'], $nev);
@@ -181,6 +182,7 @@ if(!empty($form)){
 	$link = 'http://sfvm104.serverfarm.hu/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 	
 	//$mail->IsSMTP(); // SMTP használata
+	$mail->CharSet = 'UTF-8';
 	$mail->From = "regisztracio@autoklub.hu";
 	$mail->FromName = "Magyar Autóklub weboldala";
 	//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
