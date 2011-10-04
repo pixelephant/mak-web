@@ -13,7 +13,7 @@ $kartya[5] = 'Diszkont plusz';
 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 ?>
 	<div id="userBar">
-		<span>Üdvözöljük <strong id="logedInName"><?php echo $_SESSION['keresztnev']; ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo (isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem'); ?></strong> klubtagunk.</span>
+		<span>Üdvözöljük <strong id="logedInName"><?php echo substr($_SESSION['keresztnev'],0,10); ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo (isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem'); ?></strong> klubtagunk.</span>
 	</div>
 <?php 
 }

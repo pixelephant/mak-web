@@ -32,8 +32,8 @@ if(!empty($form)){
 
 	if($form['registerRadio'] == 'nat'){
 	
-		$adatok['vezeteknev'] = $form['natFName'];
-		$adatok['keresztnev'] = $form['natLName'];
+		$adatok['vezeteknev'] = ucwords($form['natFName']);
+		$adatok['keresztnev'] = ucwords($form['natLName']);
 		$adatok['nem'] = $form['natGender'];
 		$adatok['szuletesi_datum'] = $form['natDate'];
 		$adatok['allando_irsz'] = $form['natZip'];
@@ -69,7 +69,7 @@ if(!empty($form)){
 		$adatok['allando_emelet'] = $form['coAddressLevel'];
 		$adatok['allando_ajto'] = $form['coAddressDoor'];
 		
-		$adatok['kapcsolattarto_vezeteknev'] = $form['coCoName'];
+		$adatok['kapcsolattarto_vezeteknev'] = ucwords($form['coCoName']);
 		//$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
 		
 		$adatok['kapcsolattarto_email'] = $form['coCoMail'];
