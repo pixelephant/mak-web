@@ -121,7 +121,8 @@ if(!empty($form)){
 		$link = 'http://sfvm104.serverfarm.hu/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 		
 		//$mail->IsSMTP(); // SMTP használata
-		$mail->From = "regisztracio@autoklub.hu";
+		$mail->CharSet = 'UTF-8';
+		$mail->From = "nevalaszolj@autoklub.hu";
 		$mail->FromName = "Magyar Autóklub weboldala";
 		//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
 		$mail->AddAddress($adatok['e_mail'], $nev);
@@ -181,6 +182,7 @@ if(!empty($form)){
 	$link = 'http://sfvm104.serverfarm.hu/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 	
 	//$mail->IsSMTP(); // SMTP használata
+	$mail->CharSet = 'UTF-8';
 	$mail->From = "regisztracio@autoklub.hu";
 	$mail->FromName = "Magyar Autóklub weboldala";
 	//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
