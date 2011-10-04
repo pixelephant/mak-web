@@ -350,6 +350,45 @@ h3#travel{
 	left: -250px;
 }
 
+#vizsgaztatas-body .head{
+	background: url(../../img/aloldal/szervizpontok/vizsgaztatas/vizsgaztatas.jpg);
+}
+
+#autojavitas-body .head{
+	background: url(../../img/aloldal/szervizpontok/autojavitas/autojavitas.jpg);
+}
+
+#automentes-body .head{
+	background: url(../../img/aloldal/segelyszolgalat/automentes/automentes.jpg);
+}
+
+#helyszinihibaelharitas-body .head{
+	background: url(../../img/aloldal/segelyszolgalat/helyszinihibaelharitas/helyszinihibaelharitas.jpg);
+}
+
+#rendezvenyek-body .head{
+	background: url(../../img/aloldal/kozlekedesbiztonsag/rendezvenyek/rendezvenyek.jpg);
+}
+
+#oktatas-kepzes-body .head{
+	background: url(../../img/aloldal/kozlekedesbiztonsag/oktatas-kepzes/oktatas-kepzes.jpg);
+}
+
+#betekinto-body .head{
+	display:block !important;
+	background: url(../../img/aloldal/enautoklubom/betekinto.jpg);
+}
+
+#erdekvedelem-body .head{
+	display:block !important;
+	background: url(../../img/aloldal/enautoklubom/erdekvedelem.jpg);
+}
+
+#klubbiztositasok-body .head{
+	display:block !important;
+	background: url(../../img/aloldal/enautoklubom/klubbiztositasok.jpg);
+}
+
 
 /*Egyéb*/
 .enautoklubom .head{
