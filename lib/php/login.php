@@ -71,6 +71,7 @@ if(isset($_POST['logout']) && $_POST['logout'] == 'logout'){
 				$mail = new PHPMailer();
 				
 				//$mail->IsSMTP(); // SMTP használata
+				$mail->CharSet = 'UTF-8';
 				$mail->From = "elfelejtett@autoklub.hu";
 				$mail->FromName = "Magyar Autóklub weboldala";
 				//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
