@@ -129,27 +129,27 @@ $main = new mak(false);
 					</div>
 					<div class="row">
 						<label for="coAddressType">Székhely közterület jellege</label>
-						<input value="" maxlength="10" size="10" type="text" name="coAddressType" id="coAddressType" /><img class="editable" src="img/editable.png" />
+						<input value="" maxlength="10" size="10" type="text" name="coAddressType" id="coAddressType" />
 					</div>
 					<div class="row">
 						<label for="coAddressNumber">Székhely házszáma</label>
-						<input value=""  maxlength="12" size="12" type="text" name="coAddressNumber" id="coAddressNumber" /><img class="editable" src="img/editable.png" />
+						<input value=""  maxlength="12" size="12" type="text" name="coAddressNumber" id="coAddressNumber" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="coAddressBuilding">Székhely épület</label>
-						<input value=""  maxlength="2" size="2" type="text" name="coAddressBuilding" id="coAddressBuilding" /><img class="editable" src="img/editable.png" />
+						<input value=""  maxlength="2" size="2" type="text" name="coAddressBuilding" id="coAddressBuilding" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="coAddressStairs">Székhely lépcsőház</label>
-						<input value="" type="text"  maxlength="2" size="2" name="coAddressStairs" id="coAddressStairs" /><img class="editable" src="img/editable.png" />
+						<input value="" type="text"  maxlength="2" size="2" name="coAddressStairs" id="coAddressStairs" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="coAddressLevel">Székhely emelet</label>
-						<input value="" type="text"  maxlength="2" size="2" name="coAddressLevel" id="coAddressLevel" /><img class="editable" src="img/editable.png" />
+						<input value="" type="text"  maxlength="2" size="2" name="coAddressLevel" id="coAddressLevel" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="coAddressDoor">Székhely ajtó</label>
-						<input value=""  maxlength="3" size="3" type="text" name="coAddressDoor" id="coAddressDoor" /><img class="editable" src="img/editable.png" />
+						<input value=""  maxlength="3" size="3" type="text" name="coAddressDoor" id="coAddressDoor" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="coCoName">Kapcsolattartó neve</label>
@@ -215,27 +215,27 @@ $main = new mak(false);
 					</div>
 					<div class="row">
 						<label for="natAddressType">Cím közterület jellege</label>
-						<input  maxlength="10" size="10" class="required" value="" type="text" name="natAddressType" id="natAddressType" /><img class="editable" src="img/editable.png" />
+						<input  maxlength="10" size="10" class="required" value="" type="text" name="natAddressType" id="natAddressType" />
 					</div>
 					<div class="row">
 						<label for="natAddressNumber">Cím házszáma</label>
-						<input  maxlength="12" size="12" class="required" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img class="editable" src="img/editable.png" />
+						<input  maxlength="12" size="12" class="required" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="natAddressBuilding">Cím épület</label>
-						<input  maxlength="2" size="2" value="" type="text" name="natAddressBuilding" id="natAddressBuilding" /><img class="editable" src="img/editable.png" />
+						<input  maxlength="2" size="2" value="" type="text" name="natAddressBuilding" id="natAddressBuilding" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="natAddressStairs">Cím lépcsőház</label>
-						<input  maxlength="2" size="2" value="" type="text" name="natAddressStairs" id="natAddressStairs" /><img class="editable" src="img/editable.png" />
+						<input  maxlength="2" size="2" value="" type="text" name="natAddressStairs" id="natAddressStairs" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="natAddressLevel">Cím emelet</label>
-						<input maxlength="2" size="2" value="" type="text" name="natAddressLevel" id="natAddressLevel" /><img class="editable" src="img/editable.png" />
+						<input maxlength="2" size="2" value="" type="text" name="natAddressLevel" id="natAddressLevel" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="natAddressDoor">Cím ajtó</label>
-						<input  maxlength="3" size="3" value="" type="text" name="natAddressDoor" id="natAddressDoor" /><img class="editable" src="img/editable.png" />
+						<input  maxlength="3" size="3" value="" type="text" name="natAddressDoor" id="natAddressDoor" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 				</fieldset>
 				
@@ -244,7 +244,7 @@ $main = new mak(false);
 					<div class="row">
 						<label for="email">Email cím</label>
 						<input class="required email" type="text" name="email" id="email" />
-						<img src="img/info.png" alt="" class="info" title="Ezen a címen fogjuk a kapcsolatot tartani Önnel, valamint ezzel tud majd az Én Autóklubomba belépni." />
+						<img src="img/info.png" alt="" class="info" title="Ezen a címen fogjuk a kapcsolatot tartani Önnel, valamint ezzel tud majd Az Én Autóklubomba belépni." />
 					</div>
 					<!-- >div class="row">
 						<label for="phone">Telefonszám</label>
@@ -258,7 +258,7 @@ $main = new mak(false);
 					<div class="row">
 						<label for="pass">Jelszó</label>
 						<input class="required" minlength="5" type="password" name="pass" id="pass" />
-						<img src="img/info.png" alt="" class="info" title="Ezzel a jelszóval tud majd az Én Autóklubomba belépni." />
+						<img src="img/info.png" alt="" class="info" title="Ezzel a jelszóval tud majd Az Én Autóklubomba belépni." />
 					</div>
 					<div class="row">
 						<label for="passRe">Jelszó újra</label>
