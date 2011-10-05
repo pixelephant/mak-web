@@ -16,6 +16,7 @@ if(isset($_POST['logout']) && $_POST['logout'] == 'logout'){
 	session_regenerate_id(true);
 	session_destroy();
 	session_unset();
+	$_SESSION['logout'] = 'logout';
 	
 	if (ini_get("session.use_cookies")) {
 	    $params = session_get_cookie_params();

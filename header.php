@@ -10,6 +10,14 @@ $kartya[5] = 'Diszkont plusz';
 <h1><a href="">Magyar Autóklub<span>A hűséges Partner</span></a></h1>
 
 <?php 
+if($_SESSION['logout'] == 'logout'){
+	$_SESSION = array();
+	session_regenerate_id(true);
+	session_destroy();
+	session_unset();
+	$_SESSION['logout'] = '';
+}
+
 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 ?>
 	<div id="userBar">
