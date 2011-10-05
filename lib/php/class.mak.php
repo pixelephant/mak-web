@@ -124,7 +124,7 @@ class mak extends db{
 		}
 	
 		$rules = array(
-			'tagsagi_szam'    => 'required|alpha_numeric|exact_len,11',
+			'tagsagi_szam'    => 'required|alpha_numeric|exact_len,10',
 			'e_mail'       => 'required|valid_email'
 		);
 		
@@ -1138,7 +1138,7 @@ class mak extends db{
 		
 		$rules = array(
 			'mak_login_id' => 'max_len,11',
-			'tagsagi_szam' => 'exact_len,11',
+			'tagsagi_szam' => 'exact_len,10',
 			'nem' => 'exact_len,1',
 			'szuletesi_datum' => 'exact_len,8',
 			'anyja_neve' => 'max_len,40|alpha_dash',
@@ -1537,7 +1537,7 @@ class mak extends db{
 		
 		$rules = array(
 			'mak_login_id' => 'max_len,11',
-			'tagsagi_szam' => 'exact_len,11',
+			'tagsagi_szam' => 'exact_len,10',
 			'nem' => 'exact_len,1',
 			'szuletesi_datum' => 'exact_len,8',
 			'anyja_neve' => 'max_len,40',

@@ -42,6 +42,9 @@
 			$szam = $a[0]['tagsagi_szam'];
 		}
 		
+		$tagsagi['tagsagi_szam'] = $szam;
+		$main->update_felhasznalo($tagsagi,$cond);
+		
 	}
 	
 	class MYPDF extends TCPDF {
@@ -127,7 +130,7 @@
 	
 	$main->close();
 	
-	$pdf->Output(str_replace(" ","",$nev) . '.pdf', 'FD');
+	$pdf->Output('ideigleneskartyak/' . str_replace(" ","",$nev) . '.pdf', 'FD');
 	
 	/*
 	 * PDF VÉGE

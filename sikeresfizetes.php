@@ -41,7 +41,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 		$pdf = $_SESSION['vezeteknev'] . $_SESSION['keresztnev'];
 	}
 	
-	$link = '<a href="' . $pdf . '.pdf">Ideiglenes tagsági kártya letöltése</a>';
+	$link = '<a href="ideigleneskartyak/' . $pdf . '.pdf">Ideiglenes tagsági kártya letöltése</a>';
 	
 	/*
 	 * Komfort tagoknak biztosítási kötvény generálása
