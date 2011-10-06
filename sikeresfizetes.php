@@ -35,11 +35,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	$_SESSION['cegnev'] = $felh[0]['cegnev'];
 	$_SESSION['nem'] = $felh[0]['nem'];
 	
-	if($_SESSION['nem'] == 'C'){
-		$pdf = $_SESSION['cegnev'];
-	}else{
-		$pdf = $_SESSION['vezeteknev'] . $_SESSION['keresztnev'];
-	}
+	$pdf = $_SESSION['lastEmail'];
 	
 	$link = '<a href="ideigleneskartyak/' . $pdf . '.pdf">Ideiglenes tagsági kártya letöltése</a>';
 	
@@ -49,7 +45,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	
 	if($_SESSION['tagsag'] == 4){
 	
-		$link .= '<br /><a href="' . $pdf . '.pdf">Biztosítási kötvény letöltése</a>';
+		$link .= '<br /><a href="kotvenyek/' . $pdf . '.pdf">Biztosítási kötvény letöltése</a>';
 	
 	}
 	

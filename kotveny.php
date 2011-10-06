@@ -58,7 +58,7 @@
 	
 	        $this->SetAutoPageBreak(false, 0);
 	        
-	        $img_file = 'lib/php/pdf/visszaigazolas_' . $_SESSION['tagsag'] . '.jpg';
+	        $img_file = 'lib/php/pdf/kotveny.jpg';
 	
 	        $this->Image($img_file, 0, 0, 210, 297, '', '', '', false, 150, '', false, false, 0);
 	        
@@ -122,7 +122,7 @@
 	
 	$main->close();
 	
-	$filenev = 'ideigleneskartyak/' . $_SESSION['lastEmail'] . '.pdf';
+	$filenev = 'kotvenyek/' . $_SESSION['lastEmail'] . '.pdf';
 	
 	if(file_exists($filenev)){
 		$filenev = $filenev . time();
