@@ -45,7 +45,7 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 	<!--<![endif]-->
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<meta charset="UTF-8">
 		<meta content="Kulcsszó1, Kulcsszó2, Kulcsszó3" name="keywords"><meta content="Description szövege jön ide..." name="description">
