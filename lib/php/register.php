@@ -19,10 +19,14 @@ $fizetes = array();
 parse_str($_POST['formData'], $form);
 parse_str($_POST['memberData'], $member);
 parse_str($_POST['paymentData'], $fizetes);
+parse_str($_POST['komfortData'], $komfort);
+parse_str($_POST['standardData'], $standard);
 
 $form = GUMP::sanitize($form);
 $member = GUMP::sanitize($member);
 $fizetes = GUMP::sanitize($fizetes);
+$komfort = GUMP::sanitize($komfort);
+$standard = GUMP::sanitize($standard);
 
 /*
  * Természetes személy regisztrációja
@@ -166,6 +170,19 @@ if(!empty($form)){
 	$adatok['dijkategoria'] = $dijkategoria[$member['membershipRadio']];
 	$adatok['statusz'] = $fizetesimetodus[$fizetes['paymentmethodRadio']];
 	$adatok['tagtipus'] = 1;
+	
+	if($adatok['dijkategoria'] == 4){
+		$adatok['rendszam'] = $komfort['komfortPlateHuInput'];
+		$adatok['gyartasi_ev'] = date("Y") - $komfort['carAge'];
+	}
+	
+	if($adatok['dijkategoria'] == 3 && isset($standard['plateTypeRadio'])){
+		if($standard['plateTypeRadio'] == 'standardPlateHu'){
+			$adatok['rendszam'] = $standard['standardPlateHuInput'];
+		}else{
+			$adatok['rendszam'] = $standard['standardPlateFoInput'];
+		}
+	}
 	
 	$valasz = $main->update_felhasznalo($adatok,$cond);
 

@@ -61,7 +61,7 @@ $main = new mak(false);
 			</div>
 			<?php 
 				echo $main->render_hirdetes('regisztralas','','','');
-				echo $main->render_poll();
+				//echo $main->render_poll();
 			?>
 		</aside>
 		<section id="content">
