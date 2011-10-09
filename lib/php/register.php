@@ -174,6 +174,10 @@ if(!empty($form)){
 	if($adatok['dijkategoria'] == 4){
 		$adatok['rendszam'] = $komfort['komfortPlateHuInput'];
 		$adatok['gyartasi_ev'] = date("Y") - $komfort['carAge'];
+		$adatok['tipus_sap'] = $komfort['type'];
+		$adatok['gyartmany_sap'] = $komfort['brand'];
+		
+		$_SESSION['chassis'] = $komfort['chassis'];
 	}
 	
 	if($adatok['dijkategoria'] == 3 && isset($standard['plateTypeRadio'])){

@@ -9,6 +9,29 @@ session_start();
 
 $main = new mak(false);
 
+$cond = array();
+$cond['mak_gyartmany.display'] = 1;
+$cond['mak_marka.display'] = 1;
+
+$gyartmany = $main->get_gyartmany($cond);
+
+$gy = '';
+
+$gyart_opt = '';
+
+//print_r($gyartmany);
+
+/*
+ * Első autó 
+ */
+
+for($i=0;$i<$gyartmany['count'];$i++){
+	if($gy != $gyartmany[$i]['marka']){
+		$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '">' . $gyartmany[$i]['marka'] . '</option>';
+		$gy = $gyartmany[$i]['marka'];
+	}
+}
+
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
@@ -329,11 +352,29 @@ $main = new mak(false);
 					<div class="row">
 						<label for="komfortPlateHuInput">Rendszám</label>
 						<input type="text" class="required" name="komfortPlateHuInput" id="komfortPlateHuInput" />
-						<img src="img/info.png" alt="" class="info" title="Formátum : AAA-111" />
+						<img src="img/info.png" alt="" class="info" title="Formátum : AAA111" />
 					</div>
 					<div class="row">
 						<label for="carAge">Kor</label>
 						<input type="text" name="carAge" id="carAge" class="required" />
+					</div>
+					<div class="row">
+						<label for="chassis">Alvázszám</label>
+						<input type="text" name="chassis" id="chassis" class="required" />
+					</div>
+					<div class="row">
+						<label for="brand">Gyártmány</label>
+						<select name="brand" id="brand">
+						<?php 
+							echo $gyart_opt;
+						?>
+						</select>
+					</div>
+					<div class="row">
+						<label for="type">Típus</label>
+						<select name="type" id="type">
+							
+						</select>
 					</div>
 				</fieldset>
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />

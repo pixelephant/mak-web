@@ -115,16 +115,18 @@
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$hazszam.'</p>';
 	$pdf->writeHTMLCell(0,0,135,72,$html);
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">AAA-111'.$rendszam.'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$rendszam.'</p>';
 	$pdf->writeHTMLCell(0,0,72,84.5,$html);
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">AAA-111'.$alvazszam.'</p>';
+	$alvazszam = $_SESSION['chassis'];
+	
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$alvazszam.'</p>';
 	$pdf->writeHTMLCell(0,0,148,84.5,$html);
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">AAA-111'.$gyatmany.'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$gyatmany.'</p>';
 	$pdf->writeHTMLCell(0,0,48,88.5,$html);
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">AAA-111'.$tipus.'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$tipus.'</p>';
 	$pdf->writeHTMLCell(0,0,85,88.5,$html);
 	
 	//Dátum
