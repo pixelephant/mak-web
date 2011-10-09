@@ -154,7 +154,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 		<?php 
 		
 		if(isset($_GET['status']) && $_GET['status'] == 'success'){
-			echo '<script type="text/javascript">window.location = "proba.php"</script>';
+			echo '<script type="text/javascript">$.get("kotveny.php", function(){window.location = "proba.php"});</script>';
 		}
 		
 		?>

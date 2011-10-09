@@ -72,6 +72,14 @@
 	
 	//$nev = iconv('UTF-8','Windows-1250',$_REQUEST['nev']);
 	
+	if($_SESSION['nem'] == 'C'){
+		$nev = $_SESSION['cegnev'];
+	}else{
+		$nev = $_SESSION['vezeteknev'] . " " .$_SESSION['keresztnev'];
+	}
+	
+	
+	
 	//$nev = utf8_encode("Árvíztűrő tükörfúrógép");
 	//$nev = iconv("iso-8859-2","utf-8","Árvíztűrő tükörfúrógép");
 	//$nev = "Árvíztűrő tükörfúrógép";
@@ -123,10 +131,6 @@
 	$main->close();
 	
 	$filenev = 'ideigleneskartyak/' . $_SESSION['lastEmail'] . '.pdf';
-	
-	if(file_exists($filenev)){
-		$filenev = $filenev . time();
-	}
 	
 	$pdf->Output($filenev, 'FD');
 	

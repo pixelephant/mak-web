@@ -19,33 +19,27 @@
 	$felh = $main->get_felhasznalo($cond);
 	
 	/*
-	 * Tagsági szám generálása
+	 * Adatok
 	 */
 	
-	if($felh[0]['tagsagi_szam'] != '' && !is_null($felh[0]['tagsagi_szam']) && strlen($felh[0]['tagsagi_szam']) == 10){
-		$szam = $felh[0]['tagsagi_szam'];
-	}else{
-
-		$col[0] = 'MAX(tagsagi_szam)+1 AS tagsagi_szam';
+	$nev = $felh[0]['elonev'] . " " .$felh[0]['vezeteknev'] . " " . $felh[0]['keresztnev'];
+	$szuletes = $felh[0]['szuletesi_datum'];
+	$irsz = $felh[0]['allando_irsz'];
+	$helyseg = $felh[0]['allando_helyseg'];
+	$kozterulet = $felh[0]['allando_kozterulet'] . " " . $felh[0]['allando_kozterulet_jellege'];
+	$hazszam = $felh[0]['allando_hazszam'];
 	
-		$sql = "SELECT " . $col[0] . " FROM mak_felhasznalo WHERE tagsagi_szam LIKE '5%'";
-		
-		$q = $main->query($sql);
-		
-		$a = $main->results($q,$col);
-		
-		//print_r($a);
-		
-		if(is_null($a[0]['tagsagi_szam']) || $a[0]['tagsagi_szam'] == 'NULL'){
-			$szam = "5000000001";
-		}else{
-			$szam = $a[0]['tagsagi_szam'];
-		}
-		
-		$tagsagi['tagsagi_szam'] = $szam;
-		$main->update_felhasznalo($tagsagi,$cond);
-		
-	}
+	$rendszam = $felh[0]['rendszam'];
+	$gy = $felh[0]['gyartmany_sap'];
+	$t = $felh[0]['tipus_sap'];
+	
+	$gyartm['mak_marka.sap_kod'] = $gy;
+	$gyartm['mak_tipus.sap_kod'] = $t;
+	
+	$a = $main->get_gyartmany($gyartm);
+	
+	$gyartmany = $a[0]['marka'];
+	$tipus = $a[0]['tipus'];
 	
 	class MYPDF extends TCPDF {
 	    public function Header() {
@@ -68,20 +62,6 @@
 	    }
 	}
 	
-	//$_REQUEST['nev'] = "Árvíztűrő tükörfúrógép";
-	
-	//$nev = iconv('UTF-8','Windows-1250',$_REQUEST['nev']);
-	
-	//$nev = utf8_encode("Árvíztűrő tükörfúrógép");
-	//$nev = iconv("iso-8859-2","utf-8","Árvíztűrő tükörfúrógép");
-	//$nev = "Árvíztűrő tükörfúrógép";
-	/*
-	$szam = '';
-	
-	for($i=0;$i<12;$i++){
-		$szam .= rand(0,9);
-	}
-	*/
 	$pdf = new MYPDF(PDF_PAGE_ORIENTATION, 'mm', PDF_PAGE_FORMAT, true, 'UTF-8', false);
 	//$pdf = new MYPDF(PDF_PAGE_ORIENTATION, 'mm', PDF_PAGE_FORMAT, true, 'ISO-8859-2', false);
 	
@@ -111,24 +91,36 @@
 	
 	//NEV
 	//$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$nev.'||'.$name.'</p>';
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$nev.'</p>';
-	$pdf->writeHTMLCell(0,0,140,257,$html);
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$nev.'</p>';
+	$pdf->writeHTMLCell(0,0,33,68,$html);
 	//NEV
+
+	//SZULETES
+	//$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$nev.'||'.$name.'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$szuletes.'</p>';
+	$pdf->writeHTMLCell(0,0,124,68,$html);
+	//SZULETES
+
+	//IRSZ
+	//$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$nev.'||'.$name.'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$irsz.'</p>';
+	$pdf->writeHTMLCell(0,0,31,72,$html);
 	
-	//AZONOSITO
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$szam.'</p>';
-	$pdf->writeHTMLCell(0,0,140,266,$html);
-	//AZONOSITO
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$helyseg.'</p>';
+	$pdf->writeHTMLCell(0,0,61,72,$html);
+	
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$kozterulet.'</p>';
+	$pdf->writeHTMLCell(0,0,100,72,$html);
+	
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$hazszam.'</p>';
+	$pdf->writeHTMLCell(0,0,135,72,$html);
 	
 	$main->close();
 	
 	$filenev = 'kotvenyek/' . $_SESSION['lastEmail'] . '.pdf';
 	
-	if(file_exists($filenev)){
-		$filenev = $filenev . time();
-	}
 	
-	$pdf->Output($filenev, 'FD');
+	$pdf->Output($filenev, 'F');
 	
 	/*
 	 * PDF VÉGE
