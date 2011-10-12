@@ -42,7 +42,7 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 	 */
 	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 ?>
-		<a href="#" id="logoutButton" class="gray-button"><span>Kijelentkezés</span><em></em></a>
+		<a href="lib/php/logout.php" id="logoutButton" class="gray-button"><span>Kijelentkezés</span><em></em></a>
 <?php
 	}else{
 ?>			
