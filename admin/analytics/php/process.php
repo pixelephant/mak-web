@@ -1,5 +1,11 @@
 <?php 
 
+/*
+ * A javascript által indított lekéréseket
+ * végzi el a beállított adatok alapján,
+ * a gapi.class.php osztály segítségével.
+ */
+
 include 'gapi.class.php';
 
 $email = 'pixelephantmedia@gmail.com';

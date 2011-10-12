@@ -7,7 +7,9 @@ require '../../lib/php/class.mak.php';
 $main = new mak(false);
 
 $target_path = '';
-
+/*
+ * Ha van ideiglenesen feltöltött képfájl, kezelejük
+ */
 if(isset($_FILES)){
 	$target_path = "img/";
 	$target_path = $target_path . basename($_FILES['kep']['name']);

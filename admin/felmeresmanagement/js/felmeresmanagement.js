@@ -25,6 +25,10 @@ $(function(){
     shrinkToFit: false
   });
   
+  /*
+   * Szerkesztés,hozzáadás,törlés gombok
+   */
+  
   $("#felmeresmanagement").jqGrid('navGrid', '#pager', {
       edit: true,
       add: true,
@@ -42,6 +46,10 @@ $(function(){
   },{
 	  multipleSearch:true
   });
+  
+  /*
+   * Oszlopok gomb hozzáadása
+   */
   
   $("#felmeresmanagement").jqGrid('navButtonAdd','#pager',{
       caption: "Oszlopok",
@@ -74,7 +82,9 @@ $(function(){
 	  return [success,message,new_id];
 	  
   }
-  
+  /*
+   * Sorsolás gomb
+   */
   $("#sorsolas").click(function(e){
 	
 	  e.preventDefault();

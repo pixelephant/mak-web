@@ -24,6 +24,10 @@ $(function(){
     shrinkToFit: false
   });
   
+  /*
+   * Szerkesztés,hozzáadás,törlés gombok
+   */
+  
   $("#hirdetesmanagement").jqGrid('navGrid', '#pager', {
       edit: true,
       add: true,
@@ -41,6 +45,10 @@ $(function(){
   },{
 	  multipleSearch:true
   });
+  
+  /*
+   * Oszlopok gomb
+   */
   
   $("#hirdetesmanagement").jqGrid('navButtonAdd','#pager',{
       caption: "Oszlopok",

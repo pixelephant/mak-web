@@ -1,25 +1,4 @@
-<?php  
 
-	//
-	//	Copyright (c) 2010 Michal Šimonfy http://virae.org | i@virae.org
-	//	NEWSLETTER MODULE | http://virae.org/newsletter_module
-	//  Licenced under Creative Commons Attribution-Noncommercial-Share Alike 3.0 
-	//  http://creativecommons.org/licenses/by-nc-sa/3.0/
-	//	Version: .91 (Nov 25, 2010)
-	
-	//  Hi! and thanks for downloading my newsletter module, 
-	//  please, notice the settings section just a few lines below, 
-	//  where you can configure some of module preferences.
-	//  [ f.e optional password protection, custom template for e-mails, custom css, ... ]
-	
-	//  Please feel free to use the plugin for your personal use, or for non-comercial
-	//  projects. Please, always keep this header included and if you like this plugin,
-	//  feel free to write me an e-mail. Thank you !
-
-	//  Common mistakes: If You get an error "SyntaxError: missing } in XML expression," 
-	//  please, set your directory for attachments writable.  
-	
-?>
 <?php
 /*
 	header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1

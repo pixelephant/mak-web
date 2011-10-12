@@ -22,7 +22,9 @@
     		                chartData.setValue(i, 1, Number(this.visits));    		                
     		                i = i + 1;
     		         });
-    				 
+    				 /*
+    				  * Grafikon létrehozás
+    				  */
     				 var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
     			      chart.draw(chartData, {width: 940, height: 400, title: 'Látogatottság az elmúlt 30 napban',
     			                        hAxis: {title: 'Nap', titleTextStyle: {color: 'red'}}
@@ -35,7 +37,9 @@
     			 
     			 var pagev = '<ol>';
     			 i = 0;
-    			 
+    			 /*
+    			  * Látogatottsági adatok megjelenítése
+    			  */
     			 $.each(resp.pageviews, function() {
     				 if(i < 5){
     					pagev += '<li>' + this.pagepath + ' -> ' + this.pageview + ' látogató </li>';
@@ -44,6 +48,10 @@
 		         });
     			 
     			 pagev += '</ol>';
+    			 
+    			 /*
+    			  * Összeállított html beillesztése a megfelelő div-be
+    			  */
     			 
     			 $("#pageviews_span").html(pagev);
     			 

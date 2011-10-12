@@ -4,6 +4,11 @@ include '../../../lib/php/Wixel/gump.class.php';
 include '../../../lib/php/class.db.php';
 include '../../../lib/php/class.mak.php';
 
+/*
+ * A kérdésre válaszóló felhasználók közül
+ * sorsolja az adott feltételnek megfelelőeket
+ */
+
 $main = new mak(false);
 
 if(!isset($_POST['darab']) || !isset($_POST['valasz']) || !isset($_POST['kerdes'])){
