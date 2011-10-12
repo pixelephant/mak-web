@@ -12,7 +12,7 @@
 	
 	session_start();
 	
-	$main = new mak();
+	$main = new mak(true);
 	
 	$cond['e_mail'] = $_SESSION['lastEmail'];
 	
@@ -34,7 +34,7 @@
 	$t = $felh[0]['tipus_sap'];
 	
 	$gyartm['mak_marka.sap_kod'] = $gy;
-	$gyartm['mak_tipus.sap_kod'] = $t;
+	$gyartm['mak_gyartmany.sap_kod'] = $t;
 	
 	$a = $main->get_gyartmany($gyartm);
 	
@@ -69,9 +69,9 @@
 	
 	$pdf->SetCreator(PDF_CREATOR);
 	$pdf->SetAuthor('MAK');
-	$pdf->SetTitle('Ideiglenes tagságikártya');
-	$pdf->SetSubject('Ideiglenes tagságikártya');
-	$pdf->SetKeywords('Ideiglenes tagságikártya');
+	$pdf->SetTitle('Biztosítási kötvény');
+	$pdf->SetSubject('Biztosítási kötvény');
+	$pdf->SetKeywords('Biztosítási kötvény');
 	
 	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 	
@@ -123,7 +123,7 @@
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$alvazszam.'</p>';
 	$pdf->writeHTMLCell(0,0,148,84.5,$html);
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$gyatmany.'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$gyartmany.'</p>';
 	$pdf->writeHTMLCell(0,0,48,88.5,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$tipus.'</p>';
@@ -140,7 +140,7 @@
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("d").'</p>';
 	$pdf->writeHTMLCell(0,0,94,125,$html);
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'. date("Y") + 1 .'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'. date("Y",strtotime("+1 year")) .'</p>';
 	$pdf->writeHTMLCell(0,0,61,129,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("m").'</p>';

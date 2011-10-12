@@ -57,6 +57,10 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	}
 	
 	//include 'proba.php';
+}else{
+	
+	$uzenet = 'Sikertelen fizetés!';
+
 }
 ?>
 <!DOCTYPE HTML>
