@@ -1,5 +1,7 @@
 <?php 
-
+/*
+ * Keresés oldal
+ */
 include 'lib/php/Wixel/gump.class.php';
 
 include 'lib/php/class.db.php';

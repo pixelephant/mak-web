@@ -18,6 +18,10 @@ if(isset($_GET['email']) && isset($_GET['azonosito'])){
 
 	$adatok = $main->get_felhasznalo($cond);
 	
+	/*
+	 * Ugyanazon hash előállítása, ami az e-mail küldéskor megy
+	 */
+	
 	$hash = sha1(sha1($cond['felhasznalonev']) . $adatok[0]['jelszo']);
 	
 	if($hash == $_GET['azonosito']){

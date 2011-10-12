@@ -1,4 +1,14 @@
-<?php 
+<?php
+/*
+ * Tagbelépés felirat az oldalra.
+ * Weboldalra regisztrált tagokat
+ * A beállítások menüpontra irányítja,
+ * Autóklub tagok számára nem rajzol ki semmit,
+ * a nem regisztrált felhasználókat a regisztrálás
+ * oldalra viszi.
+ * 
+ */
+
 	if(isset($_SESSION['tagsag']) && $_SESSION['tagsag'] == 0){
 		echo '<section id="ctaWrap">
 	<div id="cta" class="wrapper">

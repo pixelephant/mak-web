@@ -10,7 +10,11 @@ error_reporting(0);
 
 $main = new mak(false);
 
-
+/*
+ * Azon oldalak, melyek nem rendelkeznek speciális egyedi felépítéssel
+ * ebből a fálból kerülnek generálásra a $page, $subpage, $tartalom, $subsubpage
+ * változók alapján.
+ */
 
 $parameterek = $main->get_parameterek_urlbol($page,$subpage,$tartalom,$subsubpage);
 $page = trim($_GET['page']);

@@ -7,6 +7,12 @@ include 'lib/php/class.db.php';
 include 'lib/php/class.mak.php';
 
 $main = new mak(false);
+
+/*
+ * A főoldal felépítése, a skeleton fájl (lib/php/skeleton_index.php)
+ * megfelelő értékeinek kitöltése
+ */
+
 ?>
 
 <?php startblock('title') ?>

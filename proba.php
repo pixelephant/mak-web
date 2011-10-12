@@ -1,6 +1,6 @@
 <?php
 	/*
-	 * PDF
+	 * PDF - ideiglenes tagsági kártya előállítása
 	 */
 	
 	require_once('lib/php/pdf/tcpdf/config/lang/eng.php');

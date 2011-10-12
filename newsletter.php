@@ -1,3 +1,13 @@
+<?php 
+/*
+ * Keresés,
+ * Hírlevél feliratkozás,
+ * Facebook,
+ * Twitter
+ * az oldal bal oldalára.
+ * Link a nem regisztráltaknak a regisztráció menüpontra 
+ */
+?>
 <div id="search">
 	<form action="kereses" method="POST">
 		<input type="text" name="search" placeholder="Keresés..." /><input type="submit" value="Keresés" class="yellow-button" />

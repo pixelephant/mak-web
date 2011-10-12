@@ -17,7 +17,10 @@ if($_SESSION['logout'] == 'logout'){
 	session_unset();
 	$_SESSION['logout'] = '';
 }
-
+/*
+ * Bejelentkezett felhasználók számára kirajzoljuk
+ * az oldal tetejére a fekete üdvözlő dobozt.
+ */
 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 ?>
 	<div id="userBar">
@@ -33,6 +36,10 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 		<a href="kozlekedesbiztonsag" id="kozlekButton" class="gray-button"><img src="img/pictogram-04.png" alt="Közlekedésbiztonság" /></a>
 		<a href="travel" id="travelButton" class="gray-button"><img src="img/pictogram-02.png" alt="Travel" /></a>
 <?php 
+	/*
+	 * A bejelentkezett felhasználóknak
+	 * kijelentkezés gombot rajzolunk ki
+	 */
 	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
 ?>
 		<a href="#" id="logoutButton" class="gray-button"><span>Kijelentkezés</span><em></em></a>

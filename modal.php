@@ -1,3 +1,8 @@
+<?php 
+/*
+ * A bejelentkező ablak
+ */
+?>
 <div id="loginModal" class="reveal-modal">
 	<form id="loginform" action="#">
 			<h2>Bejelentkezés</h2>

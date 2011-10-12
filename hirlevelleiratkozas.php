@@ -5,7 +5,10 @@ require 'lib/php/class.db.php';
 require 'lib/php/class.mak.php';
 
 session_start();
-
+/*
+ * A hírlevélről leiratkozó felhasználót
+ * kitöröljük az adatbázisból
+ */
 $main = new mak(false);
 
 

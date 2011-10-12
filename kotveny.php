@@ -1,6 +1,6 @@
 <?php
 	/*
-	 * PDF
+	 * PDF - biztosítási kötvény előállítása komfort tagok számára
 	 */
 	
 	require_once('lib/php/pdf/tcpdf/config/lang/eng.php');

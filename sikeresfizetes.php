@@ -1,6 +1,13 @@
 <?php 
 ob_start();
-
+/*
+ * Sikeres OTP Bankon keresztüli fizetésnél
+ * erre az oldalra tér vissza a felhasználó.
+ * Az oldalon automatikusan fájl letöltés 
+ * ablak nyílik az ideiglenes kártyával.
+ * Komfort tagság esetén a biztosítási kötvény
+ * is generálásra kerül.
+ */
 require 'lib/php/Wixel/gump.class.php';
 require 'lib/php/class.db.php';
 require 'lib/php/class.mak.php';

@@ -1,4 +1,7 @@
 <?php 
+/*
+ * Regisztrálás oldal
+ */
 
 include 'lib/php/Wixel/gump.class.php';
 
@@ -22,7 +25,7 @@ $gyart_opt = '';
 //print_r($gyartmany);
 
 /*
- * Első autó 
+ * Autó típus, márka választás
  */
 
 for($i=0;$i<$gyartmany['count'];$i++){
