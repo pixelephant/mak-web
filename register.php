@@ -396,11 +396,11 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						<br />
 						<input type="radio" name="paymentmethod" id="transfer" />
 					</div>
-					<div class="row">
+					<!-- >div class="row">
 						<label class="yellow-button" for="cheque">Csekk</label>
 						<br />
 						<input type="radio" name="paymentmethod" id="cheque" />
-					</div>
+					</div-->
 					<!-- Bankkártyás fizetés -->
 					<input type="hidden" name="posId" value="#02299991" size="40" maxlength="15" class="text"/>
 					<input type="hidden" name="nyelvkod" value="hu" size="5" maxlength="2" class="text"/>
@@ -411,10 +411,10 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					<input type="hidden" name="name" id="name" value=" " size="40" class="text"/>
 					
 				</fieldset>
-				<fieldset id="chequeDetails" class="detail">
+				<!-- >fieldset id="chequeDetails" class="detail">
 					<h3>Csekkes fizetés <span class="sum"></span></h3>
 					<div class="row">Majd kap számlát.</div>
-				</fieldset>
+				</fieldset -->
 				<fieldset id="transferDetails" class="detail">
 					<h3>Banki átutalással való fizetés <span class="sum"></span></h3>
 					<div class="row">Ide utalja : 1111111-1-1111111-1-1-</div>
