@@ -23,6 +23,11 @@
 	 */
 	
 	$nev = $felh[0]['elonev'] . " " .$felh[0]['vezeteknev'] . " " . $felh[0]['keresztnev'];
+	
+	if($felh[0]['nem'] == 'C'){
+		$nev = $felh[0]['cegnev'];
+	}
+	
 	$szuletes = $felh[0]['szuletesi_datum'];
 	$irsz = $felh[0]['allando_irsz'];
 	$helyseg = $felh[0]['allando_helyseg'];
@@ -131,7 +136,7 @@
 	
 	//Dátum
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("Y").'</p>';
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("Y",strtotime("+1 day")).'</p>';
 	$pdf->writeHTMLCell(0,0,61,125,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("m").'</p>';

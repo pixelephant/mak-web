@@ -15,7 +15,9 @@ if($email == ''){
 
 $b = $main->get_hirlevel_email($email);
 
-if($b['count'] != 0 || $b !== FALSE){
+//print_r($b);
+
+if($b['count'] != 0){
 	echo '<span class="success">Ön már korábban feliratkozott!</span>'; 
 	return FALSE;
 }

@@ -2577,9 +2577,15 @@ class mak extends db{
 			$aloldalak[0]['kategoria_nev'] = 'Magunkról';
 		}
 		
+		
 		$html .= '<h2 id="'. $aloldalak[0]['azonosito'] .'">';
-		$html .= '<img src="' . $this->_imageDirLeft . $aloldalak[0]['azonosito'] . '.png" alt="' . $aloldalak[0]['kategoria_nev'] . '" />';
+		
+		if($aloldalak[0]['azonosito'] != 'aszf'){
+			$html .= '<img src="' . $this->_imageDirLeft . $aloldalak[0]['azonosito'] . '.png" alt="' . $aloldalak[0]['kategoria_nev'] . '" />';
+		}
+		
 		$html .= $aloldalak[0]['kategoria_nev'] . '</h2>';
+		
 		
 		for($i = 0; $i < $aloldalak['count']; $i++){
 			
@@ -3611,6 +3617,55 @@ class mak extends db{
 		
 		$form = str_replace("%komfortMemberStart%","",$form);
 		$form = str_replace("%komfortMemberEnd%","",$form);
+		
+		/*
+		 * Dropdownok
+		 */
+		
+		$cond = array();
+		$cond['mak_gyartmany.display'] = 1;
+		$cond['mak_marka.display'] = 1;
+		
+		$gyartmany = $this->get_gyartmany($cond);
+		
+		$gy = '';
+		$t = '';
+
+		$gyart_opt = '';
+		$tip_opt = '';
+		
+		/*
+		 * Első autó 
+		 */
+		
+		for($i=0;$i<$gyartmany['count'];$i++){
+		
+			if($gy != $gyartmany[$i]['marka']){
+				$gyart_opt .= '<option value="' . $gyartmany[$i]['marka_sap_kod'] . '"';
+				
+				if($gyartmany[$i]['marka_sap_kod'] == $adat[0]['gyartmany_sap']){
+					$gyart_opt .= ' selected="selected"';
+				}
+				
+				$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
+				$gy = $gyartmany[$i]['marka'];
+			}
+			
+			if($gyartmany[$i]['marka_sap_kod'] == $adat[0]['gyartmany_sap']){
+				$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';
+				
+				if($gyartmany[$i]['gyartmany_sap_kod'] == $adat[0]['tipus_sap']){
+					$tip_opt .= ' selected="selected"';
+				}
+				
+				$tip_opt .= '>' . $gyartmany[$i]['tipus'] . '</option>';
+			}
+		
+		}
+		
+		$form = str_replace('%marka_options%', $gyart_opt,$form);
+		$form = str_replace('%tipus_options%', $tip_opt,$form);
+		
 		
 		return $form;
 	}

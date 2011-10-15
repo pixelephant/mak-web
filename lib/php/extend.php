@@ -6,7 +6,7 @@ require 'class.mak.php';
 
 session_start();
 
-$main = new mak(false);
+$main = new mak();
 
 $tagsag['diszkontMember'] = 2;
 $tagsag['standardMember'] = 3;
@@ -24,7 +24,7 @@ $fizetes = GUMP::sanitize($fizetes);
 
 $cond['id'] = $_SESSION['user_id'];
 
-$col = 'ervenyesseg_datuma,tranzakcio_kodja,befizetes_datuma,tagsagi_szam,elonev,vezeteknev,keresztnev,nem,cegnev,';
+$col = 'ervenyesseg_datuma,tranzakcio_kodja,befizetes_datuma,tagsagi_szam,elonev,vezeteknev,keresztnev,nem,cegnev,e_mail,';
 $col .= 'levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam';
 
 $felh = $main->get_felhasznalo($cond,$col);
@@ -40,6 +40,8 @@ if($felh[0]['ervenyesseg_datuma'] != '0000-00-00'){
 }else{
 	$data['ervenyesseg_datuma'] = date("Y-m-d", strtotime("+1 year"));
 }
+
+$_SESSION['lastEmail'] = $felh[0]['e_mail'];
 
 $data['befizetett_osszeg'] = $fizetes['osszeg'];
 $data['tranzakcio_kodja'] = '2';
@@ -103,6 +105,17 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 	parse_str($_POST['memberData'], $member);
 
 	$member = GUMP::sanitize($member);
+	
+	/*
+	if($member['membershipRadio'] == 'komfortMember'){
+		parse_str($_POST['komfortData'], $komfort);
+		
+		$_SESSION['chassis'] = $komfort['chassis'];
+		
+		$data['gyartmany_sap'] = $komfort['brand'];
+		$data['tipus_sap'] = $komfort['type'];
+	}
+	*/
 	
 	$data['dijkategoria'] = $tagsag[$member['membershipRadio']];
 

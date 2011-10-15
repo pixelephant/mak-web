@@ -65,6 +65,8 @@ if(!empty($form)){
 		$adatok['allando_irsz'] = $form['coZip'];
 		$adatok['allando_helyseg'] = $form['coCity'];	
 		
+		$adatok['nem'] = 'C';
+		
 		$adatok['allando_kozterulet'] = $form['coAddress'];
 		$adatok['allando_kozterulet_jellege'] = $form['coAddressType'];
 		$adatok['allando_hazszam'] = $form['coAddressNumber'];

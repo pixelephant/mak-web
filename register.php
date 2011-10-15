@@ -76,7 +76,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 	<section id="main" class="wrapper">
 		<aside>
 			<?php include "newsletter.php" ?>
-			<h2 id="">Regisztráció</h2>
+			<h2 id=""></h2>
 			<h3 class="active">1. Alapadatok</h3>
 			<h3 class="">2. Kártyaválasztás</h3>
 			<h3 class="">3. Gépjármű adatok</h3>
@@ -245,7 +245,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					</div>
 					<div class="row">
 						<label for="natAddressNumber">Cím házszáma</label>
-						<input  maxlength="12" size="12" class="required" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input  maxlength="12" size="12" class="" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
 					</div>
 					<div class="row">
 						<label for="natAddressBuilding">Cím épület</label>
@@ -326,7 +326,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					<h3>Forgalmi rendszám</h3>
 					<div class="row">
 						<label for="standardPlateHu">Magyar</label>
-						<input type="radio" name="platetype" id="standardPlateHu" />
+						<input maxlength="6" type="radio" name="platetype" id="standardPlateHu" />
 					</div>
 					<div class="row">
 						<label for="standardPlateFo">Külföldi</label>
@@ -337,7 +337,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					<h3>Forgalmi rendszám megadása</h3>
 					<div class="row" id="standardPlateHuInputRow">
 						<label for="standardPlateHuInput">Forgalmi rendszám</label>
-						<input type="text" name="standardPlateHuInput" id="standardPlateHuInput" size="6" />
+						<input type="text" name="standardPlateHuInput" id="standardPlateHuInput" size="6" maxlength="6"/>
 						<img src="img/info.png" alt="" class="info" title="6 karakterből kell állnia." />
 					</div>
 					<div class="row" id="standardPlateFoInputRow">
@@ -354,7 +354,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					<h3>Géjármű adatai</h3>
 					<div class="row">
 						<label for="komfortPlateHuInput">Rendszám</label>
-						<input type="text" class="required" name="komfortPlateHuInput" id="komfortPlateHuInput" />
+						<input type="text" class="required" name="komfortPlateHuInput" id="komfortPlateHuInput" maxlength="6"/>
 						<img src="img/info.png" alt="" class="info" title="Formátum : AAA111" />
 					</div>
 					<div class="row">
