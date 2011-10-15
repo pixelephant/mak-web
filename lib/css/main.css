@@ -1451,4 +1451,20 @@ li.heading.travel{
 
 .magunkrol aside h2 img{
 	display:none;	
-} 
+}
+
+/* OTP kártyák főoldal */
+
+#otp img{
+	background: none repeat scroll 0 0 white;
+    border: 1px solid #333333;
+    display: block;
+    margin: 15px auto;
+    padding: 5px;
+    width: 188px;	
+}
+
+#otp .link{
+	left: 45px;
+    position: relative;	
+}

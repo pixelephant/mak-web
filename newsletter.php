@@ -35,7 +35,3 @@
 		echo '<a href="regisztralas" id="side-cta" class="black-button"><span>Tagbelépés</span><em></em></a><div class="hr"></div>';
 	}
 ?>
-<!-- >div>
-<img src="img/kartyak.jpg" />
-</div>
-<div class="hr"></div -->

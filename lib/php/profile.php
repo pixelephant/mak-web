@@ -8,6 +8,13 @@ include 'class.mak.php';
 session_start();
 $main = new mak(false);
 
+if($_POST['action'] == 'countdown'){
+	$cond['id'] = $_SESSION['user_id'];
+	$a = $main->get_felhasznalo($cond,'ervenyesseg_datuma');
+	echo $a[0]['ervenyesseg_datuma'];
+	return true;
+}
+
 if($_POST['action'] == 'brandType'){
 
 	$brand = trim($_POST['brand']);

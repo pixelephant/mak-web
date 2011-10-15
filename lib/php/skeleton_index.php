@@ -47,6 +47,10 @@ session_start();
 		<aside>
 			<?php startblock('newsletter') ?><?php endblock() ?>
 			<?php startblock('ad') ?><?php endblock() ?>
+			<div id="otp">
+				<img src="img/kartyak.jpg" />
+				<a class="link" href="media/pdf/OTP_tajekoztato.pdf" target="_blank">Online fizetési tájékoztató</a>
+			</div>
 		</aside>
 		<section id="content">
 			<?php startblock('content') ?><?php endblock() ?>

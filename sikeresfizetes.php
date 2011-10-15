@@ -58,7 +58,32 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	
 	//include 'proba.php';
 }else{
+		
+	/*
+	 * E-mail küldése sikertelen bankkártyás fizetés tényéről
+	 */
+
+	require_once("lib/php/phpmailer/phpmailer.inc.php");
+		
+	$mail = new PHPMailer();
 	
+	//$mail->IsSMTP(); // SMTP használata
+	$mail->CharSet = 'UTF-8';
+	$mail->From = "regisztracio@autoklub.hu";
+	$mail->FromName = "Magyar Autóklub weboldala";
+	//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
+	$mail->AddAddress('0antalbalazs0@gmail.com','Infó');
+	$mail->AddReplyTo($autoklub_email, "Magyar Autóklub");
+	$mail->WordWrap = 50;
+	
+	$mail->IsHTML(true);    // HTML e-mail
+	$mail->Subject = "Magyar Autóklub - fizetési igény";
+	$mail->Body = 'Az alábbi azonosítóval rendelkező felhasználó: ' . $cond['e_mail'] . '<br />' . ucfirst(str_replace("Member","",$member['membershipRadio'])) . ' tagságának kiegyenlítésére az alábbi fizetési módot választotta: ' . $fizetesNev[$fizetes['paymentmethodRadio']];
+	
+	if($mail->Send() === FALSE){
+		//$valasz = 'Sikertelen e-mail küldés!';
+	}
+
 	$uzenet = 'Sikertelen fizetés!';
 
 }

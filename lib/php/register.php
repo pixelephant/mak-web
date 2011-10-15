@@ -146,7 +146,9 @@ if(!empty($form)){
 	}
 
 }else{
-
+/*
+ * Regisztráció utáni Autóklub tagság feldolgozása
+ */
 	if(!isset($_POST['email']) || $_POST['email'] == ''){
 		$valasz = 'sikertelen';
 		return FALSE;
@@ -201,8 +203,6 @@ if(!empty($form)){
 	require_once("phpmailer/phpmailer.inc.php");
 		
 	$mail = new PHPMailer();
-	
-	$link = 'http://sfvm104.serverfarm.hu/mak/regisztraciomegerositese?email=' . $adatok['e_mail'] . '&azonosito=' . sha1(sha1($adatok['e_mail']) . $adatok['jelszo']);
 	
 	//$mail->IsSMTP(); // SMTP használata
 	$mail->CharSet = 'UTF-8';
