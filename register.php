@@ -198,7 +198,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 				<fieldset id="natSet">
 					<h3>Személyes adatok</h3>
 					<div class="row">
-						<label for="natPrefix">Prefix</label>
+						<label for="natPrefix">Megszólítás</label>
 						<select name="natPrefix" id="natPrefix">
 							<option value="">-</option>
 							<option value="Ifj.">Ifj.</option>
@@ -295,7 +295,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 				<fieldset>
 				<h3>Feltételek</h3>
 				<div class="row">
-					<label for="terms">Elfogadom a <a class="link" target="_blank" href="aszf">feltételeket</a></label>
+					<label for="terms">Elfogadom a <a class="link" target="_blank" href="asz">feltételeket</a></label>
 					<input class="required" type="checkbox" name="terms" id="terms" />
 				</div>
 				</fieldset>
@@ -317,6 +317,38 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						<label for="komfortMember">Komfort tagság</label>
 						<input data-price="16300" type="radio" name="membership" id="komfortMember" />
 					</div>
+				</fieldset>
+				<fieldset>
+				<h3>Feltételek</h3>
+				<div class="row">
+					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="asz">szolgáltatási feltételeit </a>elfogadom.</label>
+					<input class="required" type="checkbox" name="terms1" id="terms1" />
+				</div>
+				<div class="row">
+					<label for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
+						adataimat a klubtagsági szolgáltatások nyújtásához szükséges mértékben, a személyes adatok
+						védelméről és a közérdekű adatok nyilvánosságáról szóló 1992. évi LXIII. törvény és a
+						mindenkori hatályos jogszabályoknak megfelelően adatbázisában kezelje és tárolja.</label>
+					<input class="required" type="checkbox" name="terms2" id="terms2" />
+				</div>
+				<div class="row">
+					<label for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
+						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
+						hírlevelet küldjön.</label>
+					<input class="required" type="checkbox" name="terms3" id="terms3" />
+				</div>
+				<div style="display: none;" id="komfortTerms" class="row">
+					<label for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
+						közlekedési és balesetbiztosítási jogviszony biztosító általi nyilvántartásához szükséges
+						személyes adataimat a Generali-Providencia Biztosító részére átadja. Mint biztosított,
+						hozzájárulok ahhoz, hogy a Biztosító a biztosítási szolgáltatás nyújtására vele szerződéses
+						viszonyban álló jogalanynak a szerződéssel kapcsolatos, biztosítási titkot képező személyes
+						adataimat, valamint a biztosítási fedezet fennállását igazoló adatokat a szolgáltatási igény
+						elbírálása céljából, az elbírálás időtartamára átadja, feltéve, hogy e jogalany véleményének
+						beszerzése a szolgáltatási igény eldöntése szempontjából elkerülhetetlenül szükséges.</label>
+					<input class="required" type="checkbox" name="terms4" id="terms4" />
+				</div>
+				
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>
 			</form>
@@ -346,6 +378,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						<img src="img/info.png" alt="" class="info" title="Maximálisan 10 karakterből állhat." />
 					</div>
 				</fieldset>
+				<input type="submit" value="Vissza" class="backToStep2" />
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
 			</form>
 			<form id="komfortform" action="#" method="#" class="step3">
@@ -380,6 +413,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						</select>
 					</div>
 				</fieldset>
+				<input type="submit" value="Vissza" class="backToStep2" />
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
 			</form>
 			<form id="paymentform" action="http://sfvm104.serverfarm.hu/mak/lib/php/otp/web_demo/mak_otp_test_process.php" method="get" class="step4">

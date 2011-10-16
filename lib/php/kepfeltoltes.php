@@ -27,7 +27,7 @@ echo 'true';
 
 move_uploaded_file($_FILES["file-upload"]["tmp_name"],"../../img/profilkepek/" . sha1($_SESSION['user_id']) . ".jpg");
 
-header("Location: ../../enautoklubom/beallitasok/profil");
+header("Location: ../../enautoklubom/beallitasok/profil/alapadatok");
 
 ob_end_flush();
 ?>

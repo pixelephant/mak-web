@@ -8,6 +8,12 @@ include 'class.mak.php';
 session_start();
 $main = new mak(false);
 
+if($_POST['action'] == 'delPic'){
+	unlink("../../img/profilkepek/" . sha1($_SESSION['user_id']) . '.jpg');
+	echo 'sikeres';
+	return true;
+}
+
 if($_POST['action'] == 'countdown'){
 	$cond['id'] = $_SESSION['user_id'];
 	$a = $main->get_felhasznalo($cond,'ervenyesseg_datuma');

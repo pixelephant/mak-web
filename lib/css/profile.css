@@ -207,8 +207,8 @@ select{
 }
 
 #profile-image img{
-	width:210px;
-	height:260px;
+	max-width:210px;
+	max-height:260px;
 }
 #profile-image a{
 	display:none;
@@ -231,6 +231,11 @@ select{
 
 #profile-image:hover a{
 	display:block;
+}
+
+#picDel{
+	position:relative;
+	left: -0px;	
 }
 
 #upload-image{

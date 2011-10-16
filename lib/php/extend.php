@@ -34,11 +34,11 @@ if($felh[0]['tranzakcio_kodja'] == "2" && $felh[0]['befizetes_datuma'] == "0000-
 	return FALSE;
 }
 
-if($felh[0]['ervenyesseg_datuma'] != '0000-00-00'){
+if($felh[0]['ervenyesseg_datuma'] == '0000-00-00' || $felh[0]['ervenyesseg_datuma'] < date("Y-m-d")){
+	$data['ervenyesseg_datuma'] = date("Y-m-d", strtotime("+1 year"));
+}else{
 	$datum = explode("-",$felh[0]['ervenyesseg_datuma']);
 	$data['ervenyesseg_datuma'] = ((int)$datum[0] + 1) . "-" . $datum[1] . "-" . $datum[2];
-}else{
-	$data['ervenyesseg_datuma'] = date("Y-m-d", strtotime("+1 year"));
 }
 
 $_SESSION['lastEmail'] = $felh[0]['e_mail'];
@@ -118,6 +118,7 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 	*/
 	
 	$data['dijkategoria'] = $tagsag[$member['membershipRadio']];
+	$data['ervenyesseg_datuma'] = date("Y-m-d", strtotime("+1 year"));
 
 	$valasz = $main->update_felhasznalo($data,$cond);
 

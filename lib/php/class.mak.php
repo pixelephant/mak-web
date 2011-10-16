@@ -2033,6 +2033,10 @@ class mak extends db{
 		$galeria = '';
 		$html = '';
 		
+		if($altart == 'dokumentumaim' || $altart == 'alapadatok' || $altart == 'gepjarmuadatok'){
+			$tartalom[0]['szoveg'] = $this->adatmodosito_template($tartalom[0]['szoveg']);
+		}
+		
 		for($i = 0; $i < $tartalom['count']; $i++){
 		
 			if($tartalom[$i]['szoveg'] != ''){
@@ -2141,7 +2145,10 @@ class mak extends db{
 				 */
 				
 			}
-			if($tartalom[$i]['altartalom_szoveg'] != ''){
+			
+			$nincs_betekinto = array("dokumentumaim","alapadatok","gepjarmuadatok");
+			
+			if($tartalom[$i]['altartalom_szoveg'] != '' && !in_array($tartalom[$i]['altartalom_url'],$nincs_betekinto)){
 			
 				$html .= '<section id="' . $tartalom[$i]['altartalom_cim'] . '">';
 				$html .= '<h2>' . $tartalom[$i]['altartalom_cim'] . '</h2>';
@@ -2580,7 +2587,7 @@ class mak extends db{
 		
 		$html .= '<h2 id="'. $aloldalak[0]['azonosito'] .'">';
 		
-		if($aloldalak[0]['azonosito'] != 'aszf'){
+		if($aloldalak[0]['azonosito'] != 'asz'){
 			$html .= '<img src="' . $this->_imageDirLeft . $aloldalak[0]['azonosito'] . '.png" alt="' . $aloldalak[0]['kategoria_nev'] . '" />';
 		}
 		
@@ -3512,6 +3519,26 @@ class mak extends db{
 		$form = str_replace("%komfortAutoEnd%","",$form);
 		
 		$_SESSION['email'] = $adatok[0]['e_mail'];
+
+		/*
+		 * Dokumentumok
+		 */
+		
+		$dok = '';
+		
+		if(is_file("ideigleneskartyak/" . $adatok[0]['e_mail'] . ".pdf")){
+			$dok .= '<p><a class="link" href="ideigleneskartyak/"' . $adatok[0]['e_mail'] . '.pdf">Idegilenes tagsági kártyám</a></p>';
+		}
+		
+		if($_SESSION['tagsag'] == 4 && is_file("kotvenyek/" . $adatok[0]['e_mail'] . ".pdf")){
+			$dok .= '<p><a class="link" href="kotvenyek/"' . $adatok[0]['e_mail'] . '.pdf">Biztosítási kötvényem</a></p>';
+		}
+		
+		if($dok == ''){
+			$dok = '<p>Önnek nincs letölthető dokumentuma a rendszerben!</p>';
+		}
+		
+		$form = str_replace('%dokumentumok%',$dok,$form);
 		
 		return $form;
 		
@@ -3549,7 +3576,7 @@ class mak extends db{
 		*/
 		
 		if($adat[0]['rendszam'] != ''){
-			$form = str_replace("%rendszam%",substr($adat[0]['rendszam'],0,3) . "-" . substr($adat[0]['rendszam'],3),$form);
+			$form = str_replace("%rendszam%",$adat[0]['rendszam'],$form);
 		}else{
 			$form = str_replace("%rendszam%",'',$form);
 		}
@@ -3577,7 +3604,7 @@ class mak extends db{
 		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);
 		
 		
-		if($_SESSION['tagsag'] < 1 || $_SESSION['tagsag'] == '' || !isset($_SESSION['tagsag'])){
+		if($_SESSION['tagsag'] < 1 || $_SESSION['tagsag'] == '' || !isset($_SESSION['tagsag']) || ((date("Y") - $adat[0]['gyartasi_ev'] > 11) && ($_SESSION['tagsag'] == 4))){
 			$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', '', $form);
 		}
 		
