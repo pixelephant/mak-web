@@ -46,6 +46,8 @@
 	float: left;
 	height: 24px;
 	line-height: 24px;
+	position: relative;
+	left: 18px;
 }
 
 #content form label.error{
@@ -90,6 +92,18 @@
 
 #content form input[type='radio']{
 	margin-left: 5px;
+}
+
+#term1_div,#term3_div{
+	height:35px !important;	
+}
+
+#term2_div{
+	height:60px !important;	
+}
+
+#komfortTerms{
+	height:170px !important;	
 }
 
 #content form div.row{

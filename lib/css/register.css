@@ -4,7 +4,17 @@
 	font-size:16px;          
 }
 
-    
+#term1_div,#term3_div{
+	height:35px !important;	
+}
+
+#term2_div{
+	height:60px !important;	
+}
+
+#komfortTerms{
+	height:170px !important;	
+}
 
 #register aside h3.active{
 	color:#1c1c1c;

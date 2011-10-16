@@ -3527,11 +3527,11 @@ class mak extends db{
 		$dok = '';
 		
 		if(is_file("ideigleneskartyak/" . $adatok[0]['e_mail'] . ".pdf")){
-			$dok .= '<p><a class="link" href="ideigleneskartyak/"' . $adatok[0]['e_mail'] . '.pdf">Idegilenes tagsági kártyám</a></p>';
+			$dok .= '<p><a class="link" href="ideigleneskartyak/' . $adatok[0]['e_mail'] . '.pdf">Idegilenes tagsági kártyám</a></p>';
 		}
 		
 		if($_SESSION['tagsag'] == 4 && is_file("kotvenyek/" . $adatok[0]['e_mail'] . ".pdf")){
-			$dok .= '<p><a class="link" href="kotvenyek/"' . $adatok[0]['e_mail'] . '.pdf">Biztosítási kötvényem</a></p>';
+			$dok .= '<p><a class="link" href="kotvenyek/' . $adatok[0]['e_mail'] . '.pdf">Biztosítási kötvényem</a></p>';
 		}
 		
 		if($dok == ''){
@@ -3651,24 +3651,24 @@ class mak extends db{
 		
 		$feltetelek1 = '<fieldset>
 				<h3>Feltételek</h3>
-				<div class="row">
+				<div id="term1_div" class="row">
 					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="asz">szolgáltatási feltételeit </a>elfogadom.</label>
 					<input class="required" type="checkbox" name="terms1" id="terms1" />
 				</div>
-				<div class="row">
+				<div id="term2_div" class="row">
 					<label for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
 						adataimat a klubtagsági szolgáltatások nyújtásához szükséges mértékben, a személyes adatok
 						védelméről és a közérdekű adatok nyilvánosságáról szóló 1992. évi LXIII. törvény és a
 						mindenkori hatályos jogszabályoknak megfelelően adatbázisában kezelje és tárolja.</label>
 					<input class="required" type="checkbox" name="terms2" id="terms2" />
 				</div>
-				<div class="row">
+				<div id="term3_div" class="row">
 					<label for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
 						hírlevelet küldjön.</label>
 					<input class="required" type="checkbox" name="terms3" id="terms3" />
 				</div>
-				<div id="komfortTerms" class="row">';
+				<div id="komfortTerms" class="row terms4">';
 		$feltetelek2 = '
 					<label for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
 						közlekedési és balesetbiztosítási jogviszony biztosító általi nyilvántartásához szükséges

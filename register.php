@@ -320,18 +320,18 @@ for($i=0;$i<$gyartmany['count'];$i++){
 				</fieldset>
 				<fieldset>
 				<h3>Feltételek</h3>
-				<div class="row">
+				<div id="terms1_div" class="row">
 					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="szolgaltatasifeltetelek">szolgáltatási feltételeit </a>elfogadom.</label>
 					<input class="required" type="checkbox" name="terms1" id="terms1" />
 				</div>
-				<div class="row">
+				<div id="terms2_div" class="row">
 					<label for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
 						adataimat a klubtagsági szolgáltatások nyújtásához szükséges mértékben, a személyes adatok
 						védelméről és a közérdekű adatok nyilvánosságáról szóló 1992. évi LXIII. törvény és a
 						mindenkori hatályos jogszabályoknak megfelelően adatbázisában kezelje és tárolja.</label>
 					<input class="required" type="checkbox" name="terms2" id="terms2" />
 				</div>
-				<div class="row">
+				<div id="terms3_div" class="row">
 					<label for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
 						hírlevelet küldjön.</label>
