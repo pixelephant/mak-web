@@ -2587,7 +2587,7 @@ class mak extends db{
 		
 		$html .= '<h2 id="'. $aloldalak[0]['azonosito'] .'">';
 		
-		if($aloldalak[0]['azonosito'] != 'asz'){
+		if($aloldalak[0]['azonosito'] != 'asz' && $aloldalak[0]['azonosito'] != 'szolgaltatasifeltetelek'){
 			$html .= '<img src="' . $this->_imageDirLeft . $aloldalak[0]['azonosito'] . '.png" alt="' . $aloldalak[0]['kategoria_nev'] . '" />';
 		}
 		
@@ -3562,7 +3562,7 @@ class mak extends db{
 		$ar[4] = '13800';
 		$ar[5] = '0';
 		
-		$col = 'gyartasi_ev,rendszam';
+		$col = 'gyartasi_ev,rendszam,gyartmany_sap,tipus_sap';
 		$cond['id'] = $_SESSION['user_id'];
 		
 		$adat = $this->get_felhasznalo($cond,$col);
@@ -3644,6 +3644,53 @@ class mak extends db{
 		
 		$form = str_replace("%komfortMemberStart%","",$form);
 		$form = str_replace("%komfortMemberEnd%","",$form);
+		
+		/*
+		 * Feltételek
+		 */
+		
+		$feltetelek1 = '<fieldset>
+				<h3>Feltételek</h3>
+				<div class="row">
+					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="asz">szolgáltatási feltételeit </a>elfogadom.</label>
+					<input class="required" type="checkbox" name="terms1" id="terms1" />
+				</div>
+				<div class="row">
+					<label for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
+						adataimat a klubtagsági szolgáltatások nyújtásához szükséges mértékben, a személyes adatok
+						védelméről és a közérdekű adatok nyilvánosságáról szóló 1992. évi LXIII. törvény és a
+						mindenkori hatályos jogszabályoknak megfelelően adatbázisában kezelje és tárolja.</label>
+					<input class="required" type="checkbox" name="terms2" id="terms2" />
+				</div>
+				<div class="row">
+					<label for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
+						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
+						hírlevelet küldjön.</label>
+					<input class="required" type="checkbox" name="terms3" id="terms3" />
+				</div>
+				<div id="komfortTerms" class="row">';
+		$feltetelek2 = '
+					<label for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
+						közlekedési és balesetbiztosítási jogviszony biztosító általi nyilvántartásához szükséges
+						személyes adataimat a Generali-Providencia Biztosító részére átadja. Mint biztosított,
+						hozzájárulok ahhoz, hogy a Biztosító a biztosítási szolgáltatás nyújtására vele szerződéses
+						viszonyban álló jogalanynak a szerződéssel kapcsolatos, biztosítási titkot képező személyes
+						adataimat, valamint a biztosítási fedezet fennállását igazoló adatokat a szolgáltatási igény
+						elbírálása céljából, az elbírálás időtartamára átadja, feltéve, hogy e jogalany véleményének
+						beszerzése a szolgáltatási igény eldöntése szempontjából elkerülhetetlenül szükséges.</label>
+					<input class="required" type="checkbox" name="terms4" id="terms4" />';
+				
+		$feltetelek3 = '</div></fieldset>';
+		
+		
+		if($_SESSION['tagsag'] > 2){
+			$feltetelek = $feltetelek1 . $feltetelek2 . $feltetelek3;
+		}else{
+			$feltetelek = $feltetelek1 . $feltetelek3;
+		}
+		
+		
+		$form = str_replace("%feltetelek%",$feltetelek,$form);
 		
 		/*
 		 * Dropdownok

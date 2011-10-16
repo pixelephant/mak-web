@@ -6,3 +6,4 @@
 	<a class="link" href="kapcsolat">Kapcsolat</a>
 	<a class="link" href="magunkrol">Magunkról</a>
 </div>
+<p><span>Készítette: <a class="link" target="_blank" href="http://www.frontlinemedia.hu">Frontline média Kft.</a></span></p>

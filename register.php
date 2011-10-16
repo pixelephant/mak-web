@@ -321,7 +321,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 				<fieldset>
 				<h3>Feltételek</h3>
 				<div class="row">
-					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="asz">szolgáltatási feltételeit </a>elfogadom.</label>
+					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="szolgaltatasifeltetelek">szolgáltatási feltételeit </a>elfogadom.</label>
 					<input class="required" type="checkbox" name="terms1" id="terms1" />
 				</div>
 				<div class="row">
