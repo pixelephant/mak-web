@@ -4,9 +4,52 @@ require 'Wixel/gump.class.php';
 require 'class.db.php';
 require 'class.mak.php';
 
+require_once("phpmailer/phpmailer.inc.php");
+
 session_start();
 
 $main = new mak();
+
+$mak_email = '0antalbalazs0@gmail.com';
+
+if($_POST['action'] == 'extendMail'){
+	
+	$cond['id'] = $_SESSION['user_id'];
+	
+	$col = 'ervenyesseg_datuma,tranzakcio_kodja,befizetes_datuma,tagsagi_szam,elonev,vezeteknev,keresztnev,nem,cegnev,e_mail,';
+	$col .= 'levelezesi_irsz,levelezesi_helyseg,levelezesi_kozterulet,levelezesi_hazszam,allando_irsz,allando_helyseg,allando_kozterulet,allando_hazszam';
+	
+	$felh = $main->get_felhasznalo($cond,$col);
+
+	if($felh[0]['nem'] == 'C'){
+		$nev = $felh[0]['cegnev'];
+	}else{
+		$nev = $felh[0]['elonev'] . " " . $felh[0]['vezeteknev'] . " " . $felh[0]['keresztnev'];
+	}
+	
+	$mail = new PHPMailer();
+	
+	//$mail->IsSMTP(); // SMTP használata
+	$mail->From = "weboldal@autoklub.hu";
+	$mail->FromName = "Magyar Autóklub weboldala";
+	//$mail->Host = "smtp1.site.com;smtp2.site.com";  // SMTP szerverek címe
+	$mail->AddAddress($mak_email, 'MAK');
+	$mail->AddReplyTo('noreply@mak.hu', "Magyar Autóklub");
+	$mail->WordWrap = 50;
+	
+	$mail->IsHTML(true);    // HTML e-mail
+	$mail->Subject = "Hosszabbítási probléma a weboldalon";
+	$mail->Body = $nev . ", e-mail: " . $felh[0]['e_mail'] . ", id: " . $cond['id'];
+	
+	if($mail->Send() === FALSE){
+		$valasz = 'sikertelen';
+	}else{
+		$valasz = 'sikeres';
+	}
+	
+	echo $valasz;
+	return FALSE;
+}
 
 $tagsag['diszkontMember'] = 2;
 $tagsag['standardMember'] = 3;
@@ -15,8 +58,6 @@ $tagsag['komfortMember'] = 4;
 $fizetesNev['cheque'] = 'Csekk';
 $fizetesNev['transfer'] = 'Átutalás';
 $fizetesNev['card'] = 'Bankkártya';
-
-$mak_email = '0antalbalazs0@gmail.com';
 
 parse_str($_POST['paymentData'], $fizetes);
 
@@ -70,8 +111,7 @@ if(isset($_POST['paymentData']) && !isset($_POST['memberData']) && $_POST['actio
 		}else{
 			$cim = $felh[0]['levelezesi_irsz'] . " " . $felh[0]['levelezesi_helyseg'] . " " . $felh[0]['levelezesi_kozterulet'] . " " . $felh[0]['levelezesi_hazszam'];
 		}
-	
-		require_once("phpmailer/phpmailer.inc.php");
+
 		
 		$mail = new PHPMailer();
 		
@@ -139,8 +179,6 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 		}
 	
 		$tagtipus = ucfirst(str_replace("Member","",$member['membershipRadio']));
-		
-		require_once("phpmailer/phpmailer.inc.php");
 		
 		$mail = new PHPMailer();
 		

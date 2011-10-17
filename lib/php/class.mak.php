@@ -3603,9 +3603,20 @@ class mak extends db{
 		$form = str_replace("%currentLevel%",strtolower((isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem')),$form);
 		$form = str_replace("%currentPrice%",strtolower((isset($ar[$_SESSION['tagsag']]) ? $ar[$_SESSION['tagsag']] : '0')),$form);
 		
+		$emailezzen = '<h2>Tagságomból hátra van még</h2>
+						<div id="countdown">
+							<p class="timeleft hasCountdown"></p>
+							<p class="center">Gépkocsija életkora miatt nem hosszabbítható meg komfort tagásga!<br>Keresse meg ügyfélszolgálatunkat az "E-mail küldés" gomb megnyomásával</p>
+						</div>
+						<a id="emailButton" href="#">E-mail küldés</a>
+						<div id="msg"></div>';
 		
 		if($_SESSION['tagsag'] < 1 || $_SESSION['tagsag'] == '' || !isset($_SESSION['tagsag']) || ((date("Y") - $adat[0]['gyartasi_ev'] > 11) && ($_SESSION['tagsag'] == 4))){
-			$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', '', $form);
+			if((date("Y") - $adat[0]['gyartasi_ev'] > 11) && ($_SESSION['tagsag'] == 4)){
+				$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', $emailezzen, $form);
+			}else{
+				$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', '', $form);
+			}
 		}
 		
 		if($_SESSION['tagsag'] > 1){
@@ -3652,25 +3663,25 @@ class mak extends db{
 		$feltetelek1 = '<fieldset>
 				<h3>Feltételek</h3>
 				<div id="term1_div" class="row">
-					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="asz">szolgáltatási feltételeit </a>elfogadom.</label>
+					<label class="justify" for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="asz">szolgáltatási feltételeit </a>elfogadom.</label>
 					<input class="required" type="checkbox" name="terms1" id="terms1" />
 				</div>
 				<div id="term2_div" class="row">
-					<label for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
+					<label class="justify" for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
 						adataimat a klubtagsági szolgáltatások nyújtásához szükséges mértékben, a személyes adatok
 						védelméről és a közérdekű adatok nyilvánosságáról szóló 1992. évi LXIII. törvény és a
 						mindenkori hatályos jogszabályoknak megfelelően adatbázisában kezelje és tárolja.</label>
 					<input class="required" type="checkbox" name="terms2" id="terms2" />
 				</div>
 				<div id="term3_div" class="row">
-					<label for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
+					<label class="justify" for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
 						hírlevelet küldjön.</label>
 					<input class="required" type="checkbox" name="terms3" id="terms3" />
 				</div>
 				<div id="komfortTerms" class="row terms4">';
 		$feltetelek2 = '
-					<label for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
+					<label class="justify" for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
 						közlekedési és balesetbiztosítási jogviszony biztosító általi nyilvántartásához szükséges
 						személyes adataimat a Generali-Providencia Biztosító részére átadja. Mint biztosított,
 						hozzájárulok ahhoz, hogy a Biztosító a biztosítási szolgáltatás nyújtására vele szerződéses

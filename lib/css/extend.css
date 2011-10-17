@@ -94,16 +94,47 @@
 	margin-left: 5px;
 }
 
-#term1_div,#term3_div{
-	height:35px !important;	
+
+#term1_div{
+	height:40px !important;
+	margin-bottom:5px;	
 }
 
 #term2_div{
-	height:60px !important;	
+	height:125px !important;
+	margin-bottom:5px;	
+}
+
+#term3_div{
+	height:70px !important;
+	margin-bottom:5px;	
 }
 
 #komfortTerms{
-	height:170px !important;	
+	height:230px !important;	
+}
+
+#terms1{
+	position: relative;
+	left: 20px;
+	top: 5px;
+}
+
+#terms2,#terms3,#terms4{
+	position: relative;
+	left: 20px;
+	top: 5px;
+}
+
+.justify{
+	text-align: justify !important;
+	max-width: 475px !important;	
+}
+
+.center{
+	text-align: center !important;
+	float: none;
+	width: 620px;
 }
 
 #content form div.row{
