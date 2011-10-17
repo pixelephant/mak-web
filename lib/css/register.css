@@ -4,16 +4,28 @@
 	font-size:16px;          
 }
 
-#term1_div,#term3_div{
-	height:35px !important;	
+#terms1_div{
+	height:40px !important;
+	margin-bottom:5px;	
 }
 
-#term2_div{
-	height:60px !important;	
+#terms2_div{
+	height:125px !important;
+	margin-bottom:5px;	
+}
+
+#terms3_div{
+	height:40px !important;
+	margin-bottom:5px;	
 }
 
 #komfortTerms{
-	height:170px !important;	
+	height:230px !important;	
+}
+
+#terms1,#terms2,#terms3,#terms4{
+	position: relative;
+	left: -6px;
 }
 
 #register aside h3.active{
@@ -67,6 +79,7 @@
 
 #content form label{
 	min-width: 190px;
+	max-width: 465px;
 	text-align: left;
 	margin-right: 5px;
 	color: #29384C;
@@ -75,6 +88,11 @@
 	height: 24px;
 	line-height: 24px;
 	padding-left:10px;
+}
+
+.justify{
+	text-align: justify;
+	max-width: 475px;	
 }
 
 #content form label.error{

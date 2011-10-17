@@ -321,24 +321,24 @@ for($i=0;$i<$gyartmany['count'];$i++){
 				<fieldset>
 				<h3>Feltételek</h3>
 				<div id="terms1_div" class="row">
-					<label for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="szolgaltatasifeltetelek">szolgáltatási feltételeit </a>elfogadom.</label>
+					<label class="justify" for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="szolgaltatasifeltetelek">szolgáltatási feltételeit </a>elfogadom.</label>
 					<input class="required" type="checkbox" name="terms1" id="terms1" />
 				</div>
 				<div id="terms2_div" class="row">
-					<label for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
+					<label class="justify" for="terms2">Önkéntes adatszolgáltatásommal hozzájárulok, hogy a Magyar Autóklub a személyes
 						adataimat a klubtagsági szolgáltatások nyújtásához szükséges mértékben, a személyes adatok
 						védelméről és a közérdekű adatok nyilvánosságáról szóló 1992. évi LXIII. törvény és a
 						mindenkori hatályos jogszabályoknak megfelelően adatbázisában kezelje és tárolja.</label>
 					<input class="required" type="checkbox" name="terms2" id="terms2" />
 				</div>
 				<div id="terms3_div" class="row">
-					<label for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
+					<label class="justify" for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
 						hírlevelet küldjön.</label>
 					<input class="required" type="checkbox" name="terms3" id="terms3" />
 				</div>
 				<div style="display: none;" id="komfortTerms" class="row">
-					<label for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
+					<label class="justify" for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
 						közlekedési és balesetbiztosítási jogviszony biztosító általi nyilvántartásához szükséges
 						személyes adataimat a Generali-Providencia Biztosító részére átadja. Mint biztosított,
 						hozzájárulok ahhoz, hogy a Biztosító a biztosítási szolgáltatás nyújtására vele szerződéses

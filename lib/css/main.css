@@ -276,8 +276,6 @@ input[type='text'],input[type='password'],input[type='file']{
 }
 
 input[type='checkbox'] {
-	position: relative;
-	top: -20px;
     width:auto;
     margin:1px 9px 0 0;
     float:left;
