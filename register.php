@@ -318,7 +318,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						<input data-price="16300" type="radio" name="membership" id="komfortMember" />
 					</div>
 				</fieldset>
-				<fieldset>
+				<fieldset id="terms">
 				<h3>Feltételek</h3>
 				<div id="terms1_div" class="row">
 					<label class="justify" for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="szolgaltatasifeltetelek">szolgáltatási feltételeit </a>elfogadom.</label>
@@ -335,7 +335,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					<label class="justify" for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
 						hírlevelet küldjön.</label>
-					<input class="required" type="checkbox" name="terms3" id="terms3" />
+					<input type="checkbox" name="terms3" id="terms3" />
 				</div>
 				<div style="display: none;" id="komfortTerms" class="row">
 					<label class="justify" for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
@@ -378,8 +378,8 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						<img src="img/info.png" alt="" class="info" title="Maximálisan 10 karakterből állhat." />
 					</div>
 				</fieldset>
-				<input type="submit" value="Vissza" class="backToStep2" />
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
+				<input type="submit" value="Vissza" class="backToStep2" />
 			</form>
 			<form id="komfortform" action="#" method="#" class="step3">
 				<h2>3. lépés - Gépjármű adatok megadása</h2>
@@ -413,8 +413,8 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						</select>
 					</div>
 				</fieldset>
-				<input type="submit" value="Vissza" class="backToStep2" />
 				<input type="submit" value="Fizetés és véglegesítés" id="toStep4" />
+				<input type="submit" value="Vissza" class="backToStep2" />
 			</form>
 			<form id="paymentform" action="http://sfvm104.serverfarm.hu/mak/lib/php/otp/web_demo/mak_otp_test_process.php" method="get" class="step4">
 				<h2>4. lépés - Fizetési mód kiválasztása</h2>

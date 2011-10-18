@@ -3660,7 +3660,7 @@ class mak extends db{
 		 * Feltételek
 		 */
 		
-		$feltetelek1 = '<fieldset>
+		$feltetelek1 = '<fieldset id="terms">
 				<h3>Feltételek</h3>
 				<div id="term1_div" class="row">
 					<label class="justify" for="terms1">Kijelentem, hogy a <a class="link" target="_blank" href="magunkrol/alapszabaly">Magyar Autóklub Alapszabályát</a> és a választott tagsági kategória <a class="link" target="_blank" href="asz">szolgáltatási feltételeit </a>elfogadom.</label>
@@ -3677,7 +3677,7 @@ class mak extends db{
 					<label class="justify" for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
 						hírlevelet küldjön.</label>
-					<input class="required" type="checkbox" name="terms3" id="terms3" />
+					<input type="checkbox" name="terms3" id="terms3" />
 				</div>
 				<div id="komfortTerms" class="row terms4">';
 		$feltetelek2 = '
