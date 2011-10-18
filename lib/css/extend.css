@@ -292,3 +292,7 @@ span.sum{
 	top:50px;
 	right:5px;
 }
+
+#terms label.error{
+	top:3px;
+}
