@@ -28,6 +28,10 @@
 	left: -6px;
 }
 
+#terms label.error{
+	top:3px;
+}
+
 #register aside h3.active{
 	color:#1c1c1c;
 	margin-left:0 !important;
