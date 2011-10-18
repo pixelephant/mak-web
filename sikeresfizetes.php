@@ -22,6 +22,15 @@ $main = new mak(false);
 
 if(isset($_GET['status']) && $_GET['status'] == 'success'){
 
+	$text[2] = 'Tisztelt Klubtagunk !<br />
+	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját máris kinyomtathatja,  tagsága ezennel érvényes. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.';
+
+	$text[3] = 'Tisztelt Klubtagunk !<br />
+	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját kinyomtathatja, tagsága ezennel érvényes, máris igénybe veheti a Standard tagsághoz járó teljes körű szolgáltatásainkat. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.';
+	
+	$text[4] = 'Tisztelt Klubtagunk !<br />
+	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját kinyomtathatja, tagsága ezennel érvényes, máris igénybe veheti a Komfort tagsághoz járó szolgáltatásainkat, kivéve az assistance jellegűeket,  melyek a kötvényen szereplő dátumtól – azaz holnap 0 órától – állnak az Ön rendelkezésére. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.';
+	
 	$adat['befizetes_datuma'] = date("Y-m-d");
 	//$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
 	$adat['statusz'] = '01';
@@ -33,6 +42,8 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 
 	$uzenet = 'Sikeres bankkártyás fizetés!';
 
+	$uzenet .= '<br />' . $text[$felh[0]['dijkategoria']];
+	
 	$felh = $main->get_felhasznalo($cond);
 	
 	$_SESSION['user_id'] = $felh[0]['id'];

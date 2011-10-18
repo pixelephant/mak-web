@@ -3562,7 +3562,7 @@ class mak extends db{
 		$ar[4] = '13800';
 		$ar[5] = '0';
 		
-		$col = 'gyartasi_ev,rendszam,gyartmany_sap,tipus_sap';
+		$col = 'gyartasi_ev,rendszam,gyartmany_sap,tipus_sap,ervenyesseg_datuma';
 		$cond['id'] = $_SESSION['user_id'];
 		
 		$adat = $this->get_felhasznalo($cond,$col);
@@ -3606,12 +3606,12 @@ class mak extends db{
 		$emailezzen = '<h2>Tagságomból hátra van még</h2>
 						<div id="countdown">
 							<p class="timeleft hasCountdown"></p>
-							<p class="center">Gépkocsija életkora miatt nem hosszabbítható meg komfort tagásga!<br>Keresse meg ügyfélszolgálatunkat az "E-mail küldés" gomb megnyomásával</p>
+							<p class="center">Gépjárművének életkora miatt Önnek Standard tagság hosszabbítására van lehetősége.<br>Keresse meg ügyfélszolgálatunkat az "E-mail küldés" gomb megnyomásával</p>
 						</div>
 						<a id="emailButton" href="#">E-mail küldés</a>
 						<div id="msg"></div>';
 		
-		if($_SESSION['tagsag'] < 1 || $_SESSION['tagsag'] == '' || !isset($_SESSION['tagsag']) || ((date("Y") - $adat[0]['gyartasi_ev'] > 11) && ($_SESSION['tagsag'] == 4))){
+		if($_SESSION['tagsag'] < 1 || $_SESSION['tagsag'] == '' || !isset($_SESSION['tagsag']) || ((date("Y") - $adat[0]['gyartasi_ev'] > 11) && ($_SESSION['tagsag'] == 4)) || $adat[0]['ervenyesseg_datuma'] > date("Y-m-d",strtotime("+30 days"))){
 			if((date("Y") - $adat[0]['gyartasi_ev'] > 11) && ($_SESSION['tagsag'] == 4)){
 				$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', $emailezzen, $form);
 			}else{

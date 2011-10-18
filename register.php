@@ -159,23 +159,23 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					</div>
 					<div class="row">
 						<label for="coAddressNumber">Székhely házszáma</label>
-						<input value=""  maxlength="12" size="12" type="text" name="coAddressNumber" id="coAddressNumber" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input value=""  maxlength="12" size="12" type="text" name="coAddressNumber" id="coAddressNumber" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="coAddressBuilding">Székhely épület</label>
-						<input value=""  maxlength="2" size="2" type="text" name="coAddressBuilding" id="coAddressBuilding" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input value=""  maxlength="2" size="2" type="text" name="coAddressBuilding" id="coAddressBuilding" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="coAddressStairs">Székhely lépcsőház</label>
-						<input value="" type="text"  maxlength="2" size="2" name="coAddressStairs" id="coAddressStairs" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input value="" type="text"  maxlength="2" size="2" name="coAddressStairs" id="coAddressStairs" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="coAddressLevel">Székhely emelet</label>
-						<input value="" type="text"  maxlength="2" size="2" name="coAddressLevel" id="coAddressLevel" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input value="" type="text"  maxlength="2" size="2" name="coAddressLevel" id="coAddressLevel" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="coAddressDoor">Székhely ajtó</label>
-						<input value=""  maxlength="3" size="3" type="text" name="coAddressDoor" id="coAddressDoor" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input value=""  maxlength="3" size="3" type="text" name="coAddressDoor" id="coAddressDoor" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="coCoName">Kapcsolattartó neve</label>
@@ -245,23 +245,23 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					</div>
 					<div class="row">
 						<label for="natAddressNumber">Cím házszáma</label>
-						<input  maxlength="12" size="12" class="" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input  maxlength="12" size="12" class="" value="" type="text" name="natAddressNumber" id="natAddressNumber" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="natAddressBuilding">Cím épület</label>
-						<input  maxlength="2" size="2" value="" type="text" name="natAddressBuilding" id="natAddressBuilding" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input  maxlength="2" size="2" value="" type="text" name="natAddressBuilding" id="natAddressBuilding" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="natAddressStairs">Cím lépcsőház</label>
-						<input  maxlength="2" size="2" value="" type="text" name="natAddressStairs" id="natAddressStairs" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input  maxlength="2" size="2" value="" type="text" name="natAddressStairs" id="natAddressStairs" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="natAddressLevel">Cím emelet</label>
-						<input maxlength="2" size="2" value="" type="text" name="natAddressLevel" id="natAddressLevel" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input maxlength="2" size="2" value="" type="text" name="natAddressLevel" id="natAddressLevel" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
 						<label for="natAddressDoor">Cím ajtó</label>
-						<input  maxlength="3" size="3" value="" type="text" name="natAddressDoor" id="natAddressDoor" /><img src="img/info.png" alt="" class="info" title="Nem kötelező megadni." />
+						<input  maxlength="3" size="3" value="" type="text" name="natAddressDoor" id="natAddressDoor" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 				</fieldset>
 				
@@ -418,6 +418,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 			</form>
 			<form id="paymentform" action="http://sfvm104.serverfarm.hu/mak/lib/php/otp/web_demo/mak_otp_test_process.php" method="get" class="step4">
 				<h2>4. lépés - Fizetési mód kiválasztása</h2>
+				<p>Tájékoztatjuk, hogy tagsága csak bankkártyás fizetés esetén lép azonnal érvénybe!</p>
 				<fieldset id="modechoose">
 					<h3>Mód választása</h3>
 					<div class="row">
@@ -451,11 +452,15 @@ for($i=0;$i<$gyartmany['count'];$i++){
 				</fieldset -->
 				<fieldset id="transferDetails" class="detail">
 					<h3>Banki átutalással való fizetés <span class="sum"></span></h3>
-					<div class="row">Ide utalja : 1111111-1-1111111-1-1-</div>
+					<div class="row">Tisztelt leendő Klubtagunk!<br />
+						Örömmel üdvözöljük és köszönjük bizalmát. Tájékoztatjuk, hogy amint átutalása beérkezett haladéktalanul intézkedünk klubtagsági kártyája legyártása érdekében és amint elkészül postázzuk az Ön részére. Klubtagsága a kártya kézhezvételétől él.</div>
 				</fieldset>
 				<fieldset id="cardDetails" class="detail">
 					<h3>Bankkártyás fizetés <span class="sum"></span></h3>
-					<div class="row">Átirányítjuk...</div>
+					<div class="row">
+				- A fizetés az OTP Bank biztonságos internetes fizető rendszerén keresztül zajlik, melyet az alábbi kártyákkal tud fizetés céljára igénybe venni:<br />
+				- Minden VISA, MasterCard, American Express dombornyomott kártyaval, a kibocsátó banktól függetlenül.
+					</div>
 				</fieldset>
 				<span id="message"></span>
 				<input type="submit" value="Véglegesítés" />
