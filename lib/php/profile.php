@@ -93,7 +93,10 @@ if($_POST['action'] == 'brandType'){
 		
 		if($form['registerRadio'] == 'co'){
 		
-			$adatok['cegnev'] = $form['coName'];
+			if($form['coName'] != ''){
+				$adatok['cegnev'] = $form['coName'];
+			}
+			
 			$adatok['allando_irsz'] = $form['coZip'];
 			$adatok['allando_helyseg'] = $form['coCity'];	
 			
@@ -112,11 +115,11 @@ if($_POST['action'] == 'brandType'){
 			
 			$adatok['levelezesi_kozterulet'] = $form['coAddressMailing'];
 			$adatok['levelezesi_kozterulet_jellege'] = $form['coAddressTypeMailing'];
-			$adatok['levelezesi_hazszam'] = $form['coAddressMailingNumber'];
-			$adatok['levelezesi_epulet'] = $form['coAddressMailingBuilding'];
-			$adatok['levelezesi_lepcsohaz'] = $form['coAddressMailingStairs'];
-			$adatok['levelezesi_emelet'] = $form['coAddressMailingLevel'];
-			$adatok['levelezesi_ajto'] = $form['coAddressMailingDoor'];
+			$adatok['levelezesi_hazszam'] = $form['coAddressNumberMailing'];
+			$adatok['levelezesi_epulet'] = $form['coAddressBuildingMailing'];
+			$adatok['levelezesi_lepcsohaz'] = $form['coAddressStairsMailing'];
+			$adatok['levelezesi_emelet'] = $form['coAddressLevelMailing'];
+			$adatok['levelezesi_ajto'] = $form['coAddressDoorMailing'];
 				
 			$adatok['kapcsolattarto_vezeteknev'] = $form['coCoFName'];
 			//$adatok['kapcsolattarto_keresztnev'] = $form['coCoLName'];
