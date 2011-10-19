@@ -934,7 +934,7 @@ class mak extends db{
 	
 	//INSERT
 	
-	public function insert_hirlevel($email){
+	public function insert_hirlevel($email,$category='1'){
 		
 		/*
 		 * E-mail cím beillesztése a hírlevél táblába
@@ -944,6 +944,7 @@ class mak extends db{
 		 */
 	
 		$col['email'] = $email;
+		$col['category'] = $category;
 		
 		$col = GUMP::sanitize($col);
 		

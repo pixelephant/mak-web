@@ -131,6 +131,10 @@
 	max-width: 475px !important;	
 }
 
+#cardDetails.row{
+	height: 76px;	
+}
+
 .center{
 	text-align: center !important;
 	float: none;

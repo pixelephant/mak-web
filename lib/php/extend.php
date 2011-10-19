@@ -87,7 +87,7 @@ $_SESSION['lastEmail'] = $felh[0]['e_mail'];
 $data['befizetett_osszeg'] = $fizetes['osszeg'];
 $data['tranzakcio_kodja'] = '2';
 $data['befizetes_datuma'] = '0000-00-00';
-
+$data['feltetelek_ido'] = date( 'Y-m-d H:i:s', strtotime('now'));
 /*
  * Hosszabbítás
  */
@@ -159,7 +159,8 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 	
 	$data['dijkategoria'] = $tagsag[$member['membershipRadio']];
 	$data['ervenyesseg_datuma'] = date("Y-m-d", strtotime("+1 year"));
-
+	$data['feltetelek_ido'] = date( 'Y-m-d H:i:s', strtotime('now'));
+	
 	$valasz = $main->update_felhasznalo($data,$cond);
 
 		/*
