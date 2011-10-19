@@ -22,14 +22,14 @@ $main = new mak(false);
 
 if(isset($_GET['status']) && $_GET['status'] == 'success'){
 
-	$text[2] = 'Tisztelt Klubtagunk !<br />
-	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját máris kinyomtathatja,  tagsága ezennel érvényes. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.';
+	$text[2] = '<strong>Tisztelt Klubtagunk !</strong><br />
+	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját máris kinyomtathatja,  tagsága ezennel érvényes. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.<br />';
 
-	$text[3] = 'Tisztelt Klubtagunk !<br />
-	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját kinyomtathatja, tagsága ezennel érvényes, máris igénybe veheti a Standard tagsághoz járó teljes körű szolgáltatásainkat. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.';
+	$text[3] = '<strong>Tisztelt Klubtagunk !</strong><br />
+	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját kinyomtathatja, tagsága ezennel érvényes, máris igénybe veheti a Standard tagsághoz járó teljes körű szolgáltatásainkat. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.<br />';
 	
-	$text[4] = 'Tisztelt Klubtagunk !<br />
-	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját kinyomtathatja, tagsága ezennel érvényes, máris igénybe veheti a Komfort tagsághoz járó szolgáltatásainkat, kivéve az assistance jellegűeket,  melyek a kötvényen szereplő dátumtól – azaz holnap 0 órától – állnak az Ön rendelkezésére. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.';
+	$text[4] = '<strong>Tisztelt Klubtagunk !</strong><br />
+	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját kinyomtathatja, tagsága ezennel érvényes, máris igénybe veheti a Komfort tagsághoz járó szolgáltatásainkat, kivéve az assistance jellegűeket,  melyek a kötvényen szereplő dátumtól – azaz holnap 0 órától – állnak az Ön rendelkezésére. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.<br />';
 	
 	$adat['befizetes_datuma'] = date("Y-m-d");
 	//$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
@@ -40,14 +40,20 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	
 	$a = $main->update_felhasznalo($adat,$cond);
 
-	$uzenet = 'Sikeres bankkártyás fizetés!';
-
-	$uzenet .= '<br />' . $text[$felh[0]['dijkategoria']];
+	$uzenet = '<strong>Sikeres bankkártyás fizetés!</strong><br />';
 	
 	$felh = $main->get_felhasznalo($cond);
 	
+	$uzenet .= '<br />' . $text[$felh[0]['dijkategoria']];
+	
 	$_SESSION['user_id'] = $felh[0]['id'];
-	$_SESSION['keresztnev'] = $felh[0]['keresztnev'] . $felh[0]['kapcsolattarto_keresztnev'];
+	
+	if($felh[0]['nem'] == 'C'){
+		$_SESSION['keresztnev'] = $felh[0]['kapcsolattarto_vezeteknev'];
+	}else{
+		$_SESSION['keresztnev'] = $felh[0]['keresztnev'];
+	}
+	
 	$_SESSION['tagsag'] = $felh[0]['dijkategoria'];
 	$_SESSION['vezeteknev'] = $felh[0]['vezeteknev'];
 	$_SESSION['cegnev'] = $felh[0]['cegnev'];
@@ -89,7 +95,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	
 	$mail->IsHTML(true);    // HTML e-mail
 	$mail->Subject = "Magyar Autóklub - fizetési igény";
-	$mail->Body = 'Az alábbi azonosítóval rendelkező felhasználó: ' . $cond['e_mail'] . '<br />' . ucfirst(str_replace("Member","",$member['membershipRadio'])) . ' tagságának kiegyenlítésére az alábbi fizetési módot választotta: ' . $fizetesNev[$fizetes['paymentmethodRadio']];
+	$mail->Body = 'Az alábbi azonosítóval rendelkező felhasználó: ' . $_SESSION['lastEmail'] . '<br /> sikertelen bankkártyás fizetést hajtott végre!' ;
 	
 	if($mail->Send() === FALSE){
 		//$valasz = 'Sikertelen e-mail küldés!';

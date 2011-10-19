@@ -51,9 +51,11 @@ if($_POST['action'] == 'extendMail'){
 	return FALSE;
 }
 
-$tagsag['diszkontMember'] = 2;
-$tagsag['standardMember'] = 3;
-$tagsag['komfortMember'] = 4;
+
+$tagsag = array();
+$tagsag['diszkontMember'] = '2';
+$tagsag['standardMember'] = '3';
+$tagsag['komfortMember'] = '4';
 
 $fizetesNev['cheque'] = 'Csekk';
 $fizetesNev['transfer'] = 'Átutalás';
@@ -62,6 +64,11 @@ $fizetesNev['card'] = 'Bankkártya';
 parse_str($_POST['paymentData'], $fizetes);
 
 $fizetes = GUMP::sanitize($fizetes);
+
+if(!$fizetes['terms1'] == 'on' || !$fizetes['terms2'] == 'on'){
+	echo 'Nem fogadta el a feltételeket!';
+	return FALSE;
+}
 
 $cond['id'] = $_SESSION['user_id'];
 
@@ -201,6 +208,13 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 		
 		echo $valasz;
 	
+		if($fizetes['terms3'] == 'on'){
+			$a = $main->get_hirlevel_email($felh[0]['e_mail']);
+			if($a['count'] == 0){
+				$main->insert_hirlevel($felh[0]['e_mail'],$data['dijkategoria']);
+			}
+		}
+		
 }
 
 $main->close();

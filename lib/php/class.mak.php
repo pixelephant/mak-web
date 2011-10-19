@@ -3528,7 +3528,7 @@ class mak extends db{
 		$dok = '';
 		
 		if(is_file("ideigleneskartyak/" . $adatok[0]['e_mail'] . ".pdf")){
-			$dok .= '<p><a class="link" href="ideigleneskartyak/' . $adatok[0]['e_mail'] . '.pdf">Idegilenes tagsági kártyám</a></p>';
+			$dok .= '<p><a class="link" href="ideigleneskartyak/' . $adatok[0]['e_mail'] . '.pdf">Ideiglenes tagsági kártyám</a></p>';
 		}
 		
 		if($_SESSION['tagsag'] == 4 && is_file("kotvenyek/" . $adatok[0]['e_mail'] . ".pdf")){

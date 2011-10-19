@@ -131,7 +131,7 @@
 	max-width: 475px !important;	
 }
 
-#cardDetails.row{
+#cardDetails div.row{
 	height: 76px;	
 }
 
