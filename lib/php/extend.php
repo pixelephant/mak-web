@@ -153,20 +153,19 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 
 	$member = GUMP::sanitize($member);
 	
-	/*
-	if($member['membershipRadio'] == 'komfortMember'){
-		parse_str($_POST['komfortData'], $komfort);
-		
-		$_SESSION['chassis'] = $komfort['chassis'];
-		
-		$data['gyartmany_sap'] = $komfort['brand'];
-		$data['tipus_sap'] = $komfort['type'];
-	}
-	*/
-	
 	$data['dijkategoria'] = $tagsag[$member['membershipRadio']];
 	$data['ervenyesseg_datuma'] = date("Y-m-d", strtotime("+1 year"));
 	$data['feltetelek_ido'] = date( 'Y-m-d H:i:s', strtotime('now'));
+	
+	if($data['dijkategoria'] == '4'){
+		parse_str($_POST['komfortData'], $komfort);
+		
+		$data['rendszam'] = $komfort['komfortPlateHuInput'];
+		$data['alvazszam'] = $komfort['chassis'];
+		$data['gyartasi_ev'] = date("Y") - $komfort['carAge'];
+		$data['gyartmany_sap'] = $komfort['brand'];
+		$data['tipus_sap'] = $komfort['type'];
+	}
 	
 	$valasz = $main->update_felhasznalo($data,$cond);
 

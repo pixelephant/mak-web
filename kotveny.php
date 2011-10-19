@@ -35,6 +35,7 @@
 	$hazszam = $felh[0]['allando_hazszam'];
 	
 	$rendszam = $felh[0]['rendszam'];
+	$alvazszam = $felh[0]['alvazszam'];
 	$gy = $felh[0]['gyartmany_sap'];
 	$t = $felh[0]['tipus_sap'];
 	
@@ -122,8 +123,6 @@
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$rendszam.'</p>';
 	$pdf->writeHTMLCell(0,0,72,84.5,$html);
-	
-	$alvazszam = $_SESSION['chassis'];
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$alvazszam.'</p>';
 	$pdf->writeHTMLCell(0,0,148,84.5,$html);
