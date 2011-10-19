@@ -157,7 +157,7 @@ class mak extends db{
 		
 		$cond = GUMP::sanitize($cond);
 		
-		$col = 'id,jelszo,nem,keresztnev,kapcsolattarto_keresztnev,dijkategoria';
+		$col = 'id,jelszo,nem,keresztnev,kapcsolattarto_vezeteknev,dijkategoria';
 		
 		$filters = array(
 			'felhasznalonev' => 'trim',

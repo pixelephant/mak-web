@@ -22,9 +22,12 @@ if($_SESSION['logout'] == 'logout'){
  * az oldal tetejére a fekete üdvözlő dobozt.
  */
 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+
+
+
 ?>
 	<div id="userBar">
-		<span>Üdvözöljük <strong id="logedInName"><?php echo mb_substr($_SESSION['keresztnev'],0,10); ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo (isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem'); ?></strong> klubtagunk.</span>
+		<span>Üdvözöljük <strong id="logedInName"><?php echo $nev; ?></strong> | Ön <strong id="loggedInKlubtagsag"><?php echo (isset($kartya[$_SESSION['tagsag']]) ? $kartya[$_SESSION['tagsag']] : 'nem'); ?></strong> klubtagunk.</span>
 	</div>
 <?php 
 }

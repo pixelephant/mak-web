@@ -111,7 +111,7 @@ if(isset($_POST['logout']) && $_POST['logout'] == 'logout'){
 	if($pass_enc == $pass){
 		$_SESSION['user_id'] = $adat[0]['id'];
 		if($adat[0]['nem'] == 'C'){
-			$_SESSION['keresztnev'] = $adat[0]['kapcsolattarto_keresztnev'];
+			$_SESSION['keresztnev'] = $adat[0]['kapcsolattarto_vezeteknev'];
 		}else{
 			$_SESSION['keresztnev'] = $adat[0]['keresztnev']; 
 		}
