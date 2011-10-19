@@ -3589,9 +3589,9 @@ class mak extends db{
 		}
 		
 		if($adat[0]['alvazszam'] != ''){
-			$form = str_replace("%alvazszam%",date("Y") - $adat[0]['gyartasi_ev'],$form);
+			$form = str_replace("%alvazszam%",$adat[0]['alvazszam'],$form);
 		}else{
-			$form = str_replace("%gepjarmu_kora%",'',$form);
+			$form = str_replace("%alvazszam%",'',$form);
 		}
 		
 		$form = str_replace("%osszeg%",$ar[$_SESSION['tagsag']],$form);
@@ -3644,6 +3644,12 @@ class mak extends db{
 			$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		}
 	
+		/*
+		 * Ideiglenesen nincs hosszabbítás
+		 */
+		
+		$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', '', $form);
+		
 		$form = str_replace("%hosszabbitasStart%","",$form);
 		$form = str_replace("%hosszabbitasEnd%","",$form);
 		
@@ -3732,6 +3738,8 @@ class mak extends db{
 		 * Első autó 
 		 */
 		
+		//print_r($gyartmany);
+		
 		for($i=0;$i<$gyartmany['count'];$i++){
 		
 			if($gy != $gyartmany[$i]['marka']){
@@ -3745,7 +3753,7 @@ class mak extends db{
 				$gy = $gyartmany[$i]['marka'];
 			}
 			
-			//print_r($gyartmany);
+
 			
 			if($gyartmany[$i]['marka_sap_kod'] == $adat[0]['gyartmany_sap']){
 				$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';

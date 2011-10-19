@@ -38,12 +38,12 @@ if(!isset($_SESSION['admin_user']) || $_SESSION['admin_user'] == ''){
 		</div>
 	<nav>
 		<ul>
-			<li><a href="hirlevel.php">Hírlevél kezelés</a></li>
+			<!-- >li><a href="hirlevel.php">Hírlevél kezelés</a></li>
 			<li><a href="felhasznalokezeles.php">Felhasználók kezelése</a></li>
 			<li><a href="statisztikak.php">Statisztikák</a></li>
 			<li><a href="hirdeteskezeles.php">Hirdetés kezelése</a></li>
 			<li><a href="felmereskezeles.php">Felmérések kezelése</a></li>
-			<li><a href="elonezet.php">Előnézet</a></li>
+			<li><a href="elonezet.php">Előnézet</a></li -->
 			<li><a href="login/login.php">Kilépés</a></li>
 		</ul>
 	</nav>
