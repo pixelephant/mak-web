@@ -14,7 +14,7 @@ if($_SESSION['admin_edit'] != 'true'){
 /*
  * Melyik mező azonosítja a rekordot
  */
-$id = 'tagsagi_szam';
+$id = 'id';
 
 $main = new mak(false);
 

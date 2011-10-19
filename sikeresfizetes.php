@@ -18,7 +18,7 @@ $main = new mak(false);
 
 /*
  * Sikeres fizetés
- */
+ */ 
 
 if(isset($_GET['status']) && $_GET['status'] == 'success'){
 
@@ -32,7 +32,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját kinyomtathatja, tagsága ezennel érvényes, máris igénybe veheti a Komfort tagsághoz járó szolgáltatásainkat, kivéve az assistance jellegűeket,  melyek a kötvényen szereplő dátumtól – azaz holnap 0 órától – állnak az Ön rendelkezésére. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.<br />';
 	
 	$adat['befizetes_datuma'] = date("Y-m-d");
-	//$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
+	$adat['ervenyesseg_datuma'] = date("Y-m-d",strtotime("+1 year"));
 	$adat['statusz'] = '01';
 	$adat['megerositve'] = '1';
 	
@@ -104,6 +104,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success'){
 	$uzenet = 'Sikertelen fizetés!';
 
 }
+
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->

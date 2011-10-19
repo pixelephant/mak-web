@@ -3588,6 +3588,12 @@ class mak extends db{
 			$form = str_replace("%gepjarmu_kora%",'',$form);
 		}
 		
+		if($adat[0]['alvazszam'] != ''){
+			$form = str_replace("%alvazszam%",date("Y") - $adat[0]['gyartasi_ev'],$form);
+		}else{
+			$form = str_replace("%gepjarmu_kora%",'',$form);
+		}
+		
 		$form = str_replace("%osszeg%",$ar[$_SESSION['tagsag']],$form);
 		
 		if($adat[0]['nem'] == 'C'){
@@ -3597,6 +3603,8 @@ class mak extends db{
 		}
 		
 		$form = str_replace("%nev%",$nev,$form);
+		
+		$form = str_replace("%usertype%",$_SESSION['nem'],$form);
 		
 		//$form = str_replace("%backUrl%",'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/lib/php/otpwebshop/web_demo/mak_otp_test_process.php',$form);
 		$form = str_replace("%backUrl%",'http://sfvm104.serverfarm.hu/mak/lib/php/otp/web_demo/mak_otp_test_process.php',$form);
@@ -3736,6 +3744,8 @@ class mak extends db{
 				$gyart_opt .= '>' . $gyartmany[$i]['marka'] . '</option>';
 				$gy = $gyartmany[$i]['marka'];
 			}
+			
+			//print_r($gyartmany);
 			
 			if($gyartmany[$i]['marka_sap_kod'] == $adat[0]['gyartmany_sap']){
 				$tip_opt .= '<option value="' . $gyartmany[$i]['gyartmany_sap_kod'] . '"';

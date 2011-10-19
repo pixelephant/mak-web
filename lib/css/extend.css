@@ -141,6 +141,11 @@
 	width: 620px;
 }
 
+.backToStep2{
+	position: relative;
+	left: -375px;	
+}
+
 #content form div.row{
 	background:#e8e8e8;
 	padding: 10px;
