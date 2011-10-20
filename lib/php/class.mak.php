@@ -3563,7 +3563,7 @@ class mak extends db{
 		$ar[4] = '13800';
 		$ar[5] = '0';
 		
-		$col = 'gyartasi_ev,rendszam,gyartmany_sap,tipus_sap,ervenyesseg_datuma';
+		$col = 'gyartasi_ev,rendszam,gyartmany_sap,tipus_sap,ervenyesseg_datuma,alvazszam';
 		$cond['id'] = $_SESSION['user_id'];
 		
 		$adat = $this->get_felhasznalo($cond,$col);

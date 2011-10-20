@@ -99,6 +99,19 @@
 	max-width: 475px;	
 }
 
+.backToStep2{
+	position: relative;
+	left: -375px;	
+}
+
+#cardDetails div.row{
+	height: 50px;	
+}
+
+#transferDetails div.row{
+	height: 50px;	
+}
+
 #content form label.error{
 	font-size: 12px;
 	color: red;

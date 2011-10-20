@@ -20,7 +20,7 @@ $main = new mak(false);
  * Sikeres fizetés
  */ 
 
-if(isset($_GET['status']) && $_GET['status'] == 'success'){
+if(isset($_GET['status']) && $_GET['status'] == 'success' && isset($_SESSION['lastEmail'])){
 
 	$text[2] = '<strong>Tisztelt Klubtagunk !</strong><br />
 	Örömmel üdvözöljük klubtagjaink sorában és tájékoztatjuk, hogy  ideiglenes tagsági kártyáját máris kinyomtathatja,  tagsága ezennel érvényes. Végleges tagsági kártyájának gyártását megrendeltük, amit rövidesen postára adunk az Ön által megadott lakcímre.<br />';
@@ -207,7 +207,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 		</script>
 		<?php 
 		
-		if(isset($_GET['status']) && $_GET['status'] == 'success'){
+		if(isset($_GET['status']) && $_GET['status'] == 'success'  && isset($_SESSION['lastEmail'])){
 			echo '<script type="text/javascript">$.get("kotveny.php", function(){window.location = "proba.php"});</script>';
 		}
 		
@@ -215,6 +215,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 	</body>
 </html>
 <?php 
+unset($_SESSION['lastEmail']);
 
 $main->close();
 ob_end_flush();

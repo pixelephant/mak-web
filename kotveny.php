@@ -98,60 +98,67 @@
 	//NEV
 	//$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$nev.'||'.$name.'</p>';
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$nev.'</p>';
-	$pdf->writeHTMLCell(0,0,33,68,$html);
+	$pdf->writeHTMLCell(0,0,35,71,$html);
 	//NEV
 
 	//SZULETES
 	//$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$nev.'||'.$name.'</p>';
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$szuletes.'</p>';
-	$pdf->writeHTMLCell(0,0,124,68,$html);
+	$pdf->writeHTMLCell(0,0,124,71,$html);
 	//SZULETES
 
 	//IRSZ
 	//$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.$nev.'||'.$name.'</p>';
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$irsz.'</p>';
-	$pdf->writeHTMLCell(0,0,31,72,$html);
+	$pdf->writeHTMLCell(0,0,36,75,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$helyseg.'</p>';
-	$pdf->writeHTMLCell(0,0,61,72,$html);
+	$pdf->writeHTMLCell(0,0,61,75,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$kozterulet.'</p>';
-	$pdf->writeHTMLCell(0,0,100,72,$html);
+	$pdf->writeHTMLCell(0,0,95,75,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$hazszam.'</p>';
-	$pdf->writeHTMLCell(0,0,135,72,$html);
+	$pdf->writeHTMLCell(0,0,135,75,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$rendszam.'</p>';
-	$pdf->writeHTMLCell(0,0,72,84.5,$html);
+	$pdf->writeHTMLCell(0,0,73,86.5,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$alvazszam.'</p>';
-	$pdf->writeHTMLCell(0,0,148,84.5,$html);
+	$pdf->writeHTMLCell(0,0,148,86.5,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$gyartmany.'</p>';
-	$pdf->writeHTMLCell(0,0,48,88.5,$html);
+	$pdf->writeHTMLCell(0,0,48,90,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.$tipus.'</p>';
-	$pdf->writeHTMLCell(0,0,85,88.5,$html);
+	$pdf->writeHTMLCell(0,0,86,90,$html);
 	
 	//Dátum
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("Y",strtotime("+1 day")).'</p>';
-	$pdf->writeHTMLCell(0,0,61,125,$html);
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("Y").'</p>';
+	$pdf->writeHTMLCell(0,0,63,125,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("m").'</p>';
-	$pdf->writeHTMLCell(0,0,79.5,125,$html);
+	$pdf->writeHTMLCell(0,0,81.5,125,$html);
 	
-	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("d").'</p>';
-	$pdf->writeHTMLCell(0,0,94,125,$html);
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("d",strtotime("+1 day")).'</p>';
+	$pdf->writeHTMLCell(0,0,96,125,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'. date("Y",strtotime("+1 year")) .'</p>';
-	$pdf->writeHTMLCell(0,0,61,129,$html);
+	$pdf->writeHTMLCell(0,0,63,129,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("m").'</p>';
-	$pdf->writeHTMLCell(0,0,79.5,129,$html);
+	$pdf->writeHTMLCell(0,0,81.5,129,$html);
 	
 	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:8pt;">'.date("d").'</p>';
-	$pdf->writeHTMLCell(0,0,94,129,$html);
+	$pdf->writeHTMLCell(0,0,96,129,$html);
+	
+	/*
+	 * Keltezés
+	 */
+	
+	$html = '<p stroke="0.2" fill="true" strokecolor="black" color="black" style="font-family:arial;font-weight:bold;font-size:12pt;">'.date("Y.m.d").'</p>';
+	$pdf->writeHTMLCell(0,0,40,197,$html);
 	
 	$main->close();
 	

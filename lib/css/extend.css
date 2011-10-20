@@ -46,8 +46,6 @@
 	float: left;
 	height: 24px;
 	line-height: 24px;
-	position: relative;
-	left: 18px;
 }
 
 #content form label.error{
@@ -114,26 +112,7 @@
 	height:230px !important;	
 }
 
-#terms1{
-	position: relative;
-	left: 20px;
-	top: 5px;
-}
 
-#terms2,#terms3,#terms4{
-	position: relative;
-	left: 20px;
-	top: 5px;
-}
-
-.justify{
-	text-align: justify !important;
-	max-width: 475px !important;	
-}
-
-#cardDetails div.row{
-	height: 76px;	
-}
 
 .center{
 	text-align: center !important;
@@ -211,7 +190,11 @@ span.sum{
 	float:none !important;
 	margin:15px 0 !important;
 	position:relative;
-	left:10px;
+}
+
+#message{
+	position: relative;
+	top: -30px;	
 }
 
 #content form input[type='button'], #content form input[type='submit']{
@@ -245,9 +228,14 @@ span.sum{
    background-color:#fcb614;
 }
 
+#content form input[type='button'], #content form input[type='submit']{
+     position:relative;
+     top:-3px;
+}
+
 #content form input[type='button']:hover, #content form input[type='submit']:hover{
      position:relative;
-     top:1px;
+     top:-2px;
 }
 
 /*Tooltip*/
@@ -298,8 +286,16 @@ span.sum{
 
 #modechoose label.error{
 	position:absolute;
-	top:50px;
+	top:-25px;
 	right:5px;
+}
+
+#transferDetails div.row{
+	height: 70px !important;	
+}
+
+#cardDetails div.row{
+	height: 70px !important;	
 }
 
 #terms label{
