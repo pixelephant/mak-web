@@ -89,7 +89,10 @@ if($felh[0]['ervenyesseg_datuma'] == '0000-00-00' || $felh[0]['ervenyesseg_datum
 	$data['ervenyesseg_datuma'] = ((int)$datum[0] + 1) . "-" . $datum[1] . "-" . $datum[2];
 }
 
-$_SESSION['lastEmail'] = $felh[0]['e_mail'];
+unset($_SESSION['lastEmail']);
+if($fizetes['paymentmethodRadio'] == 'card'){
+	$_SESSION['lastEmail'] = $felh[0]['e_mail'];
+}
 
 $data['befizetett_osszeg'] = $fizetes['osszeg'];
 $data['tranzakcio_kodja'] = '2';

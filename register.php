@@ -348,8 +348,8 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						beszerzése a szolgáltatási igény eldöntése szempontjából elkerülhetetlenül szükséges.</label>
 					<input class="required" type="checkbox" name="terms4" id="terms4" />
 				</div>
-				<div id="terms_modositads" class="row">
-					Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.
+				<div id="terms_modositas" class="row">
+					<label for="" class="justify">Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</label>
 				</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>
@@ -376,7 +376,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					</div>
 					<div class="row" id="standardPlateFoInputRow">
 						<label for="standardPlateFoInput">Forgalmi rendszám</label>
-						<input type="text" name="standardPlateFoInput" id="standardPlateFoInput" size="10" />
+						<input type="text" name="standardPlateFoInput" id="standardPlateFoInput" size="10" maxlength="10"/>
 						<img src="img/info.png" alt="" class="info" title="Maximálisan 10 karakterből állhat." />
 					</div>
 				</fieldset>

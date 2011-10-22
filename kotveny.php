@@ -28,7 +28,10 @@
 		$nev = $felh[0]['cegnev'];
 	}
 	
-	$szuletes = $felh[0]['szuletesi_datum'];
+	if($felh[0]['nem'] != 'C'){
+		$szuletes = $felh[0]['szuletesi_datum'];
+	}
+	
 	$irsz = $felh[0]['allando_irsz'];
 	$helyseg = $felh[0]['allando_helyseg'];
 	$kozterulet = $felh[0]['allando_kozterulet'] . " " . $felh[0]['allando_kozterulet_jellege'];
@@ -164,7 +167,7 @@
 	
 	$filenev = 'kotvenyek/' . $_SESSION['lastEmail'] . '.pdf';
 	
-	unset($_SESSION['lastEmail']);
+	//unset($_SESSION['lastEmail']);
 	
 	$pdf->Output($filenev, 'F');
 	

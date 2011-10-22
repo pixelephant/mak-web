@@ -192,6 +192,11 @@ if(!empty($form)){
 		}
 	}
 	
+	$adatok['befizetett_osszeg'] = $fizetes['osszeg'];
+	$adatok['tranzakcio_kodja'] = '2';
+	$adatok['befizetes_datuma'] = '0000-00-00';
+	$adatok['feltetelek_ido'] = date( 'Y-m-d H:i:s', strtotime('now'));
+	
 	$valasz = $main->update_felhasznalo($adatok,$cond);
 
 	unset($_SESSION['lastEmail']);
@@ -222,6 +227,13 @@ if(!empty($form)){
 	
 	if($mail->Send() === FALSE){
 		$valasz = 'Sikertelen e-mail küldés!';
+	}
+	
+	if($fizetes['terms3'] == 'on'){
+		$a = $main->get_hirlevel_email($cond['e_mail']);
+		if($a['count'] == 0){
+			$main->insert_hirlevel($cond['e_mail'],$dijkategoria[$member['membershipRadio']]);
+		}
 	}
 
 }

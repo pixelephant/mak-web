@@ -208,7 +208,11 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 		<?php 
 		
 		if(isset($_GET['status']) && $_GET['status'] == 'success'  && $_SESSION['lastEmail'] != ''){
-			echo '<script type="text/javascript">$.get("kotveny.php", function(){window.location = "proba.php"});</script>';
+			if($_SESSION['tagsag'] == '4'){
+				echo '<script type="text/javascript">$.get("kotveny.php", function(){window.location = "proba.php"});</script>';
+			}else{
+				echo '<script type="text/javascript">window.location = "proba.php";</script>';
+			}
 		}
 		
 		?>

@@ -1159,11 +1159,20 @@ class mak extends db{
 			'vezetekes_telefon' => 'exact_len,10|numeric',
 			'mobil_telefon' => 'exact_len,11|numeric',
 			'e_mail' => 'max_len,100|valid_email',
-			'rendszam' => 'exact_len,6|alpha_numeric',
 			'gyartmany_sap' => 'exact_len,4|numeric',
 			'tipus_sap' => 'exact_len,4|numeric',
+			'rendszam' => 'max_len,10|min_len,6|alpha_numeric',
 			'gyartasi_ev' => 'exact_len,4|numeric',
 			'elso_forgalom' => 'exact_len,8|numeric',
+			'muszaki_vizsga' => 'exact_len,8|numeric',
+			'forgalmi_engedely' => 'exact_len,8|numeric',
+			'gyartmany_sap_2' => 'exact_len,4|numeric',
+			'tipus_sap_2' => 'exact_len,4|numeric',
+			'rendszam_2' => 'max_len,10|min_len,6|alpha_numeric',
+			'gyartasi_ev_2' => 'exact_len,4|numeric',
+			'elso_forgalom_2' => 'exact_len,8|numeric',
+			'muszaki_vizsga_2' => 'exact_len,8|numeric',
+			'forgalmi_engedely_2' => 'exact_len,8|numeric',
 			'tagtipus' => 'exact_len,1|numeric',
 			'dijkategoria' => 'exact_len,1|numeric',
 			'statusz' => 'exact_len,2|numeric',
@@ -1199,6 +1208,15 @@ class mak extends db{
 			'tipus_sap' => 'trim|sanitize_numbers_only',
 			'gyartasi_ev' => 'trim|sanitize_numbers_only',
 			'elso_forgalom' => 'trim|sanitize_numbers_only',
+			'muszaki_vizsga' => 'trim|sanitize_numbers_only',
+			'forgalmi_engedely' => 'trim|sanitize_numbers_only',
+			'gyartmany_sap_2' => 'trim|sanitize_numbers_only',
+			'tipus_sap_2' => 'trim|sanitize_numbers_only',
+			'rendszam_2' => 'trim|sanitize_string',
+			'gyartasi_ev_2' => 'trim|sanitize_numbers_only',
+			'elso_forgalom_2' => 'trim|sanitize_numbers_only',
+			'muszaki_vizsga_2' => 'trim|sanitize_numbers_only',
+			'forgalmi_engedely_2' => 'trim|sanitize_numbers_only',
 			'tagtipus' => 'trim|sanitize_numbers_only',
 			'dijkategoria' => 'trim|sanitize_numbers_only',
 			'statusz' => 'trim|sanitize_numbers_only',
@@ -1558,12 +1576,21 @@ class mak extends db{
 			'vezetekes_telefon' => 'exact_len,10|numeric',
 			'mobil_telefon' => 'exact_len,11|numeric',
 			'e_mail' => 'max_len,100|valid_email',
-			'rendszam' => 'exact_len,6|alpha_numeric',
+			'rendszam' => 'max_len,10|min_len,6|alpha_numeric',
 			'gyartmany_sap' => 'exact_len,4|numeric',
 			'tipus_sap' => 'exact_len,4|numeric',
+			'rendszam' => 'max_len,10|min_len,6|alpha_numeric',
 			'gyartasi_ev' => 'exact_len,4|numeric',
 			'elso_forgalom' => 'exact_len,8|numeric',
-			'tagtipus' => 'exact_len,1|numeric',
+			'muszaki_vizsga' => 'exact_len,8|numeric',
+			'forgalmi_engedely' => 'exact_len,8|numeric',
+			'gyartmany_sap_2' => 'exact_len,4|numeric',
+			'tipus_sap_2' => 'exact_len,4|numeric',
+			'rendszam_2' => 'max_len,10|min_len,6|alpha_numeric',
+			'gyartasi_ev_2' => 'exact_len,4|numeric',
+			'elso_forgalom_2' => 'exact_len,8|numeric',
+			'muszaki_vizsga_2' => 'exact_len,8|numeric',
+			'forgalmi_engedely_2' => 'exact_len,8|numeric',
 			'dijkategoria' => 'exact_len,1|numeric',
 			'statusz' => 'max_len,2|numeric',
 			'belepes_datuma' => 'exact_len,8|numeric',
@@ -1598,7 +1625,15 @@ class mak extends db{
 			'tipus_sap' => 'trim|sanitize_numbers_only',
 			'gyartasi_ev' => 'trim|sanitize_numbers_only',
 			'elso_forgalom' => 'trim|sanitize_numbers_only',
-			'tagtipus' => 'trim|sanitize_numbers_only',
+			'muszaki_vizsga' => 'trim|sanitize_numbers_only',
+			'forgalmi_engedely' => 'trim|sanitize_numbers_only',
+			'gyartmany_sap_2' => 'trim|sanitize_numbers_only',
+			'tipus_sap_2' => 'trim|sanitize_numbers_only',
+			'rendszam_2' => 'trim|sanitize_string',
+			'gyartasi_ev_2' => 'trim|sanitize_numbers_only',
+			'elso_forgalom_2' => 'trim|sanitize_numbers_only',
+			'muszaki_vizsga_2' => 'trim|sanitize_numbers_only',
+			'forgalmi_engedely_2' => 'trim|sanitize_numbers_only',
 			'dijkategoria' => 'trim|sanitize_numbers_only',
 			'statusz' => 'trim|sanitize_numbers_only',
 			'belepes_datuma' => 'trim|sanitize_numbers_only',
@@ -1829,6 +1864,11 @@ class mak extends db{
 	//RENDER
 
 	public function render_aloldal_section_default($tart){
+		
+		/*
+		 * Az általános, nem egyedi formával, tartalommal
+		 * rendelkező 2. szintű oldalt állítja elő
+		 */
 	
 		$cond['mak_almenu.url'] = $tart;
 	
@@ -1918,6 +1958,11 @@ class mak extends db{
 	
 	public function render_kategoria_section_default($kat){
 		
+		/*
+		 * Az általános, nem egyedi formával, tartalommal
+		 * rendelkező 1. szintű oldalt állítja elő
+		 */
+	
 		if(!isset($_SESSION['user_id']) && $kat == 'enautoklubom'){
 			$kategoria[0]['szoveg'] = 'Amennyiben nem tagunk, <a href="regisztralas">regisztráljon</a>';
 			$kategoria[0]['cim'] = 'Kérjük jelentkezzen be!';
@@ -2024,6 +2069,11 @@ class mak extends db{
 	}
 	
 	public function render_altartalom_section_default($altart){
+		
+		/*
+		 * Az általános, nem egyedi formával, tartalommal
+		 * rendelkező 4. szintű oldalt állítja elő
+		 */
 	
 		$tartalom = $this->get_aloldal_altartalom($altart);
 					
@@ -2079,6 +2129,11 @@ class mak extends db{
 	}
 	
 	public function render_tartalom_section_default($tar){
+	
+		/*
+		 * Az általános, nem egyedi formával, tartalommal
+		 * rendelkező 3. szintű oldalt állítja elő
+		 */
 	
 		//$cond['mak_tartalom.url'] = $tart;
 	
@@ -2174,6 +2229,11 @@ class mak extends db{
 	
 	public function render_szervizpont($szervizpont_id){
 	
+		/*
+		 * A megfelelő Szerviz Pont adataiból
+		 * előállítja az Szerviz Pont aloldalát
+		 */
+	
 		$szervizpont = $this->get_szervizpont_idbol($szervizpont_id);
 		$szervizpont = $szervizpont[0];
 	
@@ -2190,6 +2250,11 @@ class mak extends db{
 	}
 	
 	public function render_traveliroda($traveliroda_id){
+		
+		/*
+		 * A megfelelő travel iroda adataiból
+		 * előállítja az iroda aloldalát
+		 */
 	
 		$traveliroda = $this->get_traveliroda_idbol($traveliroda_id);
 		$traveliroda = $traveliroda[0];
@@ -2208,6 +2273,10 @@ class mak extends db{
 	
 	public function render_szervizpontok(){
 	
+		/*
+		 * Szerviz Pontok listája
+		 */
+	
 		$html = '<div id="map"></div>';
 		$html .= '<br />';
 		$html .= '<table class="mak-table"><thead><tr><th colspan="3">Szerviz Pontok</th></tr></thead><tfoot colspan="2"><tr><td></td></tr></tfoot><tbody><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/1">1112 Budapest, Budaörsi út 138.</a></td><td>1/310-2958</td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/2">1095 Budapest, Soroksári út 158/a</a></td><td>1/358-1491</td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/3">1183 Budapest, Nefelejcs u. 4.</a></td><td>1/295-0871</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/4">1043 Budapest, Berda J. u. 15. </a></td><td>1/231-1170 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/5">1044 Budapest, Megyeri út 15/a </a></td><td>1/272-1477 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/6">9027 Győr,  Tompa u. 2. </a></td><td>96/317-900 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/7">9200 Mosonmagyaróvár, Gabona rkp. 2-6.</a></td><td>96/315-708 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/8">2500 Esztergom, Schweidel u. 5.</a></td><td>33/411-908 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/9">2800 Tatabánya, Komáromi u. 68.</a></td><td>34/310-504 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/10">2084 Pilisszentiván, Bánki D. u. 1. </a></td><td>26/367-888 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/11">2310 Szigetszentmiklós, Gyári út 9. kapu</a></td><td>24/465-407</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/12">2049 Diósd, Vadrózsa u. 19. (Ipari park)</a></td><td>23/545-107</td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/13">2760 Nagykáta, Jászberényi út 1.</a></td><td>29/440-385 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/14">5000 Szolnok, Thököly út 48-56. </a></td><td>56/420-801 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/15">6724 Szeged, Kossuth Lajos sgt. 114.</a></td><td>62/ 474-874</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/16">6800 Hódmezővásárhely, Lévai u. 48.</a></td><td>62/533-220 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/17">6600 Szentes, Villogó u. 20.</a></td><td>63/560-130 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/18">6000 Kecskemét, Izzó u.1.</a></td><td>76/ 486-840</td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/19">6300 Kalocsa, Miskei u. 5.</a></td><td>78/461-854 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/20">6100 Kiskunfélegyháza, Szegedi út 38.</a></td><td>76/560-058 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/21">6060 Tiszakécske, Szolnoki út 79.</a></td><td>76/540-005 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/22">5600 Békéscsaba, Szarvasi út 82.</a></td><td>66/325-653, 66/325-658 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/23">4400 Nyíregyháza, Debreceni út 155.</a></td><td>42/409-319, 42/463-521 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/24">4465 Rakamaz, Szent István u. 148.</a></td><td>42/370-245 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/25">4765 Csenger, Ady Endre u. 86.</a></td><td>44/342-346 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/26">2660 Balassagyarmat, Mikszáth u. 26.</a></td><td>35/300-197 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/27">3100 Salgótarján, Bartók B. u. 14/a</a></td><td>32/310-662 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/28">3200 Gyöngyös, Déli Külhatár út 6.</a></td><td>37/311-097 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/29">3300 Eger, Kistályai út 6.</a></td><td>36/410-437 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/30">3531 Miskolc, Győri kapu 32.</a></td><td>46/412-854 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/31">3600 Ózd, Vasvári u. 110. </a></td><td>48/471-614 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/32">5350 Tiszafüred, Fürdő út 21. </a></td><td>59/352-355 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/33">7630 Pécs, Hengermalom u. 3. </a></td><td>72/516-083 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/34">7100 Szekszárd, Tolnai L. u. 2/a </a></td><td>74/315-630 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/35">7400 Kaposvár, Dombóvári u. 6. </a></td><td>82/319-232 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/36">8600 Siófok, Vak Bottyán u. 55.  </a></td><td>84/311-992 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/37">8000 Székesfehérvár, Sárkeresztúri u. 8. </a></td><td>22/311-365 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/38">2400 Dunaújváros, Kenyérgyári út. 7. </a></td><td>25/ 413-311</td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/39">8200 Veszprém, Aradi Vértanúk u. 1. </a></td><td>88/421-006 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/40">8900 Zalaegerszeg, Alsóerdei út 3/a </a></td><td>92/550-195 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/41">8800 Nagykanizsa, Ligeti u. 21. </a></td><td>93/311-256 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/42">8960 Lenti, Táncsics u. 17 </a></td><td>92/351-365 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/43">9900 Körmend,  Nap u. 1.</a></td><td>94/410-411</td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/44">9700 Szombathely, Csaba u. 7. </a></td><td>94/314-754 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/45">9730 Kőszeg, Szombathelyi út 3. </a></td><td>94/360-592 </td></tr><tr><td>Műszaki állomás</td><td><a class="link" href="szervizpont/46">9500 Celldömölk,  Zalka M. úti garázssor </a></td><td>95/420-538 </td></tr><tr><td>Szervizpont, Műszaki állomás</td><td><a class="link" href="szervizpont/47">9400 Sopron, Lackner Kristóf u. 60. </a></td><td>99/311-352 </td></tr></tbody></table>';
@@ -2217,6 +2286,10 @@ class mak extends db{
 	}
 	
 	public function render_travelirodak(){
+
+		/*
+		 * Travel irodák listája
+		 */
 	
 		$html = '<div id="map"></div>';
 		$html .= '<br />';
@@ -2247,7 +2320,7 @@ class mak extends db{
 		$position[2] = 'right';
 	
 		if($evfolyam == ''){
-			$evfolyam = 2010;
+			$evfolyam = date("Y");
 		}
 		
 		$tartalom = $this->get_autoselet($evfolyam);
@@ -2473,6 +2546,9 @@ class mak extends db{
 	public function render_section($kategoria,$almenu='',$tartalom='',$altartalom=''){
 
 		/*
+		 * Az oldalak tényleges tartalmi részéhez
+		 * választja ki a megfelelő "render" függvényt
+		 * 
 		 * @param string $kategoria : a megfelelő aloldal url-ben található azonosítója
 		 * @return mixed : FALSE vagy a html-t tartalmazó string
 		 */
@@ -2821,6 +2897,11 @@ class mak extends db{
 	}
 
 	public function render_search_checkbox(){
+		
+		/*
+		 * A keresés beállításaihoz használt
+		 * checkboxok kirajzolása
+		 */
 	
 		$tartalom = $this->get_tartalom();
 		$kategoria = '';
@@ -3088,7 +3169,13 @@ class mak extends db{
 	}
 	
 	public function render_hirdetes($page,$subpage='',$tartalom='',$subsubpage=''){
-	
+		
+		/*
+		 * Amennyiben van az aloldalhoz hírdetés rendelve,
+		 * úgy a megfelelő értékekkel kiírja azt, egyéb esetben
+		 * a default hírdetés kerül kiírásra
+		 */
+		
 		$url = trim($page);
 		
 		if(trim($subpage) != ''){
@@ -3182,6 +3269,12 @@ class mak extends db{
 	
 	public function render_poll(){
 	
+		/*
+		 * Az 1 kérdés 3 válasz felmérés kiíratása,
+		 * amennyiben a felhasználó már szavazott,
+		 * az eredmények kerülnek kiírásra
+		 */
+	
 		$cond['limit'] = 1;
 		$cond['orderby'] = 'modositas desc';
 	
@@ -3235,6 +3328,11 @@ class mak extends db{
 	//Kiegészítő függvények
 	
 	public function mark_search_result($query_string,$result_string){
+		/*
+		 * A css-ben tárolt "mark" class-szal
+		 * jelöli meg a találati string-ben a
+		 * keresési kifejezést 
+		 */
 	
 		$mark_start = '<span class="mark">';
 		$mark_end = '</span>';
@@ -3271,7 +3369,10 @@ class mak extends db{
 	}
 	
 	public function date_dash($date_string){
-	
+		/*
+		 * A 8 jegyű stringet egészíti ki a dátumozásnak
+		 * megfelelő "-"-kel (20110101 => 2011-01-01)
+		 */
 		if(strlen($date_string) != 8){
 			return false;
 		}
@@ -3285,6 +3386,11 @@ class mak extends db{
 	}
 	
 	public function betekinto($string){
+	
+		/*
+		 * Az oldalak renderelésekor használt rövid "betekintő"
+		 * előállítása
+		 */
 	
 		$max_len = 800;
 	
@@ -3306,6 +3412,10 @@ class mak extends db{
 
 	public function href($page,$sub='',$tartalom='',$subsub=''){
 		
+		/*
+		 * Előállítja az egyes aloldalak href attribútumát
+		 */
+	
 		if($page == ''){
 			return FALSE;
 		}
@@ -3331,6 +3441,10 @@ class mak extends db{
 	
 	public function poll($valasz){
 
+		/*
+		 * Az 1 kérdés 3 válasz kérdőív számára állítja elő a válasz json-t
+		 */
+	
 		$valasz = trim($valasz);
 		$poll_id = $this->get_felmeres_legujabb_id();
 		
@@ -3369,6 +3483,12 @@ class mak extends db{
 	
 	public function adatmodosito_template($form){
 	
+		/*
+		 * Az adatbázisban tárolt adatmodosító templateben
+		 * elhelyezett változókat helyettesíti be a jelenlegi
+		 * felhasználónak megfelelő értékekkel
+		 */
+	
 		$userid = $_SESSION['user_id'];
 		$cond['id'] = $userid;
 		$tags = array('%coSetStart%', '%coSetEnd%', '%natSetStart%', '%natSetEnd%');
@@ -3390,11 +3510,11 @@ class mak extends db{
 		$adatok = $this->get_felhasznalo($cond);
 	
 		if($adatok[0]['rendszam'] != ''){
-			$adatok[0]['rendszam'] = substr($adatok[0]['rendszam'], 0, 3) . '-' . substr($adatok[0]['rendszam'], 3);
+			$adatok[0]['rendszam'] = $adatok[0]['rendszam'];
 		}
 		
 		if($adatok[0]['rendszam_2'] != ''){
-			$adatok[0]['rendszam_2'] = substr($adatok[0]['rendszam_2'], 0, 3) . '-' . substr($adatok[0]['rendszam_2'], 3);
+			$adatok[0]['rendszam_2'] = $adatok[0]['rendszam_2'];
 		}
 		
 		if($adatok[0]['nem'] != 'C'){
@@ -3553,6 +3673,12 @@ class mak extends db{
 
 	public function upgrade_extend_template($form){
 	
+		/*
+		 * Az adatbázisban eltárolt szinthosszabbító / szintváltó
+		 * templateben elhelyezett értékeket tölti fel a jelenlegi
+		 * felhasználó értékeivel és ezt adja vissza kirajzolásra
+		 */
+	
 		$kartya[1] = 'Kék (régi)';
 		$kartya[2] = 'Diszkont';
 		$kartya[3] = 'Standard';
@@ -3645,12 +3771,6 @@ class mak extends db{
 		if($_SESSION['tagsag'] == 4){
 			$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		}
-	
-		/*
-		 * Ideiglenesen nincs szintváltás
-		 */
-		
-		$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		
 		$form = str_replace("%hosszabbitasStart%","",$form);
 		$form = str_replace("%hosszabbitasEnd%","",$form);
@@ -3695,9 +3815,8 @@ class mak extends db{
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
 						hírlevelet küldjön.</label>
 					<input type="checkbox" name="terms3" id="terms3" />
-				</div>
-				<div id="komfortTerms" class="row terms4">';
-		$feltetelek2 = '
+				</div>';
+		$feltetelek2 = '<div id="komfortTerms" class="row terms4">
 					<label class="justify" for="terms4">Felhatalmazom a Magyar Autóklubot, hogy a tagsági kártyához kapcsolódó csoportos
 						közlekedési és balesetbiztosítási jogviszony biztosító általi nyilvántartásához szükséges
 						személyes adataimat a Generali-Providencia Biztosító részére átadja. Mint biztosított,
@@ -3706,9 +3825,11 @@ class mak extends db{
 						adataimat, valamint a biztosítási fedezet fennállását igazoló adatokat a szolgáltatási igény
 						elbírálása céljából, az elbírálás időtartamára átadja, feltéve, hogy e jogalany véleményének
 						beszerzése a szolgáltatási igény eldöntése szempontjából elkerülhetetlenül szükséges.</label>
-					<input class="required" type="checkbox" name="terms4" id="terms4" />';
+					<input class="required" type="checkbox" name="terms4" id="terms4" /></div>';
 				
-		$feltetelek3 = '<br />Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</div></fieldset>';
+		$feltetelek3 = '<div id="terms_modositas" class="row">
+					<label for="" class="justify">Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</label>
+				</div></fieldset>';
 		
 		
 		if($_SESSION['tagsag'] > 2){
