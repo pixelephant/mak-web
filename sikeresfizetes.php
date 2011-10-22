@@ -207,7 +207,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 		</script>
 		<?php 
 		
-		if(isset($_GET['status']) && $_GET['status'] == 'success'  && isset($_SESSION['lastEmail'])){
+		if(isset($_GET['status']) && $_GET['status'] == 'success'  && $_SESSION['lastEmail'] != ''){
 			echo '<script type="text/javascript">$.get("kotveny.php", function(){window.location = "proba.php"});</script>';
 		}
 		
@@ -215,7 +215,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 	</body>
 </html>
 <?php 
-unset($_SESSION['lastEmail']);
+//unset($_SESSION['lastEmail']);
 
 $main->close();
 ob_end_flush();

@@ -132,6 +132,10 @@
 	
 	$filenev = 'ideigleneskartyak/' . $_SESSION['lastEmail'] . '.pdf';
 	
+	if($_SESSION['tagsag'] != '4'){
+		unset($_SESSION['lastEmail']);
+	}
+	
 	$pdf->Output($filenev, 'FD');
 	
 	/*

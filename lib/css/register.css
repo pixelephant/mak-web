@@ -104,12 +104,12 @@
 	left: -375px;	
 }
 
-#cardDetails div.row{
-	height: 50px;	
+#transferDetails div.row{
+	height: 70px !important;	
 }
 
-#transferDetails div.row{
-	height: 50px;	
+#cardDetails div.row{
+	height: 70px !important;	
 }
 
 #content form label.error{

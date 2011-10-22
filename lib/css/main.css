@@ -314,6 +314,14 @@ html,body{
 	margin: 0 auto;
 }
 
+.jogi{
+	font-size: 13px !important;
+}
+
+.passive{
+	font-weight: normal !important;	
+}
+
 /*Fejléc*/
 
 .header-outer{

@@ -155,12 +155,16 @@ aside .links li.active a{
 	font-weight:bold;
 }
 
+aside .links li.passive a{
+	font-weight:normal !important;
+}
+
 aside .links li.active li a{
 	color:#1c1c1c;
 }
 
 aside .links li li a:hover{
-	font-weight:bold;
+	font-weight:bold !important;
 }
 
 aside .links a:hover{

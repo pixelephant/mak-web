@@ -2654,6 +2654,8 @@ class mak extends db{
 				if($aloldalak[$i]['altartalom_url'] == $subsubpage && $altartalom == ''){
 					$html = str_replace('class="active"','',$html);
 					$html .= ' class="active"';
+				}else{
+					$html .= ' class="passive"';
 				}
 				
 				$html .= '><a href="' . $aloldalak[0]['azonosito'] . '/' . $aloldalak[$i]['url'] . '/' . $aloldalak[$i]['tartalom_url'] . '/' . $aloldalak[$i]['altartalom_url'] . '">' . $aloldalak[$i]['altartalom_cim'] . '</a></li>';
@@ -3645,10 +3647,10 @@ class mak extends db{
 		}
 	
 		/*
-		 * Ideiglenesen nincs hosszabbítás
+		 * Ideiglenesen nincs szintváltás
 		 */
 		
-		$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', '', $form);
+		$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		
 		$form = str_replace("%hosszabbitasStart%","",$form);
 		$form = str_replace("%hosszabbitasEnd%","",$form);
@@ -3706,7 +3708,7 @@ class mak extends db{
 						beszerzése a szolgáltatási igény eldöntése szempontjából elkerülhetetlenül szükséges.</label>
 					<input class="required" type="checkbox" name="terms4" id="terms4" />';
 				
-		$feltetelek3 = '</div></fieldset>';
+		$feltetelek3 = '<br />Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</div></fieldset>';
 		
 		
 		if($_SESSION['tagsag'] > 2){

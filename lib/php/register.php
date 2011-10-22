@@ -194,7 +194,10 @@ if(!empty($form)){
 	
 	$valasz = $main->update_felhasznalo($adatok,$cond);
 
-	$_SESSION['lastEmail'] = $cond['e_mail'];
+	unset($_SESSION['lastEmail']);
+	if($fizetes['paymentmethodRadio'] == 'card'){
+		$_SESSION['lastEmail'] = $cond['e_mail'];
+	}
 	
 	/*
 	 * Fizetési mód értesítő

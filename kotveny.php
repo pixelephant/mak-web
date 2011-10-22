@@ -164,6 +164,7 @@
 	
 	$filenev = 'kotvenyek/' . $_SESSION['lastEmail'] . '.pdf';
 	
+	unset($_SESSION['lastEmail']);
 	
 	$pdf->Output($filenev, 'F');
 	
