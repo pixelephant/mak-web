@@ -34,6 +34,10 @@ $standard = GUMP::sanitize($standard);
 
 if(!empty($form)){
 
+	if($form['random'] != $_SESSION['random']){
+		return FALSE;
+	}
+
 	if($form['registerRadio'] == 'nat'){
 	
 		$adatok['vezeteknev'] = ucwords($form['natFName']);
@@ -149,7 +153,7 @@ if(!empty($form)){
 /*
  * Regisztráció utáni Autóklub tagság feldolgozása
  */
-	if(!isset($_POST['email']) || $_POST['email'] == ''){
+	if(!isset($_POST['email']) || $_POST['email'] == '' || $fizetes['random'] != $_SESSION['random']){
 		$valasz = 'sikertelen';
 		return FALSE;
 	}

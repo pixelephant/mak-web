@@ -3495,6 +3495,11 @@ class mak extends db{
 		$cond['id'] = $userid;
 		$tags = array('%coSetStart%', '%coSetEnd%', '%natSetStart%', '%natSetEnd%');
 
+		$random = sha1(microtime());
+		$_SESSION['random'] = $random;
+		
+		$form = str_replace("%random%",$random,$form);
+		
 		/*
 		 * Profil kép
 		 */
@@ -3696,6 +3701,9 @@ class mak extends db{
 		$col = 'gyartasi_ev,rendszam,gyartmany_sap,tipus_sap,ervenyesseg_datuma,alvazszam';
 		$cond['id'] = $_SESSION['user_id'];
 		
+		$random = sha1(microtime());
+		$_SESSION['random'] = $random;
+		
 		$adat = $this->get_felhasznalo($cond,$col);
 		
 		/*
@@ -3705,6 +3713,8 @@ class mak extends db{
 		}
 		$form = str_replace("%fizetesUzenet%",$fizuz,$form);
 		*/
+		
+		$form = str_replace("%random%",$random,$form);
 		
 		if($adat[0]['rendszam'] != ''){
 			$form = str_replace("%rendszam%",$adat[0]['rendszam'],$form);

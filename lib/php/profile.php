@@ -8,11 +8,19 @@ include 'class.mak.php';
 session_start();
 $main = new mak(false);
 
+/*
+ * Fénykép törlése
+ */
+
 if($_POST['action'] == 'delPic'){
 	unlink("../../img/profilkepek/" . sha1($_SESSION['user_id']) . '.jpg');
 	echo 'sikeres';
 	return true;
 }
+
+/*
+ * Tagságból hátralévő idő kiszámolása
+ */
 
 if($_POST['action'] == 'countdown'){
 	$cond['id'] = $_SESSION['user_id'];
@@ -20,6 +28,11 @@ if($_POST['action'] == 'countdown'){
 	echo $a[0]['ervenyesseg_datuma'];
 	return true;
 }
+
+/*
+ * Márkák és típusok legördülő
+ * menüjének összeállítása
+ */
 
 if($_POST['action'] == 'brandType'){
 
@@ -41,6 +54,10 @@ if($_POST['action'] == 'brandType'){
 	}
 
 }else{
+	/*
+	 * Adatváltoztatás
+	 */
+
 	$autoklub_email = 'info@autoklub.hu';
 
 	$form = array();
@@ -49,6 +66,10 @@ if($_POST['action'] == 'brandType'){
 	$fizetes = array();
 	
 	parse_str($_POST['editformData'], $form);
+	
+	if($form['random'] != $_SESSION['random']){
+		return FALSE;
+	}
 	
 	$form = GUMP::sanitize($form);
 	

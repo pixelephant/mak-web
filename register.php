@@ -22,6 +22,9 @@ $gy = '';
 
 $gyart_opt = '';
 
+$random = sha1(microtime());
+$_SESSION['random'] = $random;
+
 //print_r($gyartmany);
 
 /*
@@ -299,6 +302,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					<input class="required" type="checkbox" name="terms" id="terms" />
 				</div>
 				</fieldset>
+				<input type="hidden" name="random" id="random" value="<?php echo $random;?>"/>
 				<input id="toStep2" type="submit" value="Regisztrálás a weboldalra" />
 			</form>
 			<form action="#" id="memberform" class="step2">
@@ -465,6 +469,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 					</div>
 				</fieldset>
 				<span id="message"></span>
+				<input type="hidden" name="random" id="random" value="<?php echo $random;?>"/>
 				<input type="submit" value="Véglegesítés" />
 			</form>		
 		</section>

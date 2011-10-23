@@ -36,6 +36,7 @@ article p{
 article section{
 	margin-bottom: 50px;
 	overflow: hidden;
+	padding-bottom: 2px;
 }
 
 article section .rightside{

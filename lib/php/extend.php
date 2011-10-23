@@ -11,7 +11,10 @@ session_start();
 $main = new mak();
 
 $mak_email = '0antalbalazs0@gmail.com';
-
+/*
+ * Hosszabbítási probléma esetén
+ * e-mail küldési lehetőség
+ */
 if($_POST['action'] == 'extendMail'){
 	
 	$cond['id'] = $_SESSION['user_id'];
@@ -67,6 +70,10 @@ $fizetes = GUMP::sanitize($fizetes);
 
 if(!$fizetes['terms1'] == 'on' || !$fizetes['terms2'] == 'on'){
 	echo 'Nem fogadta el a feltételeket!';
+	return FALSE;
+}
+
+if($fizetes['random'] != $_SESSION['random']){
 	return FALSE;
 }
 
