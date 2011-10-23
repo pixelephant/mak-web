@@ -146,35 +146,35 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						<label id="coZipError" class="error" style="display: none;">Nem valós irányítószám!</label>
 					</div>
 					<div class="row">
-						<label for="coCity">Székhely települése</label>
+						<label for="coCity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;települése</label>
 						<input type="text" name="coCity" id="coCity" />
 					</div>
 					<div class="row">
-						<label for="coAddress">Székhely címe</label>
+						<label for="coAddress">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;címe</label>
 						<input type="text" maxlength="30" size="30" name="coAddress" id="coAddress" />
 					</div>
 					<div class="row">
-						<label for="coAddressType">Székhely közterület jellege</label>
+						<label for="coAddressType">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;közterület jellege</label>
 						<input value="" maxlength="10" size="10" type="text" name="coAddressType" id="coAddressType" />
 					</div>
 					<div class="row">
-						<label for="coAddressNumber">Székhely házszáma</label>
+						<label for="coAddressNumber">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;házszáma</label>
 						<input value=""  maxlength="12" size="12" type="text" name="coAddressNumber" id="coAddressNumber" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
-						<label for="coAddressBuilding">Székhely épület</label>
+						<label for="coAddressBuilding">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;épület</label>
 						<input value=""  maxlength="2" size="2" type="text" name="coAddressBuilding" id="coAddressBuilding" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
-						<label for="coAddressStairs">Székhely lépcsőház</label>
+						<label for="coAddressStairs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lépcsőház</label>
 						<input value="" type="text"  maxlength="2" size="2" name="coAddressStairs" id="coAddressStairs" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
-						<label for="coAddressLevel">Székhely emelet</label>
+						<label for="coAddressLevel">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emelet</label>
 						<input value="" type="text"  maxlength="2" size="2" name="coAddressLevel" id="coAddressLevel" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">
-						<label for="coAddressDoor">Székhely ajtó</label>
+						<label for="coAddressDoor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ajtó</label>
 						<input value=""  maxlength="3" size="3" type="text" name="coAddressDoor" id="coAddressDoor" /><img src="img/info.png" alt="" class="info" title="Amennyiben rendelkezik ezen adattal, kérem töltse ki!" />
 					</div>
 					<div class="row">

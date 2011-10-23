@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include 'Wixel/gump.class.php';
 
 include 'class.db.php';

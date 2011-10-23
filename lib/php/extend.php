@@ -212,7 +212,7 @@ if(isset($_POST['paymentData']) && isset($_POST['memberData']) && $_POST['action
 	
 		if($fizetes['terms3'] == 'on'){
 			$a = $main->get_hirlevel_email($felh[0]['e_mail']);
-			if($a['count'] == 0){
+			if($a['count'] == 0 || $a === false){
 				$main->insert_hirlevel($felh[0]['e_mail'],$data['dijkategoria']);
 			}
 		}

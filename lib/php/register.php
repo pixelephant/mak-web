@@ -230,10 +230,7 @@ if(!empty($form)){
 	}
 	
 	if($fizetes['terms3'] == 'on'){
-		$a = $main->get_hirlevel_email($cond['e_mail']);
-		if($a['count'] == 0){
-			$main->insert_hirlevel($cond['e_mail'],$dijkategoria[$member['membershipRadio']]);
-		}
+		$main->insert_hirlevel($cond['e_mail'],$dijkategoria[$member['membershipRadio']]);
 	}
 
 }

@@ -99,6 +99,11 @@ if(isset($_POST['logout']) && $_POST['logout'] == 'logout'){
 		}
 	}
 }else{
+	/*
+	 * A kliens oldalon is használt titkosítással
+	 * előállítjuk az összehasonlításhoz használt
+	 * stringet
+	 */
 
 	$time = $_POST['time'];
 	$email = $_POST['email'];
@@ -112,7 +117,11 @@ if(isset($_POST['logout']) && $_POST['logout'] == 'logout'){
 		$_SESSION['user_id'] = $adat[0]['id'];
 		$_SESSION['nem'] = $adat[0]['nem'];
 		if($adat[0]['nem'] == 'C'){
-			$_SESSION['keresztnev'] = $adat[0]['kapcsolattarto_vezeteknev'];
+			if($adat[0]['kapcsolattarto_vezeteknev'] != ''){
+				$_SESSION['keresztnev'] = $adat[0]['kapcsolattarto_vezeteknev'];
+			}else{
+				$_SESSION['keresztnev'] = $adat[0]['cegnev'];
+			}
 		}else{
 			$_SESSION['keresztnev'] = $adat[0]['keresztnev']; 
 		}

@@ -616,7 +616,7 @@ class mak extends db{
 		
 		$col = 'id,kep_filenev,evfolyam,lapszam,modositas';
 		
-		if(isset($_SESSION['tagsag']) && $_SESSION['tagsag'] == 4){
+		if($_SESSION['tagsag'] == '4'){
 			$col .= ',embed_kod';
 		}else{
 			$col .= ',embed_kod_rovid AS embed_kod';
@@ -2313,15 +2313,17 @@ class mak extends db{
 	
 	}
 	
-	public function render_autoselet($evfolyam){
+	public function render_autoselet($evfolyam = ''){
 	
 		$position[0] = 'left';
 		$position[1] = 'center';
 		$position[2] = 'right';
 	
+		/*
 		if($evfolyam == ''){
 			$evfolyam = date("Y");
 		}
+		*/
 		
 		$tartalom = $this->get_autoselet($evfolyam);
 		
@@ -3755,20 +3757,29 @@ class mak extends db{
 				$form = $this->replaceTags('%hosszabbitasStart%', '%hosszabbitasEnd%', '', $form);
 			}
 		}
+
+		/*
+		 * Szintváltás feltétele
+		 */
+		if($adat[0]['ervenyesseg_datuma'] < date("Y-m-d",strtotime("+30 days"))){
+			
+			if($_SESSION['tagsag'] > 1){
+				$form = $this->replaceTags('%diszkontRadioStart%', '%diszkontRadioEnd%', '', $form);
+			}
+			
+			if($_SESSION['tagsag'] > 2){
+				$form = $this->replaceTags('%standardRadioStart%', '%standardRadioEnd%', '', $form);
+			}
+			
+			if($_SESSION['tagsag'] > 3){
+				$form = $this->replaceTags('%komfortRadioStart%', '%komfortRadioEnd%', '', $form);
+			}
+			
+			if($_SESSION['tagsag'] == 4){
+				$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
+			}
 		
-		if($_SESSION['tagsag'] > 1){
-			$form = $this->replaceTags('%diszkontRadioStart%', '%diszkontRadioEnd%', '', $form);
-		}
-		
-		if($_SESSION['tagsag'] > 2){
-			$form = $this->replaceTags('%standardRadioStart%', '%standardRadioEnd%', '', $form);
-		}
-		
-		if($_SESSION['tagsag'] > 3){
-			$form = $this->replaceTags('%komfortRadioStart%', '%komfortRadioEnd%', '', $form);
-		}
-		
-		if($_SESSION['tagsag'] == 4){
+		}else{
 			$form = $this->replaceTags('%szintvaltasStart%', '%szintvaltasEnd%', '', $form);
 		}
 		
