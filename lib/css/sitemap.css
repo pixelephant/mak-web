@@ -64,7 +64,7 @@
 
 #s-klubbiztositasok{
 	position: relative;
-    top: -140px;
+    top: -47px;
 }
 
 #s-assistance{
@@ -76,7 +76,7 @@
 	margin-top:10px;
 }
 
-#s-rolunk,#s-kapcsolat,#s-mediaajanlat,#s-oldalterkep,#s-impresszum{
+#s-rolunk,#s-kapcsolat,#s-mediaajanlat,#s-oldalterkep,#s-impresszum,#s-szolgaltatasifeltetelek,#s-asz{
 	height:auto;
 	margin-bottom:0;
 }

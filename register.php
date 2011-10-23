@@ -338,7 +338,7 @@ for($i=0;$i<$gyartmany['count'];$i++){
 				<div id="terms3_div" class="row">
 					<label class="justify" for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
-						hírlevelet küldjön.</label>
+						hírlevelet küldjön.<br />Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</label>
 					<input type="checkbox" name="terms3" id="terms3" />
 				</div>
 				<div style="display: none;" id="komfortTerms" class="row">
@@ -351,9 +351,6 @@ for($i=0;$i<$gyartmany['count'];$i++){
 						elbírálása céljából, az elbírálás időtartamára átadja, feltéve, hogy e jogalany véleményének
 						beszerzése a szolgáltatási igény eldöntése szempontjából elkerülhetetlenül szükséges.</label>
 					<input class="required" type="checkbox" name="terms4" id="terms4" />
-				</div>
-				<div id="terms_modositas" class="row">
-					<label for="" class="justify">Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</label>
 				</div>
 				</fieldset>
 				<input type="submit" value="Tovább" id="toStep3"/>

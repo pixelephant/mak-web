@@ -3834,7 +3834,7 @@ class mak extends db{
 				<div id="term3_div" class="row">
 					<label class="justify" for="terms3">Hozzájárulok ahhoz, hogy a hatályos jogszabályok értelmében a Magyar Autóklub a
 						személyes adataimat direkt marketing céljából kezelje, számomra reklámanyagot, illetve
-						hírlevelet küldjön.</label>
+						hírlevelet küldjön.<br />Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</label>
 					<input type="checkbox" name="terms3" id="terms3" />
 				</div>';
 		$feltetelek2 = '<div id="komfortTerms" class="row terms4">
@@ -3847,11 +3847,6 @@ class mak extends db{
 						elbírálása céljából, az elbírálás időtartamára átadja, feltéve, hogy e jogalany véleményének
 						beszerzése a szolgáltatási igény eldöntése szempontjából elkerülhetetlenül szükséges.</label>
 					<input class="required" type="checkbox" name="terms4" id="terms4" /></div>';
-				
-		$feltetelek3 = '<div id="terms_modositas" class="row">
-					<label for="" class="justify">Tudomásul veszem, hogy a fenti hozzájárulásomat írásban a Magyar Autóklub Tagnyilvántartásán bármikor módosíthatom.</label>
-				</div></fieldset>';
-		
 		
 		if($_SESSION['tagsag'] > 2){
 			$feltetelek = $feltetelek1 . $feltetelek2 . $feltetelek3;
